@@ -1,6 +1,6 @@
-function VisualRenderObject(context, sx, sy, w, h, imgPath, zOrder, animOrder){
+function VisualRenderObject(context, sx, sy, w, h, imgPath, zOrder, animOrder) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder );
+    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
 
     // animation configuration object
     this.animation = animObject;
@@ -10,7 +10,7 @@ function VisualRenderObject(context, sx, sy, w, h, imgPath, zOrder, animOrder){
     this.tileHeight = this.animation.image.tileHeight || h;
 
     // Ermittell die Anzahl der vorhandenen Zeilen
-    this.maxRows = this.animation.image.imgHeight  / this.tileHeight  ||  1;
+    this.maxRows = this.animation.image.imgHeight / this.tileHeight || 1;
 
     // Ermittell die Anzahl der vorhandenen Spalten
     this.maxCols = this.animation.image.imgWidth / this.tileWidth || 1;
@@ -35,9 +35,9 @@ VisualRenderAnimation.prototype.constructor = VisualRenderAnimation;
 
 /**
  *
- *	Override
+ *    Override
  */
-VisualRenderAnimation.prototype.draw = function() {
+VisualRenderAnimation.prototype.draw = function () {
 
     // in welcher Zeile & Spalte ist die zu zeichnende Fläche
     var row = parseInt(this.currentAnimation[this.currentAnimIndex] / this.maxCols);
@@ -45,13 +45,13 @@ VisualRenderAnimation.prototype.draw = function() {
 
     // berechnet die x,y Position
     var imgX = col * this.tileWidth;
-    var imgY = row*this.tileHeight;
+    var imgY = row * this.tileHeight;
 
     // zeichnen
     this.context.drawImage(this.img, imgX, imgY, this.tileWidth, this.tileHeight, this.x, this.y, this.width, this.height);
 
     var delta = Date.now() - this.lastSpriteUpdateTime;
-    if(delta > this.animInterval){
+    if (delta > this.animInterval) {
         this.nextAnimTile();
         this.lastSpriteUpdateTime = Date.now();
     }
@@ -61,12 +61,12 @@ VisualRenderAnimation.prototype.draw = function() {
  *
  * Berechnet den nächsten Auschnitt der aktuellen Animation
  */
-VisualRenderAnimation.prototype.nextAnimTile = function() {
+VisualRenderAnimation.prototype.nextAnimTile = function () {
 
-    if(this.currentAnimIndex + 1 < this.currentAnimation.length) {
+    if (this.currentAnimIndex + 1 < this.currentAnimation.length) {
         this.currentAnimIndex++;
     } else {
-        if(this.loop) {
+        if (this.loop) {
             this.currentAnimIndex = 0;
         }
     }
@@ -78,13 +78,13 @@ VisualRenderAnimation.prototype.nextAnimTile = function() {
  * Wechselt die Animation
  * @param String seqName - Name der Sequence der Animation
  */
-VisualRenderAnimation.prototype.changeAnimSequence = function(seqName) {
+VisualRenderAnimation.prototype.changeAnimSequence = function (seqName) {
 
-    try{
+    try {
         this.currentAnimation = this.animtions.animations[seqName].seq;
         this.loop = this.animations.animations[seqName].loop;
         this.currentAnimIndex = 0;
-    } catch(ex) {
+    } catch (ex) {
         console.log("No such animation sequence: " + seqName);
     }
 

@@ -20,7 +20,7 @@
  * @param imgPath - the path of the image
  * @param zOrder - the order to be drawn on stage
  */
-function VisualRenderObject(context, sx, sy, w, h, imgPath, zOrder ){
+function VisualRenderObject(context, sx, sy, w, h, imgPath, zOrder) {
     this.context = context;
     this.x = sx;
     this.y = sy;
@@ -38,7 +38,7 @@ function VisualRenderObject(context, sx, sy, w, h, imgPath, zOrder ){
     // needed to remember where the user has clicked this object to drag
     this.selX = 0;
     this.selY = 0;
-    if(this.imagePath !== null) {
+    if (this.imagePath !== null) {
         // setup the image
         this.img = new Image();
         this.img.src = this.imagePath;
@@ -52,7 +52,7 @@ function VisualRenderObject(context, sx, sy, w, h, imgPath, zOrder ){
 /**
  * @return booloean if the object is draggable
  */
-VisualRenderObject.prototype.isDraggable = function(){
+VisualRenderObject.prototype.isDraggable = function () {
     return this.draggable;
 };
 
@@ -60,7 +60,7 @@ VisualRenderObject.prototype.isDraggable = function(){
  * Set this object draggable or not
  * @param boolean drag - draggable
  */
-VisualRenderObject.prototype.setDraggable = function(drag){
+VisualRenderObject.prototype.setDraggable = function (drag) {
     this.draggable = drag;
 };
 
@@ -70,8 +70,8 @@ VisualRenderObject.prototype.setDraggable = function(drag){
  * w, h width and height f the object
  * @return Object - x, y, w, h, (width and height are also provided)
  */
-VisualRenderObject.prototype.getPosition = function(){
-    return {x:this.x, y:this.y, w:this.width,h:this.height}
+VisualRenderObject.prototype.getPosition = function () {
+    return {x: this.x, y: this.y, w: this.width, h: this.height}
 };
 
 
@@ -79,29 +79,29 @@ VisualRenderObject.prototype.getPosition = function(){
  * Get the center point of this VRObject as canvas coordinates
  * @return Object width center point { "cx":<x>, "cy":<y> }
  */
-VisualRenderObject.prototype.getCenter = function(){
-    var x = this.x + this.width/2;
-    var y = this.y + this.height/2;
-    return { "cx":x, "cy":y };
+VisualRenderObject.prototype.getCenter = function () {
+    var x = this.x + this.width / 2;
+    var y = this.y + this.height / 2;
+    return { "cx": x, "cy": y };
 }
 
 /**
  * Get the bottom center point of this VRObject as canvas coordinates
  * @return Object width bottom center point { "cx":<x>, "cy":<y> }
  */
-VisualRenderObject.prototype.getBottomCenter = function(){
-    var x = this.x + this.width/2;
+VisualRenderObject.prototype.getBottomCenter = function () {
+    var x = this.x + this.width / 2;
     var y = this.y + this.height;
-    return { "cx":x, "cy":y };
+    return { "cx": x, "cy": y };
 }
 
 /**
  * Get the bottom center point of this VRObject as canvas coordinates
  * @return Object width bottom center point { "cx":<x>, "cy":<y> }
  */
-VisualRenderObject.prototype.getTopCenter = function(){
-    var x = this.x + this.width/2;
-    return { "cx":x, "cy":this.y };
+VisualRenderObject.prototype.getTopCenter = function () {
+    var x = this.x + this.width / 2;
+    return { "cx": x, "cy": this.y };
 }
 
 
@@ -109,10 +109,10 @@ VisualRenderObject.prototype.getTopCenter = function(){
  * Get the hitzone data for this Object. If not set, default hitzone is the whole size of this object (image)
  * @return Object {"hx":x, "hy":y, "hw":w, "hh":h}
  */
-VisualRenderObject.prototype.getHitZone = function(){
+VisualRenderObject.prototype.getHitZone = function () {
     var x = this.x + this.hitZone.hx;
     var y = this.y + this.hitZone.hy;
-    return  {"hx":x, "hy":y, "hw":this.hitZone.hw, "hh":this.hitZone.hh};
+    return  {"hx": x, "hy": y, "hw": this.hitZone.hw, "hh": this.hitZone.hh};
 
 }
 
@@ -125,18 +125,18 @@ VisualRenderObject.prototype.getHitZone = function(){
  * @param Number height - height og the hitzone
  *
  */
-VisualRenderObject.prototype.setHitZone = function(left, top, width, height){
-    this.hitZone = {"hx":left, "hy":top, "hw":width, "hh":height};
+VisualRenderObject.prototype.setHitZone = function (left, top, width, height) {
+    this.hitZone = {"hx": left, "hy": top, "hw": width, "hh": height};
 }
 
 
 /**
  * Draw this object to the canvas. If a rotation is applied, it draws the rotated image
  */
-VisualRenderObject.prototype.draw = function(){
+VisualRenderObject.prototype.draw = function () {
     //console.log('draw Object');
 
-    if(this.rotation === 0){
+    if (this.rotation === 0) {
         this.context.drawImage(this.img, this.x, this.y, this.width, this.height);
 
     } else {
@@ -149,9 +149,9 @@ VisualRenderObject.prototype.draw = function(){
         // 3. rotate
         // 3a) translate the "origin" to the center of this object ("origin" is normally the top left of the canvas (0,0))
         // to rotate the center of this object
-        this.context.translate(this.x + (this.width * 0.5), this.y + (this.height * 0.5) );
+        this.context.translate(this.x + (this.width * 0.5), this.y + (this.height * 0.5));
         // 3b) process radiant and rotate
-        var angleInRadians = this.rotation * Math.PI/180;
+        var angleInRadians = this.rotation * Math.PI / 180;
         this.context.rotate(angleInRadians);
         // 4. canvas is rotated so draw the image (Origin is now center of the image)
         // "-this.width * 0.5": center of canvas is translated to the middle of this Object.
@@ -168,7 +168,7 @@ VisualRenderObject.prototype.draw = function(){
  * change the image of this visual object
  * @param String img - the image path of the new image
  */
-VisualRenderObject.prototype.changeImage = function(imgPath){
+VisualRenderObject.prototype.changeImage = function (imgPath) {
     var i = new Image();
     i.src = imgPath;
     this.img = i;
@@ -179,7 +179,7 @@ VisualRenderObject.prototype.changeImage = function(imgPath){
  * set the rotation of this object
  * @param number degree - the rotation (0-360)
  */
-VisualRenderObject.prototype.setRotation = function(degree){
+VisualRenderObject.prototype.setRotation = function (degree) {
     this.rotation = degree;
 };
 
@@ -187,7 +187,7 @@ VisualRenderObject.prototype.setRotation = function(degree){
  * get the rotation of this object
  * @return number - the actual rotation
  */
-VisualRenderObject.prototype.getRotation = function(){
+VisualRenderObject.prototype.getRotation = function () {
     return this.rotation;
 };
 
@@ -195,7 +195,7 @@ VisualRenderObject.prototype.getRotation = function(){
 /**
  * Reset position to start position
  */
-VisualRenderObject.prototype.resetPosition = function(){
+VisualRenderObject.prototype.resetPosition = function () {
     this.x = this.startX;
     this.y = this.startY;
 };
@@ -205,7 +205,7 @@ VisualRenderObject.prototype.resetPosition = function(){
  * only for Drag & Drop process (Stage uses this function)
  * @param Object mousePos - the x and y value of the mouse at that moment
  */
-VisualRenderObject.prototype.setDragPosition = function(mousePos){
+VisualRenderObject.prototype.setDragPosition = function (mousePos) {
     this.selX = mousePos.x - this.x;
     this.selY = mousePos.y - this.y;
 };
@@ -215,7 +215,7 @@ VisualRenderObject.prototype.setDragPosition = function(mousePos){
  * only for dragging process (Stage uses this function)
  * @param Object - the actual mouse position
  */
-VisualRenderObject.prototype.updateDragPosition = function(mousePos){
+VisualRenderObject.prototype.updateDragPosition = function (mousePos) {
     this.x = mousePos.x - this.selX;
     this.y = mousePos.y - this.selY;
 };

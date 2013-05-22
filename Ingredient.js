@@ -1,6 +1,6 @@
-function Ingredient(context, sx, sy, w, h, imgPath, zOrder, draggable, name ) {
+function Ingredient(context, sx, sy, w, h, imgPath, zOrder, draggable, name) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder );
+    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
 
     this.setDraggable(draggable);
     this.name = name;
