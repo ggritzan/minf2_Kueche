@@ -30,3 +30,4 @@ Plate.prototype.changePotInPlace = function (status) {
 Plate.prototype.setCurrentPot = function (pot) {
     this.pot = pot;
 }
+
