@@ -12,6 +12,7 @@ function Knob(context, sx, sy, w, h, imgPath, zOrder, name, plate, degree) {
     this.OFF = 0;
     this.ON = 1;
     this.status = this.OFF;
+    this.setRotation(0);
 
 
 
