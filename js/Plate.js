@@ -17,7 +17,7 @@ Plate.prototype = new VisualRenderObject;
 Plate.prototype.constructor = Plate;
 
 // Methode die den Power Status aendert
-Plate.prototype.changeStatus = function (status) {
+Plate.prototype.setStatus = function (status) {
     this.status = status;
 };
 
