@@ -28,21 +28,30 @@ function Kitchen(canvasId) {
         }
     };
 
-    var p1 = new Pot(this.stage.getContext(), 10, 10, 360, 246, "images/pot1.png", 25, true, "Topf");
-    var pl1 = new Plate(this.stage.getContext(), 450, 300, 242, 85, "images/platte.png", 22, "Platte1");
-    var kn1 = new Knob()
-    var i1 = new Ingredient(this.stage.getContext(), 450, 300, 276, 142, "images/karotte.png", 27, true, "Karotte");
-    var i2 = new Ingredient(this.stage.getContext(), 300, 350, 88, 113, "images/tomate.png", 28, true, "Tomate");
-    var i3 = new Ingredient(this.stage.getContext(), 20, 300, 255, 255, "images/nudeln.png", 26, true, "Nudeln");
+    var p1 = new Pot(this.stage.getContext(), 400, 10, 242, 187, "images/pot.png", 25, true, "Topf");
+    var p2 = new Pot(this.stage.getContext(), 600, 10, 242, 187, "images/pot.png", 25, true, "Topf2");
+    var pl1 = new Plate(this.stage.getContext(), 300, 300, 242, 85, "images/platte.png", 22, "Platte1");
+    var pl2 = new Plate(this.stage.getContext(), 600, 300, 242, 85, "images/platte.png", 22, "Platte2");
+    var kn1 = new Knob(this.stage.getContext(),  375, 400, 58, 58, "images/knob.png", 1, "Knopf1", pl1 );
+    var kn2 = new Knob(this.stage.getContext(),  675, 400, 58, 58, "images/knob.png", 1, "Knopf2", pl2 );
+    var i1 = new Ingredient(this.stage.getContext(), 0, 0, 276, 142, "images/karotte.png", 27, true, "Karotte");
+    var i2 = new Ingredient(this.stage.getContext(), 0, 0, 88, 113, "images/tomate.png", 28, true, "Tomate");
+    var i3 = new Ingredient(this.stage.getContext(), 0, 0, 255, 255, "images/nudeln.png", 26, true, "Nudeln");
 
     this.pots.push(p1);
+    this.pots.push(p2);
     this.plates.push(pl1);
+    this.plates.push(pl2);
     this.Ingredients.push(i1);
     this.Ingredients.push(i2);
     this.Ingredients.push(i3);
 
     this.stage.addToStage(p1);
+    this.stage.addToStage(p2);
     this.stage.addToStage(pl1);
+    this.stage.addToStage(pl2)
+    this.stage.addToStage(kn1);
+    this.stage.addToStage(kn2);
     this.stage.addToStage(i1);
     this.stage.addToStage(i2);
     this.stage.addToStage(i3);
@@ -92,27 +101,84 @@ Kitchen.prototype.run = function (kit) {
 Kitchen.prototype.onDragend = function (event) {
     console.log(event);
     if (event.target instanceof Ingredient) {
-        console.log("An Ingredient has been dropped.");
         for (var i = 0; i < this.pots.length; i++) {
             //is the ingredient over a pot?
             if (event.target.x + event.target.width / 2 >= this.pots[i].x && event.target.x + event.target.width / 2 <= this.pots[i].x + this.pots[i].width && event.target.y + event.target.height / 2 >= this.pots[i].y && event.target.y + event.target.height / 2 <= this.pots[i].y + this.pots[i].height) {
                 this.pots[i].ingredients.push(event.target);
-                console.log("You have put the ingredient " + event.target.titel + " into a pot");
                 this.stage.removeFromStage(event.target);
                 break;
             }
         }
     } else if (event.target instanceof Pot) {
-        console.log("A Pot has been moved.");
         for (var i = 0; i < this.plates.length; i++) {
-            if (event.target.x + event.target.width / 2 >= this.plates[i].x && event.target.x + event.target.width / 2 <= this.plates[i].x + this.plates[i].width && event.target.y + event.target.height / 2 >= this.plates[i].y && event.target.y + event.target.height / 2 <= this.plates[i].y + this.plates[i].height) {
-                this.plates[i].changePotInPlace(true);
-                console.log(" You have put the pot " + event.target.titel + " on the plate" + this.plates[i]);
-                //this.stage.removeFromStage(event.target);
-                //break;
+            var cx = event.target.getBottomCenter().cx;
+            var cy = event.target.getBottomCenter().cy;
+            var zone = this.plates[i].getHitZone();
+            var overAPlate;
+            if ((cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)){
+                overAPlate = true;
+            }
+            //pot comes from free space
+            if (!event.target.onPlate) {
+            //to a free plate
+                if ((this.plates[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
+                    this.plates[i].setCurrentPot(event.target);
+                    event.target.myPlateIndex = i;
+                    console.log(this.plates[i].name + " now has pot " + event.target.name + event.target.myPlateIndex);
+                    event.target.onPlate = true;
+                    break;
+            //to an occupied plate
+                } else if ((event.target != this.plates[i].pot) && (this.plates[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
+                    console.log(this.plates[i].name + " already has pot " + this.plates[i].pot.name);
+                    event.target.onPlate = false;
+                    break;
+                }
+            //pot comes from plate
+            } else if (event.target.onPlate){
+            //to a free plate
+                if ((this.plates[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
+                    console.log(this.plates[i].name + " now has pot " + event.target.name);
+                    this.plates[event.target.myPlateIndex].setCurrentPot(null);
+                    event.target.myPlateIndex = null;
+                    this.plates[i].setCurrentPot(event.target);
+                    event.target.myPlateIndex = i;
+                    event.target.onPlate = true;
+                    break;
+            //to an occupied plate
+                } else if((event.target != this.plates[i].pot) && (this.plates[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
+                    console.log(this.plates[i].name + " already has pot " + this.plates[i].pot.name);
+                    this.plates[event.target.myPlateIndex].setCurrentPot(null);
+                    event.target.myPlateIndex = null;
+                    event.target.onPlate = false;
+                    break;
+                }
             }
         }
+        if (!overAPlate) {
+            if (event.target.myPlateIndex != null ) {
+                this.plates[event.target.myPlateIndex].setCurrentPot(null);
+            }
+            console.log(event.target.name + " is nowhere");
+            event.target.myPlateIndex = null;
+            event.target.onPlate = false;
+            overAPlate = false;
+        }
     }
+
+ Kitchen.prototype.onClick = function (event) {
+     console.log(event);
+     if (event.target instanceof Knob) {
+         if(event.target.status == 0) {
+             event.target.setStatus(event.target.ON);
+             event.target.setRotation(180);
+         }else if (event.target.status == 1) {
+             event.target.setStatus(event.target.OFF);
+             event.target.setRotation(0);
+         }else {
+             console.log("An unknown action was performed with the following knob " + event.target.name);
+         }
+     }
+ }
 }
 
 
