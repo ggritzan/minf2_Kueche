@@ -32,6 +32,7 @@ Plate.prototype.setPotInPlace = function (status) {
 Plate.prototype.setCurrentPot = function (pot) {
     this.pot = pot;
     if (this.pot != null ) {
+        this.pot.setStatus(this.status);
         console.log("Plate State "+ this.status + " Pot State " + this.pot.status);
     }
 

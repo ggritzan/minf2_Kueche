@@ -112,6 +112,15 @@ Kitchen.prototype.onClick = function (event) {
             console.log("An unknown action was performed with the following knob " + event.target.name);
         }
     }
+    for(var i = 0; i<this.plates.length; i++) {
+        console.log(this.plates[i].name + " has status " +this.plates[i].status);
+        if(this.plates[i].pot != null){
+            console.log(this.plates[i].name + " has the pot " + this.plates[i].pot.name + " the pot status os " + this.plates[i].pot.status);
+        }
+    }
+    for(var i = 0; i<this.pots.length; i++) {
+        console.log(this.pots[i].name + " is in state " + this.pots[i].status);
+    }
 }
 
 Kitchen.prototype.onDragend = function (event) {
@@ -140,13 +149,14 @@ Kitchen.prototype.onDragend = function (event) {
                 if ((this.plates[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
                     this.plates[i].setCurrentPot(event.target);
                     event.target.myPlateIndex = i;
-                    console.log(this.plates[i].name + " now has pot " + event.target.name + event.target.myPlateIndex);
+                    console.log(this.plates[i].name + " now has pot " + event.target.name );
                     event.target.onPlate = true;
                     break;
             //to an occupied plate
                 } else if ((event.target != this.plates[i].pot) && (this.plates[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
                     console.log(this.plates[i].name + " already has pot " + this.plates[i].pot.name);
                     event.target.onPlate = false;
+                    event.target.status = 0;
                     break;
                 }
             //pot comes from plate
@@ -166,6 +176,7 @@ Kitchen.prototype.onDragend = function (event) {
                     this.plates[event.target.myPlateIndex].setCurrentPot(null);
                     event.target.myPlateIndex = null;
                     event.target.onPlate = false;
+                    event.target.status = 0;
                     break;
                 }
             }
@@ -177,6 +188,7 @@ Kitchen.prototype.onDragend = function (event) {
             console.log(event.target.name + " is nowhere");
             event.target.myPlateIndex = null;
             event.target.onPlate = false;
+            event.target.status = 0;
             overAPlate = false;
         }
     }
