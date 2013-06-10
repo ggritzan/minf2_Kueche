@@ -98,6 +98,22 @@ Kitchen.prototype.run = function (kit) {
 
 }
 
+
+Kitchen.prototype.onClick = function (event) {
+    console.log(event);
+    if (event.target instanceof Knob) {
+        if(event.target.status == 0) {
+            event.target.setStatus(event.target.ON);
+            event.target.setRotation(180);
+        }else if (event.target.status == 1) {
+            event.target.setStatus(event.target.OFF);
+            event.target.setRotation(0);
+        }else {
+            console.log("An unknown action was performed with the following knob " + event.target.name);
+        }
+    }
+}
+
 Kitchen.prototype.onDragend = function (event) {
     console.log(event);
     if (event.target instanceof Ingredient) {
@@ -165,20 +181,6 @@ Kitchen.prototype.onDragend = function (event) {
         }
     }
 
- Kitchen.prototype.onClick = function (event) {
-     console.log(event);
-     if (event.target instanceof Knob) {
-         if(event.target.status == 0) {
-             event.target.setStatus(event.target.ON);
-             event.target.setRotation(180);
-         }else if (event.target.status == 1) {
-             event.target.setStatus(event.target.OFF);
-             event.target.setRotation(0);
-         }else {
-             console.log("An unknown action was performed with the following knob " + event.target.name);
-         }
-     }
- }
 }
 
 
