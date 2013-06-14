@@ -22,6 +22,8 @@ function Pot(context, sx, sy, w, h, imgPath, zOrder, draggable, name, animObj) {
 
     var onPlate = false;
     var myPlateIndex;
+
+    this.soundmanager = new SoundManager();
 }
 
 
@@ -61,6 +63,7 @@ Pot.prototype.heating = function(){
         this.actTemp++;
     } else if(this.actState == this.HEATING && this.actTemp == this.MAX_TEMP){
         this.changeState(this.BOILING);
+        this.soundmanager.playSound(this.soundmanager.boilingWaterSound);
     }
 }
 

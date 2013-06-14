@@ -93,24 +93,31 @@ Kitchen.prototype.run = function (kit) {
 Kitchen.prototype.onClick = function (event) {
     console.log(event);
     if (event.target instanceof Knob) {
-        if(event.target.status == 0) {
+        if(event.target.status == event.target.OFF) {
             event.target.setStatus(event.target.ON);
             event.target.setRotation(180);
-        }else if (event.target.status == 1) {
+        }else if (event.target.status == event.target.ON) {
             event.target.setStatus(event.target.OFF);
             event.target.setRotation(0);
         }else {
             console.log("An unknown action was performed with the following knob " + event.target.name);
         }
     }
+
     for(var i = 0; i<this.plates.length; i++) {
         console.log(this.plates[i].name + " has status " +this.plates[i].status);
         if(this.plates[i].pot != null){
             console.log(this.plates[i].name + " has the pot " + this.plates[i].pot.name + " the pot status is " + this.plates[i].pot.status);
         }
     }
+
     for(var i = 0; i<this.pots.length; i++) {
         console.log(this.pots[i].name + " is in state " + this.pots[i].status);
+        for(var j = 0; j<this.pots[i].ingredients.length; j++){
+            if(this.pots[i].ingredients[j] != null){
+                console.log("The pot " + this.pots[i].name + " has the following ingredients: " + this.pots[i].ingredients[j].name);
+            }
+        }
     }
 }
 
@@ -136,23 +143,23 @@ Kitchen.prototype.onDragend = function (event) {
             }
             //pot comes from free space
             if (!event.target.onPlate) {
-            //to a free plate
+                //to a free plate
                 if ((this.plates[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
                     this.plates[i].setCurrentPot(event.target);
                     event.target.myPlateIndex = i;
                     console.log(this.plates[i].name + " now has pot " + event.target.name );
                     event.target.onPlate = true;
                     break;
-            //to an occupied plate
+                    //to an occupied plate
                 } else if ((event.target != this.plates[i].pot) && (this.plates[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
                     console.log(this.plates[i].name + " already has pot " + this.plates[i].pot.name);
                     event.target.onPlate = false;
-                    event.target.setStatus(0);
+                    event.target.setStatus(event.target.OFF);
                     break;
                 }
-            //pot comes from plate
+                //pot comes from plate
             } else if (event.target.onPlate){
-            //to a free plate
+                //to a free plate
                 if ((this.plates[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
                     console.log(this.plates[i].name + " now has pot " + event.target.name);
                     this.plates[event.target.myPlateIndex].setCurrentPot(null);
@@ -161,13 +168,13 @@ Kitchen.prototype.onDragend = function (event) {
                     event.target.myPlateIndex = i;
                     event.target.onPlate = true;
                     break;
-            //to an occupied plate
+                    //to an occupied plate
                 } else if((event.target != this.plates[i].pot) && (this.plates[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
                     console.log(this.plates[i].name + " already has pot " + this.plates[i].pot.name);
                     this.plates[event.target.myPlateIndex].setCurrentPot(null);
                     event.target.myPlateIndex = null;
                     event.target.onPlate = false;
-                    event.target.setStatus(0);
+                    event.target.setStatus(event.target.OFF);
                     break;
                 }
             }
@@ -179,14 +186,9 @@ Kitchen.prototype.onDragend = function (event) {
             console.log(event.target.name + " is nowhere");
             event.target.myPlateIndex = null;
             event.target.onPlate = false;
-            event.target.setStatus(0);
+            event.target.setStatus(event.target.OFF);
             overAPlate = false;
         }
     }
 
 }
-
-
-
-
-
