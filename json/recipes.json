@@ -32,7 +32,7 @@
 									"put": ["mushrooms"]
 								},
 								{
-                                    "isCutted": ["mushrooms"]
+                                    "isCut": ["mushrooms"]
                                 }
 							]
 						}
@@ -64,11 +64,7 @@
                                     "isBaked": ["cuttedmushrooms"]
                                 }
 							]
-						},
-
-
-
-
+						}
 					]
 				},
 
@@ -81,7 +77,7 @@
 									"put": ["carrots"]
 								},
 								{
-									"isCutted": ["carrots"]
+									"isCut": ["carrots"]
 								}
 							]
 						}
@@ -100,8 +96,7 @@
 							]
 						}
 					]
-				},
-
+				}
 			]
 		}
 
