@@ -1,0 +1,109 @@
+{
+	"recipes": [
+		{
+		    // Name des
+			"name": "Vegetarische Bolognese",
+
+			"image": "/images/recipe/vegetarienBolonese.png",
+
+			"description": "Gericht das trotz des nicht vorhandenen Fleisches einfach nur lecker schmeckt",
+
+			"ingredients": [ 	"mushrooms",
+                           		"carrots",
+                           		"celery",
+                           		"onion",
+                           		"oil",
+                           		"garlic",
+                           		"tomatopaste",
+                           		"peeledtomatoes",
+                           		"salt",
+                           		"pepper",
+                           		"sugar",
+                           		"paprikapowder",
+                           		"noodles"],
+
+			"tasks": [
+				{
+					"message": "Pilze in die Kuechenmaschine geben und  grob hacken.",
+					"task": [
+						{
+							"kitchenslicer": [
+								{
+									"put": ["mushrooms"]
+								},
+								{
+                                    "isCutted": ["mushrooms"]
+                                }
+							]
+						}
+
+
+
+
+
+					]
+				},
+
+				{
+					"message": "Die gehackten Pilze auf ein Backblech legen, das Backblech mit den gehackten Pilzen in den Backofen und für kurze Zeit backen lassen!",
+					"task": [
+						{
+							"bakingsheet": [
+								{
+									"put": ["mushrooms"]
+								}
+							]
+
+						},
+						{
+							"oven": [
+								{
+									"put": ["bakingsheet"]
+								},
+								{
+                                    "isBaked": ["cuttedmushrooms"]
+                                }
+							]
+						},
+
+
+
+
+					]
+				},
+
+				{
+					"message": "Möhren in der Kuechenmaschine grob hacken.",
+					"task": [
+						{
+							"kitchenslicer": [
+								{
+									"put": ["carrots"]
+								},
+								{
+									"isCutted": ["carrots"]
+								}
+							]
+						}
+					]
+				},
+
+				{
+					"message": "Die gehackten Möhren aus der Kuechemaschine nehmen und auf die Arbeitsplatte legen.",
+					"task": [
+
+						{
+							"countertop": [
+								{
+									"put": ["carrots"]
+								}
+							]
+						}
+					]
+				},
+
+			]
+		}
+
+	]
+}
