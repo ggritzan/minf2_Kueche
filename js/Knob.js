@@ -1,6 +1,6 @@
-function Knob(context, sx, sy, w, h, imgPath, zOrder, name, plate, degree) {
+function Knob(context, sx, sy, w, h, imgPath, zOrder, name, plate ) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder, degree);
+    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
 
 
 

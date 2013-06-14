@@ -11,6 +11,7 @@ function Kitchen(canvasId) {
     this.pots = [];
     this.Ingredients = [];
     this.plates = [];
+    this.knobs = [];
 
     var animObj = {
         "image": {
@@ -29,20 +30,22 @@ function Kitchen(canvasId) {
     };
 
     var p1 = new Pot(this.stage.getContext(), 10, 10, 360, 246, "images/pot1.png", 25, true, "Topf");
-    var pl1 = new Plate(this.stage.getContext(), 450, 300, 242, 85, "images/platte.png", 22, "Platte1");
-    var kn1 = new Knob()
+    var pl1 = new Plate(this.stage.getContext(), 450, 400, 242, 85, "images/platte.png", 22, "Platte 1");
+    var k1 = new Knob(this.stage.getContext(), 500, 500, 58, 58, "images/knob.png", 23, "Knopf 1", pl1);
     var i1 = new Ingredient(this.stage.getContext(), 450, 300, 276, 142, "images/karotte.png", 27, true, "Karotte");
     var i2 = new Ingredient(this.stage.getContext(), 300, 350, 88, 113, "images/tomate.png", 28, true, "Tomate");
     var i3 = new Ingredient(this.stage.getContext(), 20, 300, 255, 255, "images/nudeln.png", 26, true, "Nudeln");
 
     this.pots.push(p1);
     this.plates.push(pl1);
+    this.knobs.push(k1);
     this.Ingredients.push(i1);
     this.Ingredients.push(i2);
     this.Ingredients.push(i3);
 
     this.stage.addToStage(p1);
     this.stage.addToStage(pl1);
+    this.stage.addToStage(k1);
     this.stage.addToStage(i1);
     this.stage.addToStage(i2);
     this.stage.addToStage(i3);
