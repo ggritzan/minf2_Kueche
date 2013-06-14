@@ -28,8 +28,8 @@ function Kitchen(canvasId) {
         }
     };
 
-    var p1 = new Pot(this.stage.getContext(), 400, 10, 242, 187, "images/pot.png", 25, true, "Topf");
-    var p2 = new Pot(this.stage.getContext(), 600, 10, 242, 187, "images/pot.png", 25, true, "Topf2");
+    var p1 = new Pot(this.stage.getContext(), 400, 10, 160, 180, "images/pot_anim.png", 25, true, "Topf", animObj);
+    var p2 = new Pot(this.stage.getContext(), 600, 10, 160, 180, "images/pot_anim.png", 25, true, "Topf2", animObj);
     var pl1 = new Plate(this.stage.getContext(), 300, 300, 242, 85, "images/platte.png", 22, "Platte1");
     var pl2 = new Plate(this.stage.getContext(), 600, 300, 242, 85, "images/platte.png", 22, "Platte2");
     var kn1 = new Knob(this.stage.getContext(),  375, 400, 58, 58, "images/knob.png", 1, "Knopf1", pl1 );
@@ -69,17 +69,6 @@ function Kitchen(canvasId) {
 }
 
 
-Kitchen.prototype.onClick = function (event) {
-    console.log(event);
-
-}
-
-Kitchen.prototype.onDragend = function (event) {
-    console.log(event);
-
-}
-
-
 /**
  * Animation loop
  * @param kit the kitchen object
@@ -87,7 +76,9 @@ Kitchen.prototype.onDragend = function (event) {
 Kitchen.prototype.run = function (kit) {
 
     // update the objects (Plate, Knob, ...)
-
+    kit.pots.forEach(function(pot){
+        pot.update()
+    });
 
     // Always render after the updates
     kit.stage.render();
@@ -115,7 +106,7 @@ Kitchen.prototype.onClick = function (event) {
     for(var i = 0; i<this.plates.length; i++) {
         console.log(this.plates[i].name + " has status " +this.plates[i].status);
         if(this.plates[i].pot != null){
-            console.log(this.plates[i].name + " has the pot " + this.plates[i].pot.name + " the pot status os " + this.plates[i].pot.status);
+            console.log(this.plates[i].name + " has the pot " + this.plates[i].pot.name + " the pot status is " + this.plates[i].pot.status);
         }
     }
     for(var i = 0; i<this.pots.length; i++) {
@@ -156,7 +147,7 @@ Kitchen.prototype.onDragend = function (event) {
                 } else if ((event.target != this.plates[i].pot) && (this.plates[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
                     console.log(this.plates[i].name + " already has pot " + this.plates[i].pot.name);
                     event.target.onPlate = false;
-                    event.target.status = 0;
+                    event.target.setStatus(0);
                     break;
                 }
             //pot comes from plate
@@ -176,7 +167,7 @@ Kitchen.prototype.onDragend = function (event) {
                     this.plates[event.target.myPlateIndex].setCurrentPot(null);
                     event.target.myPlateIndex = null;
                     event.target.onPlate = false;
-                    event.target.status = 0;
+                    event.target.setStatus(0);
                     break;
                 }
             }
@@ -188,7 +179,7 @@ Kitchen.prototype.onDragend = function (event) {
             console.log(event.target.name + " is nowhere");
             event.target.myPlateIndex = null;
             event.target.onPlate = false;
-            event.target.status = 0;
+            event.target.setStatus(0);
             overAPlate = false;
         }
     }

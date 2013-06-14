@@ -1,19 +1,19 @@
-function VisualRenderObject(context, sx, sy, w, h, imgPath, zOrder, animOrder) {
+function VisualRenderAnimation(context, sx, sy, w, h, imgPath, zOrder, animObject) {
 
     VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
 
     // animation configuration object
-    this.animation = animObject;
+    this.animations = animObject;
 
     // gibt die Breite & Höhe einer einzelnen Grafik aus der Gesamtgrafik an
     this.tileWidth = this.animations.image.tileWidth || w;
-    this.tileHeight = this.animation.image.tileHeight || h;
+    this.tileHeight = this.animations.image.tileHeight || h;
 
     // Ermittell die Anzahl der vorhandenen Zeilen
-    this.maxRows = this.animation.image.imgHeight / this.tileHeight || 1;
+    this.maxRows = this.animations.image.imgHeight / this.tileHeight || 1;
 
     // Ermittell die Anzahl der vorhandenen Spalten
-    this.maxCols = this.animation.image.imgWidth / this.tileWidth || 1;
+    this.maxCols = this.animations.image.imgWidth / this.tileWidth || 1;
 
     // Definiert die aktuelle Animation die ausgeführt werden soll
     this.currentAnimation = this.animations.animations["default"].seq || [0];
@@ -34,7 +34,6 @@ VisualRenderAnimation.prototype = Object.create(VisualRenderObject.prototype);
 VisualRenderAnimation.prototype.constructor = VisualRenderAnimation;
 
 /**
- *
  *    Override
  */
 VisualRenderAnimation.prototype.draw = function () {
@@ -81,7 +80,7 @@ VisualRenderAnimation.prototype.nextAnimTile = function () {
 VisualRenderAnimation.prototype.changeAnimSequence = function (seqName) {
 
     try {
-        this.currentAnimation = this.animtions.animations[seqName].seq;
+        this.currentAnimation = this.animations.animations[seqName].seq;
         this.loop = this.animations.animations[seqName].loop;
         this.currentAnimIndex = 0;
     } catch (ex) {
