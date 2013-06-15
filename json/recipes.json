@@ -1,7 +1,6 @@
 {
 	"recipes": [
 		{
-		    // Name des
 			"name": "Vegetarische Bolognese",
 
 			"image": "/images/recipe/vegetarienBolonese.png",
@@ -24,7 +23,7 @@
 
 			"tasks": [
 				{
-					"message": "Pilze in die Kuechenmaschine geben und  grob hacken.",
+					"message": "Pilze in die Kuechenmaschine geben und grob hacken.",
 					"task": [
 						{
 							"kitchenslicer": [
@@ -61,7 +60,7 @@
 									"put": ["bakingsheet"]
 								},
 								{
-                                    "isBaked": ["cuttedmushrooms"]
+                                    "isBaked": ["cutMushrooms"]
                                 }
 							]
 						}

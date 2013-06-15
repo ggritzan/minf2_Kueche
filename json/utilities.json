@@ -1,0 +1,47 @@
+{
+    "utilities":{
+        "potBluePrint": {
+            "draggable": true,
+            "image": {
+                "imagePath": "images/pot_anim.png",
+                "tileWidth": 160,
+                "tileHeight": 180,
+                "imgWidth": 640,
+                "imgHeight": 360
+            },
+            "animations": {
+                "default": { "seq": [0], "loop": false},
+                "cold": {"seq": [0], "loop": false},
+                "heating": {"seq": [1, 2, 3, 3, 2], "loop": true},
+                "cooling": {"seq": [1, 1, 2, 3, 2], "loop": true},
+                "boiling": {"seq": [4, 5, 6, 7], "loop": true}
+            },
+            "pots": [
+                {"name": "pot1", "sx": 400, "sy": 10, "zOrder": 23},
+                {"name": "pot2", "sx": 600, "sy": 10, "zOrder": 23}
+            ]
+        },
+        "stoveTopBluePrint": {
+            "image": {
+                "imagePath": "images/platte.png",
+                "tileWidth": 242,
+                "tileHeight": 85
+            },
+            "stoveTops": [
+                {"name": "stoveTop1", "sx": 300, "sy": 300, "zOrder": 22},
+                {"name": "stoveTop2", "sx": 600, "sy": 300, "zOrder": 22}
+            ]
+        },
+        "knobBluePrint": {
+            "image": {
+                "imagePath": "images/knob.png",
+                "tileWidth": 58,
+                "tileHeight": 58
+            },
+            "knobs": [
+                {"name": "knob1", "sx": 375, "sy": 400, "zOrder": 22},
+                {"name": "knob2", "sx": 675, "sy": 400, "zOrder": 22}
+            ]
+        }
+    }
+}

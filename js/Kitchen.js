@@ -8,53 +8,23 @@ function Kitchen(canvasId) {
     // create a new stage object
     this.stage = new Stage(canvasId);
 
+    var utilities;
+    var ingredients;
+
+    Ajax.getJSON("json/utilities.json", function(data){
+        utilities = data;
+    });
+
+    Ajax.getJSON("json/ingredients.json", function(data){
+        ingredients = data;
+    });
+
     this.pots = [];
-    this.Ingredients = [];
-    this.plates = [];
+    this.ingredients = [];
+    this.stoveTops = [];
 
-    var animObj = {
-        "image": {
-            "tileWidth": 160,
-            "tileHeight": 180,
-            "imgWidth": 640,
-            "imgHeight": 360
-        },
-        "animations": {
-            "default": { "seq": [0], "loop": false},
-            "cold": {"seq": [0], "loop": false},
-            "heating": {"seq": [1, 2, 3, 3, 2], "loop": true},
-            "cooling": {"seq": [1, 1, 2, 3, 2], "loop": true},
-            "boiling": {"seq": [4, 5, 6, 7], "loop": true}
-        }
-    };
-
-    var p1 = new Pot(this.stage.getContext(), 400, 10, 160, 180, "images/pot_anim.png", 25, true, "Topf", animObj);
-    var p2 = new Pot(this.stage.getContext(), 600, 10, 160, 180, "images/pot_anim.png", 25, true, "Topf2", animObj);
-    var pl1 = new Plate(this.stage.getContext(), 300, 300, 242, 85, "images/platte.png", 22, "Platte1");
-    var pl2 = new Plate(this.stage.getContext(), 600, 300, 242, 85, "images/platte.png", 22, "Platte2");
-    var kn1 = new Knob(this.stage.getContext(),  375, 400, 58, 58, "images/knob.png", 1, "Knopf1", pl1 );
-    var kn2 = new Knob(this.stage.getContext(),  675, 400, 58, 58, "images/knob.png", 1, "Knopf2", pl2 );
-    var i1 = new Ingredient(this.stage.getContext(), 0, 0, 276, 142, "images/karotte.png", 27, true, "Karotte");
-    var i2 = new Ingredient(this.stage.getContext(), 0, 0, 88, 113, "images/tomate.png", 28, true, "Tomate");
-    var i3 = new Ingredient(this.stage.getContext(), 0, 0, 255, 255, "images/nudeln.png", 26, true, "Nudeln");
-
-    this.pots.push(p1);
-    this.pots.push(p2);
-    this.plates.push(pl1);
-    this.plates.push(pl2);
-    this.Ingredients.push(i1);
-    this.Ingredients.push(i2);
-    this.Ingredients.push(i3);
-
-    this.stage.addToStage(p1);
-    this.stage.addToStage(p2);
-    this.stage.addToStage(pl1);
-    this.stage.addToStage(pl2)
-    this.stage.addToStage(kn1);
-    this.stage.addToStage(kn2);
-    this.stage.addToStage(i1);
-    this.stage.addToStage(i2);
-    this.stage.addToStage(i3);
+    this.addUtilities(utilities);
+    this.addIngredients(ingredients);
 
 
     this.stage.registerEvent('click', this);
@@ -75,7 +45,7 @@ function Kitchen(canvasId) {
  */
 Kitchen.prototype.run = function (kit) {
 
-    // update the objects (Plate, Knob, ...)
+    // update the objects (StoveTop, Knob, ...)
     kit.pots.forEach(function(pot){
         pot.update()
     });
@@ -87,6 +57,55 @@ Kitchen.prototype.run = function (kit) {
         kit.run(kit);
     });
 
+}
+
+Kitchen.prototype.addUtilities = function(utility){
+    var kitchen = this;
+    var potBluePrint = utility.utilities.potBluePrint;
+    var stoveTopBluePrint = utility.utilities.stoveTopBluePrint;
+    var knobBluePrint = utility.utilities.knobBluePrint;
+
+    potBluePrint.pots.forEach(function(pot){
+        var pot = new Pot(kitchen.stage.getContext(), pot.sx, pot.sy, potBluePrint.image.tileWidth, potBluePrint.image.tileHeight, potBluePrint.image.imagePath, pot.zOrder, potBluePrint.draggable, pot.name, potBluePrint);
+        kitchen.pots.push(pot);
+        kitchen.stage.addToStage(pot);
+    });
+
+    stoveTopBluePrint.stoveTops.forEach(function(stoveTop){
+        var stoveTop = new StoveTop(kitchen.stage.getContext(), stoveTop.sx, stoveTop.sy, stoveTopBluePrint.image.tileWidth, stoveTopBluePrint.image.tileHeight, stoveTopBluePrint.image.imagePath, stoveTop.zOrder, stoveTop.name);
+        kitchen.stoveTops.push(stoveTop);
+        kitchen.stage.addToStage(stoveTop);
+    });
+
+    for(var i = 0; i < kitchen.stoveTops.length; i++){
+        var knob = new Knob(kitchen.stage.getContext(), knobBluePrint.knobs[i].sx, knobBluePrint.knobs[i].sy, knobBluePrint.image.tileWidth, knobBluePrint.image.tileHeight, knobBluePrint.image.imagePath, knobBluePrint.knobs[i].zOrder, knobBluePrint.knobs[i].name, kitchen.stoveTops[i]);
+        kitchen.stage.addToStage(knob);
+    }
+}
+
+Kitchen.prototype.addIngredients = function(ingredient){
+    var kitchen = this;
+    var carrotBluePrint = ingredient.ingredients.carrotBluePrint;
+    var tomatoBluePrint = ingredient.ingredients.tomatoBluePrint;
+    var noodleBluePrint = ingredient.ingredients.noodleBluePrint;
+
+    carrotBluePrint.carrots.forEach(function(carrot){
+        var carrot = new Ingredient(kitchen.stage.getContext(), carrot.sx, carrot.sy, carrotBluePrint.image.tileWidth, carrotBluePrint.image.tileHeight, carrotBluePrint.image.imagePath, carrot.zOrder, ingredient.ingredients.draggable, carrot.name);
+        kitchen.ingredients.push(carrot);
+        kitchen.stage.addToStage(carrot);
+    });
+
+    tomatoBluePrint.tomatoes.forEach(function(tomato){
+        var tomato = new Ingredient(kitchen.stage.getContext(), tomato.sx, tomato.sy, tomatoBluePrint.image.tileWidth, tomatoBluePrint.image.tileHeight, tomatoBluePrint.image.imagePath, tomato.zOrder, ingredient.ingredients.draggable, tomato.name);
+        kitchen.ingredients.push(tomato);
+        kitchen.stage.addToStage(tomato);
+    });
+
+    noodleBluePrint.noodles.forEach(function(noodle){
+        var noodle = new Ingredient(kitchen.stage.getContext(), noodle.sx, noodle.sy, noodleBluePrint.image.tileWidth, noodleBluePrint.image.tileHeight, noodleBluePrint.image.imagePath, noodle.zOrder, ingredient.ingredients.draggable, noodle.name);
+        kitchen.ingredients.push(noodle);
+        kitchen.stage.addToStage(noodle);
+    });
 }
 
 
@@ -104,10 +123,10 @@ Kitchen.prototype.onClick = function (event) {
         }
     }
 
-    for(var i = 0; i<this.plates.length; i++) {
-        console.log(this.plates[i].name + " has status " +this.plates[i].status);
-        if(this.plates[i].pot != null){
-            console.log(this.plates[i].name + " has the pot " + this.plates[i].pot.name + " the pot status is " + this.plates[i].pot.status);
+    for(var i = 0; i<this.stoveTops.length; i++) {
+        console.log(this.stoveTops[i].name + " has status " +this.stoveTops[i].status);
+        if(this.stoveTops[i].pot != null){
+            console.log(this.stoveTops[i].name + " has the pot " + this.stoveTops[i].pot.name + " the pot status is " + this.stoveTops[i].pot.status);
         }
     }
 
@@ -133,45 +152,45 @@ Kitchen.prototype.onDragend = function (event) {
             }
         }
     } else if (event.target instanceof Pot) {
-        for (var i = 0; i < this.plates.length; i++) {
+        for (var i = 0; i < this.stoveTops.length; i++) {
             var cx = event.target.getBottomCenter().cx;
             var cy = event.target.getBottomCenter().cy;
-            var zone = this.plates[i].getHitZone();
+            var zone = this.stoveTops[i].getHitZone();
             var overAPlate;
             if ((cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)){
                 overAPlate = true;
             }
             //pot comes from free space
             if (!event.target.onPlate) {
-                //to a free plate
-                if ((this.plates[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
-                    this.plates[i].setCurrentPot(event.target);
+                //to a free stoveTop
+                if ((this.stoveTops[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
+                    this.stoveTops[i].setCurrentPot(event.target);
                     event.target.myPlateIndex = i;
-                    console.log(this.plates[i].name + " now has pot " + event.target.name );
+                    console.log(this.stoveTops[i].name + " now has pot " + event.target.name );
                     event.target.onPlate = true;
                     break;
-                    //to an occupied plate
-                } else if ((event.target != this.plates[i].pot) && (this.plates[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
-                    console.log(this.plates[i].name + " already has pot " + this.plates[i].pot.name);
+                    //to an occupied stoveTop
+                } else if ((event.target != this.stoveTops[i].pot) && (this.stoveTops[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
+                    console.log(this.stoveTops[i].name + " already has pot " + this.stoveTops[i].pot.name);
                     event.target.onPlate = false;
                     event.target.setStatus(event.target.OFF);
                     break;
                 }
-                //pot comes from plate
+                //pot comes from stoveTop
             } else if (event.target.onPlate){
-                //to a free plate
-                if ((this.plates[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
-                    console.log(this.plates[i].name + " now has pot " + event.target.name);
-                    this.plates[event.target.myPlateIndex].setCurrentPot(null);
+                //to a free stoveTop
+                if ((this.stoveTops[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
+                    console.log(this.stoveTops[i].name + " now has pot " + event.target.name);
+                    this.stoveTops[event.target.myPlateIndex].setCurrentPot(null);
                     event.target.myPlateIndex = null;
-                    this.plates[i].setCurrentPot(event.target);
+                    this.stoveTops[i].setCurrentPot(event.target);
                     event.target.myPlateIndex = i;
                     event.target.onPlate = true;
                     break;
-                    //to an occupied plate
-                } else if((event.target != this.plates[i].pot) && (this.plates[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
-                    console.log(this.plates[i].name + " already has pot " + this.plates[i].pot.name);
-                    this.plates[event.target.myPlateIndex].setCurrentPot(null);
+                    //to an occupied stoveTop
+                } else if((event.target != this.stoveTops[i].pot) && (this.stoveTops[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
+                    console.log(this.stoveTops[i].name + " already has pot " + this.stoveTops[i].pot.name);
+                    this.stoveTops[event.target.myPlateIndex].setCurrentPot(null);
                     event.target.myPlateIndex = null;
                     event.target.onPlate = false;
                     event.target.setStatus(event.target.OFF);
@@ -181,7 +200,7 @@ Kitchen.prototype.onDragend = function (event) {
         }
         if (!overAPlate) {
             if (event.target.myPlateIndex != null ) {
-                this.plates[event.target.myPlateIndex].setCurrentPot(null);
+                this.stoveTops[event.target.myPlateIndex].setCurrentPot(null);
             }
             console.log(event.target.name + " is nowhere");
             event.target.myPlateIndex = null;

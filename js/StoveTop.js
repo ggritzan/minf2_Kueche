@@ -1,4 +1,4 @@
-function Plate(context, sx, sy, w, h, imgPath, zOrder, name) {
+function StoveTop(context, sx, sy, w, h, imgPath, zOrder, name) {
 
     VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
 
@@ -12,11 +12,11 @@ function Plate(context, sx, sy, w, h, imgPath, zOrder, name) {
 
 }
 
-Plate.prototype = Object.create(VisualRenderObject.prototype);
-Plate.prototype.constructor = Plate;
+StoveTop.prototype = Object.create(VisualRenderObject.prototype);
+StoveTop.prototype.constructor = StoveTop;
 
 // Methode die den Power Status aendert
-Plate.prototype.setStatus = function (status) {
+StoveTop.prototype.setStatus = function (status) {
     this.status = status;
     if (this.pot != null) {
         this.pot.setStatus(this.status);
@@ -24,16 +24,16 @@ Plate.prototype.setStatus = function (status) {
 }
 
 // Methode um den Status zu aendern ob der Topf in position ist
-Plate.prototype.setPotInPlace = function (status) {
+StoveTop.prototype.setPotInPlace = function (status) {
     this.potInPlace = status;
 }
 
 // Methode um den Pot der sich aktuell auf der Platte befindet festzulegen
-Plate.prototype.setCurrentPot = function (pot) {
+StoveTop.prototype.setCurrentPot = function (pot) {
     this.pot = pot;
     if (this.pot != null ) {
         this.pot.setStatus(this.status);
-        console.log("Plate State "+ this.status + " Pot State " + this.pot.status);
+        console.log("StoveTop State "+ this.status + " Pot State " + this.pot.status);
     }
 
 }

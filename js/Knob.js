@@ -1,4 +1,4 @@
-function Knob(context, sx, sy, w, h, imgPath, zOrder, name, plate) {
+function Knob(context, sx, sy, w, h, imgPath, zOrder, name, stoveTop) {
 
     VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
 
@@ -6,7 +6,7 @@ function Knob(context, sx, sy, w, h, imgPath, zOrder, name, plate) {
 
 
     this.name = name;
-    this.plate = plate;
+    this.stoveTop = stoveTop;
 
     // Zeigt an ob die Platte ein oder ausgeschaltet ist
     this.OFF = 0;
@@ -26,7 +26,7 @@ Knob.prototype.constructor = Knob;
 Knob.prototype.setStatus = function (status) {
 
     this.status = status;
-    this.plate.setStatus(status);
+    this.stoveTop.setStatus(status);
 
 }
 
