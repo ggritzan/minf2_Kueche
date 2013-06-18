@@ -15,12 +15,21 @@ function Kitchen(canvasId) {
 
     var that = this;
 
+    this.menuStage = new MenuBackground(this.stage.getContext(), 0, 0, 1000, 600, "images/Menu/startMenu.png", 100);
+    this.menuButton1 = new MenuButton(this.stage.getContext(), 500, 300, 200, 60, "images/Menu/menuButton.png", 101, 0);
+    this.menuButton2 = new MenuButton(this.stage.getContext(), 500, 400, 200, 60, "images/Menu/menuButton.png", 101, 1);
+    this.menuButton3 = new MenuButton(this.stage.getContext(), 500, 500, 200, 60, "images/Menu/menuButton.png", 101, 2);
+
     this.pots = [];
     this.ingredients = [];
     this.stoveTops = [];
     this.fridge = [];
+    this.menu = [];
 
-    this.fridge.push("carrot");
+    this.menu.push(this.menuStage);
+    this.menu.push(this.menuButton1);
+    this.menu.push(this.menuButton2);
+    this.menu.push(this.menuButton3);
 
     Ajax.getJSON("json/utilities.json?d=" + d.getTime(), function(data){
         that.jUtilities = data;
@@ -41,6 +50,10 @@ function Kitchen(canvasId) {
     var fridgeButton = new FridgeButton(this.stage.getContext(), 150, 150, 30, 30, "images/fridgeButton.png", 25, "fridgebutton");
 
     this.stage.addToStage(fridgeButton);
+
+    this.menu.forEach(function(menuElement){
+        that.stage.addToStage(menuElement);
+    });
 
 
     this.stage.registerEvent('click', this);
@@ -136,11 +149,12 @@ Kitchen.prototype.addIngredientButtons = function(fridge){
      for(var i = 0; i < fridge.length; i++){
          var ingredientButton = new IngredientButton(that.stage.getContext(), x, y, 30, 30, "images/ingredientButton.png", 5, fridge[i]);
          that.stage.addToStage(ingredientButton);
-         x = x + 15;
-         d = d++;
+         x = x + 50;
+         d = d + 1;
          if(d == 5){
              d = 0;
-             y = y + 15;
+             x = 30;
+             y = y + 50;
          }
      }
 }
@@ -148,6 +162,17 @@ Kitchen.prototype.addIngredientButtons = function(fridge){
 
 Kitchen.prototype.onClick = function (event) {
     console.log(event);
+
+    var that = this;
+
+    if(event.target instanceof MenuButton){
+        this.menu.forEach(function(menuElement){
+            that.stage.removeFromStage(menuElement);
+        })
+
+        this.addRecipe(this.jRecipes, event.target.recipeIndex);
+    }
+
     if (event.target instanceof Knob) {
         if(event.target.status == event.target.OFF) {
             event.target.setStatus(event.target.ON);
