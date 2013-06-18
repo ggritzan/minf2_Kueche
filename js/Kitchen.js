@@ -146,6 +146,8 @@ Kitchen.prototype.addUtilities = function(utility){
     var stoveBluePrint = utility.utilities.stoveTopBluePrint;
     // reference to the knobs
     var knobBluePrint = utility.utilities.knobBluePrint;
+    // reference to kitchen slicer
+    var kitchenSlicerBluePrint = utility.utilities.kitchenSlicerBluePrint;
 
     // adds all pots to the stage
     potBluePrint.pots.forEach(function(pot){
@@ -167,6 +169,11 @@ Kitchen.prototype.addUtilities = function(utility){
         var knob = new Knob(that.stage.getContext(), knobBluePrint.knobs[i].sx, knobBluePrint.knobs[i].sy, knobBluePrint.image.tileWidth, knobBluePrint.image.tileHeight, knobBluePrint.image.imagePath, knobBluePrint.knobs[i].zOrder, knobBluePrint.knobs[i].name, that.stoveTops[i]);
         that.stage.addToStage(knob);
     }
+
+    kitchenSlicerBluePrint.kitchenSlicers.forEach(function(kitchenSlicer){
+        var kitchenSlicer = new KitchenSlicer(that.stage.getContext(), kitchenSlicer.sx, kitchenSlicer.sy, kitchenSlicerBluePrint.image.tileWidth, kitchenSlicerBluePrint.image.tileHeight, kitchenSlicerBluePrint.image.imagePath, kitchenSlicer.zOrder, kitchenSlicer.name);
+        that.stage.addToStage(kitchenSlicer);
+    });
 }
 
 /**

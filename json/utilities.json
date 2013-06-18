@@ -42,6 +42,16 @@
                 {"name": "knob1", "sx": 375, "sy": 400, "zOrder": 22},
                 {"name": "knob2", "sx": 675, "sy": 400, "zOrder": 22}
             ]
+        },
+        "kitchenSlicerBluePrint":{
+            "image": {
+                "imagePath": "images/utilities/kitchenslicer.png",
+                "tileWidth": 200,
+                "tileHeight": 200
+            },
+            "kitchenSlicers": [
+                {"name": "kitchenSlicer", "sx": 20, "sy": 300, "zOrder": 23}
+            ]
         }
     }
 }
