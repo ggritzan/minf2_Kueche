@@ -1,0 +1,22 @@
+{
+    "ingredientButtons":[
+
+        {"name": "carrots", "imagePath": "images/IngredientButtons/carrots.png"},
+        {"name": "celery", "imagePath": "images/IngredientButtons/celery.png"},
+        {"name": "cream", "imagePath": "images/IngredientButtons/cream.png"} ,
+        {"name": "egg", "imagePath": "images/IngredientButtons/egg.png"},
+        {"name": "garlic", "imagePath": "images/IngredientButtons/garlic.png"},
+        {"name": "mushrooms", "imagePath": "images/IngredientButtons/mushrooms.png"},
+        {"name": "noodles", "imagePath": "images/IngredientButtons/noodles.png"} ,
+        {"name": "oil", "imagePath": "images/IngredientButtons/oil.png"},
+        {"name": "onion", "imagePath": "images/IngredientButtons/onion.png"},
+        {"name": "paprikapowder", "imagePath": "images/IngredientButtons/paprikapowder.png"},
+        {"name": "peeledtomatoes", "imagePath": "images/IngredientButtons/peeledtomatoes.png"},
+        {"name": "pepper", "imagePath": "images/IngredientButtons/pepper.png"},
+        {"name": "salt", "imagePath": "images/IngredientButtons/salt.png"},
+        {"name": "sugar", "imagePath": "images/IngredientButtons/sugar.png"},
+        {"name": "tomatopaste", "imagePath": "images/IngredientButtons/tomatopaste.png"},
+        {"name": "yolk", "imagePath": "images/IngredientButtons/eggyellow.png"}
+
+    ]
+}

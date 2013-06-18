@@ -11,6 +11,8 @@ function Kitchen(canvasId) {
     this.jUtilities;
     this.jIngredients;
     this.jRecipes;
+    this.jIngredientButtons;
+
     var d = new Date();
 
     var that = this;
@@ -34,6 +36,10 @@ function Kitchen(canvasId) {
     Ajax.getJSON("json/utilities.json?d=" + d.getTime(), function(data){
         that.jUtilities = data;
         that.addUtilities(that.jUtilities);
+    });
+
+    Ajax.getJSON("json/ingredientButtons.json?d=" + d.getTime(), function(data){
+        that.jIngredientButtos = data;
     });
 
     Ajax.getJSON("json/ingredients.json?d=" + d.getTime(), function(data){
@@ -132,29 +138,36 @@ Kitchen.prototype.addIngredient = function(ingredients, ingredientname){
 
     var ingredient = ingredients.ingredients;
 
+    var zOrder = 10;
+
     ingredient.forEach(function(ingredient){
         if(ingredient.name == ingredientname){
-            var ingredient = new Ingredient(kitchen.stage.getContext(), ingredient.sx, ingredient.sy, ingredient.tileWidth, ingredient.tileHeight, ingredient.imagePath, ingredient.zOrder, ingredients.draggable, ingredient.name);
+            var ingredient = new Ingredient(kitchen.stage.getContext(), ingredient.sx, ingredient.sy, ingredient.tileWidth, ingredient.tileHeight, ingredient.imagePath, zOrder, ingredients.draggable, ingredient.name);
             kitchen.ingredients.push(ingredient);
             kitchen.stage.addToStage(ingredient);
+            zOrder = zOrder + 1;
         }
     });
 }
 
-Kitchen.prototype.addIngredientButtons = function(fridge){
+Kitchen.prototype.addIngredientButtons = function(ingredientButtons, fridge){
     var that = this;
     var x = 30;
     var y = 30;
     var d = 0;
      for(var i = 0; i < fridge.length; i++){
-         var ingredientButton = new IngredientButton(that.stage.getContext(), x, y, 30, 30, "images/ingredientButton.png", 5, fridge[i]);
-         that.stage.addToStage(ingredientButton);
-         x = x + 50;
-         d = d + 1;
-         if(d == 5){
-             d = 0;
-             x = 30;
-             y = y + 50;
+         for(var j = 0; j < ingredientButtons.ingredientButtons.length; j++){
+             if(ingredientButtons.ingredientButtons[j].name == fridge[i]){
+                 var ingredientButton = new IngredientButton(that.stage.getContext(), x, y, 30, 30,ingredientButtons.ingredientButtons[j].imagePath, 5, fridge[i]);
+                 that.stage.addToStage(ingredientButton);
+                 x = x + 50;
+                 d = d + 1;
+                 if(d == 5){
+                     d = 0;
+                     x = 30;
+                     y = y + 50;
+                 }
+             }
          }
      }
 }
@@ -186,7 +199,7 @@ Kitchen.prototype.onClick = function (event) {
     }
 
     if(event.target instanceof FridgeButton){
-        this.addIngredientButtons(this.fridge);
+        this.addIngredientButtons(this.jIngredientButtos, this.fridge);
     }
 
     if(event.target instanceof IngredientButton){
