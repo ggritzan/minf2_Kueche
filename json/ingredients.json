@@ -1,5 +1,6 @@
 {
     "draggable": true,
+    "zOrder": 50,
     "ingredients":[
         {
             "imagePath": "images/Ingredients/carrots.png",
