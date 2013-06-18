@@ -10,12 +10,13 @@ function Kitchen(canvasId) {
 
     var utilities;
     var ingredients;
+    var d = new Date();
 
-    Ajax.getJSON("json/utilities.json", function(data){
+    Ajax.getJSON("json/utilities.json?d=" + d.getTime(), function(data){
         utilities = data;
     });
 
-    Ajax.getJSON("json/ingredients.json", function(data){
+    Ajax.getJSON("json/ingredients.json?d=" + d.getTime(), function(data){
         ingredients = data;
     });
 
@@ -60,51 +61,38 @@ Kitchen.prototype.run = function (kit) {
 }
 
 Kitchen.prototype.addUtilities = function(utility){
-    var KITCHEN = this;
-    var POTBLUEPRINT = utility.utilities.potBluePrint;
-    var STOVEBLUEPRINT = utility.utilities.stoveTopBluePrint;
-    var KNOBBLUEPRINT = utility.utilities.knobBluePrint;
+    var kitchen = this;
+    var potblueprint = utility.utilities.potBluePrint;
+    var stoveblueprint = utility.utilities.stoveTopBluePrint;
+    var knobblueprint = utility.utilities.knobBluePrint;
 
-    POTBLUEPRINT.pots.forEach(function(pot){
-        var pot = new Pot(KITCHEN.stage.getContext(), pot.sx, pot.sy, POTBLUEPRINT.image.tileWidth, POTBLUEPRINT.image.tileHeight, POTBLUEPRINT.image.imagePath, pot.zOrder, POTBLUEPRINT.draggable, pot.name, POTBLUEPRINT);
-        KITCHEN.pots.push(pot);
-        KITCHEN.stage.addToStage(pot);
+    potblueprint.pots.forEach(function(pot){
+        var pot = new Pot(kitchen.stage.getContext(), pot.sx, pot.sy, potblueprint.image.tileWidth, potblueprint.image.tileHeight, potblueprint.image.imagePath, pot.zOrder, potblueprint.draggable, pot.name, potblueprint);
+        kitchen.pots.push(pot);
+        kitchen.stage.addToStage(pot);
     });
 
-    STOVEBLUEPRINT.stoveTops.forEach(function(stoveTop){
-        var stoveTop = new StoveTop(KITCHEN.stage.getContext(), stoveTop.sx, stoveTop.sy, STOVEBLUEPRINT.image.tileWidth, STOVEBLUEPRINT.image.tileHeight, STOVEBLUEPRINT.image.imagePath, stoveTop.zOrder, stoveTop.name);
-        KITCHEN.stoveTops.push(stoveTop);
-        KITCHEN.stage.addToStage(stoveTop);
+    stoveblueprint.stoveTops.forEach(function(stoveTop){
+        var stoveTop = new StoveTop(kitchen.stage.getContext(), stoveTop.sx, stoveTop.sy, stoveblueprint.image.tileWidth, stoveblueprint.image.tileHeight, stoveblueprint.image.imagePath, stoveTop.zOrder, stoveTop.name);
+        kitchen.stoveTops.push(stoveTop);
+        kitchen.stage.addToStage(stoveTop);
     });
 
-    for(var i = 0; i < KITCHEN.stoveTops.length; i++){
-        var knob = new Knob(KITCHEN.stage.getContext(), KNOBBLUEPRINT.knobs[i].sx, KNOBBLUEPRINT.knobs[i].sy, KNOBBLUEPRINT.image.tileWidth, KNOBBLUEPRINT.image.tileHeight, KNOBBLUEPRINT.image.imagePath, KNOBBLUEPRINT.knobs[i].zOrder, KNOBBLUEPRINT.knobs[i].name, KITCHEN.stoveTops[i]);
-        KITCHEN.stage.addToStage(knob);
+    for(var i = 0; i < kitchen.stoveTops.length; i++){
+        var knob = new Knob(kitchen.stage.getContext(), knobblueprint.knobs[i].sx, knobblueprint.knobs[i].sy, knobblueprint.image.tileWidth, knobblueprint.image.tileHeight, knobblueprint.image.imagePath, knobblueprint.knobs[i].zOrder, knobblueprint.knobs[i].name, kitchen.stoveTops[i]);
+        kitchen.stage.addToStage(knob);
     }
 }
 
-Kitchen.prototype.addIngredients = function(ingredient){
-    var KITCHEN = this;
-    var CARROTBLUEPRINT = ingredient.ingredients.carrotBluePrint;
-    var TOMATOBLUEPRINT = ingredient.ingredients.tomatoBluePrint;
-    var NOODLEBLUEPRINT = ingredient.ingredients.noodleBluePrint;
+Kitchen.prototype.addIngredients = function(ingredients){
+    var kitchen = this;
 
-    CARROTBLUEPRINT.carrots.forEach(function(carrot){
-        var carrot = new Ingredient(KITCHEN.stage.getContext(), carrot.sx, carrot.sy, CARROTBLUEPRINT.image.tileWidth, CARROTBLUEPRINT.image.tileHeight, CARROTBLUEPRINT.image.imagePath, carrot.zOrder, ingredient.ingredients.draggable, carrot.name);
-        KITCHEN.ingredients.push(carrot);
-        KITCHEN.stage.addToStage(carrot);
-    });
-
-    TOMATOBLUEPRINT.tomatoes.forEach(function(tomato){
-        var tomato = new Ingredient(KITCHEN.stage.getContext(), tomato.sx, tomato.sy, TOMATOBLUEPRINT.image.tileWidth, TOMATOBLUEPRINT.image.tileHeight, TOMATOBLUEPRINT.image.imagePath, tomato.zOrder, ingredient.ingredients.draggable, tomato.name);
-        KITCHEN.ingredients.push(tomato);
-        KITCHEN.stage.addToStage(tomato);
-    });
-
-    NOODLEBLUEPRINT.noodles.forEach(function(noodle){
-        var noodle = new Ingredient(KITCHEN.stage.getContext(), noodle.sx, noodle.sy, NOODLEBLUEPRINT.image.tileWidth, NOODLEBLUEPRINT.image.tileHeight, NOODLEBLUEPRINT.image.imagePath, noodle.zOrder, ingredient.ingredients.draggable, noodle.name);
-        KITCHEN.ingredients.push(noodle);
-        KITCHEN.stage.addToStage(noodle);
+    var ingredient = ingredients.ingredients;
+    console.log(ingredient);
+    ingredient.forEach(function(ingredient){
+        var ingredient = new Ingredient(kitchen.stage.getContext(), ingredient.sx, ingredient.sy, ingredient.tileWidth, ingredient.tileHeight, ingredient.imagePath, ingredient.zOrder, ingredients.draggable, ingredient.name);
+        kitchen.ingredients.push(ingredient);
+        kitchen.stage.addToStage(ingredient);
     });
 }
 

@@ -1,36 +1,32 @@
 {
-    "ingredients":{
-        "draggable": true,
-        "carrotBluePrint": {
-            "image": {
-                "imagePath": "images/karotte.png",
-                "tileWidth": 276,
-                "tileHeight": 142
-            },
-            "carrots": [
-                {"name": "carrot1", "sx": 0, "sy": 0, "zOrder": 27},
-                {"name": "carrot2", "sx": 20, "sy": 20, "zOrder": 28}
-            ]
+    "draggable": true,
+    "ingredients":[
+        {
+            "imagePath": "images/karotte.png",
+            "tileWidth": 276,
+            "tileHeight": 142,
+            "name": "carrot",
+            "sx": 0,
+            "sy": 0,
+            "zOrder": 27
         },
-        "tomatoBluePrint": {
-            "image": {
-                "imagePath": "images/tomate.png",
-                "tileWidth": 88,
-                "tileHeight": 113
-            },
-            "tomatoes": [
-                {"name": "tomato1", "sx": 0, "sy": 0, "zOrder": 26}
-            ]
+        {
+            "imagePath": "images/tomate.png",
+            "tileWidth": 88,
+            "tileHeight": 113,
+            "name": "tomato",
+            "sx": 0,
+            "sy": 0,
+            "zOrder": 26
         },
-        "noodleBluePrint": {
-            "image": {
-                "imagePath": "images/nudeln.png",
-                "tileWidth": 255,
-                "tileHeight": 255
-            },
-            "noodles": [
-                {"name": "noodle1", "sx": 0, "sy": 0, "zOrder": 25}
-            ]
+        {
+            "imagePath": "images/nudeln.png",
+            "tileWidth": 255,
+            "tileHeight": 255,
+            "name": "noodle",
+            "sx": 0,
+            "sy": 0,
+            "zOrder": 25
         }
-    }
+    ]
 }
