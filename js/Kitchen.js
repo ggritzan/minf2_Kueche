@@ -149,6 +149,8 @@ Kitchen.prototype.addUtilities = function(utility){
     // reference to kitchen slicer
     var kitchenSlicerBluePrint = utility.utilities.kitchenSlicerBluePrint;
 
+    var ovenBluePrint = utility.utilities.ovenBluePrint;
+
     // adds all pots to the stage
     potBluePrint.pots.forEach(function(pot){
         var pot = new Pot(that.stage.getContext(), pot.sx, pot.sy, potBluePrint.image.tileWidth, potBluePrint.image.tileHeight, potBluePrint.image.imagePath, pot.zOrder, potBluePrint.draggable, pot.name, potBluePrint);
@@ -173,6 +175,11 @@ Kitchen.prototype.addUtilities = function(utility){
     kitchenSlicerBluePrint.kitchenSlicers.forEach(function(kitchenSlicer){
         var kitchenSlicer = new KitchenSlicer(that.stage.getContext(), kitchenSlicer.sx, kitchenSlicer.sy, kitchenSlicerBluePrint.image.tileWidth, kitchenSlicerBluePrint.image.tileHeight, kitchenSlicerBluePrint.image.imagePath, kitchenSlicer.zOrder, kitchenSlicer.name);
         that.stage.addToStage(kitchenSlicer);
+    });
+
+    ovenBluePrint.ovens.forEach(function(oven){
+        var oven = new Oven(that.stage.getContext(), oven.sx, oven.sy, ovenBluePrint.image.tileWidth, ovenBluePrint.image.tileHeight, ovenBluePrint.image.imagePath, oven.zOrder, oven.name);
+        that.stage.addToStage(oven);
     });
 }
 

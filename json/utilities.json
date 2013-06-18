@@ -52,6 +52,16 @@
             "kitchenSlicers": [
                 {"name": "kitchenSlicer", "sx": 20, "sy": 300, "zOrder": 23}
             ]
+        },
+        "ovenBluePrint":{
+            "image": {
+                "imagePath": "images/utilities/oven.png",
+                "tileWidth": 200,
+                "tileHeight": 400
+            },
+            "ovens": [
+                {"name": "oven", "sx": 800, "sy": 20, "zOrder": 23}
+            ]
         }
     }
 }
