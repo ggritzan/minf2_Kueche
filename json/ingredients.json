@@ -2,31 +2,158 @@
     "draggable": true,
     "ingredients":[
         {
-            "imagePath": "images/karotte.png",
-            "tileWidth": 276,
-            "tileHeight": 142,
+            "imagePath": "/images/Ingredients/carrots.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
             "name": "carrot",
-            "sx": 0,
-            "sy": 0,
+            "sx": 100,
+            "sy": 200,
             "zOrder": 27
         },
         {
-            "imagePath": "images/tomate.png",
-            "tileWidth": 88,
-            "tileHeight": 113,
-            "name": "tomato",
-            "sx": 0,
-            "sy": 0,
+            "imagePath": "/images/Ingredients/celery.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "celery",
+            "sx": 100,
+            "sy": 200,
             "zOrder": 26
         },
         {
-            "imagePath": "images/nudeln.png",
-            "tileWidth": 255,
-            "tileHeight": 255,
-            "name": "noodle",
-            "sx": 0,
-            "sy": 0,
+            "imagePath": "/images/Ingredients/chocolate",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "chocolate",
+            "sx": 100,
+            "sy": 200,
             "zOrder": 25
+        },
+        {
+            "imagePath": "/images/Ingredients/cream.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "cream",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 24
+        },
+        {
+            "imagePath": "/images/Ingredients/egg.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "egg",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 23
+        },
+        {
+            "imagePath": "/images/Ingredients/eggyellow.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "eggyellow",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 22
+        },
+        {
+            "imagePath": "/images/Ingredients/garlic.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "garlic",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 21
+        },
+        {
+            "imagePath": "/images/Ingredients/mushrooms.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "mushrooms",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 20
+        },
+        {
+            "imagePath": "/images/Ingredients/noodles.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "noodles",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 19
+        },
+        {
+            "imagePath": "/images/Ingredients/oil.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "oil",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 18
+        },
+        {
+            "imagePath": "/images/Ingredients/onion.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "onion",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 17
+        },
+        {
+            "imagePath": "/images/Ingredients/paprikapowder.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "paprikapowder",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 16
+        },
+        {
+            "imagePath": "/images/Ingredients/peeledtomatoes.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "peeledtomatoes",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 15
+        },
+        {
+            "imagePath": "/images/Ingredients/pepper.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "pepper",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 14
+        },
+        {
+            "imagePath": "/images/Ingredients/salt.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "salt",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 13
+        },
+        {
+            "imagePath": "/images/Ingredients/sugar.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "sugar",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 12
+        },
+        {
+            "imagePath": "/images/Ingredients/tomatopaste.png",
+            "tileWidth": 100,
+            "tileHeight": 50,
+            "name": "tomatopaste",
+            "sx": 100,
+            "sy": 200,
+            "zOrder": 11
         }
+
     ]
 }
