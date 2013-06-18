@@ -27,20 +27,8 @@
                 "message": "Pilze in die Kuechenmaschine geben und grob hacken.",
                 "task": [
                     {
-                        "kitchenslicer": [
-                            {
-                                "put": ["mushrooms"]
-                            },
-                            {
-                                "isCut": ["mushrooms"]
-                            }
-                        ]
+                        "kitchenslicer": ["mushrooms"]
                     }
-
-
-
-
-
                 ]
             },
 
@@ -50,7 +38,9 @@
                     {
                         "bakingsheet": [
                             {
-                                "put": ["mushrooms"]
+                                "put": [
+                                    {"ingredient": "mushrooms", "isCut": true}
+                                ]
                             }
                         ]
 
@@ -58,10 +48,14 @@
                     {
                         "oven": [
                             {
-                                "put": ["bakingsheet"]
-                            },
-                            {
-                                "isBaked": ["cutMushrooms"]
+                                "put": [
+                                    {
+                                        "utility": "bakingsheet",
+                                        "content": [
+                                            {"ingredient": "mushrooms", "isCut": true, "isBaked": false, "isCooked": false}
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -72,14 +66,7 @@
                 "message": "Möhren in der Kuechenmaschine grob hacken.",
                 "task": [
                     {
-                        "kitchenslicer": [
-                            {
-                                "put": ["carrots"]
-                            },
-                            {
-                                "isCut": ["carrots"]
-                            }
-                        ]
+                        "kitchenslicer": ["carrots"]
                     }
                 ]
             },
@@ -91,7 +78,7 @@
                     {
                         "countertop": [
                             {
-                                "put": ["carrots"]
+                                "put": [{"ingredient": "carrots", "isCut": true}]
                             }
                         ]
                     }
