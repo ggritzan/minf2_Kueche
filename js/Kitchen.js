@@ -8,24 +8,36 @@ function Kitchen(canvasId) {
     // create a new stage object
     this.stage = new Stage(canvasId);
 
-    var utilities;
-    var ingredients;
+    this.jUtilities;
+    this.jIngredients;
+    this.jRecipes;
     var d = new Date();
 
-    Ajax.getJSON("json/utilities.json?d=" + d.getTime(), function(data){
-        utilities = data;
-    });
-
-    Ajax.getJSON("json/ingredients.json?d=" + d.getTime(), function(data){
-        ingredients = data;
-    });
+    var that = this;
 
     this.pots = [];
     this.ingredients = [];
     this.stoveTops = [];
+    this.fridge = [];
 
-    this.addUtilities(utilities);
-    this.addIngredients(ingredients);
+    Ajax.getJSON("json/utilities.json?d=" + d.getTime(), function(data){
+        that.jUtilities = data;
+        that.addUtilities(that.jUtilities);
+    });
+
+    Ajax.getJSON("json/ingredients.json?d=" + d.getTime(), function(data){
+        that.jIngredients = data;
+    });
+
+    Ajax.getJSON("json/recipes.json?d=" + d.getTime(), function(data){
+        that.jRecipes = data;
+    });
+    //this.addIngredient(ingredients);
+    //this.addRecipe(recipes);
+
+    var ingButton = new IngredientButton(this.stage.getContext(), 70, 70, 30, 30, "images/ingredientButton.png", 25, "carrot");
+
+    this.stage.addToStage(ingButton);
 
 
     this.stage.registerEvent('click', this);
@@ -60,11 +72,26 @@ Kitchen.prototype.run = function (kit) {
 
 }
 
+Kitchen.prototype.addRecipe = function(recipe, index){
+    var kitchen = this;
+
+    // searches for the recipe with the given index number
+    var ingredients = recipe.recipes[index].ingredients;
+
+    ingredients.forEach(function(ingredient){
+        kitchen.fridge.push(ingredient);
+    });
+
+
+}
+
 Kitchen.prototype.addUtilities = function(utility){
     var kitchen = this;
     var potblueprint = utility.utilities.potBluePrint;
     var stoveblueprint = utility.utilities.stoveTopBluePrint;
     var knobblueprint = utility.utilities.knobBluePrint;
+
+    console.log(potblueprint);
 
     potblueprint.pots.forEach(function(pot){
         var pot = new Pot(kitchen.stage.getContext(), pot.sx, pot.sy, potblueprint.image.tileWidth, potblueprint.image.tileHeight, potblueprint.image.imagePath, pot.zOrder, potblueprint.draggable, pot.name, potblueprint);
@@ -84,15 +111,17 @@ Kitchen.prototype.addUtilities = function(utility){
     }
 }
 
-Kitchen.prototype.addIngredients = function(ingredients){
+Kitchen.prototype.addIngredient = function(ingredients, ingredientname){
     var kitchen = this;
 
     var ingredient = ingredients.ingredients;
-    console.log(ingredient);
+
     ingredient.forEach(function(ingredient){
-        var ingredient = new Ingredient(kitchen.stage.getContext(), ingredient.sx, ingredient.sy, ingredient.tileWidth, ingredient.tileHeight, ingredient.imagePath, ingredient.zOrder, ingredients.draggable, ingredient.name);
-        kitchen.ingredients.push(ingredient);
-        kitchen.stage.addToStage(ingredient);
+        if(ingredient.name == ingredientname){
+            var ingredient = new Ingredient(kitchen.stage.getContext(), ingredient.sx, ingredient.sy, ingredient.tileWidth, ingredient.tileHeight, ingredient.imagePath, ingredient.zOrder, ingredients.draggable, ingredient.name);
+            kitchen.ingredients.push(ingredient);
+            kitchen.stage.addToStage(ingredient);
+        }
     });
 }
 
@@ -109,6 +138,10 @@ Kitchen.prototype.onClick = function (event) {
         }else {
             console.log("An unknown action was performed with the following knob " + event.target.name);
         }
+    }
+
+    if(event.target instanceof IngredientButton){
+        this.addIngredient(this.jIngredients, event.target.name);
     }
 
     for(var i = 0; i<this.stoveTops.length; i++) {
