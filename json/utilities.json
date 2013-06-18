@@ -3,7 +3,7 @@
         "potBluePrint": {
             "draggable": true,
             "image": {
-                "imagePath": "images/pot_anim.png",
+                "imagePath": "images/utilities/pot_anim.png",
                 "tileWidth": 160,
                 "tileHeight": 180,
                 "imgWidth": 640,
@@ -23,7 +23,7 @@
         },
         "stoveTopBluePrint": {
             "image": {
-                "imagePath": "images/platte.png",
+                "imagePath": "images/utilities/platte.png",
                 "tileWidth": 242,
                 "tileHeight": 85
             },
@@ -34,7 +34,7 @@
         },
         "knobBluePrint": {
             "image": {
-                "imagePath": "images/knob.png",
+                "imagePath": "images/utilities/knob.png",
                 "tileWidth": 58,
                 "tileHeight": 58
             },

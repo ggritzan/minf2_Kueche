@@ -60,7 +60,7 @@ function Kitchen(canvasId) {
     });
 
 
-    var fridgeButton = new FridgeButton(this.stage.getContext(), 150, 150, 30, 30, "images/fridgeButton.png", 5, "fridgebutton");
+    var fridgeButton = new FridgeButton(this.stage.getContext(), 150, 150, 30, 30, "images/utilities/fridgeButton.png", 5, "fridgebutton");
 
     this.stage.addToStage(fridgeButton);
 
