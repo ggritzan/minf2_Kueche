@@ -20,6 +20,8 @@ function Kitchen(canvasId) {
     this.stoveTops = [];
     this.fridge = [];
 
+    this.fridge.push("carrot");
+
     Ajax.getJSON("json/utilities.json?d=" + d.getTime(), function(data){
         that.jUtilities = data;
         that.addUtilities(that.jUtilities);
@@ -35,9 +37,10 @@ function Kitchen(canvasId) {
     //this.addIngredient(ingredients);
     //this.addRecipe(recipes);
 
-    var ingButton = new IngredientButton(this.stage.getContext(), 70, 70, 30, 30, "images/ingredientButton.png", 25, "carrot");
+    //var ingButton = new IngredientButton(this.stage.getContext(), 70, 70, 30, 30, "images/ingredientButton.png", 25, "carrot");
+    var fridgeButton = new FridgeButton(this.stage.getContext(), 150, 150, 30, 30, "images/fridgeButton.png", 25, "fridgebutton");
 
-    this.stage.addToStage(ingButton);
+    this.stage.addToStage(fridgeButton);
 
 
     this.stage.registerEvent('click', this);
@@ -125,6 +128,23 @@ Kitchen.prototype.addIngredient = function(ingredients, ingredientname){
     });
 }
 
+Kitchen.prototype.addIngredientButtons = function(fridge){
+    var that = this;
+    var x = 30;
+    var y = 30;
+    var d = 0;
+     for(var i = 0; i < fridge.length; i++){
+         var ingredientButton = new IngredientButton(that.stage.getContext(), x, y, 30, 30, "images/ingredientButton.png", 5, fridge[i]);
+         that.stage.addToStage(ingredientButton);
+         x = x + 15;
+         d = d++;
+         if(d == 5){
+             d = 0;
+             y = y + 15;
+         }
+     }
+}
+
 
 Kitchen.prototype.onClick = function (event) {
     console.log(event);
@@ -138,6 +158,10 @@ Kitchen.prototype.onClick = function (event) {
         }else {
             console.log("An unknown action was performed with the following knob " + event.target.name);
         }
+    }
+
+    if(event.target instanceof FridgeButton){
+        this.addIngredientButtons(this.fridge);
     }
 
     if(event.target instanceof IngredientButton){
