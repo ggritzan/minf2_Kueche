@@ -4,7 +4,8 @@ function StoveTop(context, sx, sy, w, h, imgPath, zOrder, name) {
 
 
     this.name = name;
-    // Zeigt an ob die Platte ein oder ausgeschaltet ist
+
+    // shows if the stove top is turned off or on
     this.OFF = 0;
     this.ON = 1;
     this.status = this.OFF;

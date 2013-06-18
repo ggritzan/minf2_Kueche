@@ -32,6 +32,7 @@ function Kitchen(canvasId) {
     this.stoveTops = [];
     this.fridge = [];
     this.menu = [];
+    this.ingredientButtons = [];
 
     this.menu.push(this.menuStage);
     this.menu.push(this.menuButton1);
@@ -195,12 +196,13 @@ Kitchen.prototype.addIngredientButtons = function(ingredientButtons, fridge){
     var x = 30;
     var y = 30;
     var d = 0;
-    console.log(ingredientButtons);
+
      for(var i = 0; i < fridge.length; i++){
          for(var j = 0; j < ingredientButtons.ingredientButtons.length; j++){
              if(ingredientButtons.ingredientButtons[j].name == fridge[i]){
                  var ingredientButton = new IngredientButton(that.stage.getContext(), x, y, ingredientButtons.tileWidth, ingredientButtons.tileHeight,ingredientButtons.ingredientButtons[j].imagePath, ingredientButtons.zOrder, fridge[i]);
                  that.stage.addToStage(ingredientButton);
+                 that.ingredientButtons.push(ingredientButton);
                  x = x + (ingredientButtons.tileWidth + 20);
                  d = d + 1;
                  if(d % 5 == 0){
@@ -221,7 +223,7 @@ Kitchen.prototype.onClick = function (event) {
     if(event.target instanceof MenuButton){
         this.menu.forEach(function(menuElement){
             that.stage.removeFromStage(menuElement);
-        })
+        });
 
         this.fillFridge(this.jRecipes, event.target.recipeIndex);
     }
@@ -238,8 +240,14 @@ Kitchen.prototype.onClick = function (event) {
         }
     }
 
-    if(event.target instanceof FridgeButton){
+    if(event.target instanceof FridgeButton && event.target.status == event.target.OFF){
+        event.target.setStatus(event.target.ON);
         this.addIngredientButtons(this.jIngredientButtons, this.fridge);
+    } else if(event.target instanceof FridgeButton && event.target.status == event.target.ON){
+        this.ingredientButtons.forEach(function(ingredientButton){
+            event.target.setStatus(event.target.OFF);
+            that.stage.removeFromStage(ingredientButton);
+        });
     }
 
     if(event.target instanceof IngredientButton){
@@ -279,7 +287,7 @@ Kitchen.prototype.onDragend = function (event) {
             var cx = event.target.getBottomCenter().cx;
             var cy = event.target.getBottomCenter().cy;
             var zone = this.stoveTops[i].getHitZone();
-            var overAPlate;
+            var overAPlate = false;
             if ((cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)){
                 overAPlate = true;
             }
@@ -321,7 +329,7 @@ Kitchen.prototype.onDragend = function (event) {
                 }
             }
         }
-        if (!overAPlate) {
+        if (overAPlate == false) {
             if (event.target.myPlateIndex != null ) {
                 this.stoveTops[event.target.myPlateIndex].setCurrentPot(null);
             }
@@ -329,7 +337,6 @@ Kitchen.prototype.onDragend = function (event) {
             event.target.myPlateIndex = null;
             event.target.onPlate = false;
             event.target.setStatus(event.target.OFF);
-            overAPlate = false;
         }
     }
 

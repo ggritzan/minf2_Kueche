@@ -8,7 +8,7 @@ function Knob(context, sx, sy, w, h, imgPath, zOrder, name, stoveTop) {
     this.name = name;
     this.stoveTop = stoveTop;
 
-    // shows if the plate is turned off or on
+    // shows if the knob is turned off or on
     this.OFF = 0;
     this.ON = 1;
     this.status = this.OFF;

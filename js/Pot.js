@@ -6,10 +6,12 @@ function Pot(context, sx, sy, w, h, imgPath, zOrder, draggable, name, animObj) {
     this.name = name;
     this.ingredients = [];
 
+    // shows if the pot should be heating/boiling (ON) or cooling/cold (OFF)
     this.OFF = 0;
     this.ON = 1;
     this.status = this.OFF;
 
+    // defines a minimum temperature of the pot and a maximum temperature at which it should be boiling
     this.MIN_TEMP = 0;
     this.MAX_TEMP = 100;
     this.actTemp = this.MIN_TEMP;
@@ -19,9 +21,6 @@ function Pot(context, sx, sy, w, h, imgPath, zOrder, draggable, name, animObj) {
     this.HEATING = "heating";
     this.BOILING = "boiling";
     this.actState = this.COLD;
-
-    var onPlate = false;
-    var myPlateIndex;
 
     this.soundmanager = new SoundManager();
 }
