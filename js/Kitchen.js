@@ -113,14 +113,16 @@ Kitchen.prototype.run = function (kit) {
  */
 
 Kitchen.prototype.fillFridge = function(recipe, index){
-    var kitchen = this;
+
+    // for callback
+    var that = this;
 
     // searches for the recipe with the given index number
     var ingredients = recipe.recipes[index].ingredients;
 
     // pushes the ingredient names of the needed recipe to the fridge array in the kitchen
     ingredients.forEach(function(ingredient){
-        kitchen.fridge.push(ingredient);
+        that.fridge.push(ingredient);
     });
 
 
@@ -134,6 +136,8 @@ Kitchen.prototype.fillFridge = function(recipe, index){
  */
 
 Kitchen.prototype.addUtilities = function(utility){
+
+    // for callback
     var that = this;
 
     // reference to the pots
