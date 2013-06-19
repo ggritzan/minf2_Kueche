@@ -1,7 +1,6 @@
-function StoveTop(context, sx, sy, w, h, imgPath, zOrder, name) {
+function StoveTop(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
-
+    VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
 
     this.name = name;
 
@@ -13,7 +12,7 @@ function StoveTop(context, sx, sy, w, h, imgPath, zOrder, name) {
 
 }
 
-StoveTop.prototype = Object.create(VisualRenderObject.prototype);
+StoveTop.prototype = Object.create(VisualRenderAnimation.prototype);
 StoveTop.prototype.constructor = StoveTop;
 
 // Methode die den Power Status aendert

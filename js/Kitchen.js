@@ -10,6 +10,7 @@ function Kitchen(canvasId) {
 
 
     // to save the JSON data in attributes
+    this.jKitchenComponents;
     this.jUtilities;
     this.jIngredients;
     this.jRecipes;
@@ -42,6 +43,11 @@ function Kitchen(canvasId) {
 
     // reads the needed data from external JSON files
 
+    Ajax.getJSON("json/kitchenComponents.json?d=" + d.getTime(), function (data){
+        that.jKitchenComponents = data;
+        that.addKitchenComponents(that.jKitchenComponents);
+    });
+
     Ajax.getJSON("json/utilities.json?d=" + d.getTime(), function(data){
         that.jUtilities = data;
         that.addUtilities(that.jUtilities);
@@ -61,7 +67,9 @@ function Kitchen(canvasId) {
 
 
     var fridgeButton = new FridgeButton(this.stage.getContext(), 150, 150, 30, 30, "images/utilities/fridgeButton.png", 5, "fridgebutton");
+    var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 600, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
 
+    this.stage.addToStage(kitchenBackground);
     this.stage.addToStage(fridgeButton);
 
     this.menu.forEach(function(menuElement){
@@ -128,6 +136,23 @@ Kitchen.prototype.fillFridge = function(recipe, index){
 
 }
 
+Kitchen.prototype.addKitchenComponents = function(component){
+    var that = this;
+    var stoveTopBluePrint = component.kitchenComponent.stoveTops;
+    var knobBluePrint = component.kitchenComponent.knobBluePrint;
+
+    stoveTopBluePrint.forEach(function(stoveTop){
+        var stoveTop = new StoveTop(that.stage.getContext(), stoveTop.image.sx, stoveTop.image.sy, stoveTop.image.tileWidth, stoveTop.image.tileHeight, stoveTop.image.imagePath, stoveTop.image.zOrder, stoveTop.name, stoveTop);
+        that.stoveTops.push(stoveTop);
+        that.stage.addToStage(stoveTop);
+    });
+
+    for(var i = 0; i < this.stoveTops.length; i++){
+        var knob = new Knob(this.stage.getContext(), knobBluePrint.knobs[i].sx, knobBluePrint.knobs[i].sy, knobBluePrint.image.tileWidth, knobBluePrint.image.tileHeight, knobBluePrint.image.imagePath, knobBluePrint.knobs[i].zOrder, knobBluePrint.knobs[i].name, this.stoveTops[i]);
+        this.stage.addToStage(knob);
+    }
+}
+
 /**
  * The function 'addUtilities' renders the pots, knobs and stove tops to the stage.
  * It expects the JSON file with the data of the utilities that shall be rendered.
@@ -142,10 +167,6 @@ Kitchen.prototype.addUtilities = function(utility){
 
     // reference to the pots
     var potBluePrint = utility.utilities.potBluePrint;
-    // reference to the stove tops
-    var stoveBluePrint = utility.utilities.stoveTopBluePrint;
-    // reference to the knobs
-    var knobBluePrint = utility.utilities.knobBluePrint;
     // reference to kitchen slicer
     var kitchenSlicerBluePrint = utility.utilities.kitchenSlicerBluePrint;
 
@@ -157,20 +178,6 @@ Kitchen.prototype.addUtilities = function(utility){
         that.pots.push(pot);
         that.stage.addToStage(pot);
     });
-
-    // adds all stove tops to the stage
-    stoveBluePrint.stoveTops.forEach(function(stoveTop){
-        var stoveTop = new StoveTop(that.stage.getContext(), stoveTop.sx, stoveTop.sy, stoveBluePrint.image.tileWidth, stoveBluePrint.image.tileHeight, stoveBluePrint.image.imagePath, stoveTop.zOrder, stoveTop.name);
-        that.stoveTops.push(stoveTop);
-        that.stage.addToStage(stoveTop);
-    });
-
-    // adds all knobs to the stage
-    // a for-loop is needed since each knob has also a specific stove top
-    for(var i = 0; i < that.stoveTops.length; i++){
-        var knob = new Knob(that.stage.getContext(), knobBluePrint.knobs[i].sx, knobBluePrint.knobs[i].sy, knobBluePrint.image.tileWidth, knobBluePrint.image.tileHeight, knobBluePrint.image.imagePath, knobBluePrint.knobs[i].zOrder, knobBluePrint.knobs[i].name, that.stoveTops[i]);
-        that.stage.addToStage(knob);
-    }
 
     kitchenSlicerBluePrint.kitchenSlicers.forEach(function(kitchenSlicer){
         var kitchenSlicer = new KitchenSlicer(that.stage.getContext(), kitchenSlicer.sx, kitchenSlicer.sy, kitchenSlicerBluePrint.image.tileWidth, kitchenSlicerBluePrint.image.tileHeight, kitchenSlicerBluePrint.image.imagePath, kitchenSlicer.zOrder, kitchenSlicer.name);
@@ -291,6 +298,7 @@ Kitchen.prototype.onClick = function (event) {
 
 Kitchen.prototype.onDragend = function (event) {
     console.log(event);
+
     if (event.target instanceof Ingredient) {
         for (var i = 0; i < this.pots.length; i++) {
             //is the ingredient over a pot?

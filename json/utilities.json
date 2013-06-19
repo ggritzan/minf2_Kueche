@@ -21,28 +21,6 @@
                 {"name": "pot2", "sx": 600, "sy": 10, "zOrder": 23}
             ]
         },
-        "stoveTopBluePrint": {
-            "image": {
-                "imagePath": "images/utilities/platte.png",
-                "tileWidth": 242,
-                "tileHeight": 85
-            },
-            "stoveTops": [
-                {"name": "stoveTop1", "sx": 300, "sy": 300, "zOrder": 22},
-                {"name": "stoveTop2", "sx": 600, "sy": 300, "zOrder": 22}
-            ]
-        },
-        "knobBluePrint": {
-            "image": {
-                "imagePath": "images/utilities/knob.png",
-                "tileWidth": 58,
-                "tileHeight": 58
-            },
-            "knobs": [
-                {"name": "knob1", "sx": 375, "sy": 400, "zOrder": 22},
-                {"name": "knob2", "sx": 675, "sy": 400, "zOrder": 22}
-            ]
-        },
         "kitchenSlicerBluePrint":{
             "image": {
                 "imagePath": "images/utilities/kitchenslicer.png",

@@ -3,8 +3,6 @@ function Knob(context, sx, sy, w, h, imgPath, zOrder, name, stoveTop) {
     VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
 
 
-
-
     this.name = name;
     this.stoveTop = stoveTop;
 
