@@ -1,6 +1,6 @@
 function SoundManager () {
 
-    this.BOILINGWATERSOUND = new Audio("sounds/boiling-water-1.wav");
+    this.boilingWaterSound = new Audio("sounds/boiling-water-1.wav");
 
 }
 

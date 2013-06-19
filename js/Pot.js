@@ -7,8 +7,8 @@ function Pot(context, sx, sy, w, h, imgPath, zOrder, draggable, name, animObj) {
     this.ingredients = [];
 
     // shows if the pot should be heating/boiling (ON) or cooling/cold (OFF)
-    this.OFF = 0;
-    this.ON = 1;
+    this.OFF = "off";
+    this.ON = "on";
     this.status = this.OFF;
 
     // defines a minimum temperature of the pot and a maximum temperature at which it should be boiling
@@ -54,7 +54,7 @@ Pot.prototype.cooling = function(){
         this.actTemp--;
     } else if(this.actState === this.COOLING && this.actTemp === this.MIN_TEMP){
         this.changeState(this.COLD);
-        this.soundmanager.stopSound(this.soundmanager.BOILINGWATERSOUND);
+        this.soundmanager.stopSound(this.soundmanager.boilingWaterSound);
     }
 }
 
@@ -63,13 +63,13 @@ Pot.prototype.heating = function(){
         this.actTemp++;
     } else if(this.actState == this.HEATING && this.actTemp == this.MAX_TEMP){
         this.changeState(this.BOILING);
-        this.soundmanager.playSound(this.soundmanager.BOILINGWATERSOUND);
+        this.soundmanager.playSound(this.soundmanager.boilingWaterSound);
     }
 }
 
 /**
  * change the state of this pot
- * @param String state - the state to be set (cold, heating, cooling, boiling)
+ * @param state - the state to be set (cold, heating, cooling, boiling)
  */
 
 Pot.prototype.changeState = function(state){

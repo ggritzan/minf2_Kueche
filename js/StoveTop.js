@@ -5,8 +5,8 @@ function StoveTop(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
     this.name = name;
 
     // shows if the stove top is turned off or on
-    this.OFF = 0;
-    this.ON = 1;
+    this.OFF = "off";
+    this.ON = "on";
     this.status = this.OFF;
 
 
@@ -15,20 +15,20 @@ function StoveTop(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 StoveTop.prototype = Object.create(VisualRenderAnimation.prototype);
 StoveTop.prototype.constructor = StoveTop;
 
-// Methode die den Power Status aendert
+// function to set the power on or off
 StoveTop.prototype.setStatus = function (status) {
     this.status = status;
     if (this.pot != null) {
         this.pot.setStatus(this.status);
     }
+    if(this.status == this.OFF){
+        this.changeState(this.OFF);
+    } else if (this.status == this.ON){
+        this.changeState(this.ON);
+    }
 }
 
-// Methode um den Status zu aendern ob der Topf in position ist
-StoveTop.prototype.setPotInPlace = function (status) {
-    this.potInPlace = status;
-}
-
-// Methode um den Pot der sich aktuell auf der Platte befindet festzulegen
+// function to give the stove top a pot and to set its status to the same status as the stove top
 StoveTop.prototype.setCurrentPot = function (pot) {
     this.pot = pot;
     if (this.pot != null ) {
@@ -36,5 +36,21 @@ StoveTop.prototype.setCurrentPot = function (pot) {
         console.log("StoveTop State "+ this.status + " Pot State " + this.pot.status);
     }
 
+}
+
+/**
+ * change the state of this stove top
+ * @param state - the state to be set (on, off)
+ */
+
+StoveTop.prototype.changeState = function(state){
+    switch(state) {
+        case this.OFF: this.changeAnimSequence("off");
+            break;
+        case this.ON: this.changeAnimSequence("on");
+            break;
+        default: this.changeAnimSequence("default");
+            break;
+    }
 }
 
