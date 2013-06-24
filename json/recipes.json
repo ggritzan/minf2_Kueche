@@ -1,91 +1,184 @@
 {
     "recipes": [
-    {
-        "name": "Vegetarische Bolognese",
+        {
+            "name": "Vegetarische Bolognese",
 
-        "image": "/images/recipe/vegetarienBolonese.png",
+            "image": "/images/recipe/vegetarienBolonese.png",
 
-        "description": "Gericht das trotz des nicht vorhandenen Fleisches einfach nur lecker schmeckt",
+            "description": "Gericht das trotz des nicht vorhandenen Fleisches einfach nur lecker schmeckt",
 
-        "ingredients": [ 	"mushrooms",
-                            "carrots",
-                            "celery",
-                            "onion",
-                            "oil",
-                            "garlic",
-                            "tomatopaste",
-                            "peeledtomatoes",
-                            "salt",
-                            "pepper",
-                            "sugar",
-                            "paprikapowder",
-                            "noodles"
-                      ],
+            "ingredients": [    "mushrooms",
+                "carrots",
+                "celery",
+                "onion",
+                "oil",
+                "garlic",
+                "tomatopaste",
+                "peeledtomatoes",
+                "salt",
+                "pepper",
+                "sugar",
+                "paprikapowder",
+                "noodles",
+                "wine"
 
-        "tasks": [
-            {
-                "message": "Pilze in die Kuechenmaschine geben und grob hacken.",
-                "task": [
-                    {
-                        "kitchenslicer": ["mushrooms"]
-                    }
-                ]
-            },
+            ],
 
-            {
-                "message": "Die gehackten Pilze auf ein Backblech legen, das Backblech mit den gehackten Pilzen in den Backofen und für kurze Zeit backen lassen!",
-                "task": [
-                    {
-                        "bakingsheet": [
-                            {
-                                "put": [
-                                    {"ingredient": "mushrooms", "isCut": true}
-                                ]
-                            }
-                        ]
+            "tasks": [
+                {
+                    "message": "Pilze in die Kuechenmaschine geben und grob hacken.",
+                    "task": [
+                        {
+                            "kitchenslicer": [
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "mushrooms"
 
-                    },
-                    {
-                        "oven": [
-                            {
-                                "put": [
-                                    {
-                                        "utility": "bakingsheet",
-                                        "content": [
-                                            {"ingredient": "mushrooms", "isCut": true, "isBaked": false, "isCooked": false}
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
 
-            {
-                "message": "Möhren in der Kuechenmaschine grob hacken.",
-                "task": [
-                    {
-                        "kitchenslicer": ["carrots"]
-                    }
-                ]
-            },
+                {
+                    "message": "Die gehackten Pilze auf ein Backblech legen, das Backblech mit den gehackten Pilzen in den Backofen und für kurze Zeit backen lassen!",
+                    "task": [
+                        {
+                            "bakingsheet": [
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "mushrooms",
+                                            "isCut": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "oven": [
+                                {
+                                    "put": [
+                                        {
+                                            "utility": "bakingsheet",
+                                            "content": [
+                                                {
+                                                    "ingredient": "mushrooms",
+                                                    "isCut": true,
+                                                    "isBaked": false,
+                                                    "isCooked": false
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
 
-            {
-                "message": "Die gehackten Möhren aus der Kuechemaschine nehmen und auf die Arbeitsplatte legen.",
-                "task": [
+                {
+                    "message": "Möhren in der Kuechenmaschine grob hacken.",
+                    "task": [
+                        {
+                            "kitchenslicer": [
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "carrots"
 
-                    {
-                        "countertop": [
-                            {
-                                "put": [{"ingredient": "carrots", "isCut": true}]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
 
-]
+                {
+                    "message": "Die gehackten Möhren aus der Kuechemaschine nehmen und auf die Arbeitsplatte legen.",
+                    "task": [
+
+                        {
+                            "countertop": [
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "carrots",
+                                            "isCut": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+
+                {
+                    "message": "Staudensellerie in der Kuechenmaschine grob hacken.",
+                    "task": [
+
+                        {
+                            "kitchenslicer": [
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "celery"
+
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+
+                {
+                    "message": "Den zerkleinerten Staudensellerie auf der Arbeitsplatte ablegen.",
+                    "task":[
+                        {
+                            "countertop": [
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "celery",
+                                            "isCut": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+
+
+                    ]
+
+                },
+
+                {
+                    "message": "Zwiebel in der Kuechenmaschine grob hacken.",
+                    "task": [
+
+                        {
+                            "kitchenslicer": [
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "onion"
+
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+
+
+            ]
+        }
+
+    ]
 }
