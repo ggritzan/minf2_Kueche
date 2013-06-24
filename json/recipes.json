@@ -309,7 +309,173 @@
                         }
 
                     }
+                },
+
+                {
+                    "message": "200 ml Wein in den Topf geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "wine",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste"],
+                            "actState": "on"
+                        }
+
+                    }
+                },
+
+                {
+                    "message": "Mit der Salzmühle eine Prise Salz in den Topf geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "salt",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine"],
+                            "actState": "on"
+                        }
+
+                    }
+                },
+
+                {
+                    "message": "Mit der Pfeffermühle eine Prise Pfeffer in den Topf geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "pepper",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt"],
+                            "actState": "on"
+                        }
+
+                    }
+                },
+
+                {
+                    "message": "Eine Prise Zucker in den geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "sugar",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt","pepper"],
+                            "actState": "on"
+                        }
+
+                    }
+                },
+
+                {
+                    "message": "Das Paprikapulver in den Topf geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "paprikapowder",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt","pepper","sugar"],
+                            "actState": "on"
+                        }
+
+                    }
+                },
+
+                {
+                    "message": "Einen zusätzlichen Topf auf eine weitere Platte stellen, einschalten und das Wasser hineingeben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "water",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "on"
+                        }
+
+                    }
+                },
+
+                {
+                    "message": "Eine Prise Salz in den zweiten Topf geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "salt",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["water"],
+                            "actState": "on"
+                        }
+
+                    }
+                },
+
+                {
+                    "message": "Die Nudeln in den zweiten Topf geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "noodles",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["water","salt"],
+                            "actState": "on"
+                        }
+
+                    }
+                },
+
+                {
+                    "message": "Die Nudeln in den zweiten Topf geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "noodles",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["water","salt"],
+                            "actState": "on"
+                        }
+
+                    }
                 }
+
+
+
+
 
 
             ]
