@@ -153,7 +153,6 @@
                     "message": "Die gehackte Zwiebel auf der Arbeitsplatte ablegen.",
                     "task": {
                         "utensil": "countertop",
-                        "content-type": "ingredient",
                         "content-name": "onion",
                         "ingredient-properties": {
                             "isCut": true,
