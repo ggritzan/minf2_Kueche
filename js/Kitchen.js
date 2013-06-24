@@ -144,6 +144,7 @@ Kitchen.prototype.checkTasks = function(recipe, index){
 
     for(var i = 0; tasks.length; i++){
         for(var j = 0; tasks[i].task.length; j++){
+            if(tasks[i].task[j].equals(kitchenslicer))
             tasks[i].task[j]
         }
     }

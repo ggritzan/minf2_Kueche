@@ -1,4 +1,8 @@
 {
+   "logic-config":[
+       {"type":"utensil", "fields":["properties", "xxx"]}, {"type": "ingredient", "fields":["ccc", "cccc"]}
+   ],
+
     "recipes": [
         {
             "name": "Vegetarische Bolognese",
@@ -24,25 +28,51 @@
                 "wine"
             ],
 
+
+
             "tasks": [
                 {
                     "message": "Pilze in die Kuechenmaschine geben und grob hacken.",
-                    "task": [
-                        {
-                            "kitchenslicer": [
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "mushrooms",
-                                            "isCut": false
-
-                                        }
-                                    ]
-                                }
-                            ]
+                    "task": {
+                        "utensil": "kitchenslicer",
+                        "content-type": "ingredient",
+                        "content-name": "mushrooms",
+                        "properties" : {
+                            "isCut": false ,
+                            "isCooked" : true,
+                            "isBaked" :false
                         }
-                    ]
+                    }
                 },
+                {
+                    "message": "Die gehackten Pilze auf ein Backblech legen, das Backblech mit den gehackten Pilzen in den Backofen und für kurze Zeit backen lassen!",
+                    "task": {
+                        "utensil": "bakingsheet",
+                        "content-type": "ingredient",
+                        "content-name": "mushrooms",
+                        "properties" : {
+                            "isCut": true ,
+                            "isCooked" : false,
+                            "isBaked" :false
+                        }
+                    }
+                },
+                {
+                    "message": "Die gehackten Pilze auf ein Backblech legen, das Backblech mit den gehackten Pilzen in den Backofen und für kurze Zeit backen lassen!",
+                    "task": {
+                        "utensil": "oven",
+                        "content-type": "utility",
+                        "content-name": "bakingsheet",
+                        "properties" : {
+                            "isCut": true ,
+                            "isCooked" : false,
+                            "isBaked" :true
+                        }
+                    }
+                },
+
+
+
 
                 {
                     "message": "Die gehackten Pilze auf ein Backblech legen, das Backblech mit den gehackten Pilzen in den Backofen und für kurze Zeit backen lassen!",
