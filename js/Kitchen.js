@@ -134,7 +134,19 @@ Kitchen.prototype.fillFridge = function(recipe, index){
         that.fridge.push(ingredient);
     });
 
+}
 
+Kitchen.prototype.checkTasks = function(recipe, index){
+
+    var that = this;
+
+    var tasks = recipe.recipes[index].tasks;
+
+    for(var i = 0; tasks.length; i++){
+        for(var j = 0; tasks[i].task.length; j++){
+            tasks[i].task[j]
+        }
+    }
 }
 
 Kitchen.prototype.addKitchenComponents = function(component){
