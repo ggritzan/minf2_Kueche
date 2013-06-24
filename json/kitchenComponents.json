@@ -10,7 +10,7 @@
                     "imgWidth": 600,
                     "imgHeight": 50,
                     "sx": 403,
-                    "sy": 326,
+                    "sy": 356,
                     "zOrder": 22
                 },
                 "animations": {
@@ -28,7 +28,7 @@
                     "imgWidth": 800,
                     "imgHeight": 100,
                     "sx": 524,
-                    "sy": 316,
+                    "sy": 346,
                     "zOrder": 22
                 },
                 "animations": {
@@ -46,7 +46,7 @@
                     "imgWidth": 600,
                     "imgHeight": 75,
                     "sx": 387,
-                    "sy": 356,
+                    "sy": 386,
                     "zOrder": 22
                 },
                 "animations": {
@@ -64,7 +64,7 @@
                     "imgWidth": 700,
                     "imgHeight": 100,
                     "sx": 498,
-                    "sy": 356,
+                    "sy": 386,
                     "zOrder": 22
                 },
                 "animations": {
@@ -82,10 +82,10 @@
                 "tileHeight": 58
             },
             "knobs": [
-                {"name": "knob1", "sx": 375, "sy": 500, "zOrder": 22},
-                {"name": "knob2", "sx": 475, "sy": 500, "zOrder": 22},
-                {"name": "knob3", "sx": 575, "sy": 500, "zOrder": 22},
-                {"name": "knob4", "sx": 675, "sy": 500, "zOrder": 22}
+                {"name": "knob1", "sx": 375, "sy": 530, "zOrder": 22},
+                {"name": "knob2", "sx": 475, "sy": 530, "zOrder": 22},
+                {"name": "knob3", "sx": 575, "sy": 530, "zOrder": 22},
+                {"name": "knob4", "sx": 675, "sy": 530, "zOrder": 22}
             ]
         }
     }

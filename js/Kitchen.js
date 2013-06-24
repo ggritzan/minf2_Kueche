@@ -22,6 +22,7 @@ function Kitchen(canvasId) {
     // for callback
     var that = this;
 
+    this.menuAnim = new MenuBackground(this.stage.getContext())
     this.menuStage = new MenuBackground(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/startMenu.png", 100);
     this.menuButton1 = new MenuButton(this.stage.getContext(), 500, 300, 200, 60, "images/Menu/menuButton.png", 101, 0);
     this.menuButton2 = new MenuButton(this.stage.getContext(), 500, 400, 200, 60, "images/Menu/menuButton.png", 101, 1);
