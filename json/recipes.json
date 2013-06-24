@@ -33,7 +33,8 @@
                                 {
                                     "put": [
                                         {
-                                            "ingredient": "mushrooms"
+                                            "ingredient": "mushrooms",
+                                            "isCut": false
 
                                         }
                                     ]
@@ -88,7 +89,8 @@
                                 {
                                     "put": [
                                         {
-                                            "ingredient": "carrots"
+                                            "ingredient": "carrots",
+                                            "isCut": false
 
                                         }
                                     ]
@@ -126,7 +128,8 @@
                                 {
                                     "put": [
                                         {
-                                            "ingredient": "celery"
+                                            "ingredient": "celery",
+                                            "isCut": false
 
                                         }
                                     ]
@@ -138,7 +141,7 @@
 
                 {
                     "message": "Den zerkleinerten Staudensellerie auf der Arbeitsplatte ablegen.",
-                    "task":[
+                    "task": [
                         {
                             "countertop": [
                                 {
@@ -166,8 +169,226 @@
                                 {
                                     "put": [
                                         {
-                                            "ingredient": "onion"
+                                            "ingredient": "onion",
+                                            "isCut": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
 
+                {
+                    "message": "Die gehackte Zwiebel auf der Arbeitsplatte ablegen.",
+                    "task": [
+                        {
+                            "countertop": [
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "onion",
+                                            "isCut": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+
+
+                    ]
+
+                },
+
+                {
+                    "message": "Oel in den Topf geben.",
+                    "task": [
+                        {
+                            "pot": [
+                                {
+                                    "isEmpty": true
+                                },
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "oil"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+
+
+                    ]
+
+                },
+
+                {
+                    "message": "Die Kochplatte anschalten.",
+                    "task": [
+                        {
+                            "stoveTop": [
+                                {
+                                    "status": "on"
+                                }
+
+                            ]
+                        }
+
+
+                    ]
+
+                },
+
+                {
+                    "message": "Die Pilze in den Topf geben.",
+                    "task": [
+                        {
+                            "pot": [
+                                {
+                                    "actState:": "boiling",
+                                    "ingredients": ["oil"]
+                                },
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "mushrooms",
+                                            "isCut": true,
+                                            "isBaked": true,
+                                            "isCooked": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+
+
+                    ]
+
+                },
+
+                {
+                    "message": "Die Zwiebeln in den Topf geben.",
+                    "task": [
+                        {
+                            "pot": [
+                                {
+                                    "actState:": "boiling",
+                                    "ingredients": ["oil","mushrooms"]
+                                },
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "onion",
+                                            "isCut": true,
+                                            "isCooked": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+
+
+                    ]
+
+                },
+
+                {
+                    "message": "Das restliches Gemüse in den Topf geben.",
+                    "task": [
+                        {
+                            "pot": [
+                                {
+                                    "actState:": "boiling",
+                                    "ingredients": ["oil","mushrooms","onion"]
+                                },
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "carrots",
+                                            "isCut": true,
+                                            "isCooked": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "celery",
+                                            "isCut": true,
+                                            "isCooked": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+
+
+                    ]
+
+                },
+
+                {
+                    "message": "Den Knoblauch von der Kuechenmaschine in duenne Scheiben schneiden lassen.",
+                    "task": [
+
+                        {
+                            "kitchenslicer": [
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "garlic",
+                                            "isCut": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+
+                {
+                    "message": "Den geschnittenen Knoblauch in den Topf geben.",
+                    "task": [
+
+                        {
+                            "pot": [
+                                {
+                                    "actState:": "boiling",
+                                    "ingredients": ["oil","mushrooms","onion","carrots","celery"]
+                                },
+
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "garlic",
+                                            "isCut": true,
+                                            "isCooked": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+
+                {
+                    "message": "Tomatenmark in den Topf geben.",
+                    "task": [
+
+                        {
+                            "pot": [
+                                {
+                                    "actState:": "boiling",
+                                    "ingredients": ["oil","mushrooms","onion","carrots","celery","garlic"]
+                                },
+
+                                {
+                                    "put": [
+                                        {
+                                            "ingredient": "tomatopaste",
+                                            "isCut": true,
+                                            "isCooked": false
                                         }
                                     ]
                                 }
@@ -175,7 +396,6 @@
                         }
                     ]
                 }
-
 
             ]
         }

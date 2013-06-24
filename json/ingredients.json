@@ -137,6 +137,14 @@
             "name": "tomatopaste",
             "sx": 100,
             "sy": 200
+        },
+        {
+            "imagePath": "images/Ingredients/carrots.png",
+            "tileWidth": 150,
+            "tileHeight": 150,
+            "name": "wine",
+            "sx": 100,
+            "sy": 200
         }
 
     ]
