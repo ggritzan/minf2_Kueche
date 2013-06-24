@@ -22,7 +22,7 @@ function Kitchen(canvasId) {
     // for callback
     var that = this;
 
-    this.menuStage = new MenuBackground(this.stage.getContext(), 0, 0, 1000, 600, "images/Menu/startMenu.png", 100);
+    this.menuStage = new MenuBackground(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/startMenu.png", 100);
     this.menuButton1 = new MenuButton(this.stage.getContext(), 500, 300, 200, 60, "images/Menu/menuButton.png", 101, 0);
     this.menuButton2 = new MenuButton(this.stage.getContext(), 500, 400, 200, 60, "images/Menu/menuButton.png", 101, 1);
     this.menuButton3 = new MenuButton(this.stage.getContext(), 500, 500, 200, 60, "images/Menu/menuButton.png", 101, 2);
@@ -67,7 +67,7 @@ function Kitchen(canvasId) {
 
 
     var fridgeButton = new FridgeButton(this.stage.getContext(), 150, 150, 30, 30, "images/utilities/fridgeButton.png", 5, "fridgebutton");
-    var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 600, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
+    var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
 
     this.stage.addToStage(kitchenBackground);
     this.stage.addToStage(fridgeButton);
