@@ -1,7 +1,5 @@
 {
-   "logic-config":[
-       {"type":"utensil", "fields":["properties", "xxx"]}, {"type": "ingredient", "fields":["ccc", "cccc"]}
-   ],
+
 
     "recipes": [
         {
@@ -29,403 +27,290 @@
             ],
 
 
-
             "tasks": [
                 {
                     "message": "Pilze in die Kuechenmaschine geben und grob hacken.",
                     "task": {
                         "utensil": "kitchenslicer",
-                        "content-type": "ingredient",
                         "content-name": "mushrooms",
-                        "properties" : {
-                            "isCut": false ,
-                            "isCooked" : true,
-                            "isBaked" :false
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "off"
                         }
                     }
                 },
+
+
                 {
-                    "message": "Die gehackten Pilze auf ein Backblech legen, das Backblech mit den gehackten Pilzen in den Backofen und für kurze Zeit backen lassen!",
-                    "task": {
-                        "utensil": "bakingsheet",
-                        "content-type": "ingredient",
-                        "content-name": "mushrooms",
-                        "properties" : {
-                            "isCut": true ,
-                            "isCooked" : false,
-                            "isBaked" :false
-                        }
-                    }
-                },
-                {
-                    "message": "Die gehackten Pilze auf ein Backblech legen, das Backblech mit den gehackten Pilzen in den Backofen und für kurze Zeit backen lassen!",
+                    "message": "Den Ofen einschalten und die gehackten Pilze auf das Backblech im Ofen legen und für kurze Zeit backen lassen!",
                     "task": {
                         "utensil": "oven",
-                        "content-type": "utility",
-                        "content-name": "bakingsheet",
-                        "properties" : {
-                            "isCut": true ,
-                            "isCooked" : false,
-                            "isBaked" :true
+                        "content-name": "mushrooms",
+                        "ingredient-properties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "on"
+
                         }
                     }
-                },
-
-
-
-
-                {
-                    "message": "Die gehackten Pilze auf ein Backblech legen, das Backblech mit den gehackten Pilzen in den Backofen und für kurze Zeit backen lassen!",
-                    "task": [
-                        {
-                            "bakingsheet": [
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "mushrooms",
-                                            "isCut": true
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "oven": [
-                                {
-                                    "put": [
-                                        {
-                                            "utility": "bakingsheet",
-                                            "content": [
-                                                {
-                                                    "ingredient": "mushrooms",
-                                                    "isCut": true,
-                                                    "isBaked": false,
-                                                    "isCooked": false
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
                 },
 
                 {
                     "message": "Möhren in der Kuechenmaschine grob hacken.",
-                    "task": [
-                        {
-                            "kitchenslicer": [
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "carrots",
-                                            "isCut": false
-
-                                        }
-                                    ]
-                                }
-                            ]
+                    "task": {
+                        "utensil": "kitchenslicer",
+                        "content-name": "carrots",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "off"
                         }
-                    ]
+                    }
                 },
 
                 {
                     "message": "Die gehackten Möhren aus der Kuechemaschine nehmen und auf die Arbeitsplatte legen.",
-                    "task": [
-
-                        {
-                            "countertop": [
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "carrots",
-                                            "isCut": true
-                                        }
-                                    ]
-                                }
-                            ]
+                    "task": {
+                        "utensil": "countertop",
+                        "content-name": "carrots",
+                        "ingredient-properties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "off"
                         }
-                    ]
+                    }
                 },
 
                 {
                     "message": "Staudensellerie in der Kuechenmaschine grob hacken.",
-                    "task": [
-
-                        {
-                            "kitchenslicer": [
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "celery",
-                                            "isCut": false
-
-                                        }
-                                    ]
-                                }
-                            ]
+                    "task": {
+                        "utensil": "kitchenslicer",
+                        "content-name": "celery",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "off"
                         }
-                    ]
+                    }
                 },
 
                 {
                     "message": "Den zerkleinerten Staudensellerie auf der Arbeitsplatte ablegen.",
-                    "task": [
-                        {
-                            "countertop": [
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "celery",
-                                            "isCut": true
-                                        }
-                                    ]
-                                }
-                            ]
+                    "task": {
+                        "utensil": "countertop",
+                        "content-name": "celery",
+                        "ingredient-properties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "off"
                         }
-
-
-                    ]
-
+                    }
                 },
 
                 {
                     "message": "Zwiebel in der Kuechenmaschine grob hacken.",
-                    "task": [
-
-                        {
-                            "kitchenslicer": [
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "onion",
-                                            "isCut": false
-                                        }
-                                    ]
-                                }
-                            ]
+                    "task": {
+                        "utensil": "kitchenslicer",
+                        "content-name": "onion",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "off"
                         }
-                    ]
+                    }
                 },
 
                 {
                     "message": "Die gehackte Zwiebel auf der Arbeitsplatte ablegen.",
-                    "task": [
-                        {
-                            "countertop": [
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "onion",
-                                            "isCut": true
-                                        }
-                                    ]
-                                }
-                            ]
+                    "task": {
+                        "utensil": "countertop",
+                        "content-type": "ingredient",
+                        "content-name": "onion",
+                        "ingredient-properties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "off"
                         }
-
-
-                    ]
-
+                    }
                 },
 
                 {
-                    "message": "Oel in den Topf geben.",
-                    "task": [
-                        {
-                            "pot": [
-                                {
-                                    "isEmpty": true
-                                },
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "oil"
-                                        }
-                                    ]
-                                }
-                            ]
+                    "message": "Kochplatte anschalten und einen leeren Topf auf die Platte stellen dann Oel hineingeben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "oil",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "on"
                         }
 
-
-                    ]
-
+                    }
                 },
 
                 {
-                    "message": "Die Kochplatte anschalten.",
-                    "task": [
-                        {
-                            "stoveTop": [
-                                {
-                                    "status": "on"
-                                }
-
-                            ]
+                    "message": "Die Pilze in den Topf mit dem Öl geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "mushrooms",
+                        "ingredient-properties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": true
+                        },
+                        "utensil-properties": {
+                            "content": ["oil"],
+                            "actState": "on"
                         }
 
-
-                    ]
-
+                    }
                 },
 
                 {
-                    "message": "Die Pilze in den Topf geben.",
-                    "task": [
-                        {
-                            "pot": [
-                                {
-                                    "actState:": "boiling",
-                                    "ingredients": ["oil"]
-                                },
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "mushrooms",
-                                            "isCut": true,
-                                            "isBaked": true,
-                                            "isCooked": false
-                                        }
-                                    ]
-                                }
-                            ]
+                    "message": "Die Zwiebeln in den selben Topf geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "onion",
+                        "ingredient-properties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["oil", "mushrooms"],
+                            "actState": "on"
                         }
 
-
-                    ]
-
+                    }
                 },
 
                 {
-                    "message": "Die Zwiebeln in den Topf geben.",
-                    "task": [
-                        {
-                            "pot": [
-                                {
-                                    "actState:": "boiling",
-                                    "ingredients": ["oil","mushrooms"]
-                                },
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "onion",
-                                            "isCut": true,
-                                            "isCooked": false
-                                        }
-                                    ]
-                                }
-                            ]
+                    "message": "Die Karotten in den Topf geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "carrots",
+                        "ingredient-properties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["oil", "mushrooms", "onion"],
+                            "actState": "on"
                         }
 
-
-                    ]
-
+                    }
                 },
 
                 {
-                    "message": "Das restliches Gemüse in den Topf geben.",
-                    "task": [
-                        {
-                            "pot": [
-                                {
-                                    "actState:": "boiling",
-                                    "ingredients": ["oil","mushrooms","onion"]
-                                },
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "carrots",
-                                            "isCut": true,
-                                            "isCooked": false
-                                        }
-                                    ]
-                                },
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "celery",
-                                            "isCut": true,
-                                            "isCooked": false
-                                        }
-                                    ]
-                                }
-                            ]
+                    "message": "Den Selerie in den Topf geben.",
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "celery",
+                        "ingredient-properties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["oil", "mushrooms", "onion", "carrots"],
+                            "actState": "on"
                         }
 
-
-                    ]
-
+                    }
                 },
 
                 {
-                    "message": "Den Knoblauch von der Kuechenmaschine in duenne Scheiben schneiden lassen.",
-                    "task": [
-
-                        {
-                            "kitchenslicer": [
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "garlic",
-                                            "isCut": false
-                                        }
-                                    ]
-                                }
-                            ]
+                    "message": "Den Knoblauch von der Kuechenmaschine zerkleinern lassen.",
+                    "task": {
+                        "utensil": "kitchenslicer",
+                        "content-name": "garlic",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": [],
+                            "actState": "off"
                         }
-                    ]
+
+                    }
                 },
 
                 {
                     "message": "Den geschnittenen Knoblauch in den Topf geben.",
-                    "task": [
-
-                        {
-                            "pot": [
-                                {
-                                    "actState:": "boiling",
-                                    "ingredients": ["oil","mushrooms","onion","carrots","celery"]
-                                },
-
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "garlic",
-                                            "isCut": true,
-                                            "isCooked": false
-                                        }
-                                    ]
-                                }
-                            ]
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "garlic",
+                        "ingredient-properties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery"],
+                            "actState": "on"
                         }
-                    ]
+
+                    }
                 },
 
                 {
                     "message": "Tomatenmark in den Topf geben.",
-                    "task": [
-
-                        {
-                            "pot": [
-                                {
-                                    "actState:": "boiling",
-                                    "ingredients": ["oil","mushrooms","onion","carrots","celery","garlic"]
-                                },
-
-                                {
-                                    "put": [
-                                        {
-                                            "ingredient": "tomatopaste",
-                                            "isCut": true,
-                                            "isCooked": false
-                                        }
-                                    ]
-                                }
-                            ]
+                    "task": {
+                        "utensil": "pot",
+                        "content-name": "tomatopaste",
+                        "ingredient-properties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensil-properties": {
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic"],
+                            "actState": "on"
                         }
-                    ]
+
+                    }
                 }
+
 
             ]
         }

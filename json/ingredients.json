@@ -145,6 +145,14 @@
             "name": "wine",
             "sx": 100,
             "sy": 200
+        },
+        {
+            "imagePath": "images/Ingredients/oil.png",
+            "tileWidth": 150,
+            "tileHeight": 150,
+            "name": "water",
+            "sx": 100,
+            "sy": 200
         }
 
     ]
