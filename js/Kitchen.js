@@ -7,6 +7,7 @@ function Kitchen(canvasId) {
 
     // create a new stage object
     this.stage = new Stage(canvasId);
+    this.soundmanager = new SoundManager();
 
     this.points = 0;
 
@@ -416,17 +417,36 @@ Kitchen.prototype.onDragend = function (event) {
                 if(actTask.utensil == "kitchenslicer" && kitchenSlicerContentTrue && this.kitchenSlicer.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
 
                     this.kitchenSlicer.content.push(event.target);
+                    this.kitchenSlicer.setStatus(this.kitchenSlicer.ON);
+                    this.soundmanager.playSound(this.soundmanager.boilingWaterSound);
                     this.stage.removeFromStage(event.target);
                     this.points = this.points + 10;
                     j++;
                     console.log("You've got " + this.points + " points now.");
+                    var that = this;
+
+                    this.soundmanager.boilingWaterSound.addEventListener('ended', function() {
+                        that.kitchenSlicer.setStatus(that.kitchenSlicer.OFF);
+                        that.stage.addToStage(event.target);
+                        that.kitchenSlicer.clearContent();
+                    });
 
                 }  else if (!(actTask.utensil == "kitchenslicer" && kitchenSlicerContentTrue && this.kitchenSlicer.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
 
                     this.kitchenSlicer.content.push(event.target);
+                    this.kitchenSlicer.setStatus(this.kitchenSlicer.ON);
+                    this.soundmanager.playSound(this.soundmanager.boilingWaterSound);
                     this.stage.removeFromStage(event.target);
                     this.points = this.points - 10;
                     console.log("You've got " + this.points + " points now.");
+
+                    var that = this;
+
+                    this.soundmanager.boilingWaterSound.addEventListener('ended', function() {
+                        that.kitchenSlicer.setStatus(that.kitchenSlicer.OFF);
+                        that.stage.addToStage(event.target);
+                        that.kitchenSlicer.clearContent();
+                    });
                 }
             }
 

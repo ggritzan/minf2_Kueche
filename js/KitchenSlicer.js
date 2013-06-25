@@ -17,3 +17,7 @@ KitchenSlicer.prototype.constructor = KitchenSlicer;
 KitchenSlicer.prototype.setStatus = function (status){
     this.status = status;
 }
+
+KitchenSlicer.prototype.clearContent = function (){
+    this.content = null;
+}
