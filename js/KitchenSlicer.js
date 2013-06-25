@@ -16,8 +16,11 @@ KitchenSlicer.prototype.constructor = KitchenSlicer;
 
 KitchenSlicer.prototype.setStatus = function (status){
     this.status = status;
+    if(this.status == this.ON){
+        this.content[0].isCut = true;
+    }
 }
 
 KitchenSlicer.prototype.clearContent = function (){
-    this.content = null;
+    this.content = [];
 }

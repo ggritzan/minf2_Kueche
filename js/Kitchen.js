@@ -11,6 +11,8 @@ function Kitchen(canvasId) {
 
     this.points = 0;
 
+    this.counter = 0;
+
 
     // to save the JSON data in attributes
     this.jKitchenComponents;
@@ -41,7 +43,6 @@ function Kitchen(canvasId) {
     this.ingredientButtons = [];
     this.kitchenSlicer;
     this.oven;
-    this.countertop = [];
 
     this.menu.push(this.menuStage);
     this.menu.push(this.menuButton1);
@@ -76,13 +77,17 @@ function Kitchen(canvasId) {
 
     var fridgeButton = new FridgeButton(this.stage.getContext(), 150, 150, 30, 30, "images/utilities/fridgeButton.png", 5, "fridgebutton");
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
-
+    this.counterTop = new CounterTop(this.stage.getContext(), 653, 410, 357, 220, "images/kitchenComponents/counterTop.png", 2, "countertop");
+    var ovenButton = new OvenButton(this.stage.getContext(), 800, 40, 58, 58, "images/utilities/knob.png", 23, "ovenButton", this.oven);
     this.stage.addToStage(kitchenBackground);
     this.stage.addToStage(fridgeButton);
+    this.stage.addToStage(ovenButton);
+    this.stage.addToStage(this.counterTop);
 
     this.menu.forEach(function(menuElement){
         that.stage.addToStage(menuElement);
     });
+
 
 
     // registers the needed events
@@ -131,6 +136,7 @@ Kitchen.prototype.run = function (kit) {
 Kitchen.prototype.fillFridge = function(recipe, index){
 
     this.actRecipe = recipe.recipes[index];
+
 
     // for callback
     var that = this;
@@ -275,6 +281,16 @@ Kitchen.prototype.onClick = function (event) {
         }
     }
 
+    if(event.target instanceof OvenButton){
+        if(event.target.status == event.target.OFF){
+            event.target.setStatus(event.target.ON);
+            event.target.setRotation(180);
+        } else {
+            event.target.setStatus(event.target.OFF);
+            event.target.setRotation(0);
+        }
+    }
+
     if(event.target instanceof FridgeButton && event.target.status == event.target.OFF){
         event.target.setStatus(event.target.ON);
         this.addIngredientButtons(this.jIngredientButtons, this.fridge);
@@ -304,30 +320,6 @@ Kitchen.prototype.onClick = function (event) {
     }
 }
 
-/*Kitchen.prototype.checkTasks = function(){
-
-    var tasks = this.actRecipe.tasks;
-
-    for(var i = 0; tasks.length; i++){
-
-        var actTask = tasks[i].task;
-
-        if(actTask.utensil == "kitchenslicer"){
-            if(this.kitchenSlicer.content == actTask.utensil-properties.content && this.kitchenSlicer.status == actTask.utensil-properties.actState){
-                this.onDragend(event);
-            }
-
-
-        } else if(actTask.utensil == "oven"){
-
-        } else if(actTask.utensil == "countertop"){
-
-        } else if(actTask.utensil == "pot"){
-
-        }
-    }
-}*/
-
 Kitchen.prototype.onDragend = function (event) {
 
     var tasks = this.actRecipe.tasks;
@@ -335,11 +327,11 @@ Kitchen.prototype.onDragend = function (event) {
 
     if (event.target instanceof Ingredient) {
 
-        var j = 0;
+        console.log(this.actRecipe.tasks[this.counter].message);
 
-        if(j < tasks.length) {
+        if(this.counter < tasks.length) {
 
-            var actTask = tasks[j].task;
+            var actTask = tasks[this.counter].task;
 
             var ingX = event.target.x + event.target.width / 2;
             var ingY = event.target.y + event.target.height / 2;
@@ -374,7 +366,7 @@ Kitchen.prototype.onDragend = function (event) {
                         this.pots[i].ingredients.push(event.target);
                         this.stage.removeFromStage(event.target);
                         this.points = this.points + 10;
-                        j++;
+                        this.counter++;
                         console.log("You've got " + this.points + " points now.");
                         break;
 
@@ -421,15 +413,18 @@ Kitchen.prototype.onDragend = function (event) {
                     this.soundmanager.playSound(this.soundmanager.boilingWaterSound);
                     this.stage.removeFromStage(event.target);
                     this.points = this.points + 10;
-                    j++;
+                    this.counter++;
                     console.log("You've got " + this.points + " points now.");
                     var that = this;
 
                     this.soundmanager.boilingWaterSound.addEventListener('ended', function() {
                         that.kitchenSlicer.setStatus(that.kitchenSlicer.OFF);
-                        that.stage.addToStage(event.target);
+                        that.stage.addToStage(that.kitchenSlicer.content[0]);
                         that.kitchenSlicer.clearContent();
+
                     });
+
+                    console.log("The ingredient is cut: " + event.target.name + event.target.isCut);
 
                 }  else if (!(actTask.utensil == "kitchenslicer" && kitchenSlicerContentTrue && this.kitchenSlicer.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
 
@@ -444,12 +439,92 @@ Kitchen.prototype.onDragend = function (event) {
 
                     this.soundmanager.boilingWaterSound.addEventListener('ended', function() {
                         that.kitchenSlicer.setStatus(that.kitchenSlicer.OFF);
-                        that.stage.addToStage(event.target);
+                        that.stage.addToStage(that.kitchenSlicer.content[0]);
                         that.kitchenSlicer.clearContent();
+
                     });
+
+                    console.log("The ingredient is cut: " + event.target.name + event.target.isCut);
                 }
             }
 
+            //is the ingredient over a kitchen slicer?
+            var ovenZone = this.oven.getHitZone();
+
+            if (ingX >= ovenZone.hx && ingX <= ovenZone.hx + ovenZone.hw && ingY >= ovenZone.hy && ingY <= ovenZone.hy + ovenZone.hh) {
+                console.log("yay!");
+                // if the kitchen slicer  content does not meet the requirements of the current task
+                var ovenContentTrue = true;
+                if(this.oven.content.length <= actTask.utensilProperties.content.length){
+                    for(var l = 0; l < this.oven.content.length; l++){
+                        if(!(this.oven.content[l].name == actTask.utensilProperties.content[l])){
+                            ovenContentTrue = false;
+                        }
+                    }
+                } else if(this.oven.content.length > actTask.utensilProperties.content.length){
+                    for(var l = 0; l < actTask.utensilProperties.content.length; l++){
+                        if(!(this.oven.content[l].name == actTask.utensilProperties.content[l])){
+                            ovenContentTrue = false;
+                        }
+                    }
+                }
+
+                // does the kitchen slicer meet all the property requirements for the task?
+
+
+                // does the clicked ingredient meet the ingredient properties of the current task?
+                if(actTask.utensil == "oven" && ovenContentTrue && this.oven.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
+
+                    this.oven.content.push(event.target);
+                    this.soundmanager.playSound(this.soundmanager.boilingWaterSound);
+                    this.stage.removeFromStage(event.target);
+                    this.points = this.points + 10;
+                    this.counter++;
+                    console.log("You've got " + this.points + " points now.");
+                    var that = this;
+
+                    this.soundmanager.boilingWaterSound.addEventListener('ended', function() {
+                        that.oven.baking();
+                        that.stage.addToStage(that.oven.content[0]);
+                        that.oven.clearContent();
+
+                    });
+
+                    console.log("The ingredient is baked: " + event.target.name + event.target.isBaked);
+
+                }  else if (!(actTask.utensil == "oven" && ovenContentTrue && this.oven.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
+
+                    this.oven.content.push(event.target);
+                    this.soundmanager.playSound(this.soundmanager.boilingWaterSound);
+                    this.stage.removeFromStage(event.target);
+                    this.points = this.points - 10;
+                    console.log("You've got " + this.points + " points now.");
+
+                    var that = this;
+
+                    this.soundmanager.boilingWaterSound.addEventListener('ended', function() {
+                        that.oven.baking();
+                        that.stage.addToStage(that.oven.content[0]);
+                        that.oven.clearContent();
+
+                    });
+
+                    console.log("The ingredient is baked: " + event.target.name + event.target.isBaked);
+                }
+            }
+
+            var counterZone = this.counterTop.getHitZone();
+
+            if (ingX >= counterZone.hx && ingX <= counterZone.hx + counterZone.hw && ingY >= counterZone.hy && ingY <= counterZone.hy + counterZone.hh){
+                if(actTask.utensil == "countertop" && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
+                    this.points = this.points + 10;
+                    this.counter++;
+                    console.log("You've got " + this.points + " points now.");
+                }
+            }
+
+        } else {
+            console.log("Ihr Rezept ist beendet.");
         }
 
     } else if (event.target instanceof Pot) {
