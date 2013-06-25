@@ -8,12 +8,15 @@ function Kitchen(canvasId) {
     // create a new stage object
     this.stage = new Stage(canvasId);
 
+    this.points = 0;
+
 
     // to save the JSON data in attributes
     this.jKitchenComponents;
     this.jUtilities;
     this.jIngredients;
     this.jRecipes;
+    this.actRecipe;
     this.jIngredientButtons;
 
     // to load the newest version of all JSONs
@@ -22,7 +25,7 @@ function Kitchen(canvasId) {
     // for callback
     var that = this;
 
-    this.menuAnim = new MenuBackground(this.stage.getContext())
+    //this.menuAnim = new MenuBackground(this.stage.getContext())
     this.menuStage = new MenuBackground(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/startMenu.png", 100);
     this.menuButton1 = new MenuButton(this.stage.getContext(), 500, 300, 200, 60, "images/Menu/menuButton.png", 101, 0);
     this.menuButton2 = new MenuButton(this.stage.getContext(), 500, 400, 200, 60, "images/Menu/menuButton.png", 101, 1);
@@ -35,6 +38,9 @@ function Kitchen(canvasId) {
     this.fridge = [];
     this.menu = [];
     this.ingredientButtons = [];
+    this.kitchenSlicer;
+    this.oven;
+    this.countertop = [];
 
     this.menu.push(this.menuStage);
     this.menu.push(this.menuButton1);
@@ -123,31 +129,19 @@ Kitchen.prototype.run = function (kit) {
 
 Kitchen.prototype.fillFridge = function(recipe, index){
 
+    this.actRecipe = recipe.recipes[index];
+
     // for callback
     var that = this;
 
     // searches for the recipe with the given index number
-    var ingredients = recipe.recipes[index].ingredients;
+    var ingredients = this.actRecipe.ingredients;
 
     // pushes the ingredient names of the needed recipe to the fridge array in the kitchen
     ingredients.forEach(function(ingredient){
         that.fridge.push(ingredient);
     });
 
-}
-
-Kitchen.prototype.checkTasks = function(recipe, index){
-
-    var that = this;
-
-    var tasks = recipe.recipes[index].tasks;
-
-    for(var i = 0; tasks.length; i++){
-        for(var j = 0; tasks[i].task.length; j++){
-            if(tasks[i].task[j].equals(kitchenslicer))
-            tasks[i].task[j]
-        }
-    }
 }
 
 Kitchen.prototype.addKitchenComponents = function(component){
@@ -195,11 +189,13 @@ Kitchen.prototype.addUtilities = function(utility){
 
     kitchenSlicerBluePrint.kitchenSlicers.forEach(function(kitchenSlicer){
         var kitchenSlicer = new KitchenSlicer(that.stage.getContext(), kitchenSlicer.sx, kitchenSlicer.sy, kitchenSlicerBluePrint.image.tileWidth, kitchenSlicerBluePrint.image.tileHeight, kitchenSlicerBluePrint.image.imagePath, kitchenSlicer.zOrder, kitchenSlicer.name);
+        that.kitchenSlicer = kitchenSlicer;
         that.stage.addToStage(kitchenSlicer);
     });
 
     ovenBluePrint.ovens.forEach(function(oven){
         var oven = new Oven(that.stage.getContext(), oven.sx, oven.sy, ovenBluePrint.image.tileWidth, ovenBluePrint.image.tileHeight, ovenBluePrint.image.imagePath, oven.zOrder, oven.name);
+        that.oven = oven;
         that.stage.addToStage(oven);
     });
 }
@@ -255,7 +251,6 @@ Kitchen.prototype.addIngredientButtons = function(ingredientButtons, fridge){
 
 
 Kitchen.prototype.onClick = function (event) {
-    console.log(event);
 
     var that = this;
 
@@ -294,14 +289,12 @@ Kitchen.prototype.onClick = function (event) {
     }
 
     for(var i = 0; i<this.stoveTops.length; i++) {
-        console.log(this.stoveTops[i].name + " has status " +this.stoveTops[i].status);
         if(this.stoveTops[i].pot != null){
             console.log(this.stoveTops[i].name + " has the pot " + this.stoveTops[i].pot.name + " the pot status is " + this.stoveTops[i].pot.status);
         }
     }
 
     for(var i = 0; i<this.pots.length; i++) {
-        console.log(this.pots[i].name + " is in state " + this.pots[i].status);
         for(var j = 0; j<this.pots[i].ingredients.length; j++){
             if(this.pots[i].ingredients[j] != null){
                 console.log("The pot " + this.pots[i].name + " has the following ingredients: " + this.pots[i].ingredients[j].name);
@@ -310,18 +303,135 @@ Kitchen.prototype.onClick = function (event) {
     }
 }
 
+/*Kitchen.prototype.checkTasks = function(){
+
+    var tasks = this.actRecipe.tasks;
+
+    for(var i = 0; tasks.length; i++){
+
+        var actTask = tasks[i].task;
+
+        if(actTask.utensil == "kitchenslicer"){
+            if(this.kitchenSlicer.content == actTask.utensil-properties.content && this.kitchenSlicer.status == actTask.utensil-properties.actState){
+                this.onDragend(event);
+            }
+
+
+        } else if(actTask.utensil == "oven"){
+
+        } else if(actTask.utensil == "countertop"){
+
+        } else if(actTask.utensil == "pot"){
+
+        }
+    }
+}*/
+
 Kitchen.prototype.onDragend = function (event) {
-    console.log(event);
+
+    var tasks = this.actRecipe.tasks;
+
 
     if (event.target instanceof Ingredient) {
-        for (var i = 0; i < this.pots.length; i++) {
-            //is the ingredient over a pot?
-            if (event.target.x + event.target.width / 2 >= this.pots[i].x && event.target.x + event.target.width / 2 <= this.pots[i].x + this.pots[i].width && event.target.y + event.target.height / 2 >= this.pots[i].y && event.target.y + event.target.height / 2 <= this.pots[i].y + this.pots[i].height) {
-                this.pots[i].ingredients.push(event.target);
-                this.stage.removeFromStage(event.target);
-                break;
+
+        var j = 0;
+
+        if(j < tasks.length) {
+
+            var actTask = tasks[j].task;
+
+            var ingX = event.target.x + event.target.width / 2;
+            var ingY = event.target.y + event.target.height / 2;
+
+            for (var i = 0; i < this.pots.length; i++) {
+
+                var zone = this.pots[i].getHitZone();
+
+                //is the ingredient over a pot?
+                if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
+
+                    // if the pot content does not meet the requirements of the current task
+                    var potContentTrue = true;
+                    if(this.pots[i].ingredients.length <= actTask.utensilProperties.content.length){
+                        for(var l = 0; l < this.pots[i].ingredients.length; l++){
+                            if(!(this.pots[i].ingredients[l].name == actTask.utensilProperties.content[l])){
+                                potContentTrue = false;
+                            }
+                        }
+                    } else if(this.pots[i].ingredients.length > actTask.utensilProperties.content.length){
+                        for(var l = 0; l < actTask.utensilProperties.content.length; l++){
+                            if(!(this.pots[i].ingredients[l].name == actTask.utensilProperties.content[l])){
+                                potContentTrue = false;
+                            }
+                        }
+                    }
+
+                    // does the pot meet all the property requirements for the task?
+
+                    // does the clicked ingredient meet the ingredient properties of the current task?
+                    if(actTask.utensil == "pot" && potContentTrue && this.pots[i].status == actTask.utensilProperties.actState && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
+                        this.pots[i].ingredients.push(event.target);
+                        this.stage.removeFromStage(event.target);
+                        this.points = this.points + 10;
+                        j++;
+                        console.log("You've got " + this.points + " points now.");
+                        break;
+
+                    // if either the pot or the ingredient do not meet the requirements
+                    } else if (!(actTask.utensil == "pot" && potContentTrue && this.pots[i].status == actTask.utensilProperties.actState && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
+                        this.pots[i].ingredients.push(event.target);
+                        this.stage.removeFromStage(event.target);
+                        this.points = this.points - 10;
+                        console.log("You've got " + this.points + " points now.");
+                        break;
+                    }
+                }
             }
+
+            //is the ingredient over a kitchen slicer?
+            var kitZone = this.kitchenSlicer.getHitZone();
+
+            if (ingX >= kitZone.hx && ingX <= kitZone.hx + kitZone.hw && ingY >= kitZone.hy && ingY <= kitZone.hy + kitZone.hh && this.kitchenSlicer.status == this.kitchenSlicer.OFF) {
+
+                // if the kitchen slicer  content does not meet the requirements of the current task
+                var kitchenSlicerContentTrue = true;
+                if(this.kitchenSlicer.content.length <= actTask.utensilProperties.content.length){
+                    for(var l = 0; l < this.kitchenSlicer.content.length; l++){
+                        if(!(this.kitchenSlicer.content[l].name == actTask.utensilProperties.content[l])){
+                            kitchenSlicerContentTrue = false;
+                        }
+                    }
+                } else if(this.kitchenSlicer.content.length > actTask.utensilProperties.content.length){
+                    for(var l = 0; l < actTask.utensilProperties.content.length; l++){
+                        if(!(this.kitchenSlicer.content[l].name == actTask.utensilProperties.content[l])){
+                            kitchenSlicerContentTrue = false;
+                        }
+                    }
+                }
+
+                // does the kitchen slicer meet all the property requirements for the task?
+
+
+                // does the clicked ingredient meet the ingredient properties of the current task?
+                if(actTask.utensil == "kitchenslicer" && kitchenSlicerContentTrue && this.kitchenSlicer.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
+
+                    this.kitchenSlicer.content.push(event.target);
+                    this.stage.removeFromStage(event.target);
+                    this.points = this.points + 10;
+                    j++;
+                    console.log("You've got " + this.points + " points now.");
+
+                }  else if (!(actTask.utensil == "kitchenslicer" && kitchenSlicerContentTrue && this.kitchenSlicer.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
+
+                    this.kitchenSlicer.content.push(event.target);
+                    this.stage.removeFromStage(event.target);
+                    this.points = this.points - 10;
+                    console.log("You've got " + this.points + " points now.");
+                }
+            }
+
         }
+
     } else if (event.target instanceof Pot) {
         for (var i = 0; i < this.stoveTops.length; i++) {
             var cx = event.target.getBottomCenter().cx;

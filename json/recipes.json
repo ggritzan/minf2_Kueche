@@ -32,13 +32,13 @@
                     "message": "Pilze in die Kuechenmaschine geben und grob hacken.",
                     "task": {
                         "utensil": "kitchenslicer",
-                        "content-name": "mushrooms",
-                        "ingredient-properties": {
+                        "contentName": "mushrooms",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "off"
                         }
@@ -50,13 +50,13 @@
                     "message": "Den Ofen einschalten und die gehackten Pilze auf das Backblech im Ofen legen und für kurze Zeit backen lassen!",
                     "task": {
                         "utensil": "oven",
-                        "content-name": "mushrooms",
-                        "ingredient-properties": {
+                        "contentName": "mushrooms",
+                        "ingredientProperties": {
                             "isCut": true,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "on"
 
@@ -68,13 +68,13 @@
                     "message": "Möhren in der Kuechenmaschine grob hacken.",
                     "task": {
                         "utensil": "kitchenslicer",
-                        "content-name": "carrots",
-                        "ingredient-properties": {
+                        "contentName": "carrots",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "off"
                         }
@@ -85,13 +85,13 @@
                     "message": "Die gehackten Möhren aus der Kuechemaschine nehmen und auf die Arbeitsplatte legen.",
                     "task": {
                         "utensil": "countertop",
-                        "content-name": "carrots",
-                        "ingredient-properties": {
+                        "contentName": "carrots",
+                        "ingredientProperties": {
                             "isCut": true,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "off"
                         }
@@ -102,13 +102,13 @@
                     "message": "Staudensellerie in der Kuechenmaschine grob hacken.",
                     "task": {
                         "utensil": "kitchenslicer",
-                        "content-name": "celery",
-                        "ingredient-properties": {
+                        "contentName": "celery",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "off"
                         }
@@ -119,13 +119,13 @@
                     "message": "Den zerkleinerten Staudensellerie auf der Arbeitsplatte ablegen.",
                     "task": {
                         "utensil": "countertop",
-                        "content-name": "celery",
-                        "ingredient-properties": {
+                        "contentName": "celery",
+                        "ingredientProperties": {
                             "isCut": true,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "off"
                         }
@@ -136,13 +136,13 @@
                     "message": "Zwiebel in der Kuechenmaschine grob hacken.",
                     "task": {
                         "utensil": "kitchenslicer",
-                        "content-name": "onion",
-                        "ingredient-properties": {
+                        "contentName": "onion",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "off"
                         }
@@ -153,13 +153,13 @@
                     "message": "Die gehackte Zwiebel auf der Arbeitsplatte ablegen.",
                     "task": {
                         "utensil": "countertop",
-                        "content-name": "onion",
-                        "ingredient-properties": {
+                        "contentName": "onion",
+                        "ingredientProperties": {
                             "isCut": true,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "off"
                         }
@@ -170,13 +170,13 @@
                     "message": "Kochplatte anschalten und einen leeren Topf auf die Platte stellen dann Oel hineingeben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "oil",
-                        "ingredient-properties": {
+                        "contentName": "oil",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "on"
                         }
@@ -188,13 +188,13 @@
                     "message": "Die Pilze in den Topf mit dem Öl geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "mushrooms",
-                        "ingredient-properties": {
+                        "contentName": "mushrooms",
+                        "ingredientProperties": {
                             "isCut": true,
                             "isCooked": false,
                             "isBaked": true
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil"],
                             "actState": "on"
                         }
@@ -206,13 +206,13 @@
                     "message": "Die Zwiebeln in den selben Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "onion",
-                        "ingredient-properties": {
+                        "contentName": "onion",
+                        "ingredientProperties": {
                             "isCut": true,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil", "mushrooms"],
                             "actState": "on"
                         }
@@ -224,13 +224,13 @@
                     "message": "Die Karotten in den Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "carrots",
-                        "ingredient-properties": {
+                        "contentName": "carrots",
+                        "ingredientProperties": {
                             "isCut": true,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil", "mushrooms", "onion"],
                             "actState": "on"
                         }
@@ -242,13 +242,13 @@
                     "message": "Den Selerie in den Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "celery",
-                        "ingredient-properties": {
+                        "contentName": "celery",
+                        "ingredientProperties": {
                             "isCut": true,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil", "mushrooms", "onion", "carrots"],
                             "actState": "on"
                         }
@@ -260,13 +260,13 @@
                     "message": "Den Knoblauch von der Kuechenmaschine zerkleinern lassen.",
                     "task": {
                         "utensil": "kitchenslicer",
-                        "content-name": "garlic",
-                        "ingredient-properties": {
+                        "contentName": "garlic",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "off"
                         }
@@ -278,13 +278,13 @@
                     "message": "Den geschnittenen Knoblauch in den Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "garlic",
-                        "ingredient-properties": {
+                        "contentName": "garlic",
+                        "ingredientProperties": {
                             "isCut": true,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil", "mushrooms", "onion", "carrots", "celery"],
                             "actState": "on"
                         }
@@ -296,13 +296,13 @@
                     "message": "Tomatenmark in den Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "tomatopaste",
-                        "ingredient-properties": {
+                        "contentName": "tomatopaste",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic"],
                             "actState": "on"
                         }
@@ -314,13 +314,13 @@
                     "message": "200 ml Wein in den Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "wine",
-                        "ingredient-properties": {
+                        "contentName": "wine",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste"],
                             "actState": "on"
                         }
@@ -332,13 +332,13 @@
                     "message": "Mit der Salzmühle eine Prise Salz in den Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "salt",
-                        "ingredient-properties": {
+                        "contentName": "salt",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine"],
                             "actState": "on"
                         }
@@ -350,13 +350,13 @@
                     "message": "Mit der Pfeffermühle eine Prise Pfeffer in den Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "pepper",
-                        "ingredient-properties": {
+                        "contentName": "pepper",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt"],
                             "actState": "on"
                         }
@@ -368,13 +368,13 @@
                     "message": "Eine Prise Zucker in den geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "sugar",
-                        "ingredient-properties": {
+                        "contentName": "sugar",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt","pepper"],
                             "actState": "on"
                         }
@@ -386,13 +386,13 @@
                     "message": "Das Paprikapulver in den Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "paprikapowder",
-                        "ingredient-properties": {
+                        "contentName": "paprikapowder",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt","pepper","sugar"],
                             "actState": "on"
                         }
@@ -404,13 +404,13 @@
                     "message": "Einen zusätzlichen Topf auf eine weitere Platte stellen, einschalten und das Wasser hineingeben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "water",
-                        "ingredient-properties": {
+                        "contentName": "water",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": [],
                             "actState": "on"
                         }
@@ -422,13 +422,13 @@
                     "message": "Eine Prise Salz in den zweiten Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "salt",
-                        "ingredient-properties": {
+                        "contentName": "salt",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["water"],
                             "actState": "on"
                         }
@@ -440,42 +440,19 @@
                     "message": "Die Nudeln in den zweiten Topf geben.",
                     "task": {
                         "utensil": "pot",
-                        "content-name": "noodles",
-                        "ingredient-properties": {
+                        "contentName": "noodles",
+                        "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
-                        "utensil-properties": {
-                            "content": ["water","salt"],
-                            "actState": "on"
-                        }
-
-                    }
-                },
-
-                {
-                    "message": "Die Nudeln in den zweiten Topf geben.",
-                    "task": {
-                        "utensil": "pot",
-                        "content-name": "noodles",
-                        "ingredient-properties": {
-                            "isCut": false,
-                            "isCooked": false,
-                            "isBaked": false
-                        },
-                        "utensil-properties": {
+                        "utensilProperties": {
                             "content": ["water","salt"],
                             "actState": "on"
                         }
 
                     }
                 }
-
-
-
-
-
 
             ]
         }
