@@ -4,7 +4,7 @@ function Pot(context, sx, sy, w, h, imgPath, zOrder, draggable, name, animObj) {
 
     this.setDraggable(draggable);
     this.name = name;
-    this.ingredients = [];
+    this.content = [];
 
     // shows if the pot should be heating/boiling (ON) or cooling/cold (OFF)
     this.OFF = "off";
@@ -85,5 +85,62 @@ Pot.prototype.changeState = function(state){
             break;
         default: this.changeAnimSequence("default");
             break;
+    }
+}
+
+Pot.prototype.behindIngredient = function(event, kitchen){
+
+    var actTask = kitchen.actRecipe.tasks[kitchen.counter].task;
+
+    var ingX = event.target.x + event.target.width / 2;
+    var ingY = event.target.y + event.target.height / 2;
+
+    var zone = this.getHitZone();
+
+    //is the ingredient over a pot?
+    if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
+
+        // if the pot content does not meet the requirements of the current task
+        var sameContent = true;
+
+        if(this.content.length <= actTask.utensilProperties.content.length){
+            for(var l = 0; l < this.content.length; l++){
+                if(!(this.content[l].name == actTask.utensilProperties.content[l])){
+                    sameContent = false;
+                }
+            }
+        } else if(this.content.length > actTask.utensilProperties.content.length){
+            for(var l = 0; l < actTask.utensilProperties.content.length; l++){
+                if(!(this.content[l].name == actTask.utensilProperties.content[l])){
+                    sameContent = false;
+                }
+            }
+        }
+
+        // does the pot meet all the property requirements for the task?
+
+        // does the clicked ingredient meet the ingredient properties of the current task?
+        if(actTask.utensil == "pot" && sameContent && this.status == actTask.utensilProperties.actState && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
+            this.content.push(event.target);
+
+            if(this.content[0] != undefined){
+
+                kitchen.stage.removeFromStage(event.target);
+                kitchen.points = kitchen.points + 10;
+                kitchen.counter++;
+                console.log("You've got " + kitchen.points + " points now.");
+            }
+
+            // if either the pot or the ingredient do not meet the requirements
+        } else if (!(actTask.utensil == "pot" && sameContent && this.status == actTask.utensilProperties.actState && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
+            this.content.push(event.target);
+
+            if(this.content[0] != undefined){
+
+                kitchen.stage.removeFromStage(event.target);
+                kitchen.points = kitchen.points - 10;
+                console.log("You've got " + kitchen.points + " points now.");
+            }
+        }
     }
 }
