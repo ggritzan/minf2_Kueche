@@ -456,6 +456,123 @@
                 }
 
             ]
+        },
+        {
+            "name": "Mousse au Chocolate",
+
+            "image": "/images/recipe/vegetarienBolonese.png",
+
+            "description": "Ein leckeres Dessert",
+
+            "ingredients": [
+                "water",
+                "chocolate",
+                "cream",
+                "yolk",
+                "eggwhite"
+
+            ],
+
+            "tasks": [
+                {
+                    "message": "Einen Topf auf eine erhitzte Herdpallte stellen und Wasser hineingeben",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "water",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "on"
+                        }
+                    }
+
+                }, {
+                    "message": "Eine Tafel Schokolade in der Küchenmaschine zerhacken",
+                    "task": {
+                        "utensil": "kitchenslicer",
+                        "contentName": "chocolate",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "off"
+                        }
+                    }
+
+                },{
+                    "message": "Die zerhackte Schokolade in den Topf geben",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "chocolate",
+                        "ingredientProperties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "on"
+                        }
+                    }
+
+                },{
+                    "message": "Eine Portion Sahne in den Pot geben",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "cream",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "on"
+                        }
+                    }
+
+                },{
+                    "message": "Ein Eiweiß in den Topf geben",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "eggwhite",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "on"
+                        }
+                    }
+
+                },{
+                    "message": "Ein Eigelb in den Topf geben",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "yolk",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "on"
+                        }
+                    }
+
+                }
+
+            ]
         }
 
     ]

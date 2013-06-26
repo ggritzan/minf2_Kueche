@@ -89,7 +89,8 @@ Pot.prototype.changeState = function(state){
 }
 
 Pot.prototype.behindIngredient = function(event, kitchen){
-
+    console.log(kitchen.counter);
+    console.log(kitchen.actRecipe.length);
     var actTask = kitchen.actRecipe.tasks[kitchen.counter].task;
 
     var ingX = event.target.x + event.target.width / 2;

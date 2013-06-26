@@ -38,7 +38,7 @@
             "imagePath": "images/Ingredients/egg.png",
             "tileWidth": 150,
             "tileHeight": 150,
-            "name": "eggs",
+            "name": "egg",
             "sx": 100,
             "sy": 200
         },
@@ -151,6 +151,14 @@
             "tileWidth": 150,
             "tileHeight": 150,
             "name": "water",
+            "sx": 100,
+            "sy": 200
+        },
+        {
+            "imagePath": "images/Ingredients/egg.png",
+            "tileWidth": 150,
+            "tileHeight": 150,
+            "name": "eggwhite",
             "sx": 100,
             "sy": 200
         }
