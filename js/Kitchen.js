@@ -319,7 +319,6 @@ Kitchen.prototype.onClick = function (event) {
         }
     }
     if (this.actRecipe.tasks.length > this.counter) {
-
         console.log(this.actRecipe.tasks[this.counter].message);
     } else if (!(event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter)){
         console.log("Sie haben das Rezept " + this.actRecipe.name + " mit " + this.points + " von " + this.actRecipe.tasks.length*10 + " möglichen Punkten abgeschlossen.");
