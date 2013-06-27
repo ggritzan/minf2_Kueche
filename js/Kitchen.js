@@ -93,7 +93,7 @@ function Kitchen(canvasId) {
         var nightBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Night.png", 0);
         this.stage.addToStage(nightBackground);
     }
-
+    var bin = new Bin(this.stage.getContext(), 25, 555, 170, 76, "images/utilities/bin.png", 5, "bin");
     var fridgeButton = new FridgeButton(this.stage.getContext(), 25, 77, 70, 71, "images/utilities/fridgeButton.png", 5, "fridgebutton");
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     var cupboard = new Cupboard(this.stage.getContext(), 120, 75, 68, 72, "images/utilities/cupboardButton.png", 5, "cupboard");
@@ -103,6 +103,7 @@ function Kitchen(canvasId) {
     this.stage.addToStage(fridgeButton);
     this.stage.addToStage(cupboard);
     this.stage.addToStage(ovenButton);
+    this.stage.addToStage(bin);
     this.stage.addToStage(this.counterTop);
 
     this.menu.forEach(function(menuElement){
@@ -393,8 +394,6 @@ Kitchen.prototype.onDragend = function (event) {
 
     var tasks = this.actRecipe.tasks;
 
-
-    if (event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter) {
 
         if(this.counter < tasks.length) {
 
