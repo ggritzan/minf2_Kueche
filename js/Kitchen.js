@@ -81,9 +81,9 @@ function Kitchen(canvasId) {
     });
 
 
-    var fridgeButton = new FridgeButton(this.stage.getContext(), 50, 100, 30, 30, "images/utilities/fridgeButton.png", 5, "fridgebutton");
+    var fridgeButton = new FridgeButton(this.stage.getContext(), 25, 77, 70, 71, "images/utilities/fridgeButton.png", 5, "fridgebutton");
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
-    var cupboard = new Cupboard(this.stage.getContext(), 150, 100, 30, 30, "images/utilities/fridgeButton.png", 5, "cupboard");
+    var cupboard = new Cupboard(this.stage.getContext(), 120, 75, 68, 72, "images/utilities/cupboardButton.png", 5, "cupboard");
     this.counterTop = new CounterTop(this.stage.getContext(), 653, 410, 357, 220, "images/kitchenComponents/counterTop.png", 2, "countertop");
     var ovenButton = new OvenButton(this.stage.getContext(), 800, 40, 58, 58, "images/utilities/knob.png", 23, "ovenButton", this.oven);
     this.stage.addToStage(kitchenBackground);
