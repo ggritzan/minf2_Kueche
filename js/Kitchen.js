@@ -45,6 +45,7 @@ function Kitchen(canvasId) {
     this.utilityButtons = [];
     this.kitchenSlicer;
     this.oven;
+    this.bin;
 
     this.menu.push(this.menuStage);
     this.menu.push(this.menuButton1);
@@ -93,7 +94,7 @@ function Kitchen(canvasId) {
         var nightBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Night.png", 0);
         this.stage.addToStage(nightBackground);
     }
-    var bin = new Bin(this.stage.getContext(), 25, 555, 170, 76, "images/utilities/bin.png", 5, "bin");
+    this.bin = new Bin(this.stage.getContext(), 25, 555, 170, 76, "images/utilities/bin.png", 5, "bin");
     var fridgeButton = new FridgeButton(this.stage.getContext(), 25, 77, 70, 71, "images/utilities/fridgeButton.png", 5, "fridgebutton");
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     var cupboard = new Cupboard(this.stage.getContext(), 120, 75, 68, 72, "images/utilities/cupboardButton.png", 5, "cupboard");
@@ -103,7 +104,7 @@ function Kitchen(canvasId) {
     this.stage.addToStage(fridgeButton);
     this.stage.addToStage(cupboard);
     this.stage.addToStage(ovenButton);
-    this.stage.addToStage(bin);
+    this.stage.addToStage(this.bin);
     this.stage.addToStage(this.counterTop);
 
     this.menu.forEach(function(menuElement){
@@ -393,7 +394,12 @@ Kitchen.prototype.onClick = function (event) {
 Kitchen.prototype.onDragend = function (event) {
 
     var tasks = this.actRecipe.tasks;
-
+    var ingX = event.target.x + event.target.width / 2;
+    var ingY = event.target.y + event.target.height / 2;
+    var zone = this.bin.getHitZone();
+    if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
+        this.stage.removeFromStage(event.target);
+    }
 
     if (event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter) {
 
