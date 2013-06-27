@@ -1,0 +1,10 @@
+{
+    "tileWidth": 30,
+    "tileHeight": 30,
+    "zOrder": 10,
+    "utilityButtons":[
+
+        {"name": "pots","imagePath": "images/IngredientButtons/carrots.png"}
+
+    ]
+}

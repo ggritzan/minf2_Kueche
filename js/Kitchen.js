@@ -21,6 +21,7 @@ function Kitchen(canvasId) {
     this.jRecipes;
     this.actRecipe;
     this.jIngredientButtons;
+    this.jUtilityButtons;
 
     // to load the newest version of all JSONs
     var d = new Date();
@@ -41,6 +42,7 @@ function Kitchen(canvasId) {
     this.fridge = [];
     this.menu = [];
     this.ingredientButtons = [];
+    this.utilityButtons = [];
     this.kitchenSlicer;
     this.oven;
 
@@ -74,13 +76,19 @@ function Kitchen(canvasId) {
         that.jRecipes = data;
     });
 
+    Ajax.getJSON("json/utilityButtons.json?d=" + d.getTime(), function(data){
+        that.jUtilityButtons = data;
+    });
 
-    var fridgeButton = new FridgeButton(this.stage.getContext(), 150, 150, 30, 30, "images/utilities/fridgeButton.png", 5, "fridgebutton");
+
+    var fridgeButton = new FridgeButton(this.stage.getContext(), 50, 100, 30, 30, "images/utilities/fridgeButton.png", 5, "fridgebutton");
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
+    var cupboard = new Cupboard(this.stage.getContext(), 150, 100, 30, 30, "images/utilities/fridgeButton.png", 5, "cupboard");
     this.counterTop = new CounterTop(this.stage.getContext(), 653, 410, 357, 220, "images/kitchenComponents/counterTop.png", 2, "countertop");
     var ovenButton = new OvenButton(this.stage.getContext(), 800, 40, 58, 58, "images/utilities/knob.png", 23, "ovenButton", this.oven);
     this.stage.addToStage(kitchenBackground);
     this.stage.addToStage(fridgeButton);
+    this.stage.addToStage(cupboard);
     this.stage.addToStage(ovenButton);
     this.stage.addToStage(this.counterTop);
 
@@ -180,19 +188,10 @@ Kitchen.prototype.addUtilities = function(utility){
     // for callback
     var that = this;
 
-    // reference to the pots
-    var potBluePrint = utility.utilities.potBluePrint;
     // reference to kitchen slicer
     var kitchenSlicerBluePrint = utility.utilities.kitchenSlicerBluePrint;
 
     var ovenBluePrint = utility.utilities.ovenBluePrint;
-
-    // adds all pots to the stage
-    potBluePrint.pots.forEach(function(pot){
-        var pot = new Pot(that.stage.getContext(), pot.sx, pot.sy, potBluePrint.image.tileWidth, potBluePrint.image.tileHeight, potBluePrint.image.imagePath, pot.zOrder, potBluePrint.draggable, pot.name, potBluePrint);
-        that.pots.push(pot);
-        that.stage.addToStage(pot);
-    });
 
     kitchenSlicerBluePrint.kitchenSlicers.forEach(function(kitchenSlicer){
         var kitchenSlicer = new KitchenSlicer(that.stage.getContext(), kitchenSlicer.sx, kitchenSlicer.sy, kitchenSlicerBluePrint.image.tileWidth, kitchenSlicerBluePrint.image.tileHeight, kitchenSlicerBluePrint.image.imagePath, kitchenSlicer.zOrder, kitchenSlicer.name);
@@ -238,7 +237,6 @@ Kitchen.prototype.addIngredientButtons = function(ingredientButtons, fridge){
     var x = 30;
     var y = 30;
     var d = 0;
-
      for(var i = 0; i < fridge.length; i++){
          for(var j = 0; j < ingredientButtons.ingredientButtons.length; j++){
              if(ingredientButtons.ingredientButtons[j].name == fridge[i]){
@@ -254,6 +252,41 @@ Kitchen.prototype.addIngredientButtons = function(ingredientButtons, fridge){
              }
          }
      }
+}
+
+Kitchen.prototype.addUtility = function(utility, utilityName) {
+    // for callback
+    var that = this;
+
+    // reference to the pots
+    var potBluePrint = utility.utilities.potBluePrint;
+
+    if (utilityName == "pots") {
+        // adds all pots to the stage
+        potBluePrint.pots.forEach(function(pot){
+            var pot = new Pot(that.stage.getContext(), pot.sx, pot.sy, potBluePrint.image.tileWidth, potBluePrint.image.tileHeight, potBluePrint.image.imagePath, pot.zOrder, potBluePrint.draggable, pot.name, potBluePrint);
+            that.pots.push(pot);
+            that.stage.addToStage(pot);
+        });
+    }
+}
+
+Kitchen.prototype.addUtilityButtons = function(utilityButtons)  {
+    var that = this;
+    var x = 30;
+    var y = 30;
+    var d = 0;
+    for (var i = 0; i<utilityButtons.utilityButtons.length; i++) {
+        var utilityButton = new UtilityButton(that.stage.getContext(), x, y, utilityButtons.tileWidth, utilityButtons.tileHeight, utilityButtons.utilityButtons[i].imagePath, utilityButtons.zOrder, utilityButtons.utilityButtons[i].name);
+        that.stage.addToStage(utilityButton);
+        that.utilityButtons.push(utilityButton);
+        x = x + (utilityButtons.tileWidth + 20);
+        d = d + 1;
+        if(d % 5 == 0){
+            x = 30;
+            y = y + (utilityButtons.tileHeight + 20);
+        }
+    }
 }
 
 
@@ -301,8 +334,19 @@ Kitchen.prototype.onClick = function (event) {
         });
     }
 
+    if(event.target instanceof Cupboard && event.target.status == event.target.OFF){
+        event.target.setStatus(event.target.ON);
+        this.addUtilityButtons(this.jUtilityButtons);
+    } else if(event.target instanceof Cupboard && event.target.status == event.target.ON){
+        event.target.setStatus(event.target.OFF);
+    }
+
     if(event.target instanceof IngredientButton){
         this.addIngredient(this.jIngredients, event.target.name);
+    }
+
+    if(event.target instanceof UtilityButton){
+        this.addUtility(this.jUtilities, event.target.name);
     }
 
     for(var i = 0; i<this.stoveTops.length; i++) {
@@ -322,6 +366,10 @@ Kitchen.prototype.onClick = function (event) {
         console.log(this.actRecipe.tasks[this.counter].message);
     } else if (!(event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter)){
         console.log("Sie haben das Rezept " + this.actRecipe.name + " mit " + this.points + " von " + this.actRecipe.tasks.length*10 + " möglichen Punkten abgeschlossen.");
+        this.counter = 0;
+        this.menu.forEach(function(menuElement){
+            that.stage.addToStage(menuElement);
+        });
     }
 }
 
