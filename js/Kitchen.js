@@ -395,6 +395,8 @@ Kitchen.prototype.onDragend = function (event) {
     var tasks = this.actRecipe.tasks;
 
 
+    if (event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter) {
+
         if(this.counter < tasks.length) {
 
             var actTask = tasks[this.counter].task;
