@@ -338,7 +338,10 @@ Kitchen.prototype.onClick = function (event) {
         event.target.setStatus(event.target.ON);
         this.addUtilityButtons(this.jUtilityButtons);
     } else if(event.target instanceof Cupboard && event.target.status == event.target.ON){
-        event.target.setStatus(event.target.OFF);
+        this.utilityButtons.forEach(function(utilityButton){
+            event.target.setStatus(event.target.OFF);
+            that.stage.removeFromStage(utilityButton);
+        });
     }
 
     if(event.target instanceof IngredientButton){
