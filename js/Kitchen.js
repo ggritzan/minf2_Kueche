@@ -80,7 +80,6 @@ function Kitchen(canvasId) {
         that.jUtilityButtons = data;
     });
 
-
     var fridgeButton = new FridgeButton(this.stage.getContext(), 25, 77, 70, 71, "images/utilities/fridgeButton.png", 5, "fridgebutton");
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     var cupboard = new Cupboard(this.stage.getContext(), 120, 75, 68, 72, "images/utilities/cupboardButton.png", 5, "cupboard");
