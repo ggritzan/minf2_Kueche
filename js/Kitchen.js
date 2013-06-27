@@ -399,6 +399,7 @@ Kitchen.prototype.onDragend = function (event) {
     var zone = this.bin.getHitZone();
     if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
         this.stage.removeFromStage(event.target);
+        event.target = null;
     }
 
     if (event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter) {
