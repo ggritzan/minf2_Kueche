@@ -21,7 +21,7 @@
         {"name": "tomatopaste", "imagePath": "images/IngredientButtons/tomatopaste.png"},
         {"name": "yolk", "imagePath": "images/IngredientButtons/eggyellow.png"},
         {"name": "wine", "imagePath": "images/IngredientButtons/wine.png" },
-        {"name": "chocolate", "imagePath": "images/IngredientButtons/wine.png" },
+        {"name": "chocolate", "imagePath": "images/IngredientButtons/chocolate.png" },
         {"name": "eggwhite", "imagePath": "images/IngredientButtons/wine.png" },
         {"name": "water", "imagePath": "images/IngredientButtons/wine.png" }
 
