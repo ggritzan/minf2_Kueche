@@ -81,16 +81,21 @@ function Kitchen(canvasId) {
     });
     var currentTime = new Date();
     if(currentTime.getHours() >3 && currentTime.getHours() < 9) {
-        var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundMorning.png", 1);
+        var morningBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Morning.png", 0);
+        this.stage.addToStage(morningBackground);
     } else if(currentTime.getHours()>9 && currentTime.getHours()<17) {
-        var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundMidday.png", 1);
+        var middayBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Midday.png", 0);
+        this.stage.addToStage(middayBackground);
     } else if(currentTime.getHours()>17 && currentTime.getHours()<22) {
-        var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundEvening.png", 1);
+        var eveningBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Evening.png", 0);
+        this.stage.addToStage(eveningBackground);
     } else {
-        var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundNight.png", 1);
+        var nightBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Night.png", 0);
+        this.stage.addToStage(nightBackground);
     }
 
     var fridgeButton = new FridgeButton(this.stage.getContext(), 25, 77, 70, 71, "images/utilities/fridgeButton.png", 5, "fridgebutton");
+    var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     var cupboard = new Cupboard(this.stage.getContext(), 120, 75, 68, 72, "images/utilities/cupboardButton.png", 5, "cupboard");
     this.counterTop = new CounterTop(this.stage.getContext(), 653, 410, 357, 220, "images/kitchenComponents/counterTop.png", 2, "countertop");
     var ovenButton = new OvenButton(this.stage.getContext(), 800, 40, 58, 58, "images/utilities/knob.png", 23, "ovenButton", this.oven);
