@@ -4,7 +4,7 @@
     "zOrder": 10,
     "utilityButtons":[
 
-        {"name": "pots","imagePath": "images/IngredientButtons/carrots.png"}
+        {"name": "pots","imagePath": "images/IngredientButtons/pot.png"}
 
     ]
 }
