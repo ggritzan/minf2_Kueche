@@ -170,6 +170,7 @@ Kitchen.prototype.setDefault = function(that) {
     that.pots = [];
     that.ingredientButtons = [];
     that.utilityButtons = [];
+    that.fridge = [];
     that.actRecipe = undefined;
 }
 
