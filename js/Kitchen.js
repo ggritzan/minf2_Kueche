@@ -226,7 +226,13 @@ Kitchen.prototype.addUtilities = function(utility){
 
 Kitchen.prototype.giveMainMenu = function (that) {
     that.menu.forEach(function(menuElement){
-    that.stage.addToStage(menuElement);
+        that.stage.addToStage(menuElement);
+    });
+}
+
+Kitchen.prototype.hideMainMenu = function(that) {
+    that.menu.forEach(function(menuElement){
+        that.stage.removeFromStage(menuElement);
     });
 }
 /**
@@ -325,8 +331,14 @@ Kitchen.prototype.onClick = function (event) {
         this.fillFridge(this.jRecipes, event.target.recipeIndex);
     }
 
-    if(event.target  instanceof MainMenuButton) {
+    if(event.target  instanceof MainMenuButton && event.target.status == event.target.OFF) {
         this.giveMainMenu(this);
+        event.target.setStatus(event.target.ON);
+        return;
+    } else if(event.target  instanceof MainMenuButton && event.target.status == event.target.ON){
+        this.hideMainMenu(this);
+        event.target.setStatus(event.target.OFF);
+        return;
     }
 
     if (event.target instanceof Knob) {
