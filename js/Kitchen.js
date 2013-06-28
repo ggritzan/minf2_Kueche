@@ -140,6 +140,7 @@ Kitchen.prototype.run = function (kit) {
 
 }
 
+
 Kitchen.prototype.setBackgroundSky = function(){
 
     var currentTime = new Date();
@@ -414,9 +415,15 @@ Kitchen.prototype.onClick = function (event) {
     } else if (this.actRecipe != undefined && !(event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter)){
         console.log("Sie haben das Rezept " + this.actRecipe.name + " mit " + this.points + " von " + this.actRecipe.tasks.length*10 + " möglichen Punkten abgeschlossen.");
         this.counter = 0;
-        this.menu.forEach(function(menuElement){
-            that.stage.addToStage(menuElement);
-        });
+        this.giveMainMenu(this);
+        for (var i = 0; i < this.pots.length; i++) {
+            this.stage.removeFromStage(this.pots[i]);
+        }
+        for (var i = 0; i< this.ingredients.length; i++) {
+            this.stage.removeFromStage(this.ingredients[i]);
+        }
+        this.ingredients = [];
+        this.pots = [];
     } else if(this.actRecipe == undefined) {
         console.log("Bitte waehlen Sie ein Rezept im Hauptmenue aus.");
     }
