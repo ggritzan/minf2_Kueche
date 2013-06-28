@@ -168,6 +168,8 @@ Kitchen.prototype.setDefault = function(that) {
     that.kitchenSlicer.content = [];
     that.ingredients = [];
     that.pots = [];
+    that.ingredientButtons = [];
+    that.utilityButtons = [];
     that.actRecipe = undefined;
 }
 
