@@ -364,9 +364,8 @@ Kitchen.prototype.onClick = function (event) {
     var that = this;
 
     if(event.target instanceof MenuButton){
-        this.menu.forEach(function(menuElement){
-            that.stage.removeFromStage(menuElement);
-        });
+        this.hideMainMenu(this);
+        this.mainMenuButton.setStatus(this.mainMenuButton.OFF);
 
         this.fillFridge(this.jRecipes, event.target.recipeIndex);
     }
@@ -377,9 +376,13 @@ Kitchen.prototype.onClick = function (event) {
         this.setDefault(this);
         return;
     } else if(event.target  instanceof MainMenuButton && event.target.status == event.target.ON){
-        this.hideMainMenu(this);
-        event.target.setStatus(event.target.OFF);
-        return;
+        if(this.actRecipe == undefined) {
+            return;
+        } else {
+         this.hideMainMenu(this);
+            event.target.setStatus(event.target.OFF);
+            return;
+        }
     }
 
     if (event.target instanceof Knob) {
