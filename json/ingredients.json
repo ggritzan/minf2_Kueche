@@ -182,7 +182,7 @@
             "imagePath": "images/Ingredients/lemonjuice.png",
             "tileWidth": 150,
             "tileHeight": 150,
-            "name": "lemonjuice",
+            "name": "lemonJuice",
             "sx": 235,
             "sy": 320
         }

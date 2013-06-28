@@ -548,7 +548,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
+                            "content": ["water"],
                             "actState": "on"
                         }
                     }
@@ -564,7 +564,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
+                            "content": ["water","chocolate"],
                             "actState": "on"
                         }
                     }
@@ -580,7 +580,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
+                            "content": ["water","chocolate","cream"],
                             "actState": "on"
                         }
                     }
@@ -596,7 +596,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
+                            "content": ["water","chocolate","cream","eggwhite"],
                             "actState": "on"
                         }
                     }
@@ -704,7 +704,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter", "onion"],
+                            "content": ["butter","onion"],
                             "actState": "on"
                         }
                     }
@@ -738,7 +738,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter", "onion", "onion"],
+                            "content": ["butter","onion","onion"],
                             "actState": "on"
                         }
                     }
@@ -755,7 +755,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter", "onion", "onion", "garlic"],
+                            "content": ["butter","onion","onion","garlic"],
                             "actState": "on"
                         }
                     }
@@ -772,7 +772,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter", "onion", "onion", "garlic", "lemonJuice"],
+                            "content": ["butter","onion","onion","garlic","lemonJuice"],
                             "actState": "on"
                         }
                     }
@@ -789,7 +789,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter", "onion", "onion", "garlic", "lemonJuice", "masalaMix"],
+                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix"],
                             "actState": "on"
                         }
                     }
@@ -806,7 +806,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter", "onion", "onion", "garlic", "lemonJuice", "masalaMix", "peas"],
+                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas"],
                             "actState": "on"
                         }
                     }
@@ -816,14 +816,14 @@
                     "message": "When the water is boiling, add the rice.",
                     "task": {
                         "utensil": "pot",
-                        "contentName": "water",
+                        "contentName": "basmatiRice",
                         "ingredientProperties": {
                             "isCut": false,
                             "isCooked": false,
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter", "onion", "onion", "water", "masalaMix", "peas"],
+                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas","water"],
                             "actState": "on"
                         }
                     }
@@ -840,7 +840,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter", "onion", "onion", "water", "masalaMix", "peas", "basmatiRice"],
+                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas","water","basmatiRice"],
                             "actState": "on"
                         }
                     }
