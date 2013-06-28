@@ -43,6 +43,7 @@ function Kitchen(canvasId) {
     this.ingredients = [];
     this.stoveTops = [];
     this.fridge = [];
+    this.knobs = [];
     this.menu = [];
     this.ingredientButtons = [];
     this.utilityButtons = [];
@@ -88,15 +89,15 @@ function Kitchen(canvasId) {
     this.stage.addToStage(this.backgroundSky);
 
     this.bin = new Bin(this.stage.getContext(), 25, 555, 170, 76, "images/utilities/bin.png", 5, "bin");
-    var fridgeButton = new FridgeButton(this.stage.getContext(), 25, 77, 70, 71, "images/utilities/fridgeButton.png", 5, "fridgebutton");
+    this.fridgeButton = new FridgeButton(this.stage.getContext(), 25, 77, 70, 71, "images/utilities/fridgeButton.png", 5, "fridgebutton");
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
-    var cupboard = new Cupboard(this.stage.getContext(), 120, 75, 68, 72, "images/utilities/cupboardButton.png", 5, "cupboard");
+    this.cupboard = new Cupboard(this.stage.getContext(), 120, 75, 68, 72, "images/utilities/cupboardButton.png", 5, "cupboard");
     this.counterTop = new CounterTop(this.stage.getContext(), 643, 410, 357, 220, "images/kitchenComponents/counterTop.png", 2, "countertop");
-    var ovenButton = new OvenButton(this.stage.getContext(), 800, 40, 58, 58, "images/utilities/knob.png", 23, "ovenButton", this.oven);
+    this.ovenButton = new OvenButton(this.stage.getContext(), 800, 40, 58, 58, "images/utilities/knob.png", 23, "ovenButton", this.oven);
     this.stage.addToStage(kitchenBackground);
-    this.stage.addToStage(fridgeButton);
-    this.stage.addToStage(cupboard);
-    this.stage.addToStage(ovenButton);
+    this.stage.addToStage(this.fridgeButton);
+    this.stage.addToStage(this.cupboard);
+    this.stage.addToStage(this.ovenButton);
     this.stage.addToStage(this.bin);
     this.stage.addToStage(this.counterTop);
 
@@ -140,6 +141,35 @@ Kitchen.prototype.run = function (kit) {
 
 }
 
+Kitchen.prototype.setDefault = function(that) {
+    that.counter = 0;
+    that.giveMainMenu(that);
+    for (var i = 0; i < that.pots.length; i++) {
+        that.stage.removeFromStage(that.pots[i]);
+    }
+    for (var i = 0; i< that.ingredients.length; i++) {
+        that.stage.removeFromStage(that.ingredients[i]);
+    }
+    for (var i = 0; i< that.knobs.length; i++) {
+        that.knobs[i].setStatus(that.knobs[i].OFF);
+        that.knobs[i].setRotation(0);
+    }
+    for (var i = 0; i<that.ingredientButtons.length; i++) {
+        that.stage.removeFromStage(that.ingredientButtons[i]);
+    }
+    for (var i = 0; i<that.utilityButtons.length; i++) {
+        that.stage.removeFromStage(that.utilityButtons[i]);
+    }
+    that.fridgeButton.setStatus(that.fridgeButton.OFF);
+    that.cupboard.setStatus(that.cupboard.OFF);
+    that.oven.content = [];
+    that.oven.setStatus(that.oven.OFF);
+    that.ovenButton.setRotation(0);
+    that.kitchenSlicer.content = [];
+    that.ingredients = [];
+    that.pots = [];
+    that.actRecipe = undefined;
+}
 
 Kitchen.prototype.setBackgroundSky = function(){
 
@@ -197,6 +227,7 @@ Kitchen.prototype.addKitchenComponents = function(component){
     for(var i = 0; i < this.stoveTops.length; i++){
         var knob = new Knob(this.stage.getContext(), knobBluePrint.knobs[i].sx, knobBluePrint.knobs[i].sy, knobBluePrint.image.tileWidth, knobBluePrint.image.tileHeight, knobBluePrint.image.imagePath, knobBluePrint.knobs[i].zOrder, knobBluePrint.knobs[i].name, this.stoveTops[i]);
         this.stage.addToStage(knob);
+        this.knobs.push(knob);
     }
 }
 
@@ -414,16 +445,7 @@ Kitchen.prototype.onClick = function (event) {
         console.log(this.actRecipe.tasks[this.counter].message);
     } else if (this.actRecipe != undefined && !(event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter)){
         console.log("Sie haben das Rezept " + this.actRecipe.name + " mit " + this.points + " von " + this.actRecipe.tasks.length*10 + " möglichen Punkten abgeschlossen.");
-        this.counter = 0;
-        this.giveMainMenu(this);
-        for (var i = 0; i < this.pots.length; i++) {
-            this.stage.removeFromStage(this.pots[i]);
-        }
-        for (var i = 0; i< this.ingredients.length; i++) {
-            this.stage.removeFromStage(this.ingredients[i]);
-        }
-        this.ingredients = [];
-        this.pots = [];
+        this.setDefault(this);
     } else if(this.actRecipe == undefined) {
         console.log("Bitte waehlen Sie ein Rezept im Hauptmenue aus.");
     }
