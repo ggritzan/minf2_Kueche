@@ -81,13 +81,13 @@ function Kitchen(canvasId) {
         that.jUtilityButtons = data;
     });
     var currentTime = new Date();
-    if(currentTime.getHours() >3 && currentTime.getHours() < 9) {
+    if(currentTime.getHours() >= 3 && currentTime.getHours() <= 9) {
         var morningBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Morning.png", 0);
         this.stage.addToStage(morningBackground);
-    } else if(currentTime.getHours()>9 && currentTime.getHours()<17) {
+    } else if(currentTime.getHours()>9 && currentTime.getHours()<=17) {
         var middayBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Midday.png", 0);
         this.stage.addToStage(middayBackground);
-    } else if(currentTime.getHours()>17 && currentTime.getHours()<22) {
+    } else if(currentTime.getHours()>17 && currentTime.getHours()<=22) {
         var eveningBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Evening.png", 0);
         this.stage.addToStage(eveningBackground);
     } else {
