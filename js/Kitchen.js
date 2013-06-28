@@ -83,20 +83,10 @@ function Kitchen(canvasId) {
     Ajax.getJSON("json/utilityButtons.json?d=" + d.getTime(), function(data){
         that.jUtilityButtons = data;
     });
-    var currentTime = new Date();
-    if(currentTime.getHours() >= 3 && currentTime.getHours() <= 9) {
-        var morningBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Morning.png", 0);
-        this.stage.addToStage(morningBackground);
-    } else if(currentTime.getHours()>9 && currentTime.getHours()<=17) {
-        var middayBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Midday.png", 0);
-        this.stage.addToStage(middayBackground);
-    } else if(currentTime.getHours()>17 && currentTime.getHours()<=22) {
-        var eveningBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Evening.png", 0);
-        this.stage.addToStage(eveningBackground);
-    } else {
-        var nightBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/Night.png", 0);
-        this.stage.addToStage(nightBackground);
-    }
+
+    this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
+    this.stage.addToStage(this.backgroundSky);
+
     this.bin = new Bin(this.stage.getContext(), 25, 555, 170, 76, "images/utilities/bin.png", 5, "bin");
     var fridgeButton = new FridgeButton(this.stage.getContext(), 25, 77, 70, 71, "images/utilities/fridgeButton.png", 5, "fridgebutton");
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
@@ -139,6 +129,7 @@ Kitchen.prototype.run = function (kit) {
     kit.pots.forEach(function(pot){
         pot.update()
     });
+    kit.setBackgroundSky();
 
     // Always render after the updates
     kit.stage.render();
@@ -147,6 +138,20 @@ Kitchen.prototype.run = function (kit) {
         kit.run(kit);
     });
 
+}
+
+Kitchen.prototype.setBackgroundSky = function(){
+
+    var currentTime = new Date();
+    if(currentTime.getHours() >= 3 && currentTime.getHours() <= 9) {
+        this.backgroundSky.changeImage("images/kitchenComponents/Morning.png");
+    } else if(currentTime.getHours()>9 && currentTime.getHours()<=17) {
+        this.backgroundSky.changeImage("images/kitchenComponents/Midday.png");
+    } else if(currentTime.getHours()>17 && currentTime.getHours()<=22) {
+        this.backgroundSky.changeImage("images/kitchenComponents/Evening.png");
+    } else {
+        this.backgroundSky.changeImage("images/kitchenComponents/Night.png");
+    }
 }
 
 /**
