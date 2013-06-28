@@ -7,7 +7,7 @@
 
             "image": "/images/recipe/vegetarienBolonese.png",
 
-            "description": "Gericht das trotz des nicht vorhandenen Fleisches einfach nur lecker schmeckt",
+            "description": "A dish that is tasty - even without meat!",
 
             "ingredients": [
                 "mushrooms",
@@ -30,7 +30,7 @@
 
             "tasks": [
                 {
-                    "message": "Pilze in die Kuechenmaschine geben und grob hacken.",
+                    "message": "Put the mushrooms in the kitchen slicer and chop them roughly.",
                     "task": {
                         "utensil": "kitchenslicer",
                         "contentName": "mushrooms",
@@ -48,7 +48,7 @@
 
 
                 {
-                    "message": "Den Ofen einschalten und die gehackten Pilze auf das Backblech im Ofen legen und für kurze Zeit backen lassen!",
+                    "message": "Turn on the oven and put the chopped mushrooms on the baking sheet in the oven and let them bake for a short period of time.",
                     "task": {
                         "utensil": "oven",
                         "contentName": "mushrooms",
@@ -64,9 +64,25 @@
                         }
                     }
                 },
-
                 {
-                    "message": "Möhren in der Kuechenmaschine grob hacken.",
+                    "message": "Put the mushrooms on the counter top",
+                    "task": {
+                        "utensil": "countertop",
+                        "contentName": "mushrooms",
+                        "ingredientProperties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": true
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "off"
+
+                        }
+                    }
+                },
+                {
+                    "message": "Cut the carrots with the kitchen slicer.",
                     "task": {
                         "utensil": "kitchenslicer",
                         "contentName": "carrots",
@@ -83,7 +99,7 @@
                 },
 
                 {
-                    "message": "Die gehackten Möhren aus der Kuechemaschine nehmen und auf die Arbeitsplatte legen.",
+                    "message": "Put the cut carrots on the counter top.",
                     "task": {
                         "utensil": "countertop",
                         "contentName": "carrots",
@@ -100,7 +116,7 @@
                 },
 
                 {
-                    "message": "Staudensellerie in der Kuechenmaschine grob hacken.",
+                    "message": "Chop the celery roughly.",
                     "task": {
                         "utensil": "kitchenslicer",
                         "contentName": "celery",
@@ -117,7 +133,7 @@
                 },
 
                 {
-                    "message": "Den zerkleinerten Staudensellerie auf der Arbeitsplatte ablegen.",
+                    "message": "Put the chopped celery on the counter top.",
                     "task": {
                         "utensil": "countertop",
                         "contentName": "celery",
@@ -134,7 +150,7 @@
                 },
 
                 {
-                    "message": "Zwiebel in der Kuechenmaschine grob hacken.",
+                    "message": "Chop an onion in the kitchen slicer.",
                     "task": {
                         "utensil": "kitchenslicer",
                         "contentName": "onion",
@@ -151,7 +167,7 @@
                 },
 
                 {
-                    "message": "Die gehackte Zwiebel auf der Arbeitsplatte ablegen.",
+                    "message": "Put the chopped onions on the counter top.",
                     "task": {
                         "utensil": "countertop",
                         "contentName": "onion",
@@ -166,9 +182,42 @@
                         }
                     }
                 },
-
                 {
-                    "message": "Kochplatte anschalten und einen leeren Topf auf die Platte stellen dann Oel hineingeben.",
+                    "message": "Chop the garlic and put it on the counter top.",
+                    "task": {
+                        "utensil": "kitchenslicer",
+                        "contentName": "garlic",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "off"
+                        }
+
+                    }
+                },
+                {
+                    "message": "Chop the garlic and put it on the counter top.",
+                    "task": {
+                        "utensil": "countertop",
+                        "contentName": "garlic",
+                        "ingredientProperties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "off"
+                        }
+
+                    }
+                },
+                {
+                    "message": "Turn the stove top on and put a pot on it and add some oil.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "oil",
@@ -186,7 +235,7 @@
                 },
 
                 {
-                    "message": "Die Pilze in den Topf mit dem Öl geben.",
+                    "message": "Add the cut mushrooms to the oil.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "mushrooms",
@@ -204,7 +253,7 @@
                 },
 
                 {
-                    "message": "Die Zwiebeln in den selben Topf geben.",
+                    "message": "Add the cut onions.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "onion",
@@ -222,7 +271,7 @@
                 },
 
                 {
-                    "message": "Die Karotten in den Topf geben.",
+                    "message": "Add the carrots.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "carrots",
@@ -240,7 +289,7 @@
                 },
 
                 {
-                    "message": "Den Selerie in den Topf geben.",
+                    "message": "Add the celery.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "celery",
@@ -258,25 +307,7 @@
                 },
 
                 {
-                    "message": "Den Knoblauch von der Kuechenmaschine zerkleinern lassen.",
-                    "task": {
-                        "utensil": "kitchenslicer",
-                        "contentName": "garlic",
-                        "ingredientProperties": {
-                            "isCut": false,
-                            "isCooked": false,
-                            "isBaked": false
-                        },
-                        "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
-                        }
-
-                    }
-                },
-
-                {
-                    "message": "Den geschnittenen Knoblauch in den Topf geben.",
+                    "message": "Add the garlic.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "garlic",
@@ -294,7 +325,7 @@
                 },
 
                 {
-                    "message": "Tomatenmark in den Topf geben.",
+                    "message": "Add some tomato paste.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "tomatopaste",
@@ -312,7 +343,7 @@
                 },
 
                 {
-                    "message": "200 ml Wein in den Topf geben.",
+                    "message": "Put 200ml wine into the pot.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "wine",
@@ -330,7 +361,7 @@
                 },
 
                 {
-                    "message": "Mit der Salzmühle eine Prise Salz in den Topf geben.",
+                    "message": "Add a pinch of salt with the salt grinder.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "salt",
@@ -348,7 +379,7 @@
                 },
 
                 {
-                    "message": "Mit der Pfeffermühle eine Prise Pfeffer in den Topf geben.",
+                    "message": "Add a pinch of pepper with the pepper grinder.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "pepper",
@@ -366,7 +397,7 @@
                 },
 
                 {
-                    "message": "Eine Prise Zucker in den geben.",
+                    "message": "Add a pinch of sugar to the pot.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "sugar",
@@ -384,7 +415,7 @@
                 },
 
                 {
-                    "message": "Das Paprikapulver in den Topf geben.",
+                    "message": "Put the paprika powder in the pot.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "paprikapowder",
@@ -402,7 +433,7 @@
                 },
 
                 {
-                    "message": "Einen zusätzlichen Topf auf eine weitere Platte stellen, einschalten und das Wasser hineingeben.",
+                    "message": "Put an empty pot and another stove top, turn the stove top on and add some water.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "water",
@@ -420,7 +451,7 @@
                 },
 
                 {
-                    "message": "Eine Prise Salz in den zweiten Topf geben.",
+                    "message": "Add a pinch of salt to second pot.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "salt",
@@ -438,7 +469,7 @@
                 },
 
                 {
-                    "message": "Die Nudeln in den zweiten Topf geben.",
+                    "message": "Add noodles to the second pot.\n When everything has cooked, the dish is ready.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "noodles",
@@ -462,7 +493,7 @@
 
             "image": "/images/recipe/vegetarienBolonese.png",
 
-            "description": "Ein leckeres Dessert",
+            "description": "A yummy desert!",
 
             "ingredients": [
                 "water",
@@ -475,7 +506,7 @@
 
             "tasks": [
                 {
-                    "message": "Einen Topf auf eine erhitzte Herdpallte stellen und Wasser hineingeben",
+                    "message": "Put a pot on a heated stove top and add some water to it.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "water",
@@ -491,7 +522,7 @@
                     }
 
                 }, {
-                    "message": "Eine Tafel Schokolade in der Küchenmaschine zerhacken",
+                    "message": "Chop a bar of chocolate in the kitchen slicer.",
                     "task": {
                         "utensil": "kitchenslicer",
                         "contentName": "chocolate",
@@ -507,7 +538,7 @@
                     }
 
                 },{
-                    "message": "Die zerhackte Schokolade in den Topf geben",
+                    "message": "Put the chopped chocolate in the pot with the water.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "chocolate",
@@ -523,7 +554,7 @@
                     }
 
                 },{
-                    "message": "Eine Portion Sahne in den Pot geben",
+                    "message": "Add a portion of cream.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "cream",
@@ -539,7 +570,7 @@
                     }
 
                 },{
-                    "message": "Ein Eiweiß in den Topf geben",
+                    "message": "Add egg white.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "eggwhite",
@@ -555,7 +586,7 @@
                     }
 
                 },{
-                    "message": "Ein Eigelb in den Topf geben",
+                    "message": "Add yolk.\nWhen everything has melted and mixed well, the dish is ready to serve.",
                     "task": {
                         "utensil": "pot",
                         "contentName": "yolk",
@@ -571,6 +602,251 @@
                     }
 
                 }
+
+            ]
+        },
+        {
+            "name": "Pilaf",
+
+            "image": "/images/recipe/vegetarienBolonese.png",
+
+            "description": "A Middle Eastern rice dish!",
+
+            "ingredients": [
+                "basmatiRice",
+                "water",
+                "peas",
+                "onion",
+                "butter",
+                "masalaMix",
+                "garlic",
+                "lemonJuice",
+                "cardamom"
+            ],
+
+            "tasks": [
+                {
+                    "message": "Put the butter in the pot and heat it.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "butter",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "off"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Cut two onions.",
+                    "task": {
+                        "utensil": "kitchenslicer",
+                        "contentName": "onion",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "off"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Cut two onions.",
+                    "task": {
+                        "utensil": "kitchenslicer",
+                        "contentName": "onion",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "off"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Put the cut onions into the pot with the butter.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "onion",
+                        "ingredientProperties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": ["butter"],
+                            "actState": "on"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Put the cut onions into the pot with the butter.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "onion",
+                        "ingredientProperties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": ["butter", "onion"],
+                            "actState": "on"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Chop the garlic.",
+                    "task": {
+                        "utensil": "kitchenslicer",
+                        "contentName": "garlic",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": [],
+                            "actState": "off"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Add the garlic to the onions.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "garlic",
+                        "ingredientProperties": {
+                            "isCut": true,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": ["butter", "onion", "onion"],
+                            "actState": "on"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Add some lemon juice.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "lemonJuice",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": ["butter", "onion", "onion", "garlic"],
+                            "actState": "on"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Add the masala mix.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "masalaMix",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": ["butter", "onion", "onion", "garlic", "lemonJuice"],
+                            "actState": "on"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Add the peas.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "peas",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": ["butter", "onion", "onion", "garlic", "lemonJuice", "masalaMix"],
+                            "actState": "on"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Add after a few minutes the liter water.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "water",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": ["butter", "onion", "onion", "garlic", "lemonJuice", "masalaMix", "peas"],
+                            "actState": "on"
+                        }
+                    }
+
+                },
+                {
+                    "message": "When the water is boiling, add the rice.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "water",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": ["butter", "onion", "onion", "water", "masalaMix", "peas"],
+                            "actState": "on"
+                        }
+                    }
+
+                },
+                {
+                    "message": "Add the cardamom. \n Let it steep for five minutes when the water has evaporated and the dish is ready.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "cardamom",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": ["butter", "onion", "onion", "water", "masalaMix", "peas", "basmatiRice"],
+                            "actState": "on"
+                        }
+                    }
+
+                }
+
 
             ]
         }
