@@ -23,6 +23,9 @@ function Pot(context, sx, sy, w, h, imgPath, zOrder, draggable, name, animObj) {
     this.actState = this.COLD;
 
     this.soundmanager = new SoundManager();
+
+    // sounds of pot:
+    this.boilingWaterSound;
 }
 
 
@@ -54,7 +57,9 @@ Pot.prototype.cooling = function(){
         this.actTemp--;
     } else if(this.actState === this.COOLING && this.actTemp === this.MIN_TEMP){
         this.changeState(this.COLD);
-        this.soundmanager.stopSound(this.soundmanager.boilingWaterSound);
+        if(this.boilingWaterSound != undefined){
+            this.soundmanager.stopSound(this.boilingWaterSound);
+        }
     }
 }
 
@@ -63,7 +68,7 @@ Pot.prototype.heating = function(){
         this.actTemp++;
     } else if(this.actState == this.HEATING && this.actTemp == this.MAX_TEMP){
         this.changeState(this.BOILING);
-        this.soundmanager.playSound(this.soundmanager.boilingWaterSound);
+        this.boilingWaterSound = this.soundmanager.playSound('boilingWater', null);
     }
 }
 

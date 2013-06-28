@@ -27,6 +27,7 @@ Oven.prototype.clearContent = function (){
 Oven.prototype.baking = function () {
     if(this.status == this.ON && this.content[0] != undefined){
         this.content[0].isBaked = true;
+        console.log("The ingredient is baked: " + this.content[0].name + " " +this.content[0].isBaked);
     }
 }
 
