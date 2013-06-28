@@ -29,6 +29,9 @@ function Kitchen(canvasId) {
     // for callback
     var that = this;
 
+    this.mainMenuButton = new MainMenuButton(this.stage.getContext(), 550, 0, 200, 30, "images/Menu/button.png", 2500);
+    this.stage.addToStage(this.mainMenuButton);
+
     //this.menuAnim = new MenuBackground(this.stage.getContext())
     this.menuStage = new MenuBackground(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/startMenu.png", 100);
     this.menuButton1 = new MenuButton(this.stage.getContext(), 500, 300, 200, 60, "images/Menu/menuButton.png", 101, 0);
@@ -221,6 +224,11 @@ Kitchen.prototype.addUtilities = function(utility){
     });
 }
 
+Kitchen.prototype.giveMainMenu = function (that) {
+    that.menu.forEach(function(menuElement){
+    that.stage.addToStage(menuElement);
+    });
+}
 /**
  * The function 'addIngredient' renders the specific ingredients needed for the current recipe to the stage.
  * As parameters it expects the JSON file with the data of all the ingredients and the fridge array with the
@@ -315,6 +323,10 @@ Kitchen.prototype.onClick = function (event) {
         });
 
         this.fillFridge(this.jRecipes, event.target.recipeIndex);
+    }
+
+    if(event.target  instanceof MainMenuButton) {
+        this.giveMainMenu(this);
     }
 
     if (event.target instanceof Knob) {
