@@ -26,6 +26,8 @@
         {"name": "water", "imagePath": "images/IngredientButtons/water.png" },
         {"name": "butter", "imagePath": "images/IngredientButtons/butter.png" },
         {"name": "peas", "imagePath": "images/IngredientButtons/peas.png" },
-        {"name": "lemonJuice", "imagePath": "images/IngredientButtons/lemonjuice.png" }
+        {"name": "lemonJuice", "imagePath": "images/IngredientButtons/lemonjuice.png" },
+        {"name": "basmatiRice", "imagePath": "images/IngredientButtons/basmatiRice.png" },
+        {"name": "masalaMix", "imagePath": "images/IngredientButtons/masalaMix.png" }
     ]
 }
