@@ -9,10 +9,9 @@ function Kitchen(canvasId) {
     this.stage = new Stage(canvasId);
     this.soundmanager = new SoundManager();
 
-    this.points = 0;
-
     this.counter = 0;
 
+    this.points = 0;
 
     // to save the JSON data in attributes
     this.jKitchenComponents;
@@ -130,6 +129,7 @@ Kitchen.prototype.run = function (kit) {
 
     // update the objects (StoveTop, Knob, ...)
     if(kit.jRecipes != undefined && kit.actRecipe != undefined){
+        var pointString = kit.points.toString()
         var recipeManager = new RecipeManager(kit.jRecipes, kit.actRecipe, kit.counter, kit.points);
         recipeManager.render();
     }

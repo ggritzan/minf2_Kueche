@@ -13,9 +13,9 @@ function RecipeManager(jRecipes, actRecipe, counter, points){
         currentRecipe.appendChild(scoreElement);
 
         var pointsElement = document.createElement('p');
-        var points = document.createTextNode(points);
+        var pointsItem = document.createTextNode(points);
 
-        pointsElement.appendChild(points);
+        pointsElement.appendChild(pointsItem);
         currentRecipe.appendChild(pointsElement);
 
         var headlineElement = document.createElement('h1');
