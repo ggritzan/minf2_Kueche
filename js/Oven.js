@@ -65,45 +65,33 @@ Oven.prototype.behindIngredient = function(event, kitchen){
         if(actTask.utensil == "oven" && sameContent && this.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
 
             this.content.push(event.target);
+            kitchen.stage.removeFromStage(event.target);
+            kitchen.points = kitchen.points + 10;
+            kitchen.counter++;
+            console.log("You've got " + kitchen.points + " points now.");
+            var that = this;
 
-            if(this.content[0] != undefined){
+            this.soundmanager.playSound('slicer', function() {
+                that.baking();
+                kitchen.stage.addToStage(that.content[0]);
+                that.clearContent();
 
-                this.soundmanager.playSound(this.soundmanager.boilingWaterSound);
-                kitchen.stage.removeFromStage(event.target);
-                kitchen.points = kitchen.points + 10;
-                kitchen.counter++;
-                console.log("You've got " + kitchen.points + " points now.");
-                var that = this;
-
-                this.soundmanager.boilingWaterSound.addEventListener('ended', function() {
-                    that.baking();
-                    kitchen.stage.addToStage(that.content[0]);
-                    console.log("The ingredient is baked: " + that.content[0].name + that.content[0].isBaked);
-                    that.clearContent();
-
-                });
-            }
+            });
 
         }  else if (!(actTask.utensil == "oven" && sameContent && this.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
 
             this.content.push(event.target);
+            kitchen.stage.removeFromStage(event.target);
+            kitchen.points = kitchen.points - 10;
+            console.log("You've got " + kitchen.points + " points now.");
+            var that = this;
 
-            if(this.content[0] != undefined){
+            this.soundmanager.playSound('slicer', function() {
+                that.baking();
+                kitchen.stage.addToStage(that.content[0]);
+                that.clearContent();
 
-                this.soundmanager.playSound(this.soundmanager.boilingWaterSound);
-                kitchen.stage.removeFromStage(event.target);
-                kitchen.points = kitchen.points - 10;
-                console.log("You've got " + kitchen.points + " points now.");
-                var that = this;
-
-                this.soundmanager.boilingWaterSound.addEventListener('ended', function() {
-                    that.baking();
-                    kitchen.stage.addToStage(that.content[0]);
-                    console.log("The ingredient is baked: " + that.content[0].name + that.content[0].isBaked);
-                    that.clearContent();
-
-                });
-            }
+            });
         }
     }
 }
