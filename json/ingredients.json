@@ -201,6 +201,14 @@
             "name": "masalaMix",
             "sx": 235,
             "sy": 320
+        },
+        {
+            "imagePath": "images/Ingredients/cardamom.png",
+            "tileWidth": 100,
+            "tileHeight": 100,
+            "name": "cardamom",
+            "sx": 235,
+            "sy": 320
         }
 
     ]
