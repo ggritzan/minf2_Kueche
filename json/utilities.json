@@ -22,12 +22,12 @@
         },
         "kitchenSlicerBluePrint":{
             "image": {
-                "imagePath": "images/utilities/kitchenslicer.png",
-                "tileWidth": 200,
-                "tileHeight": 200
+                "imagePath": "images/utilities/kitchenSlicer.png",
+                "tileWidth": 205,
+                "tileHeight": 136
             },
             "kitchenSlicers": [
-                {"name": "kitchenSlicer", "sx": 20, "sy": 300, "zOrder": 23}
+                {"name": "kitchenSlicer", "sx": 0, "sy": 360, "zOrder": 23}
             ]
         },
         "ovenBluePrint":{
