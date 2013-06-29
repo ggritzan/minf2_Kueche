@@ -3,18 +3,22 @@
 <html>
 <head>
     <title>K&uuml;chensimulation</title>
-
+    <link rel="stylesheet" href="kitchenStyle.css">
     <script>
         window.onload = function(){
             var k = new Kitchen('kitchenCanvas');
-
         }
     </script>
-    <style>
-        div { margin:0px auto; width:1000px; height:630px;}
-    </style>
+
 </head>
 <body>
+
+
+<div >
+    <canvas id="kitchenCanvas" width="1000px" height="630px">
+        Your Browser does not support the canvas element!
+    </canvas>
+</div>
 
 <div id="currentRecipe">
 
@@ -22,12 +26,6 @@
 
 <div id="rezeptdetails">
 
-</div>
-
-<div >
-    <canvas id="kitchenCanvas" width="1000" height="630">
-        Your Browser does not support the canvas element!
-    </canvas>
 </div>
 
 <script type="text/javascript" src="js/Ajax.js"></script>
