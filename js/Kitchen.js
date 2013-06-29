@@ -93,7 +93,7 @@ function Kitchen(canvasId) {
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     this.cupboard = new Cupboard(this.stage.getContext(), 120, 75, 68, 72, "images/utilities/cupboardButton.png", 5, "cupboard");
     this.counterTop = new CounterTop(this.stage.getContext(), 643, 410, 357, 220, "images/kitchenComponents/counterTop.png", 2, "countertop");
-    this.ovenButton = new OvenButton(this.stage.getContext(), 800, 40, 58, 58, "images/utilities/knob.png", 23, "ovenButton", this.oven);
+    this.ovenButton = new OvenButton(this.stage.getContext(), 15, 215, 175, 46, "images/utilities/ovenButton.png", 23, "ovenButton", this.oven);
     this.stage.addToStage(kitchenBackground);
     this.stage.addToStage(this.fridgeButton);
     this.stage.addToStage(this.cupboard);

@@ -33,11 +33,11 @@
         "ovenBluePrint":{
             "image": {
                 "imagePath": "images/utilities/oven.png",
-                "tileWidth": 200,
-                "tileHeight": 400
+                "tileWidth": 196,
+                "tileHeight": 153
             },
             "ovens": [
-                {"name": "oven", "sx": 800, "sy": 20, "zOrder": 23}
+                {"name": "oven", "sx": 5, "sy": 207, "zOrder": 23}
             ]
         }
     }
