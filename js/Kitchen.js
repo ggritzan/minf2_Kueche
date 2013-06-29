@@ -130,7 +130,7 @@ Kitchen.prototype.run = function (kit) {
 
     // update the objects (StoveTop, Knob, ...)
     if(kit.jRecipes != undefined && kit.actRecipe != undefined){
-        var recipeManager = new RecipeManager(kit.jRecipes, kit.actRecipe, kit.counter);
+        var recipeManager = new RecipeManager(kit.jRecipes, kit.actRecipe, kit.counter, kit.points);
         recipeManager.render();
     }
 

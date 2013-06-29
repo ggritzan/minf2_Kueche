@@ -1,4 +1,4 @@
-function RecipeManager(jRecipes, actRecipe, counter){
+function RecipeManager(jRecipes, actRecipe, counter, points){
     this.render = function(){
         // Referenz auf das ul Element holen
         var currentRecipe = document.querySelector('#currentRecipe');
@@ -11,6 +11,12 @@ function RecipeManager(jRecipes, actRecipe, counter){
 
         scoreElement.appendChild(score);
         currentRecipe.appendChild(scoreElement);
+
+        var pointsElement = document.createElement('p');
+        var points = document.createTextNode(points);
+
+        pointsElement.appendChild(points);
+        currentRecipe.appendChild(pointsElement);
 
         var headlineElement = document.createElement('h1');
         var headline = document.createTextNode(actRecipe.name);
