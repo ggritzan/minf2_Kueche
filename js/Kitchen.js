@@ -504,7 +504,7 @@ Kitchen.prototype.onDragend = function (event) {
                     // does the pot meet all the property requirements for the task?
 
                     // does the clicked ingredient meet the ingredient properties of the current task?
-                    if(actTask.utensil == "pot" && potContentTrue && this.pots[i].status == actTask.utensilProperties.actState && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
+                    if(actTask.utensil == "pot" && potContentTrue && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
                         this.pots[i].content.push(event.target);
                         this.stage.removeFromStage(event.target);
                         this.points = this.points + 10;
@@ -513,7 +513,7 @@ Kitchen.prototype.onDragend = function (event) {
                         break;
 
                     // if either the pot or the ingredient do not meet the requirements
-                    } else if (!(actTask.utensil == "pot" && potContentTrue && this.pots[i].status == actTask.utensilProperties.actState && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
+                    } else if (!(actTask.utensil == "pot" && potContentTrue && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
                         this.pots[i].content.push(event.target);
                         this.stage.removeFromStage(event.target);
                         this.points = this.points - 10;
@@ -528,27 +528,9 @@ Kitchen.prototype.onDragend = function (event) {
 
             if (ingX >= kitZone.hx && ingX <= kitZone.hx + kitZone.hw && ingY >= kitZone.hy && ingY <= kitZone.hy + kitZone.hh && this.kitchenSlicer.status == this.kitchenSlicer.OFF) {
 
-                // if the kitchen slicer  content does not meet the requirements of the current task
-                var kitchenSlicerContentTrue = true;
-                if(this.kitchenSlicer.content.length <= actTask.utensilProperties.content.length){
-                    for(var l = 0; l < this.kitchenSlicer.content.length; l++){
-                        if(!(this.kitchenSlicer.content[l].name == actTask.utensilProperties.content[l])){
-                            kitchenSlicerContentTrue = false;
-                        }
-                    }
-                } else if(this.kitchenSlicer.content.length > actTask.utensilProperties.content.length){
-                    for(var l = 0; l < actTask.utensilProperties.content.length; l++){
-                        if(!(this.kitchenSlicer.content[l].name == actTask.utensilProperties.content[l])){
-                            kitchenSlicerContentTrue = false;
-                        }
-                    }
-                }
-
                 // does the kitchen slicer meet all the property requirements for the task?
-
-
                 // does the clicked ingredient meet the ingredient properties of the current task?
-                if(actTask.utensil == "kitchenslicer" && kitchenSlicerContentTrue && this.kitchenSlicer.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
+                if(actTask.utensil == "kitchenslicer" && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
 
                     this.kitchenSlicer.content.push(event.target);
                     this.kitchenSlicer.setStatus(this.kitchenSlicer.ON);
@@ -565,7 +547,7 @@ Kitchen.prototype.onDragend = function (event) {
 
                     });
 
-                }  else if (!(actTask.utensil == "kitchenslicer" && kitchenSlicerContentTrue && this.kitchenSlicer.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
+                }  else if (!(actTask.utensil == "kitchenslicer" && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
 
                     this.kitchenSlicer.content.push(event.target);
                     this.kitchenSlicer.setStatus(this.kitchenSlicer.ON);
@@ -608,7 +590,7 @@ Kitchen.prototype.onDragend = function (event) {
 
 
                 // does the clicked ingredient meet the ingredient properties of the current task?
-                if(actTask.utensil == "oven" && ovenContentTrue && this.oven.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
+                if(actTask.utensil == "oven" && ovenContentTrue && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
 
                     this.oven.content.push(event.target);
                     this.stage.removeFromStage(event.target);
@@ -624,7 +606,7 @@ Kitchen.prototype.onDragend = function (event) {
 
                     });
 
-                }  else if (!(actTask.utensil == "oven" && ovenContentTrue && this.oven.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
+                }  else if (!(actTask.utensil == "oven" && ovenContentTrue && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
 
                     this.oven.content.push(event.target);
                     this.stage.removeFromStage(event.target);

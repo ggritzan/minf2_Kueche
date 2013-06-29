@@ -40,8 +40,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
                 },
@@ -58,8 +57,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "on"
+                            "content": []
 
                         }
                     }
@@ -75,8 +73,7 @@
                             "isBaked": true
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
 
                         }
                     }
@@ -92,8 +89,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
                 },
@@ -109,8 +105,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
                 },
@@ -126,8 +121,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
                 },
@@ -143,8 +137,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
                 },
@@ -160,8 +153,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
                 },
@@ -177,8 +169,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
                 },
@@ -193,8 +184,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
 
                     }
@@ -210,8 +200,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
 
                     }
@@ -227,8 +216,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "on"
+                            "content": []
                         }
 
                     }
@@ -245,8 +233,7 @@
                             "isBaked": true
                         },
                         "utensilProperties": {
-                            "content": ["oil"],
-                            "actState": "on"
+                            "content": ["oil"]
                         }
 
                     }
@@ -263,8 +250,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms"],
-                            "actState": "on"
+                            "content": ["oil", "mushrooms"]
                         }
 
                     }
@@ -281,8 +267,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion"],
-                            "actState": "on"
+                            "content": ["oil", "mushrooms", "onion"]
                         }
 
                     }
@@ -299,8 +284,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots"],
-                            "actState": "on"
+                            "content": ["oil", "mushrooms", "onion", "carrots"]
                         }
 
                     }
@@ -317,8 +301,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery"],
-                            "actState": "on"
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery"]
                         }
 
                     }
@@ -335,8 +318,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic"],
-                            "actState": "on"
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic"]
                         }
 
                     }
@@ -353,8 +335,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste"],
-                            "actState": "on"
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste"]
                         }
 
                     }
@@ -371,8 +352,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine"],
-                            "actState": "on"
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine"]
                         }
 
                     }
@@ -389,8 +369,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt"],
-                            "actState": "on"
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt"]
                         }
 
                     }
@@ -407,8 +386,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt","pepper"],
-                            "actState": "on"
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt","pepper"]
                         }
 
                     }
@@ -425,8 +403,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt","pepper","sugar"],
-                            "actState": "on"
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt","pepper","sugar"]
                         }
 
                     }
@@ -443,8 +420,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "on"
+                            "content": []
                         }
 
                     }
@@ -461,8 +437,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["water"],
-                            "actState": "on"
+                            "content": ["water"]
                         }
 
                     }
@@ -479,8 +454,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["water","salt"],
-                            "actState": "on"
+                            "content": ["water","salt"]
                         }
 
                     }
@@ -516,8 +490,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "on"
+                            "content": []
                         }
                     }
 
@@ -532,8 +505,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
 
@@ -548,8 +520,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["water"],
-                            "actState": "on"
+                            "content": ["water"]
                         }
                     }
 
@@ -564,8 +535,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["water","chocolate"],
-                            "actState": "on"
+                            "content": ["water","chocolate"]
                         }
                     }
 
@@ -580,8 +550,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["water","chocolate","cream"],
-                            "actState": "on"
+                            "content": ["water","chocolate","cream"]
                         }
                     }
 
@@ -596,8 +565,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["water","chocolate","cream","eggwhite"],
-                            "actState": "on"
+                            "content": ["water","chocolate","cream","eggwhite"]
                         }
                     }
 
@@ -636,8 +604,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
 
@@ -653,8 +620,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
 
@@ -670,8 +636,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
 
@@ -687,8 +652,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter"],
-                            "actState": "on"
+                            "content": ["butter"]
                         }
                     }
 
@@ -704,8 +668,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter","onion"],
-                            "actState": "on"
+                            "content": ["butter","onion"]
                         }
                     }
 
@@ -721,8 +684,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": [],
-                            "actState": "off"
+                            "content": []
                         }
                     }
 
@@ -738,8 +700,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter","onion","onion"],
-                            "actState": "on"
+                            "content": ["butter","onion","onion"]
                         }
                     }
 
@@ -755,8 +716,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter","onion","onion","garlic"],
-                            "actState": "on"
+                            "content": ["butter","onion","onion","garlic"]
                         }
                     }
 
@@ -772,8 +732,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter","onion","onion","garlic","lemonJuice"],
-                            "actState": "on"
+                            "content": ["butter","onion","onion","garlic","lemonJuice"]
                         }
                     }
 
@@ -789,8 +748,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix"],
-                            "actState": "on"
+                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix"]
                         }
                     }
 
@@ -806,8 +764,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas"],
-                            "actState": "on"
+                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas"]
                         }
                     }
 
@@ -823,8 +780,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas","water"],
-                            "actState": "on"
+                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas","water"]
                         }
                     }
 
@@ -840,8 +796,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas","water","basmatiRice"],
-                            "actState": "on"
+                            "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas","water","basmatiRice"]
                         }
                     }
 
