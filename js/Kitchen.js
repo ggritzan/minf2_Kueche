@@ -379,7 +379,6 @@ Kitchen.prototype.onClick = function (event) {
     if(event.target  instanceof MainMenuButton && event.target.status == event.target.OFF) {
         this.giveMainMenu(this);
         event.target.setStatus(event.target.ON);
-        //this.setDefault(this);
         return;
     } else if(event.target  instanceof MainMenuButton && event.target.status == event.target.ON){
         if(this.actRecipe == undefined) {
