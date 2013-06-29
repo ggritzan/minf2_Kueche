@@ -9,10 +9,9 @@ function Kitchen(canvasId) {
     this.stage = new Stage(canvasId);
     this.soundmanager = new SoundManager();
 
-    this.points = 0;
-
     this.counter = 0;
 
+    this.points = 0;
 
     // to save the JSON data in attributes
     this.jKitchenComponents;
