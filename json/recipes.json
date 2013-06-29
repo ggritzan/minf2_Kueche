@@ -343,6 +343,24 @@
                 },
 
                 {
+                    "message": "Add the peeled tomatoes.",
+                    "task": {
+                        "utensil": "pot",
+                        "contentName": "peeledtomatoes",
+                        "ingredientProperties": {
+                            "isCut": false,
+                            "isCooked": false,
+                            "isBaked": false
+                        },
+                        "utensilProperties": {
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic", "tomatopaste"],
+                            "actState": "on"
+                        }
+
+                    }
+                },
+
+                {
                     "message": "Put 200ml wine into the pot.",
                     "task": {
                         "utensil": "pot",
@@ -353,7 +371,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste"],
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste", "peeledtomatoes"],
                             "actState": "on"
                         }
 
@@ -371,7 +389,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine"],
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste", "peeledtomatoes","wine"],
                             "actState": "on"
                         }
 
@@ -389,7 +407,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt"],
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","peeledtomatoes","wine","salt"],
                             "actState": "on"
                         }
 
@@ -407,7 +425,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt","pepper"],
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","peeledtomatoes","wine","salt","pepper"],
                             "actState": "on"
                         }
 
@@ -425,7 +443,7 @@
                             "isBaked": false
                         },
                         "utensilProperties": {
-                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","wine","salt","pepper","sugar"],
+                            "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","peeledtomatoes","wine","salt","pepper","sugar"],
                             "actState": "on"
                         }
 
