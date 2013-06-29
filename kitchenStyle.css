@@ -1,15 +1,13 @@
 ﻿#kitchenCanvas {
-    width:100;
-    height:100;
 	float:left;
-    background: lightgreen;
 }
 
 #currentRecipe {
 	width:300px;
+    height:630px;
 	float:left;
 }
-#rezeptdetail {
+#rezeptdetails {
     width: 300px;
     float:left;
 }

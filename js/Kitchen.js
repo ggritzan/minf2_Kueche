@@ -149,7 +149,6 @@ Kitchen.prototype.run = function (kit) {
 
 Kitchen.prototype.setDefault = function(that) {
     that.counter = 0;
-    that.giveMainMenu(that);
     for (var i = 0; i < that.pots.length; i++) {
         that.stage.removeFromStage(that.pots[i]);
     }
@@ -178,6 +177,7 @@ Kitchen.prototype.setDefault = function(that) {
     that.utilityButtons = [];
     that.fridge = [];
     that.actRecipe = undefined;
+    that.points = 0;
 }
 
 Kitchen.prototype.setBackgroundSky = function(){
@@ -372,14 +372,14 @@ Kitchen.prototype.onClick = function (event) {
     if(event.target instanceof MenuButton){
         this.hideMainMenu(this);
         this.mainMenuButton.setStatus(this.mainMenuButton.OFF);
-
+        this.setDefault(this);
         this.fillFridge(this.jRecipes, event.target.recipeIndex);
     }
 
     if(event.target  instanceof MainMenuButton && event.target.status == event.target.OFF) {
         this.giveMainMenu(this);
         event.target.setStatus(event.target.ON);
-        this.setDefault(this);
+        //this.setDefault(this);
         return;
     } else if(event.target  instanceof MainMenuButton && event.target.status == event.target.ON){
         if(this.actRecipe == undefined) {
@@ -459,6 +459,7 @@ Kitchen.prototype.onClick = function (event) {
     } else if (this.actRecipe != undefined && !(event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter)){
         console.log("Sie haben das Rezept " + this.actRecipe.name + " mit " + this.points + " von " + this.actRecipe.tasks.length*10 + " möglichen Punkten abgeschlossen.");
         this.setDefault(this);
+        this.giveMainMenu(this);
     } else if(this.actRecipe == undefined) {
         console.log("Bitte waehlen Sie ein Rezept im Hauptmenue aus.");
     }
