@@ -1,22 +1,67 @@
-/**
- * Created with IntelliJ IDEA.
- * User: Giacomo
- * Date: 18.06.13
- * Time: 10:58
- * To change this template use File | Settings | File Templates.
- */
+function RecipeManager(jRecipes, actRecipe, counter){
+    this.render = function(){
+        // Referenz auf das ul Element holen
+        var currentRecipe = document.querySelector('#currentRecipe');
+        var rezeptDetailsElement = document.querySelector('#rezeptdetails');
 
-// Variable für alle Rezepte
-var recipes;
+        currentRecipe.innerHTML = ' ';
 
-// Laden der Rezept Daten aus der recipes.json Datei
-Ajax.getJSON("json/recipes.json", function(data){
-    recipes = data;
-});
+        var scoreElement = document.createElement('h1');
+        var score = document.createTextNode(jRecipes.recipeHeadlines.scoreHeadline);
 
-this.recipes = [];
+        scoreElement.appendChild(score);
+        currentRecipe.appendChild(scoreElement);
 
+        var headlineElement = document.createElement('h1');
+        var headline = document.createTextNode(actRecipe.name);
 
-Kitchen.prototype.addRecipes = function(recipes){
+        // text an das h1 anhängen
+        headlineElement.appendChild(headline);
 
+        // h1 ins DOM einfügen
+        currentRecipe.appendChild(headlineElement);
+
+        var ingredientsHeadlineElement = document.createElement('h2');
+        var ingredientsHeadline = document.createTextNode(jRecipes.recipeHeadlines.ingredientsHeadline);
+
+        ingredientsHeadlineElement.appendChild(ingredientsHeadline);
+        currentRecipe.appendChild(ingredientsHeadlineElement);
+
+        var ingredientListElement = document.createElement('ul');
+
+        actRecipe.ingredients.forEach(function(ingr) {
+            var listItem = document.createElement('li');
+            var ingredientText = document.createTextNode(ingr);
+            listItem.appendChild(ingredientText);
+            ingredientListElement.appendChild(listItem);
+        });
+
+        currentRecipe.appendChild(ingredientListElement);
+
+        var currentTaskHeadElement = document.createElement('h2');
+        var currentTaskHead = document.createTextNode(jRecipes.recipeHeadlines.currentTaskHeadline);
+
+        currentTaskHeadElement.appendChild(currentTaskHead);
+        currentRecipe.appendChild(currentTaskHeadElement);
+
+        var currentTaskElement = document.createElement('p');
+        var currentTaskItem = document.createTextNode(actRecipe.tasks[counter].message);
+
+        currentTaskElement.appendChild(currentTaskItem);
+        currentRecipe.appendChild(currentTaskElement);
+
+        /*// li beim Eventhandler registrieren
+        headlineElement.addEventListener('click', function() {
+
+            // alle Kinderelemente löschen
+            rezeptDetailsElement.innerHTML = ' ';
+
+            var rezeptDetails = new RecipeDetails(rezeptDetailsElement, recipe);
+
+            // rendern
+            rezeptDetails.render();
+
+        });*/
+    }
 }
+

@@ -1,10 +1,3 @@
-/**
- * Created with IntelliJ IDEA.
- * User: Giacomo
- * Date: 11.06.13
- * Time: 14:00
- * To change this template use File | Settings | File Templates.
- */
 function RecipeDetails(container, data){
     this.container = container;
     this.data = data;
@@ -24,7 +17,7 @@ function RecipeDetails(container, data){
 
         // Title
         var rezeptTitleElement = document.createElement('h2');
-        var titleText = document.createTextNode(this.data.title);
+        var titleText = document.createTextNode(this.data.name);
         rezeptTitleElement.appendChild(titleText);
 
         // ans DOM anhängen
@@ -49,7 +42,7 @@ function RecipeDetails(container, data){
 
 
         // Zutaten
-        this.data.ingredient.forEach(function(ingr) {
+        this.data.ingredients.forEach(function(ingr) {
             var listItem = document.createElement("li");
             var ingredientText = document.createTextNode(ingr);
             listItem.appendChild(ingredientText);
@@ -65,9 +58,9 @@ function RecipeDetails(container, data){
         var taskList = document.createElement("ul");
 
         //Tasks
-        this.data.task.forEach(function(task) {
+        this.data.tasks.forEach(function(task) {
             var listItem = document.createElement("li");
-            var taskText = document.createTextNode(task);
+            var taskText = document.createTextNode(task.message);
             listItem.appendChild(taskText);
             taskList.appendChild(listItem);
         });

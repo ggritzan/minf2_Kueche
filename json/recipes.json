@@ -1,9 +1,14 @@
 {
-
+    "recipeHeadlines":{
+        "scoreHeadline": "Score:",
+        "ingredientsHeadline": "Ingredients:",
+        "currentTaskHeadline": "Current Task:",
+        "recipeDetailsHeadline": "Detailed Explanation:"
+    },
 
     "recipes": [
         {
-            "name": "Vegetarische Bolognese",
+            "name": "Vegetarian Spaghetti Bolognese",
 
             "image": "/images/recipe/vegetarienBolonese.png",
 

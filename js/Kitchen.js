@@ -112,6 +112,8 @@ function Kitchen(canvasId) {
     this.stage.registerEvent('dragend', this);
 
 
+
+
     // start the animation loop
     // parameter this (kitchen itself) needed, because of the closure within the run function
     this.run(this);
@@ -127,6 +129,11 @@ function Kitchen(canvasId) {
 Kitchen.prototype.run = function (kit) {
 
     // update the objects (StoveTop, Knob, ...)
+    if(kit.jRecipes != undefined && kit.actRecipe != undefined){
+        var recipeManager = new RecipeManager(kit.jRecipes, kit.actRecipe, kit.counter);
+        recipeManager.render();
+    }
+
     kit.pots.forEach(function(pot){
         pot.update()
     });
