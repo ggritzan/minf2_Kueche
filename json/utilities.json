@@ -19,32 +19,6 @@
             "pots": [
                 {"name": "pot1", "sx": 220, "sy": 250, "zOrder": 23}
             ]
-        },
-        "kitchenSlicer":{
-            "name": "kitchenSlicer",
-            "image": {
-                "imagePath": "images/utilities/kitchenSlicer.png",
-                "tileWidth": 205,
-                "tileHeight": 136,
-                "imageWidth": 205,
-                "imageHeight": 136,
-                "sx": 0,
-                "sy": 360,
-                "zOrder": 23
-            },
-            "animations":{
-                "default": {"seq": [0], "loop": false}
-            }
-        },
-        "ovenBluePrint":{
-            "image": {
-                "imagePath": "images/utilities/oven.png",
-                "tileWidth": 196,
-                "tileHeight": 153
-            },
-            "ovens": [
-                {"name": "oven", "sx": 5, "sy": 207, "zOrder": 23}
-            ]
         }
     }
 }
