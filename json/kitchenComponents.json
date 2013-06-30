@@ -75,19 +75,64 @@
             }
         ],
 
-        "knobBluePrint": {
-            "image": {
-                "imagePath": "images/kitchenComponents/knob.png",
-                "tileWidth": 58,
-                "tileHeight": 58
+        "knobs": [
+            {
+                "name": "knob1",
+                "image": {
+                    "imagePath": "images/kitchenComponents/knob.png",
+                    "tileWidth": 58,
+                    "tileHeight": 58,
+                    "sx": 375,
+                    "sy": 530,
+                    "zOrder": 22
+                },
+                "animations":{
+                    "default": {"seq": [0], "loop": false}
+                }
             },
-            "knobs": [
-                {"name": "knob1", "sx": 375, "sy": 530, "zOrder": 22},
-                {"name": "knob2", "sx": 475, "sy": 530, "zOrder": 22},
-                {"name": "knob3", "sx": 575, "sy": 530, "zOrder": 22},
-                {"name": "knob4", "sx": 675, "sy": 530, "zOrder": 22}
-            ]
-        },
+            {
+                "name": "knob2",
+                "image": {
+                    "imagePath": "images/kitchenComponents/knob.png",
+                    "tileWidth": 58,
+                    "tileHeight": 58,
+                    "sx": 475,
+                    "sy": 530,
+                    "zOrder": 22
+                },
+                "animations":{
+                    "default": {"seq": [0], "loop": false}
+                }
+            },
+            {
+                "name": "knob3",
+                "image": {
+                    "imagePath": "images/kitchenComponents/knob.png",
+                    "tileWidth": 58,
+                    "tileHeight": 58,
+                    "sx": 575,
+                    "sy": 530,
+                    "zOrder": 22
+                },
+                "animations":{
+                    "default": {"seq": [0], "loop": false}
+                }
+            },
+            {
+                "name": "knob4",
+                "image": {
+                    "imagePath": "images/kitchenComponents/knob.png",
+                    "tileWidth": 58,
+                    "tileHeight": 58,
+                    "sx": 675,
+                    "sy": 530,
+                    "zOrder": 22
+                },
+                "animations":{
+                    "default": {"seq": [0], "loop": false}
+                }
+            }
+        ],
         "cupboardButton":{
             "name": "cupboard",
             "image": {

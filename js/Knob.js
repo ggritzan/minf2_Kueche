@@ -1,6 +1,6 @@
-function Knob(context, sx, sy, w, h, imgPath, zOrder, name, stoveTop) {
+function Knob(context, sx, sy, w, h, imgPath, zOrder, name, stoveTop, animObj) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+    VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
 
 
     this.name = name;
@@ -17,7 +17,7 @@ function Knob(context, sx, sy, w, h, imgPath, zOrder, name, stoveTop) {
 
 }
 
-Knob.prototype = Object.create(VisualRenderObject.prototype);
+Knob.prototype = Object.create(VisualRenderAnimation.prototype);
 Knob.prototype.constructor = Knob;
 
 

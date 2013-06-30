@@ -221,8 +221,8 @@ Kitchen.prototype.fillFridge = function(recipe, index){
 
 Kitchen.prototype.addKitchenComponents = function(component){
     var that = this;
-    var stoveTopBluePrint = component.kitchenComponent.stoveTops;
-    var knobBluePrint = component.kitchenComponent.knobBluePrint;
+    var stoveTops = component.kitchenComponent.stoveTops;
+    var knobs = component.kitchenComponent.knobs;
     var cupboardButtonBluePrint = component.kitchenComponent.cupboardButton;
     var fridgeButtonBluePrint = component.kitchenComponent.fridgeButton;
     var kitchenSlicer = component.kitchenComponent.kitchenSlicer;
@@ -236,14 +236,14 @@ Kitchen.prototype.addKitchenComponents = function(component){
         that.stage.addToStage(that.oven);
     });
 
-    stoveTopBluePrint.forEach(function(stoveTop){
+    stoveTops.forEach(function(stoveTop){
         var stoveTop = new StoveTop(that.stage.getContext(), stoveTop.image.sx, stoveTop.image.sy, stoveTop.image.tileWidth, stoveTop.image.tileHeight, stoveTop.image.imagePath, stoveTop.image.zOrder, stoveTop.name, stoveTop);
         that.stoveTops.push(stoveTop);
         that.stage.addToStage(stoveTop);
     });
 
     for(var i = 0; i < this.stoveTops.length; i++){
-        var knob = new Knob(this.stage.getContext(), knobBluePrint.knobs[i].sx, knobBluePrint.knobs[i].sy, knobBluePrint.image.tileWidth, knobBluePrint.image.tileHeight, knobBluePrint.image.imagePath, knobBluePrint.knobs[i].zOrder, knobBluePrint.knobs[i].name, this.stoveTops[i]);
+        var knob = new Knob(this.stage.getContext(), knobs[i].image.sx, knobs[i].image.sy, knobs[i].image.tileWidth, knobs[i].image.tileHeight, knobs[i].image.imagePath, knobs[i].image.zOrder, knobs[i].name, this.stoveTops[i], knobs[i]);
         this.stage.addToStage(knob);
         this.knobs.push(knob);
     }
