@@ -1,6 +1,6 @@
-function KitchenSlicer(context, sx, sy, w, h, imgPath, zOrder, name) {
+function KitchenSlicer(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+    VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
 
     this.name = name;
 
@@ -13,7 +13,7 @@ function KitchenSlicer(context, sx, sy, w, h, imgPath, zOrder, name) {
     this.soundmanager = new SoundManager();
 }
 
-KitchenSlicer.prototype = Object.create(VisualRenderObject.prototype);
+KitchenSlicer.prototype = Object.create(VisualRenderAnimation.prototype);
 KitchenSlicer.prototype.constructor = KitchenSlicer;
 
 KitchenSlicer.prototype.setStatus = function (status){

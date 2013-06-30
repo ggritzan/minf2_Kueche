@@ -258,20 +258,16 @@ Kitchen.prototype.addUtilities = function(utility){
     var that = this;
 
     // reference to kitchen slicer
-    var kitchenSlicerBluePrint = utility.utilities.kitchenSlicerBluePrint;
+    var kitchenSlicer = utility.utilities.kitchenSlicer;
 
     var ovenBluePrint = utility.utilities.ovenBluePrint;
 
-    kitchenSlicerBluePrint.kitchenSlicers.forEach(function(kitchenSlicer){
-        var kitchenSlicer = new KitchenSlicer(that.stage.getContext(), kitchenSlicer.sx, kitchenSlicer.sy, kitchenSlicerBluePrint.image.tileWidth, kitchenSlicerBluePrint.image.tileHeight, kitchenSlicerBluePrint.image.imagePath, kitchenSlicer.zOrder, kitchenSlicer.name);
-        that.kitchenSlicer = kitchenSlicer;
-        that.stage.addToStage(kitchenSlicer);
-    });
+    this.kitchenSlicer = new KitchenSlicer(that.stage.getContext(), kitchenSlicer.image.sx, kitchenSlicer.image.sy, kitchenSlicer.image.tileWidth, kitchenSlicer.image.tileHeight, kitchenSlicer.image.imagePath, kitchenSlicer.image.zOrder, kitchenSlicer.name, kitchenSlicer);
+    this.stage.addToStage(this.kitchenSlicer);
 
     ovenBluePrint.ovens.forEach(function(oven){
-        var oven = new Oven(that.stage.getContext(), oven.sx, oven.sy, ovenBluePrint.image.tileWidth, ovenBluePrint.image.tileHeight, ovenBluePrint.image.imagePath, oven.zOrder, oven.name);
-        that.oven = oven;
-        that.stage.addToStage(oven);
+        that.oven = new Oven(that.stage.getContext(), oven.sx, oven.sy, ovenBluePrint.image.tileWidth, ovenBluePrint.image.tileHeight, ovenBluePrint.image.imagePath, oven.zOrder, oven.name);
+        that.stage.addToStage(that.oven);
     });
 }
 

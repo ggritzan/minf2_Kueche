@@ -10,7 +10,7 @@
                 "imgHeight": 360
             },
             "animations": {
-                "default": { "seq": [0], "loop": false},
+                "default": {"seq": [0], "loop": false},
                 "cold": {"seq": [0], "loop": false},
                 "heating": {"seq": [1, 2, 3, 3, 2], "loop": true},
                 "cooling": {"seq": [1, 1, 2, 3, 2], "loop": true},
@@ -20,15 +20,21 @@
                 {"name": "pot1", "sx": 220, "sy": 250, "zOrder": 23}
             ]
         },
-        "kitchenSlicerBluePrint":{
+        "kitchenSlicer":{
+            "name": "kitchenSlicer",
             "image": {
                 "imagePath": "images/utilities/kitchenSlicer.png",
                 "tileWidth": 205,
-                "tileHeight": 136
+                "tileHeight": 136,
+                "imageWidth": 205,
+                "imageHeight": 136,
+                "sx": 0,
+                "sy": 360,
+                "zOrder": 23
             },
-            "kitchenSlicers": [
-                {"name": "kitchenSlicer", "sx": 0, "sy": 360, "zOrder": 23}
-            ]
+            "animations":{
+                "default": {"seq": [0], "loop": false}
+            }
         },
         "ovenBluePrint":{
             "image": {
