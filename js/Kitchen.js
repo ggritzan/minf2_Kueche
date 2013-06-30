@@ -30,11 +30,6 @@ function Kitchen(canvasId) {
     var that = this;
 
     this.mainMenuButton;
-    //this.mainMenuButton = new MainMenuButton(this.stage.getContext(), 555, 0, 186, 82, "images/Menu/mainmenubutton.png", 2500);
-    //this.stage.addToStage(this.mainMenuButton);
-
-    //this.menuAnim = new MenuBackground(this.stage.getContext())
-    //this.menuStage;
 
     // to save the objects rendered to the stage in arrays (arrays are used in later functions)
     this.pots = [];
@@ -47,7 +42,7 @@ function Kitchen(canvasId) {
     this.utilityButtons = [];
     this.kitchenSlicer;
     this.oven;
-    //this.bin;
+    this.bin;
 
 
     // reads the needed data from external JSON files
@@ -85,15 +80,12 @@ function Kitchen(canvasId) {
     this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
     this.stage.addToStage(this.backgroundSky);
 
-    this.bin;
     this.fridgeButton;
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     this.cupboard;
     this.counterTop = new CounterTop(this.stage.getContext(), 643, 410, 357, 220, "images/kitchenComponents/counterTop.png", 2, "countertop");
     this.ovenButton;
     this.stage.addToStage(kitchenBackground);
-   // this.stage.addToStage(this.ovenButton);
-    //this.stage.addToStage(this.bin);
     this.stage.addToStage(this.counterTop);
 
     this.menu.forEach(function(menuElement){
@@ -479,6 +471,7 @@ Kitchen.prototype.onDragend = function (event) {
     var ingX = event.target.x + event.target.width / 2;
     var ingY = event.target.y + event.target.height / 2;
     var zone = this.bin.getHitZone();
+
     if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
         this.stage.removeFromStage(event.target);
         event.target = null;
