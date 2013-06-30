@@ -376,7 +376,7 @@ Kitchen.prototype.onMouseover = function(event){
 }
 
 Kitchen.prototype.onMouseout = function(event){
-    if(event.target instanceof MainMenuButton|| event.target instanceof CupboardButton && event.target.status != event.target.ON|| event.target instanceof FridgeButton && event.target.status != event.target.ON|| event.target instanceof OvenButton && event.target.status != event.target.ON){
+    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON|| event.target instanceof FridgeButton && event.target.status != event.target.ON|| event.target instanceof OvenButton && event.target.status != event.target.ON){
         event.target.setStatus(event.target.OFF);
     }
 }
@@ -393,7 +393,7 @@ Kitchen.prototype.onClick = function (event) {
         this.fillFridge(this.jRecipes, event.target.recipeIndex);
     }
 
-    if(event.target  instanceof MainMenuButton && (event.target.status == event.target.OFF || event.target.status == event.target.ONHOVER)) {
+    if(event.target  instanceof MainMenuButton && event.target.status != event.target.ON && this.actRecipe != undefined) {
         this.giveMainMenu(this);
         event.target.setStatus(event.target.ON);
         return;
@@ -420,14 +420,14 @@ Kitchen.prototype.onClick = function (event) {
     }
 
     if(event.target instanceof OvenButton){
-        if(event.target.status == event.target.OFF || event.target.status == event.target.ONHOVER){
+        if(event.target.status != event.target.ON){
             event.target.setStatus(event.target.ON);
         } else {
             event.target.setStatus(event.target.OFF);
         }
     }
 
-    if(event.target instanceof FridgeButton && (event.target.status == event.target.OFF || event.target.status == event.target.ONHOVER)){
+    if(event.target instanceof FridgeButton && event.target.status != event.target.ON){
         event.target.setStatus(event.target.ON);
         this.addIngredientButtons(this.jIngredientButtons, this.fridge);
     } else if(event.target instanceof FridgeButton && event.target.status == event.target.ON){
@@ -437,7 +437,7 @@ Kitchen.prototype.onClick = function (event) {
         });
     }
 
-    if(event.target instanceof CupboardButton && (event.target.status == event.target.OFF || event.target.status == event.target.ONHOVER)){
+    if(event.target instanceof CupboardButton && event.target.status != event.target.ON){
         event.target.setStatus(event.target.ON);
         this.addUtilityButtons(this.jUtilityButtons);
     } else if(event.target instanceof CupboardButton && event.target.status == event.target.ON){
@@ -486,6 +486,8 @@ Kitchen.prototype.onDragging = function(event){
 
     if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
         this.bin.setStatus(this.bin.ON);
+    } else {
+        this.bin.setStatus(this.bin.OFF);
     }
 }
 
