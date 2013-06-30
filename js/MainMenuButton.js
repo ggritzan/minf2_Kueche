@@ -1,6 +1,6 @@
-function MainMenuButton(context, sx, sy, w, h, imgPath, zOrder) {
+function MainMenuButton(context, sx, sy, w, h, imgPath, zOrder, animObj) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+    VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
 
     // shows if the knob is turned off or on
     this.OFF = "off";
@@ -9,7 +9,7 @@ function MainMenuButton(context, sx, sy, w, h, imgPath, zOrder) {
 
 }
 
-MainMenuButton.prototype = Object.create(VisualRenderObject.prototype);
+MainMenuButton.prototype = Object.create(VisualRenderAnimation.prototype);
 MainMenuButton.prototype.constructor = MainMenuButton;
 
 MainMenuButton.prototype.setStatus = function (status) {

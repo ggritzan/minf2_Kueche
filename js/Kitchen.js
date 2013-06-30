@@ -14,6 +14,7 @@ function Kitchen(canvasId) {
     this.points = 0;
 
     // to save the JSON data in attributes
+    this.jMenuComponents;
     this.jKitchenComponents;
     this.jUtilities;
     this.jIngredients;
@@ -28,8 +29,9 @@ function Kitchen(canvasId) {
     // for callback
     var that = this;
 
-    this.mainMenuButton = new MainMenuButton(this.stage.getContext(), 555, 0, 186, 82, "images/Menu/mainmenubutton.png", 2500);
-    this.stage.addToStage(this.mainMenuButton);
+    this.mainMenuButton;
+    //this.mainMenuButton = new MainMenuButton(this.stage.getContext(), 555, 0, 186, 82, "images/Menu/mainmenubutton.png", 2500);
+    //this.stage.addToStage(this.mainMenuButton);
 
     //this.menuAnim = new MenuBackground(this.stage.getContext())
     this.menuStage = new MenuBackground(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/startMenu.png", 100);
@@ -57,6 +59,11 @@ function Kitchen(canvasId) {
 
 
     // reads the needed data from external JSON files
+
+    Ajax.getJSON("json/menuComponents.json?d=" + d.getTime(), function(data){
+        that.jMenuComponents = data;
+        that.addMenuComponents(that.jMenuComponents);
+    });
 
     Ajax.getJSON("json/kitchenComponents.json?d=" + d.getTime(), function (data){
         that.jKitchenComponents = data;
@@ -189,6 +196,12 @@ Kitchen.prototype.setBackgroundSky = function(){
     } else {
         this.backgroundSky.changeImage("images/kitchenComponents/Night.png");
     }
+}
+
+Kitchen.prototype.addMenuComponents = function(menuElement){
+    var mainMenuButton = menuElement.mainMenuButton;
+    this.mainMenuButton = new MainMenuButton(this.stage.getContext(), mainMenuButton.image.sx, mainMenuButton.image.sy, mainMenuButton.image.tileWidth, mainMenuButton.image.tileHeight, mainMenuButton.image.imagePath, mainMenuButton.image.zOrder, mainMenuButton);
+    this.stage.addToStage(this.mainMenuButton);
 }
 
 /**
