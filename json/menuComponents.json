@@ -13,5 +13,65 @@
         "animations":{
             "default": {"seq": [0], "loop": false}
         }
-    }
+    },
+    "menuStage":{
+        "image":{
+            "imagePath": "images/Menu/startMenu.png",
+            "tileWidth": 1000,
+            "tileHeight": 630,
+            "sx": 0,
+            "sy": 0,
+            "zOrder": 100
+        }
+    },
+    "menuButtons":[
+        {
+            "recipeIndex": 0,
+            "image":{
+                "imagePath": "images/Menu/menubutton.png",
+                "tileWidth": 200,
+                "tileHeight": 50,
+                "imgWidth": 200,
+                "imgHeight": 50,
+                "sx": 500,
+                "sy": 300,
+                "zOrder": 101
+            },
+            "animations":{
+                "default": {"seq": [0], "loop": false}
+            }
+        },
+        {
+            "recipeIndex": 1,
+            "image":{
+                "imagePath": "images/Menu/menubutton.png",
+                "tileWidth": 200,
+                "tileHeight": 50,
+                "imgWidth": 200,
+                "imgHeight": 50,
+                "sx": 500,
+                "sy": 400,
+                "zOrder": 101
+            },
+            "animations":{
+                "default": {"seq": [0], "loop": false}
+            }
+        },
+        {
+            "recipeIndex": 2,
+            "image":{
+                "imagePath": "images/Menu/menubutton.png",
+                "tileWidth": 200,
+                "tileHeight": 50,
+                "imgWidth": 200,
+                "imgHeight": 50,
+                "sx": 500,
+                "sy": 500,
+                "zOrder": 101
+            },
+            "animations":{
+                "default": {"seq": [0], "loop": false}
+            }
+        }
+    ]
 }

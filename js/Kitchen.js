@@ -34,10 +34,7 @@ function Kitchen(canvasId) {
     //this.stage.addToStage(this.mainMenuButton);
 
     //this.menuAnim = new MenuBackground(this.stage.getContext())
-    this.menuStage = new MenuBackground(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/startMenu.png", 100);
-    this.menuButton1 = new MenuButton(this.stage.getContext(), 500, 300, 200, 60, "images/Menu/menuButton.png", 101, 0);
-    this.menuButton2 = new MenuButton(this.stage.getContext(), 500, 400, 200, 60, "images/Menu/menuButton.png", 101, 1);
-    this.menuButton3 = new MenuButton(this.stage.getContext(), 500, 500, 200, 60, "images/Menu/menuButton.png", 101, 2);
+    //this.menuStage;
 
     // to save the objects rendered to the stage in arrays (arrays are used in later functions)
     this.pots = [];
@@ -51,11 +48,6 @@ function Kitchen(canvasId) {
     this.kitchenSlicer;
     this.oven;
     this.bin;
-
-    this.menu.push(this.menuStage);
-    this.menu.push(this.menuButton1);
-    this.menu.push(this.menuButton2);
-    this.menu.push(this.menuButton3);
 
 
     // reads the needed data from external JSON files
@@ -199,9 +191,23 @@ Kitchen.prototype.setBackgroundSky = function(){
 }
 
 Kitchen.prototype.addMenuComponents = function(menuElement){
+
+    var that = this;
     var mainMenuButton = menuElement.mainMenuButton;
+    var menuStage = menuElement.menuStage;
+    var menuButtons = menuElement.menuButtons;
+
     this.mainMenuButton = new MainMenuButton(this.stage.getContext(), mainMenuButton.image.sx, mainMenuButton.image.sy, mainMenuButton.image.tileWidth, mainMenuButton.image.tileHeight, mainMenuButton.image.imagePath, mainMenuButton.image.zOrder, mainMenuButton);
     this.stage.addToStage(this.mainMenuButton);
+    var mainMenuStage = new VisualRenderObject(this.stage.getContext(), menuStage.image.sx, menuStage.image.sy, menuStage.image.tileWidth, menuStage.image.tileHeight, menuStage.image.imagePath, menuStage.image.zOrder);
+    this.menu.push(mainMenuStage);
+    this.stage.addToStage(mainMenuStage);
+
+    menuButtons.forEach(function(menuButton){
+        var menuButton = new MenuButton(that.stage.getContext(), menuButton.image.sx, menuButton.image.sy, menuButton.image.tileWidth, menuButton.image.tileHeight, menuButton.image.imagePath, menuButton.image.zOrder, menuButton.recipeIndex, menuButton);
+        that.menu.push(menuButton);
+        that.stage.addToStage(menuButton);
+    });
 }
 
 /**

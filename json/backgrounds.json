@@ -1,0 +1,20 @@
+
+{
+    "background": [
+        {
+            "image":{
+                "imagePath": "images/Menu/startMenu.png",
+                "tileWidth": 1000,
+                "tileHeight": 630,
+                "imageWidth": 1000,
+                "imageHeight": 630,
+                "sx": 0,
+                "sy": 0,
+                "zOrder": 100
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false}
+            }
+        }
+    ]
+}
