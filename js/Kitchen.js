@@ -43,6 +43,7 @@ function Kitchen(canvasId) {
     this.kitchenSlicer;
     this.oven;
     this.bin;
+    this.judgement = false;
 
 
     // reads the needed data from external JSON files
@@ -119,7 +120,7 @@ function Kitchen(canvasId) {
 Kitchen.prototype.run = function (kit) {
 
     // update the objects (StoveTop, Knob, ...)
-    if(kit.jRecipes != undefined && kit.actRecipe != undefined){
+    if(kit.jRecipes != undefined && kit.actRecipe != undefined && kit.counter < kit.actRecipe.length){
         var recipeManager = new RecipeManager(kit.jRecipes, kit.actRecipe, kit.counter, kit.points);
         recipeManager.render();
     }
@@ -136,6 +137,28 @@ Kitchen.prototype.run = function (kit) {
         kit.run(kit);
     });
 
+}
+
+Kitchen.prototype.showResults = function(that) {
+    that.judgementscreen = new MenuBackground(that.stage.getContext(), 0, 0, 1000, 630, "images/Menu/judgementscreen.png",1000);
+    that.stage.addToStage(that.judgementscreen);
+    that.judgement = true;
+    console.log(100*that.points/(that.actRecipe.tasks.length*10));
+    if (that.points == that.actRecipe.tasks.length*10) {
+        that.stars = new MenuBackground(that.stage.getContext(), 300, 300, 350, 250, "images/Menu/3stars.png",1001);
+        that.stage.addToStage(that.stars);
+    } else if(100*that.points/(that.actRecipe.tasks.length*10)>=60) {
+        that.stars = new MenuBackground(that.stage.getContext(), 300, 300, 350, 250, "images/Menu/2stars.png",1001);
+        that.stage.addToStage(that.stars);
+    } else if (100*that.points/(that.actRecipe.tasks.length*10)*10>=30) {
+        that.stars = new MenuBackground(that.stage.getContext(), 300, 300, 350, 250, "images/Menu/1stars.png",1001);
+        that.stage.addToStage(that.stars);
+    } else {
+        that.stars = new MenuBackground(that.stage.getContext(), 300, 300, 350, 250, "images/Menu/0stars.png",1001);
+        that.stage.addToStage(that.stars);
+    }
+    that.dish = new MenuBackground(that.stage.getContext(), 100, 300, 350, 350, that.actRecipe.image,1002);
+    that.stage.addToStage(that.dish);
 }
 
 Kitchen.prototype.setDefault = function(that) {
@@ -169,6 +192,7 @@ Kitchen.prototype.setDefault = function(that) {
     that.fridge = [];
     that.actRecipe = undefined;
     that.points = 0;
+    that.judgement = false;
 }
 
 Kitchen.prototype.setBackgroundSky = function(){
@@ -386,6 +410,14 @@ Kitchen.prototype.onClick = function (event) {
 
     var that = this;
 
+    if(this.judgement) {
+        this.stage.removeFromStage(this.stars);
+        this.stage.removeFromStage(this.judgementscreen);
+        this.stage.removeFromStage(this.dish);
+        this.setDefault(this);
+        this.giveMainMenu(this);
+    }
+
     if(event.target instanceof MenuButton){
         this.hideMainMenu(this);
         this.mainMenuButton.setStatus(this.mainMenuButton.OFF);
@@ -472,8 +504,7 @@ Kitchen.prototype.onClick = function (event) {
         console.log(this.actRecipe.tasks[this.counter].message);
     } else if (this.actRecipe != undefined && !(event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter)){
         console.log("Sie haben das Rezept " + this.actRecipe.name + " mit " + this.points + " von " + this.actRecipe.tasks.length*10 + " möglichen Punkten abgeschlossen.");
-        this.setDefault(this);
-        this.giveMainMenu(this);
+        this.showResults(this);
     } else if(this.actRecipe == undefined) {
         console.log("Bitte waehlen Sie ein Rezept im Hauptmenue aus.");
     }
