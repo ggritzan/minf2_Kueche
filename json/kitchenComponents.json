@@ -191,9 +191,9 @@
             "name": "oven",
             "image": {
                 "imagePath": "images/kitchenComponents/oven.png",
-                "tileWidth": 206,
+                "tileWidth": 203,
                 "tileHeight": 163,
-                "imgWidth": 842,
+                "imgWidth": 812,
                 "imgHeight": 163,
                 "sx": 5,
                 "sy": 207,
