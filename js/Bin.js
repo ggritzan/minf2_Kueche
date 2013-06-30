@@ -1,9 +1,9 @@
-function Bin(context, sx, sy, w, h, imgPath, zOrder, name) {
+function Bin(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+    VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
     this.name = name;
 
 }
 
-Bin.prototype = Object.create(VisualRenderObject.prototype);
+Bin.prototype = Object.create(VisualRenderAnimation.prototype);
 Bin.prototype.constructor = Bin;

@@ -212,6 +212,22 @@
             "animations": {
                 "default": {"seq": [0], "loop": false}
             }
+        },
+        "bin":{
+            "name": "bin",
+            "image": {
+                "imagePath": "images/kitchenComponents/bin.png",
+                "tileWidth": 170,
+                "tileHeight": 76,
+                "imgWidth": 170,
+                "imgHeight": 76,
+                "sx": 25,
+                "sy": 255,
+                "zOrder": 5
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false}
+            }
         }
     }
 }

@@ -47,7 +47,7 @@ function Kitchen(canvasId) {
     this.utilityButtons = [];
     this.kitchenSlicer;
     this.oven;
-    this.bin;
+    //this.bin;
 
 
     // reads the needed data from external JSON files
@@ -85,7 +85,7 @@ function Kitchen(canvasId) {
     this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
     this.stage.addToStage(this.backgroundSky);
 
-    this.bin = new Bin(this.stage.getContext(), 25, 555, 170, 76, "images/utilities/bin.png", 5, "bin");
+    this.bin;
     this.fridgeButton;
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     this.cupboard;
@@ -93,7 +93,7 @@ function Kitchen(canvasId) {
     this.ovenButton;
     this.stage.addToStage(kitchenBackground);
    // this.stage.addToStage(this.ovenButton);
-    this.stage.addToStage(this.bin);
+    //this.stage.addToStage(this.bin);
     this.stage.addToStage(this.counterTop);
 
     this.menu.forEach(function(menuElement){
@@ -201,12 +201,10 @@ Kitchen.prototype.addMenuComponents = function(menuElement){
     this.stage.addToStage(this.mainMenuButton);
     var mainMenuStage = new VisualRenderObject(this.stage.getContext(), menuStage.image.sx, menuStage.image.sy, menuStage.image.tileWidth, menuStage.image.tileHeight, menuStage.image.imagePath, menuStage.image.zOrder);
     this.menu.push(mainMenuStage);
-    this.stage.addToStage(mainMenuStage);
 
     menuButtons.forEach(function(menuButton){
         var menuButton = new MenuButton(that.stage.getContext(), menuButton.image.sx, menuButton.image.sy, menuButton.image.tileWidth, menuButton.image.tileHeight, menuButton.image.imagePath, menuButton.image.zOrder, menuButton.recipeIndex, menuButton);
         that.menu.push(menuButton);
-        that.stage.addToStage(menuButton);
     });
 }
 
@@ -247,6 +245,10 @@ Kitchen.prototype.addKitchenComponents = function(component){
     var kitchenSlicer = component.kitchenComponent.kitchenSlicer;
     var oven = component.kitchenComponent.oven;
     var ovenButton = component.kitchenComponent.ovenButton;
+    var bin = component.kitchenComponent.bin;
+
+    this.bin = new Bin(this.stage.getContext(), bin.image.sx, bin.image.sy, bin.image.tileWidth, bin.image.tileHeight, bin.image.imagePath, bin.image.zOrder, bin.name, bin);
+    this.stage.addToStage(this.bin);
 
     this.kitchenSlicer = new KitchenSlicer(this.stage.getContext(), kitchenSlicer.image.sx, kitchenSlicer.image.sy, kitchenSlicer.image.tileWidth, kitchenSlicer.image.tileHeight, kitchenSlicer.image.imagePath, kitchenSlicer.image.zOrder, kitchenSlicer.name, kitchenSlicer);
     this.stage.addToStage(this.kitchenSlicer);
