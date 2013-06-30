@@ -175,9 +175,9 @@
             "name": "kitchenSlicer",
             "image": {
                 "imagePath": "images/kitchenComponents/kitchenSlicer.png",
-                "tileWidth": 215,
+                "tileWidth": 205,
                 "tileHeight": 136,
-                "imgWidth": 635,
+                "imgWidth": 615,
                 "imgHeight": 136,
                 "sx": 0,
                 "sy": 360,
@@ -207,9 +207,9 @@
             "name": "ovenButton",
             "image": {
                 "imagePath": "images/kitchenComponents/ovenButton.png",
-                "tileWidth": 185,
+                "tileWidth": 175,
                 "tileHeight": 41,
-                "imgWidth": 545,
+                "imgWidth": 525,
                 "imgHeight": 41,
                 "sx": 15,
                 "sy": 215,
