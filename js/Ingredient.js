@@ -1,6 +1,6 @@
-function Ingredient(context, sx, sy, w, h, imgPath, zOrder, draggable, name) {
+function Ingredient(context, sx, sy, w, h, imgPath, zOrder, draggable, name, animObj) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+    VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
 
     this.setDraggable(draggable);
     this.name = name;
@@ -12,7 +12,7 @@ function Ingredient(context, sx, sy, w, h, imgPath, zOrder, draggable, name) {
 }
 
 
-Ingredient.prototype = Object.create(VisualRenderObject.prototype);
+Ingredient.prototype = Object.create(VisualRenderAnimation.prototype);
 Ingredient.prototype.constructor = Ingredient;
 
 Ingredient.prototype.onDragendAction = function(event, kitchen){

@@ -305,7 +305,7 @@ Kitchen.prototype.addIngredient = function(ingredients, ingredientName){
 
     ingredient.forEach(function(ingredient){
         if(ingredient.name == ingredientName){
-            var ingredient = new Ingredient(that.stage.getContext(), ingredient.sx, ingredient.sy, ingredient.tileWidth, ingredient.tileHeight, ingredient.imagePath, ingredients.zOrder, ingredients.draggable, ingredient.name);
+            var ingredient = new Ingredient(that.stage.getContext(), ingredient.image.sx, ingredient.image.sy, ingredient.image.tileWidth, ingredient.image.tileHeight, ingredient.image.imagePath, ingredients.zOrder, ingredients.draggable, ingredient.name, ingredient);
             that.ingredients.push(ingredient);
             that.stage.addToStage(ingredient);
         }
