@@ -376,7 +376,7 @@ Kitchen.prototype.onMouseover = function(event){
 }
 
 Kitchen.prototype.onMouseout = function(event){
-    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON|| event.target instanceof FridgeButton && event.target.status != event.target.ON|| event.target instanceof OvenButton && event.target.status != event.target.ON){
+    if(event.target instanceof MainMenuButton|| event.target instanceof CupboardButton && event.target.status != event.target.ON|| event.target instanceof FridgeButton && event.target.status != event.target.ON|| event.target instanceof OvenButton && event.target.status != event.target.ON){
         event.target.setStatus(event.target.OFF);
     }
 }
