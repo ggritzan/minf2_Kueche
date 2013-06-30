@@ -226,10 +226,10 @@
             "name": "bin",
             "image": {
                 "imagePath": "images/kitchenComponents/bin.png",
-                "tileWidth": 180,
-                "tileHeight": 76,
-                "imgWidth": 350,
-                "imgHeight": 76,
+                "tileWidth": 169,
+                "tileHeight": 70,
+                "imgWidth": 338,
+                "imgHeight": 70,
                 "sx": 25,
                 "sy": 555,
                 "zOrder": 5
