@@ -103,6 +103,22 @@
             "animations": {
                 "default": {"seq": [0], "loop": false}
             }
+        },
+        "fridgeButton":{
+            "name": "fridgebutton",
+            "image": {
+                "imagePath": "images/kitchenComponents/fridgebutton.png",
+                "tileWidth": 70,
+                "tileHeight": 71,
+                "imgWidth": 70,
+                "imgHeight": 71,
+                "sx": 25,
+                "sy": 77,
+                "zOrder": 5
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false}
+            }
         }
     }
 }

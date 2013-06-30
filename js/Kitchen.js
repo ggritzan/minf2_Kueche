@@ -88,14 +88,12 @@ function Kitchen(canvasId) {
     this.stage.addToStage(this.backgroundSky);
 
     this.bin = new Bin(this.stage.getContext(), 25, 555, 170, 76, "images/utilities/bin.png", 5, "bin");
-    this.fridgeButton = new FridgeButton(this.stage.getContext(), 25, 77, 70, 71, "images/utilities/fridgeButton.png", 5, "fridgebutton");
+    this.fridgeButton;
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     this.cupboard;
     this.counterTop = new CounterTop(this.stage.getContext(), 643, 410, 357, 220, "images/kitchenComponents/counterTop.png", 2, "countertop");
     this.ovenButton = new OvenButton(this.stage.getContext(), 15, 215, 175, 46, "images/utilities/ovenButton.png", 23, "ovenButton", this.oven);
     this.stage.addToStage(kitchenBackground);
-    this.stage.addToStage(this.fridgeButton);
-    //this.stage.addToStage(this.cupboard);
     this.stage.addToStage(this.ovenButton);
     this.stage.addToStage(this.bin);
     this.stage.addToStage(this.counterTop);
@@ -227,6 +225,7 @@ Kitchen.prototype.addKitchenComponents = function(component){
     var stoveTopBluePrint = component.kitchenComponent.stoveTops;
     var knobBluePrint = component.kitchenComponent.knobBluePrint;
     var cupboardButtonBluePrint = component.kitchenComponent.cupboardButton;
+    var fridgeButtonBluePrint = component.kitchenComponent.fridgeButton;
 
     stoveTopBluePrint.forEach(function(stoveTop){
         var stoveTop = new StoveTop(that.stage.getContext(), stoveTop.image.sx, stoveTop.image.sy, stoveTop.image.tileWidth, stoveTop.image.tileHeight, stoveTop.image.imagePath, stoveTop.image.zOrder, stoveTop.name, stoveTop);
@@ -242,6 +241,8 @@ Kitchen.prototype.addKitchenComponents = function(component){
 
     this.cupboard = new CupboardButton(this.stage.getContext(), cupboardButtonBluePrint.image.sx, cupboardButtonBluePrint.image.sy, cupboardButtonBluePrint.image.tileWidth, cupboardButtonBluePrint.image.tileHeight, cupboardButtonBluePrint.image.imagePath, cupboardButtonBluePrint.image.zOrder, cupboardButtonBluePrint.name, cupboardButtonBluePrint);
     this.stage.addToStage(this.cupboard);
+    this.fridgeButton = new FridgeButton(this.stage.getContext(), fridgeButtonBluePrint.image.sx, fridgeButtonBluePrint.image.sy, fridgeButtonBluePrint.image.tileWidth, fridgeButtonBluePrint.image.tileHeight, fridgeButtonBluePrint.image.imagePath, fridgeButtonBluePrint.image.zOrder, fridgeButtonBluePrint.name, fridgeButtonBluePrint);
+    this.stage.addToStage(this.fridgeButton);
 }
 
 /**

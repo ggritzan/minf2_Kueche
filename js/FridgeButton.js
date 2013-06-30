@@ -1,6 +1,6 @@
-function FridgeButton(context, sx, sy, w, h, imgPath, zOrder, name) {
+function FridgeButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+    VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
     this.name = name;
 
     // shows if the button is turned off or on
@@ -9,7 +9,7 @@ function FridgeButton(context, sx, sy, w, h, imgPath, zOrder, name) {
     this.status = this.OFF;
 }
 
-FridgeButton.prototype = Object.create(VisualRenderObject.prototype);
+FridgeButton.prototype = Object.create(VisualRenderAnimation.prototype);
 FridgeButton.prototype.constructor = FridgeButton;
 
 FridgeButton.prototype.setStatus = function (status) {
