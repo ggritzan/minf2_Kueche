@@ -2,9 +2,9 @@
     "mainMenuButton":{
         "image":{
             "imagePath": "images/Menu/mainmenubutton.png",
-            "tileWidth": 186,
+            "tileWidth": 196,
             "tileHeight": 82,
-            "imgWidth": 186,
+            "imgWidth": 578,
             "imgHeight": 82,
             "sx": 555,
             "sy": 0,
