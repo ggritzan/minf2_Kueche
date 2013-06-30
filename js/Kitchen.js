@@ -90,9 +90,9 @@ function Kitchen(canvasId) {
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     this.cupboard;
     this.counterTop = new CounterTop(this.stage.getContext(), 643, 410, 357, 220, "images/kitchenComponents/counterTop.png", 2, "countertop");
-    this.ovenButton = new OvenButton(this.stage.getContext(), 15, 215, 175, 46, "images/utilities/ovenButton.png", 23, "ovenButton", this.oven);
+    this.ovenButton;
     this.stage.addToStage(kitchenBackground);
-    this.stage.addToStage(this.ovenButton);
+   // this.stage.addToStage(this.ovenButton);
     this.stage.addToStage(this.bin);
     this.stage.addToStage(this.counterTop);
 
@@ -246,12 +246,16 @@ Kitchen.prototype.addKitchenComponents = function(component){
     var fridgeButtonBluePrint = component.kitchenComponent.fridgeButton;
     var kitchenSlicer = component.kitchenComponent.kitchenSlicer;
     var oven = component.kitchenComponent.oven;
+    var ovenButton = component.kitchenComponent.ovenButton;
 
     this.kitchenSlicer = new KitchenSlicer(this.stage.getContext(), kitchenSlicer.image.sx, kitchenSlicer.image.sy, kitchenSlicer.image.tileWidth, kitchenSlicer.image.tileHeight, kitchenSlicer.image.imagePath, kitchenSlicer.image.zOrder, kitchenSlicer.name, kitchenSlicer);
     this.stage.addToStage(this.kitchenSlicer);
 
     this.oven = new Oven(this.stage.getContext(), oven.image.sx, oven.image.sy, oven.image.tileWidth, oven.image.tileHeight, oven.image.imagePath, oven.image.zOrder, oven.name, oven);
     this.stage.addToStage(this.oven);
+
+    this.ovenButton = new OvenButton(this.stage.getContext(), ovenButton.image.sx, ovenButton.image.sy, ovenButton.image.tileWidth, ovenButton.image.tileHeight, ovenButton.image.imagePath, ovenButton.image.zOrder, ovenButton.name, this.oven, ovenButton);
+    this.stage.addToStage(this.ovenButton);
 
     stoveTops.forEach(function(stoveTop){
         var stoveTop = new StoveTop(that.stage.getContext(), stoveTop.image.sx, stoveTop.image.sy, stoveTop.image.tileWidth, stoveTop.image.tileHeight, stoveTop.image.imagePath, stoveTop.image.zOrder, stoveTop.name, stoveTop);

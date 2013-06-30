@@ -1,6 +1,6 @@
-function OvenButton(context, sx, sy, w, h, imgPath, zOrder, name, oven) {
+function OvenButton(context, sx, sy, w, h, imgPath, zOrder, name, oven, animObj) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+    VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
 
 
     this.name = name;
@@ -17,7 +17,7 @@ function OvenButton(context, sx, sy, w, h, imgPath, zOrder, name, oven) {
 
 }
 
-OvenButton.prototype = Object.create(VisualRenderObject.prototype);
+OvenButton.prototype = Object.create(VisualRenderAnimation.prototype);
 OvenButton.prototype.constructor = Knob;
 
 

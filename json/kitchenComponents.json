@@ -196,6 +196,22 @@
             "animations": {
                 "default": {"seq": [0], "loop": false}
             }
+        },
+        "ovenButton":{
+            "name": "ovenButton",
+            "image": {
+                "imagePath": "images/kitchenComponents/ovenButton.png",
+                "tileWidth": 175,
+                "tileHeight": 46,
+                "imgWidth": 175,
+                "imgHeight": 46,
+                "sx": 15,
+                "sy": 215,
+                "zOrder": 23
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false}
+            }
         }
     }
 }
