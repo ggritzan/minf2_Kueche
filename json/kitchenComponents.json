@@ -77,7 +77,7 @@
 
         "knobBluePrint": {
             "image": {
-                "imagePath": "images/utilities/knob.png",
+                "imagePath": "images/kitchenComponents/knob.png",
                 "tileWidth": 58,
                 "tileHeight": 58
             },
@@ -87,6 +87,22 @@
                 {"name": "knob3", "sx": 575, "sy": 530, "zOrder": 22},
                 {"name": "knob4", "sx": 675, "sy": 530, "zOrder": 22}
             ]
+        },
+        "cupboardButton":{
+            "name": "cupboard",
+            "image": {
+                "imagePath": "images/kitchenComponents/cupboardButton.png",
+                "tileWidth": 68,
+                "tileHeight": 72,
+                "imgWidth": 68,
+                "imgHeight": 72,
+                "sx": 120,
+                "sy": 75,
+                "zOrder": 5
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false}
+            }
         }
     }
 }

@@ -90,12 +90,12 @@ function Kitchen(canvasId) {
     this.bin = new Bin(this.stage.getContext(), 25, 555, 170, 76, "images/utilities/bin.png", 5, "bin");
     this.fridgeButton = new FridgeButton(this.stage.getContext(), 25, 77, 70, 71, "images/utilities/fridgeButton.png", 5, "fridgebutton");
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
-    this.cupboard = new Cupboard(this.stage.getContext(), 120, 75, 68, 72, "images/utilities/cupboardButton.png", 5, "cupboard");
+    this.cupboard;
     this.counterTop = new CounterTop(this.stage.getContext(), 643, 410, 357, 220, "images/kitchenComponents/counterTop.png", 2, "countertop");
     this.ovenButton = new OvenButton(this.stage.getContext(), 15, 215, 175, 46, "images/utilities/ovenButton.png", 23, "ovenButton", this.oven);
     this.stage.addToStage(kitchenBackground);
     this.stage.addToStage(this.fridgeButton);
-    this.stage.addToStage(this.cupboard);
+    //this.stage.addToStage(this.cupboard);
     this.stage.addToStage(this.ovenButton);
     this.stage.addToStage(this.bin);
     this.stage.addToStage(this.counterTop);
@@ -226,6 +226,7 @@ Kitchen.prototype.addKitchenComponents = function(component){
     var that = this;
     var stoveTopBluePrint = component.kitchenComponent.stoveTops;
     var knobBluePrint = component.kitchenComponent.knobBluePrint;
+    var cupboardButtonBluePrint = component.kitchenComponent.cupboardButton;
 
     stoveTopBluePrint.forEach(function(stoveTop){
         var stoveTop = new StoveTop(that.stage.getContext(), stoveTop.image.sx, stoveTop.image.sy, stoveTop.image.tileWidth, stoveTop.image.tileHeight, stoveTop.image.imagePath, stoveTop.image.zOrder, stoveTop.name, stoveTop);
@@ -238,6 +239,9 @@ Kitchen.prototype.addKitchenComponents = function(component){
         this.stage.addToStage(knob);
         this.knobs.push(knob);
     }
+
+    this.cupboard = new CupboardButton(this.stage.getContext(), cupboardButtonBluePrint.image.sx, cupboardButtonBluePrint.image.sy, cupboardButtonBluePrint.image.tileWidth, cupboardButtonBluePrint.image.tileHeight, cupboardButtonBluePrint.image.imagePath, cupboardButtonBluePrint.image.zOrder, cupboardButtonBluePrint.name, cupboardButtonBluePrint);
+    this.stage.addToStage(this.cupboard);
 }
 
 /**
@@ -422,10 +426,10 @@ Kitchen.prototype.onClick = function (event) {
         });
     }
 
-    if(event.target instanceof Cupboard && event.target.status == event.target.OFF){
+    if(event.target instanceof CupboardButton && event.target.status == event.target.OFF){
         event.target.setStatus(event.target.ON);
         this.addUtilityButtons(this.jUtilityButtons);
-    } else if(event.target instanceof Cupboard && event.target.status == event.target.ON){
+    } else if(event.target instanceof CupboardButton && event.target.status == event.target.ON){
         this.utilityButtons.forEach(function(utilityButton){
             event.target.setStatus(event.target.OFF);
             that.stage.removeFromStage(utilityButton);
