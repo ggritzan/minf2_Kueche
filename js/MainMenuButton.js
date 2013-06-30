@@ -6,7 +6,7 @@ function MainMenuButton(context, sx, sy, w, h, imgPath, zOrder, animObj) {
     this.OFF = "off";
     this.ONHOVER = "onHover";
     this.ON = "on";
-    this.status = this.ON;
+    this.status = this.OFF;
 
 }
 
