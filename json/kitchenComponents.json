@@ -137,9 +137,9 @@
             "name": "cupboard",
             "image": {
                 "imagePath": "images/kitchenComponents/cupboardButton.png",
-                "tileWidth": 78,
-                "tileHeight": 72,
-                "imgWidth": 224,
+                "tileWidth": 68,
+                "tileHeight": 71,
+                "imgWidth": 204,
                 "imgHeight": 72,
                 "sx": 120,
                 "sy": 75,
@@ -156,10 +156,10 @@
             "name": "fridgebutton",
             "image": {
                 "imagePath": "images/kitchenComponents/fridgebutton.png",
-                "tileWidth": 80,
-                "tileHeight": 71,
-                "imgWidth": 230,
-                "imgHeight": 71,
+                "tileWidth": 70,
+                "tileHeight": 70,
+                "imgWidth": 210,
+                "imgHeight": 70,
                 "sx": 25,
                 "sy": 77,
                 "zOrder": 5
@@ -191,7 +191,7 @@
             "name": "oven",
             "image": {
                 "imagePath": "images/kitchenComponents/oven.png",
-                "tileWidth": 213,
+                "tileWidth": 206,
                 "tileHeight": 163,
                 "imgWidth": 842,
                 "imgHeight": 163,
