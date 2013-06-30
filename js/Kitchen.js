@@ -120,7 +120,7 @@ function Kitchen(canvasId) {
 Kitchen.prototype.run = function (kit) {
 
     // update the objects (StoveTop, Knob, ...)
-    if(kit.jRecipes != undefined && kit.actRecipe != undefined && kit.counter < kit.actRecipe.length){
+    if(kit.jRecipes != undefined && kit.actRecipe != undefined && kit.counter < kit.actRecipe.tasks.length){
         var recipeManager = new RecipeManager(kit.jRecipes, kit.actRecipe, kit.counter, kit.points);
         recipeManager.render();
     }
