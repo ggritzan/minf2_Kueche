@@ -21,10 +21,13 @@ StoveTop.prototype.setStatus = function (status) {
     if (this.pot != null) {
         this.pot.setStatus(this.status);
     }
-    if(this.status == this.OFF){
-        this.changeState(this.OFF);
-    } else if (this.status == this.ON){
-        this.changeState(this.ON);
+    switch(status) {
+        case this.OFF: this.changeAnimSequence("off");
+            break;
+        case this.ON: this.changeAnimSequence("on");
+            break;
+        default: this.changeAnimSequence("default");
+            break;
     }
 }
 
@@ -36,21 +39,5 @@ StoveTop.prototype.setCurrentPot = function (pot) {
         console.log("StoveTop State "+ this.status + " Pot State " + this.pot.status);
     }
 
-}
-
-/**
- * change the state of this stove top
- * @param state - the state to be set (on, off)
- */
-
-StoveTop.prototype.changeState = function(state){
-    switch(state) {
-        case this.OFF: this.changeAnimSequence("off");
-            break;
-        case this.ON: this.changeAnimSequence("on");
-            break;
-        default: this.changeAnimSequence("default");
-            break;
-    }
 }
 
