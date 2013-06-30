@@ -10,7 +10,7 @@
         {
             "name": "Vegetarian Spaghetti Bolognese",
 
-            "image": "images/recipe/vegetarienBolonese.png",
+            "image": "images/recipes/vegetarienBolonese.png",
 
             "description": "A dish that is tasty - even without meat!",
 
@@ -514,7 +514,7 @@
         {
             "name": "Mousse au Chocolate",
 
-            "image": "images/recipe/vegetarienBolonese.png",
+            "image": "images/recipes/vegetarienBolonese.png",
 
             "description": "A yummy desert!",
 
@@ -631,7 +631,7 @@
         {
             "name": "Pilaf",
 
-            "image": "images/recipe/vegetarienBolonese.png",
+            "image": "images/recipes/vegetarienBolonese.png",
 
             "description": "A Middle Eastern rice dish!",
 

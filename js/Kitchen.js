@@ -157,7 +157,7 @@ Kitchen.prototype.showResults = function(that) {
         that.stars = new MenuBackground(that.stage.getContext(), 300, 300, 350, 250, "images/Menu/0stars.png",1001);
         that.stage.addToStage(that.stars);
     }
-    that.dish = new MenuBackground(that.stage.getContext(), 100, 300, 350, 350, that.actRecipe.image,1002);
+    that.dish = new MenuBackground(that.stage.getContext(), 100, 300, 200, 500, that.actRecipe.image,1002);
     that.stage.addToStage(that.dish);
 }
 
