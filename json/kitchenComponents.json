@@ -200,7 +200,9 @@
                 "zOrder": 23
             },
             "animations": {
-                "default": {"seq": [0], "loop": false}
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "on": {"seq": [0,1,2,3], "loop": true}
             }
         },
         "ovenButton":{
@@ -235,7 +237,9 @@
                 "zOrder": 5
             },
             "animations": {
-                "default": {"seq": [0], "loop": false}
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "on": {"seq": [1], "loop": false}
             }
         }
     }

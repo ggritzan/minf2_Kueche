@@ -99,6 +99,7 @@ function Kitchen(canvasId) {
     this.stage.registerEvent('dragend', this);
     this.stage.registerEvent('mouseover', this);
     this.stage.registerEvent('mouseout', this);
+    this.stage.registerEvent('dragging', this);
 
 
 
@@ -478,6 +479,16 @@ Kitchen.prototype.onClick = function (event) {
     }
 }
 
+Kitchen.prototype.onDragging = function(event){
+    var ingX = event.target.x + event.target.width / 2;
+    var ingY = event.target.y + event.target.height / 2;
+    var zone = this.bin.getHitZone();
+
+    if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
+        this.bin.setStatus(this.bin.ON);
+    }
+}
+
 Kitchen.prototype.onDragend = function (event) {
 
     var tasks = this.actRecipe.tasks;
@@ -485,9 +496,9 @@ Kitchen.prototype.onDragend = function (event) {
     var ingY = event.target.y + event.target.height / 2;
     var zone = this.bin.getHitZone();
 
-    if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
-        this.stage.removeFromStage(event.target);
+    if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {this.stage.removeFromStage(event.target);
         event.target = null;
+        this.bin.setStatus(this.bin.OFF);
     }
 
     if (event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter) {
@@ -640,6 +651,7 @@ Kitchen.prototype.onDragend = function (event) {
                     var that = this;
 
                     this.soundmanager.playSound('slicer', function() {
+                        that.oven.changeAnimSequence("on");
                         that.oven.baking();
                         that.stage.addToStage(that.oven.content[0]);
                         that.oven.clearContent();
