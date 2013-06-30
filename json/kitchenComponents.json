@@ -171,8 +171,8 @@
                 "imagePath": "images/kitchenComponents/kitchenSlicer.png",
                 "tileWidth": 205,
                 "tileHeight": 136,
-                "imageWidth": 205,
-                "imageHeight": 136,
+                "imgWidth": 205,
+                "imgHeight": 136,
                 "sx": 0,
                 "sy": 360,
                 "zOrder": 23
@@ -181,15 +181,21 @@
                 "default": {"seq": [0], "loop": false}
             }
         },
-        "ovenBluePrint":{
+        "oven":{
+            "name": "oven",
             "image": {
                 "imagePath": "images/kitchenComponents/oven.png",
                 "tileWidth": 196,
-                "tileHeight": 153
+                "tileHeight": 153,
+                "imgWidth": 196,
+                "imgHeight": 153,
+                "sx": 5,
+                "sy": 207,
+                "zOrder": 23
             },
-            "ovens": [
-                {"name": "oven", "sx": 5, "sy": 207, "zOrder": 23}
-            ]
+            "animations": {
+                "default": {"seq": [0], "loop": false}
+            }
         }
     }
 }

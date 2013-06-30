@@ -1,6 +1,6 @@
-function Oven(context, sx, sy, w, h, imgPath, zOrder, name) {
+function Oven(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+    VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
 
     this.content = [];
 
@@ -13,7 +13,7 @@ function Oven(context, sx, sy, w, h, imgPath, zOrder, name) {
     this.soundmanager = new SoundManager();
 }
 
-Oven.prototype = Object.create(VisualRenderObject.prototype);
+Oven.prototype = Object.create(VisualRenderAnimation.prototype);
 Oven.prototype.constructor = Oven;
 
 Oven.prototype.setStatus = function (status){

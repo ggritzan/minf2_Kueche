@@ -245,15 +245,13 @@ Kitchen.prototype.addKitchenComponents = function(component){
     var cupboardButtonBluePrint = component.kitchenComponent.cupboardButton;
     var fridgeButtonBluePrint = component.kitchenComponent.fridgeButton;
     var kitchenSlicer = component.kitchenComponent.kitchenSlicer;
-    var ovenBluePrint = component.kitchenComponent.ovenBluePrint;
+    var oven = component.kitchenComponent.oven;
 
-    this.kitchenSlicer = new KitchenSlicer(that.stage.getContext(), kitchenSlicer.image.sx, kitchenSlicer.image.sy, kitchenSlicer.image.tileWidth, kitchenSlicer.image.tileHeight, kitchenSlicer.image.imagePath, kitchenSlicer.image.zOrder, kitchenSlicer.name, kitchenSlicer);
+    this.kitchenSlicer = new KitchenSlicer(this.stage.getContext(), kitchenSlicer.image.sx, kitchenSlicer.image.sy, kitchenSlicer.image.tileWidth, kitchenSlicer.image.tileHeight, kitchenSlicer.image.imagePath, kitchenSlicer.image.zOrder, kitchenSlicer.name, kitchenSlicer);
     this.stage.addToStage(this.kitchenSlicer);
 
-    ovenBluePrint.ovens.forEach(function(oven){
-        that.oven = new Oven(that.stage.getContext(), oven.sx, oven.sy, ovenBluePrint.image.tileWidth, ovenBluePrint.image.tileHeight, ovenBluePrint.image.imagePath, oven.zOrder, oven.name);
-        that.stage.addToStage(that.oven);
-    });
+    this.oven = new Oven(this.stage.getContext(), oven.image.sx, oven.image.sy, oven.image.tileWidth, oven.image.tileHeight, oven.image.imagePath, oven.image.zOrder, oven.name, oven);
+    this.stage.addToStage(this.oven);
 
     stoveTops.forEach(function(stoveTop){
         var stoveTop = new StoveTop(that.stage.getContext(), stoveTop.image.sx, stoveTop.image.sy, stoveTop.image.tileWidth, stoveTop.image.tileHeight, stoveTop.image.imagePath, stoveTop.image.zOrder, stoveTop.name, stoveTop);
