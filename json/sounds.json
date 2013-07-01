@@ -1,0 +1,28 @@
+{
+    "sounds": [
+        {
+            "name": "boilingWater",
+            "sound": "sounds/boiling-water-1.ogg"
+        },
+        {
+            "name": "slicer",
+            "sound": "sounds/kitchenslicer.ogg"
+        },
+        {
+            "name": "button",
+            "sound": "sounds/button_sound.ogg"
+        },
+        {
+            "name": "error",
+            "sound": "sounds/error_sound.ogg"
+        },
+        {
+            "name": "beam",
+            "sound": "sounds/beamsound.ogg"
+        },
+        {
+            "name": "oven",
+            "sound": "sounds/ovensound.ogg"
+        }
+    ]
+}

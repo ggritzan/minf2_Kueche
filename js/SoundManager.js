@@ -1,17 +1,26 @@
 function SoundManager () {
 
-   // this.boilingWaterSound = new Audio("sounds/kitchenslicer.ogg");
-    //this.slicingSound = new Audio("sounds/kitchenslicer.ogg");
     this.sounds = {
-        "boilingWater":[],
-        "slicer":[]
+        "boilingWater": [],
+        "slicer": [],
+        "button": [],
+        "error": [],
+        "beam": [],
+        "oven": []
     };
 
-    // schleife
-    this.sounds.boilingWater.push({"audio":new Audio("sounds/boiling-water-1.wav"), "eventListener":null });
-    this.sounds.slicer.push({"audio":new Audio("sounds/kitchenslicer.ogg"), "eventListener":null });
+    // to load the newest version of all JSONs
+    var d = new Date();
+
+    // for callback
+    var that = this;
 
 
+    Ajax.getJSON("json/sounds.json?d=" + d.getTime(), function(data){
+        data.sounds.forEach(function(sound){
+            that.sounds[sound.name].push({"audio": new Audio(sound.sound), "eventListener": null});
+        });
+    });
 
 }
 

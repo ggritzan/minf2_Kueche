@@ -23,8 +23,6 @@ function Kitchen(canvasId) {
     this.jIngredientButtons;
     this.jUtilityButtons;
 
-    // to load the newest version of all JSONs
-    var d = new Date();
 
     // for callback
     var that = this;
@@ -48,35 +46,7 @@ function Kitchen(canvasId) {
 
     // reads the needed data from external JSON files
 
-    Ajax.getJSON("json/menuComponents.json?d=" + d.getTime(), function(data){
-        that.jMenuComponents = data;
-        that.addMenuComponents(that.jMenuComponents);
-    });
-
-    Ajax.getJSON("json/kitchenComponents.json?d=" + d.getTime(), function (data){
-        that.jKitchenComponents = data;
-        that.addKitchenComponents(that.jKitchenComponents);
-    });
-
-    Ajax.getJSON("json/utilities.json?d=" + d.getTime(), function(data){
-        that.jUtilities = data;
-    });
-
-    Ajax.getJSON("json/ingredientButtons.json?d=" + d.getTime(), function(data){
-        that.jIngredientButtons = data;
-    });
-
-    Ajax.getJSON("json/ingredients.json?d=" + d.getTime(), function(data){
-        that.jIngredients = data;
-    });
-
-    Ajax.getJSON("json/recipes.json?d=" + d.getTime(), function(data){
-        that.jRecipes = data;
-    });
-
-    Ajax.getJSON("json/utilityButtons.json?d=" + d.getTime(), function(data){
-        that.jUtilityButtons = data;
-    });
+    var ajax = new AjaxManager(this);
 
     this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
     this.stage.addToStage(this.backgroundSky);
