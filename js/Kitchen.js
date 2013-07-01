@@ -48,7 +48,7 @@ function Kitchen(canvasId) {
 
     var ajax = new AjaxManager(this);
 
-    this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
+   // this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
     this.stage.addToStage(this.backgroundSky);
     this.fridgeButton;
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
@@ -89,7 +89,7 @@ Kitchen.prototype.run = function (kit) {
     kit.pots.forEach(function(pot){
         pot.update()
     });
-    kit.setBackgroundSky();
+   // kit.setBackgroundSky();
 
     // Always render after the updates
     kit.stage.render();
@@ -381,15 +381,43 @@ Kitchen.prototype.addUtilityButtons = function(utilityButtons)  {
 
 Kitchen.prototype.onMouseover = function(event){
 
-    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON || event.target instanceof FridgeButton && event.target.status != event.target.ON || event.target instanceof OvenButton && event.target.status != event.target.ON || event.target instanceof MenuButton && event.target.status != event.target.ON || event.target instanceof IngredientButton && event.target.status != event.target.ON || event.target instanceof UtilityButton && event.target.status != event.target.ON){
-        event.target.setStatus(event.target.ONHOVER);
+    if(event.target instanceof MainMenuButton || event.target instanceof CupboardButton || event.target instanceof FridgeButton || event.target instanceof OvenButton || event.target instanceof MenuButton || event.target instanceof IngredientButton || event.target instanceof UtilityButton){
+
+        document.body.style.cursor = 'pointer';
+
+        if(event.target.status != event.target.ON){
+
+            event.target.setStatus(event.target.ONHOVER);
+
+        }
+    } else if(event.target instanceof Knob || event.target instanceof Pot || event.target instanceof Ingredient){
+
+        document.body.style.cursor = 'pointer';
+
+    } else {
+
+        document.body.style.cursor = 'default';
+
     }
 }
 
 Kitchen.prototype.onMouseout = function(event){
-    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON|| event.target instanceof FridgeButton && event.target.status != event.target.ON|| event.target instanceof OvenButton && event.target.status != event.target.ON || event.target instanceof MenuButton && event.target.status != event.target.ON || event.target instanceof IngredientButton && event.target.status != event.target.ON || event.target instanceof UtilityButton && event.target.status != event.target.ON){
-        event.target.setStatus(event.target.OFF);
+
+    if(event.target instanceof MainMenuButton || event.target instanceof CupboardButton || event.target instanceof FridgeButton || event.target instanceof OvenButton || event.target instanceof MenuButton || event.target instanceof IngredientButton || event.target instanceof UtilityButton){
+
+        document.body.style.cursor = 'default';
+
+        if(event.target.status != event.target.ON){
+
+            event.target.setStatus(event.target.OFF);
+
+        }
+    } else {
+
+        document.body.style.cursor = 'default';
+
     }
+
 }
 
 
@@ -683,7 +711,7 @@ Kitchen.prototype.onDragend = function (event) {
                     console.log("You've got " + this.points + " points now.");
                     var that = this;
 
-                    this.soundmanager.playSound('slicer', function() {
+                    this.soundmanager.playSound('oven', function() {
                         that.oven.baking();
                         that.stage.addToStage(that.oven.content[0]);
                         that.oven.clearContent();
@@ -701,7 +729,7 @@ Kitchen.prototype.onDragend = function (event) {
 
                     var that = this;
 
-                    this.soundmanager.playSound('slicer', function() {
+                    this.soundmanager.playSound('oven', function() {
                         that.oven.changeAnimSequence("on");
                         that.oven.baking();
                         that.stage.addToStage(that.oven.content[0]);
@@ -737,14 +765,14 @@ Kitchen.prototype.onDragend = function (event) {
             //pot comes from free space
             if (!event.target.onPlate) {
                 //to a free stoveTop
-                if ((this.stoveTops[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
+                if ((this.stoveTops[i].pot == null) && overAPlate ) {
                     this.stoveTops[i].setCurrentPot(event.target);
                     event.target.myPlateIndex = i;
                     console.log(this.stoveTops[i].name + " now has pot " + event.target.name );
                     event.target.onPlate = true;
                     break;
                     //to an occupied stoveTop
-                } else if ((event.target != this.stoveTops[i].pot) && (this.stoveTops[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
+                } else if ((event.target != this.stoveTops[i].pot) && (this.stoveTops[i].pot != null) && overAPlate) {
                     console.log(this.stoveTops[i].name + " already has pot " + this.stoveTops[i].pot.name);
                     event.target.onPlate = false;
                     event.target.setStatus(event.target.OFF);
@@ -753,7 +781,7 @@ Kitchen.prototype.onDragend = function (event) {
                 //pot comes from stoveTop
             } else if (event.target.onPlate){
                 //to a free stoveTop
-                if ((this.stoveTops[i].pot == null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh) ) {
+                if ((this.stoveTops[i].pot == null) && overAPlate ) {
                     console.log(this.stoveTops[i].name + " now has pot " + event.target.name);
                     this.stoveTops[event.target.myPlateIndex].setCurrentPot(null);
                     event.target.myPlateIndex = null;
@@ -762,7 +790,7 @@ Kitchen.prototype.onDragend = function (event) {
                     event.target.onPlate = true;
                     break;
                     //to an occupied stoveTop
-                } else if((event.target != this.stoveTops[i].pot) && (this.stoveTops[i].pot != null) && (cx > zone.hx && cx < zone.hx + zone.hw) && (cy > zone.hy && cy < zone.hy + zone.hh)) {
+                } else if((event.target != this.stoveTops[i].pot) && (this.stoveTops[i].pot != null) && overAPlate) {
                     console.log(this.stoveTops[i].name + " already has pot " + this.stoveTops[i].pot.name);
                     this.stoveTops[event.target.myPlateIndex].setCurrentPot(null);
                     event.target.myPlateIndex = null;
@@ -772,7 +800,7 @@ Kitchen.prototype.onDragend = function (event) {
                 }
             }
         }
-        if (overAPlate == false) {
+        if (!overAPlate) {
             if (event.target.myPlateIndex != null ) {
                 this.stoveTops[event.target.myPlateIndex].setCurrentPot(null);
             }

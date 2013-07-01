@@ -22,6 +22,9 @@ function Pot(context, sx, sy, w, h, imgPath, zOrder, draggable, name, animObj) {
     this.BOILING = "boiling";
     this.actState = this.COLD;
 
+    this.onPlate = false;
+    this.myPlateIndex;
+
     this.soundmanager = new SoundManager();
 
     // sounds of pot:
