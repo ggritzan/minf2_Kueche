@@ -434,6 +434,9 @@ Kitchen.prototype.onClick = function (event) {
     }
 
     if(event.target instanceof MenuButton){
+
+        this.soundmanager.playSound('button', null);
+
         var recipeSelection = new RecipeSelectionMenu(this);
         var menu = document.getElementById('recipeMenu');
 
@@ -448,6 +451,7 @@ Kitchen.prototype.onClick = function (event) {
     }
 
     if(event.target  instanceof MainMenuButton && event.target.status != event.target.ON && this.actRecipe != undefined) {
+        this.soundmanager.playSound('button', null);
         var menu = document.getElementById('recipeMenu');
         menu.style.display = 'none';
         this.giveMainMenu(this);
@@ -460,6 +464,7 @@ Kitchen.prototype.onClick = function (event) {
 
         return;
     } else if(event.target  instanceof MainMenuButton && event.target.status == event.target.ON){
+        this.soundmanager.playSound('button', null);
         if(this.actRecipe == undefined) {
             return;
         } else {
@@ -514,10 +519,12 @@ Kitchen.prototype.onClick = function (event) {
     }
 
     if(event.target instanceof IngredientButton){
+        this.soundmanager.playSound('beam', null);
         this.addIngredient(this.jIngredients, event.target.name);
     }
 
     if(event.target instanceof UtilityButton){
+        this.soundmanager.playSound('beam', null);
         this.addUtilities(this.jUtilities, event.target.name);
     }
 
@@ -618,6 +625,7 @@ Kitchen.prototype.onDragend = function (event) {
                         this.pots[i].content.push(event.target);
                         this.stage.removeFromStage(event.target);
                         this.points = this.points - 10;
+                        this.soundmanager.playSound('error', null);
                         var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
                         recipeManager.render();
                         console.log("You've got " + this.points + " points now.");
@@ -641,6 +649,7 @@ Kitchen.prototype.onDragend = function (event) {
                     this.kitchenSlicer.content.push(event.target);
                     this.kitchenSlicer.setStatus(this.kitchenSlicer.ON);
                     this.stage.removeFromStage(event.target);
+                    this.soundmanager.playSound('beam', null);
                     this.points = this.points + 10;
                     this.counter++;
                     var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
@@ -651,6 +660,7 @@ Kitchen.prototype.onDragend = function (event) {
                     this.soundmanager.playSound('slicer', function() {
                         that.kitchenSlicer.setStatus(that.kitchenSlicer.OFF);
                         that.stage.addToStage(that.kitchenSlicer.content[0]);
+                        that.soundmanager.playSound('beam', null);
                         that.kitchenSlicer.clearContent();
 
                     });
@@ -659,8 +669,11 @@ Kitchen.prototype.onDragend = function (event) {
 
                     this.kitchenSlicer.content.push(event.target);
                     this.kitchenSlicer.setStatus(this.kitchenSlicer.ON);
+                    this.soundmanager.playSound('beam', null);
                     this.stage.removeFromStage(event.target);
                     this.points = this.points - 10;
+                    this.soundmanager.playSound('error', null);
+
                     var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
                     recipeManager.render();
                     console.log("You've got " + this.points + " points now.");
@@ -670,6 +683,7 @@ Kitchen.prototype.onDragend = function (event) {
                     this.soundmanager.playSound('slicer', function() {
                         that.kitchenSlicer.setStatus(that.kitchenSlicer.OFF);
                         that.stage.addToStage(that.kitchenSlicer.content[0]);
+                        that.soundmanager.playSound('beam', null);
                         that.kitchenSlicer.clearContent();
 
                     });
@@ -704,6 +718,7 @@ Kitchen.prototype.onDragend = function (event) {
 
                     this.oven.content.push(event.target);
                     this.stage.removeFromStage(event.target);
+                    this.soundmanager.playSound('beam', null);
                     this.points = this.points + 10;
                     this.counter++;
                     var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
@@ -714,6 +729,7 @@ Kitchen.prototype.onDragend = function (event) {
                     this.soundmanager.playSound('oven', function() {
                         that.oven.baking();
                         that.stage.addToStage(that.oven.content[0]);
+                        that.soundmanager.playSound('beam', null);
                         that.oven.clearContent();
 
                     });
@@ -722,7 +738,9 @@ Kitchen.prototype.onDragend = function (event) {
 
                     this.oven.content.push(event.target);
                     this.stage.removeFromStage(event.target);
+                    this.soundmanager.playSound('beam', null);
                     this.points = this.points - 10;
+                    this.soundmanager.playSound('error', null);
                     var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
                     recipeManager.render();
                     console.log("You've got " + this.points + " points now.");
@@ -732,6 +750,7 @@ Kitchen.prototype.onDragend = function (event) {
                     this.soundmanager.playSound('oven', function() {
                         that.oven.changeAnimSequence("on");
                         that.oven.baking();
+                        that.soundmanager.playSound('beam', null);
                         that.stage.addToStage(that.oven.content[0]);
                         that.oven.clearContent();
 
