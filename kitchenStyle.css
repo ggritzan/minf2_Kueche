@@ -3,6 +3,10 @@
 	float:left;
 }
 
+#recipeMenu{
+    display: none;
+}
+
 #currentRecipe {
 	width:300px;
     height:630px;
