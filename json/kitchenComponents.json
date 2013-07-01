@@ -184,7 +184,9 @@
                 "zOrder": 23
             },
             "animations":{
-                "default": {"seq": [0], "loop": false}
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "on": {"seq": [0,1,2], "loop": true}
             }
         },
         "oven":{

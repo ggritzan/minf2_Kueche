@@ -18,6 +18,14 @@ KitchenSlicer.prototype.constructor = KitchenSlicer;
 
 KitchenSlicer.prototype.setStatus = function (status){
     this.status = status;
+    switch(status) {
+        case this.OFF: this.changeAnimSequence("off");
+            break;
+        case this.ON: this.changeAnimSequence("on");
+            break;
+        default: this.changeAnimSequence("default");
+            break;
+    }
     if(this.status == this.ON && this.content[0] != undefined){
         this.content[0].isCut = true;
         console.log("The ingredient is cut: " + this.content[0].name + " " + this.content[0].isCut);
