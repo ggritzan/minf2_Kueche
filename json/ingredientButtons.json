@@ -1,34 +1,369 @@
 {
-    "tileWidth": 50,
-    "tileHeight": 50,
-    "zOrder": 100,
     "ingredientButtons":[
 
-        {"name": "carrots","imagePath": "images/IngredientButtons/carrots.png"},
-        {"name": "celery", "imagePath": "images/IngredientButtons/celery.png"},
-        {"name": "cream", "imagePath": "images/IngredientButtons/cream.png"} ,
-        {"name": "egg", "imagePath": "images/IngredientButtons/egg.png"},
-        {"name": "garlic", "imagePath": "images/IngredientButtons/garlic.png"},
-        {"name": "mushrooms", "imagePath": "images/IngredientButtons/mushrooms.png"},
-        {"name": "noodles", "imagePath": "images/IngredientButtons/noodles.png"} ,
-        {"name": "oil", "imagePath": "images/IngredientButtons/oil.png"},
-        {"name": "onion", "imagePath": "images/IngredientButtons/onion.png"},
-        {"name": "paprikapowder", "imagePath": "images/IngredientButtons/paprikapowder.png"},
-        {"name": "peeledtomatoes", "imagePath": "images/IngredientButtons/peeledtomatoes.png"},
-        {"name": "pepper", "imagePath": "images/IngredientButtons/pepper.png"},
-        {"name": "salt", "imagePath": "images/IngredientButtons/salt.png"},
-        {"name": "sugar", "imagePath": "images/IngredientButtons/sugar.png"},
-        {"name": "tomatopaste", "imagePath": "images/IngredientButtons/tomatopaste.png"},
-        {"name": "yolk", "imagePath": "images/IngredientButtons/eggyellow.png"},
-        {"name": "wine", "imagePath": "images/IngredientButtons/wine.png" },
-        {"name": "chocolate", "imagePath": "images/IngredientButtons/chocolate.png" },
-        {"name": "eggwhite", "imagePath": "images/IngredientButtons/eggwhite.png" },
-        {"name": "water", "imagePath": "images/IngredientButtons/water.png" },
-        {"name": "butter", "imagePath": "images/IngredientButtons/butter.png" },
-        {"name": "peas", "imagePath": "images/IngredientButtons/peas.png" },
-        {"name": "lemonJuice", "imagePath": "images/IngredientButtons/lemonjuice.png" },
-        {"name": "basmatiRice", "imagePath": "images/IngredientButtons/basmatiRice.png" },
-        {"name": "masalaMix", "imagePath": "images/IngredientButtons/masalaMix.png" },
-        {"name": "cardamom", "imagePath": "images/IngredientButtons/cardamom.png"}
+        {"name": "carrots",
+            "image": {
+                "imagePath": "images/IngredientButtons/carrots.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+            },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "celery",
+            "image": {
+                "imagePath": "images/IngredientButtons/celery.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+            },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "cream",
+            "image": {
+            "imagePath": "images/IngredientButtons/cream.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "egg",
+            "image": {
+            "imagePath": "images/IngredientButtons/egg.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "garlic",
+            "image": {
+            "imagePath": "images/IngredientButtons/garlic.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "mushrooms",
+            "image": {
+            "imagePath": "images/IngredientButtons/mushrooms.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "noodles",
+            "image": {
+            "imagePath": "images/IngredientButtons/noodles.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "oil",
+            "image": {
+            "imagePath": "images/IngredientButtons/oil.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "onion",
+            "image": {
+            "imagePath": "images/IngredientButtons/onion.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "paprikapowder",
+            "image": {
+            "imagePath": "images/IngredientButtons/paprikapowder.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "peeledtomatoes",
+            "image": {
+            "imagePath": "images/IngredientButtons/peeledtomatoes.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "pepper",
+            "image": {
+            "imagePath": "images/IngredientButtons/pepper.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "salt",
+            "image": {
+            "imagePath": "images/IngredientButtons/salt.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "sugar",
+            "image": {
+            "imagePath": "images/IngredientButtons/sugar.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "tomatopaste",
+            "image": {
+            "imagePath": "images/IngredientButtons/tomatopaste.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "yolk",
+            "image": {
+            "imagePath": "images/IngredientButtons/eggyellow.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "wine",
+            "image": {
+            "imagePath": "images/IngredientButtons/wine.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "chocolate",
+            "image": {
+            "imagePath": "images/IngredientButtons/chocolate.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "eggwhite",
+            "image": {
+            "imagePath": "images/IngredientButtons/eggwhite.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "water",
+            "image": {
+            "imagePath": "images/IngredientButtons/water.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "butter",
+            "image": {
+            "imagePath": "images/IngredientButtons/butter.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "peas",
+            "image": {
+            "imagePath": "images/IngredientButtons/peas.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "lemonJuice",
+            "image": {
+            "imagePath": "images/IngredientButtons/lemonjuice.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "basmatiRice",
+            "image": {
+            "imagePath": "images/IngredientButtons/basmatiRice.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "masalaMix",
+            "image": {
+            "imagePath": "images/IngredientButtons/masalaMix.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        },
+        {"name": "cardamom",
+            "image": {
+            "imagePath": "images/IngredientButtons/cardamom.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+        },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        }
     ]
 }

@@ -1,10 +1,19 @@
 {
-    "tileWidth": 50,
-    "tileHeight": 50,
-    "zOrder": 100,
     "utilityButtons":[
 
-        {"name": "pots","imagePath": "images/IngredientButtons/pot.png"}
-
+        {"name": "pots",
+            "image": {
+                "imagePath": "images/IngredientButtons/pot.png",
+                "tileWidth": 50,
+                "tileHeight": 50,
+                "imgWidth": 100,
+                "imgHeight": 50
+            },
+            "animations":{
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [1], "loop": false}
+            }
+        }
     ]
 }

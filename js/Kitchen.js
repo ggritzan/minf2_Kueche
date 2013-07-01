@@ -167,7 +167,7 @@ Kitchen.prototype.setDefault = function(that) {
     }
     for (var i = 0; i< that.knobs.length; i++) {
         that.knobs[i].setStatus(that.knobs[i].OFF);
-        that.knobs[i].setRotation(0);
+        //that.knobs[i].stoveTops.setCurrentPot(null);
     }
     for (var i = 0; i<that.ingredientButtons.length; i++) {
         that.stage.removeFromStage(that.ingredientButtons[i]);
@@ -181,7 +181,6 @@ Kitchen.prototype.setDefault = function(that) {
     that.cupboard.setStatus(that.cupboard.OFF);
     that.oven.content = [];
     that.oven.setStatus(that.oven.OFF);
-    that.ovenButton.setRotation(0);
     that.kitchenSlicer.content = [];
     that.ingredients = [];
     that.pots = [];
@@ -343,26 +342,28 @@ Kitchen.prototype.addIngredientButtons = function(ingredientButtons, fridge){
      for(var i = 0; i < fridge.length; i++){
          for(var j = 0; j < ingredientButtons.ingredientButtons.length; j++){
              if(ingredientButtons.ingredientButtons[j].name == fridge[i]){
-                 var ingredientButton = new IngredientButton(that.stage.getContext(), x, y, ingredientButtons.tileWidth, ingredientButtons.tileHeight,ingredientButtons.ingredientButtons[j].imagePath, ingredientButtons.zOrder, fridge[i]);
+                 console.log(ingredientButtons.ingredientButtons[j].name);
+                 var ingredientButton = new IngredientButton(that.stage.getContext(), x, y, ingredientButtons.ingredientButtons[j].image.tileWidth, ingredientButtons.ingredientButtons[j].image.tileHeight,ingredientButtons.ingredientButtons[j].image.imagePath, 500, fridge[i], ingredientButtons.ingredientButtons[j]);
                  that.stage.addToStage(ingredientButton);
                  that.ingredientButtons.push(ingredientButton);
-                 x = x + (ingredientButtons.tileWidth + space);
+                 x = x + (ingredientButtons.ingredientButtons[i].image.tileWidth + space);
                  d = d + 1;
                  h = h+1;
                  if(d % 3 == 0){
                      x = 780;
-                     y = y + (ingredientButtons.tileHeight + space);
+                     y = y + (ingredientButtons.ingredientButtons[i].image.tileHeight + space);
                  }
              }
          }
      }
+
     if(h>1) {
         var h = h/3;
     } else {
         var h = h;
     }
-    var holoWidth = (ingredientButtons.tileWidth*3) + (space*3);
-    var holoHeight = (ingredientButtons.tileHeight*(h) + (space*(h+2)));
+    var holoWidth = (ingredientButtons.ingredientButtons[0].image.tileWidth*3) + (space*3);
+    var holoHeight = (ingredientButtons.ingredientButtons[0].image.tileHeight*(h) + (space*(h+2)));
     this.fridgehologramm = new MenuBackground(this.stage.getContext(), 770, 50, holoWidth, holoHeight, "images/kitchenComponents/hologramm.png", 99);
     this.stage.addToStage(this.fridgehologramm);
 }
@@ -391,32 +392,32 @@ Kitchen.prototype.addUtilityButtons = function(utilityButtons)  {
     var d = 0;
     var space = 20;
     for (var i = 0; i<utilityButtons.utilityButtons.length; i++) {
-        var utilityButton = new UtilityButton(that.stage.getContext(), x, y, utilityButtons.tileWidth, utilityButtons.tileHeight, utilityButtons.utilityButtons[i].imagePath, utilityButtons.zOrder, utilityButtons.utilityButtons[i].name);
+        var utilityButton = new UtilityButton(that.stage.getContext(), x, y, utilityButtons.utilityButtons[i].image.tileWidth, utilityButtons.utilityButtons[i].image.tileHeight, utilityButtons.utilityButtons[i].image.imagePath, 500, utilityButtons.utilityButtons[i].name, utilityButtons.utilityButtons[i]);
         that.stage.addToStage(utilityButton);
         that.utilityButtons.push(utilityButton);
-        x = x + (utilityButtons.tileWidth + space);
+        x = x + (utilityButtons.utilityButtons[i].image.tileWidth + space);
         d = d + 1;
         if(d % 3 == 0){
             x = 230;
-            y = y + (utilityButtons.tileHeight + space);
+            y = y + (utilityButtons.utilityButtons[i].image.tileHeight + space);
         }
     }
     var h = utilityButtons.utilityButtons.length;
-    var holoWidth = (utilityButtons.tileWidth*3) + (space*3);
-    var holoHeight = (utilityButtons.tileHeight*(h) + ((space*h)*2));
+    var holoWidth = (utilityButtons.utilityButtons[0].image.tileWidth*3) + (space*3);
+    var holoHeight = (utilityButtons.utilityButtons[0].image.tileHeight*(h) + ((space*h)*2));
     this.cupboardhologramm = new MenuBackground(this.stage.getContext(), 220, 50, holoWidth, holoHeight, "images/kitchenComponents/hologramm.png", 99);
     this.stage.addToStage(this.cupboardhologramm);
 }
 
 Kitchen.prototype.onMouseover = function(event){
 
-    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON || event.target instanceof FridgeButton && event.target.status != event.target.ON || event.target instanceof OvenButton && event.target.status != event.target.ON || event.target instanceof MenuButton && event.target.status != event.target.ON){
+    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON || event.target instanceof FridgeButton && event.target.status != event.target.ON || event.target instanceof OvenButton && event.target.status != event.target.ON || event.target instanceof MenuButton && event.target.status != event.target.ON || event.target instanceof IngredientButton && event.target.status != event.target.ON || event.target instanceof UtilityButton && event.target.status != event.target.ON){
         event.target.setStatus(event.target.ONHOVER);
     }
 }
 
 Kitchen.prototype.onMouseout = function(event){
-    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON|| event.target instanceof FridgeButton && event.target.status != event.target.ON|| event.target instanceof OvenButton && event.target.status != event.target.ON || event.target instanceof MenuButton && event.target.status != event.target.ON){
+    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON|| event.target instanceof FridgeButton && event.target.status != event.target.ON|| event.target instanceof OvenButton && event.target.status != event.target.ON || event.target instanceof MenuButton && event.target.status != event.target.ON || event.target instanceof IngredientButton && event.target.status != event.target.ON || event.target instanceof UtilityButton && event.target.status != event.target.ON){
         event.target.setStatus(event.target.OFF);
     }
 }
