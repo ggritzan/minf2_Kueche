@@ -25,3 +25,15 @@ Ingredient.prototype.onDragendAction = function(event, kitchen){
     kitchen.oven.behindIngredient(event, kitchen);
     kitchen.counterTop.behindIngredient(event, kitchen);
 }
+
+Ingredient.prototype.changeAnim = function(){
+    if(this.isCut && !(this.isBaked || this.isCooked)){
+         this.changeAnimSequence("rawCut");
+    } else if((this.isBaked || this.isCooked) && !this.isCut){
+         this.changeAnimSequence("cookedBaked");
+    } else if((this.isBaked || this.isCooked) && this.isCut){
+         this.changeAnimSequence("cookedBakedCut");
+    } else {
+         this.changeAnimSequence("raw");
+    }
+}

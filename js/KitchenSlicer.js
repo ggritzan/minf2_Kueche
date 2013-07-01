@@ -28,6 +28,7 @@ KitchenSlicer.prototype.setStatus = function (status){
     }
     if(this.status == this.ON && this.content[0] != undefined){
         this.content[0].isCut = true;
+        this.content[0].changeAnim();
         console.log("The ingredient is cut: " + this.content[0].name + " " + this.content[0].isCut);
     }
 }
