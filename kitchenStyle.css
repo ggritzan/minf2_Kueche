@@ -16,3 +16,8 @@
 h1 {
     margin-top: 0px;
 }
+
+#recipeMenu h2:hover {
+    cursor:pointer;
+    color:dodgerblue;
+}
