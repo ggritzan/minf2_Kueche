@@ -180,6 +180,8 @@ Kitchen.prototype.setDefault = function(that) {
     for (var i = 0; i<that.utilityButtons.length; i++) {
         that.stage.removeFromStage(that.utilityButtons[i]);
     }
+    that.stage.removeFromStage(that.fridgehologramm);
+    that.stage.removeFromStage(that.cupboardhologramm);
     that.fridgeButton.setStatus(that.fridgeButton.OFF);
     that.cupboard.setStatus(that.cupboard.OFF);
     that.oven.content = [];
@@ -337,24 +339,36 @@ Kitchen.prototype.addIngredient = function(ingredients, ingredientName){
 
 Kitchen.prototype.addIngredientButtons = function(ingredientButtons, fridge){
     var that = this;
-    var x = 30;
-    var y = 30;
+    var x = 780;
+    var y = 70;
+    var space = 20;
     var d = 0;
+    var h = 0;
      for(var i = 0; i < fridge.length; i++){
          for(var j = 0; j < ingredientButtons.ingredientButtons.length; j++){
              if(ingredientButtons.ingredientButtons[j].name == fridge[i]){
                  var ingredientButton = new IngredientButton(that.stage.getContext(), x, y, ingredientButtons.tileWidth, ingredientButtons.tileHeight,ingredientButtons.ingredientButtons[j].imagePath, ingredientButtons.zOrder, fridge[i]);
                  that.stage.addToStage(ingredientButton);
                  that.ingredientButtons.push(ingredientButton);
-                 x = x + (ingredientButtons.tileWidth + 20);
+                 x = x + (ingredientButtons.tileWidth + space);
                  d = d + 1;
-                 if(d % 5 == 0){
-                     x = 30;
-                     y = y + (ingredientButtons.tileHeight + 20);
+                 h = h+1;
+                 if(d % 3 == 0){
+                     x = 780;
+                     y = y + (ingredientButtons.tileHeight + space);
                  }
              }
          }
      }
+    if(h>1) {
+        var h = h/3;
+    } else {
+        var h = h;
+    }
+    var holoWidth = (ingredientButtons.tileWidth*3) + (space*3);
+    var holoHeight = (ingredientButtons.tileHeight*(h) + (space*(h+2)));
+    this.fridgehologramm = new MenuBackground(this.stage.getContext(), 770, 50, holoWidth, holoHeight, "images/kitchenComponents/hologramm.png", 99);
+    this.stage.addToStage(this.fridgehologramm);
 }
 
 Kitchen.prototype.addUtilities = function(utility, utilityName) {
@@ -376,20 +390,26 @@ Kitchen.prototype.addUtilities = function(utility, utilityName) {
 
 Kitchen.prototype.addUtilityButtons = function(utilityButtons)  {
     var that = this;
-    var x = 30;
-    var y = 30;
+    var x = 230;
+    var y = 70;
     var d = 0;
+    var space = 20;
     for (var i = 0; i<utilityButtons.utilityButtons.length; i++) {
         var utilityButton = new UtilityButton(that.stage.getContext(), x, y, utilityButtons.tileWidth, utilityButtons.tileHeight, utilityButtons.utilityButtons[i].imagePath, utilityButtons.zOrder, utilityButtons.utilityButtons[i].name);
         that.stage.addToStage(utilityButton);
         that.utilityButtons.push(utilityButton);
-        x = x + (utilityButtons.tileWidth + 20);
+        x = x + (utilityButtons.tileWidth + space);
         d = d + 1;
-        if(d % 5 == 0){
-            x = 30;
-            y = y + (utilityButtons.tileHeight + 20);
+        if(d % 3 == 0){
+            x = 230;
+            y = y + (utilityButtons.tileHeight + space);
         }
     }
+    var h = utilityButtons.utilityButtons.length;
+    var holoWidth = (utilityButtons.tileWidth*3) + (space*3);
+    var holoHeight = (utilityButtons.tileHeight*(h) + ((space*h)*2));
+    this.cupboardhologramm = new MenuBackground(this.stage.getContext(), 220, 50, holoWidth, holoHeight, "images/kitchenComponents/hologramm.png", 99);
+    this.stage.addToStage(this.cupboardhologramm);
 }
 
 Kitchen.prototype.onMouseover = function(event){
@@ -466,6 +486,7 @@ Kitchen.prototype.onClick = function (event) {
             event.target.setStatus(event.target.OFF);
             that.stage.removeFromStage(ingredientButton);
         });
+        that.stage.removeFromStage(that.fridgehologramm);
     }
 
     if(event.target instanceof CupboardButton && event.target.status != event.target.ON){
@@ -476,6 +497,7 @@ Kitchen.prototype.onClick = function (event) {
             event.target.setStatus(event.target.OFF);
             that.stage.removeFromStage(utilityButton);
         });
+        that.stage.removeFromStage(that.cupboardhologramm);
     }
 
     if(event.target instanceof IngredientButton){

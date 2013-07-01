@@ -1,7 +1,7 @@
 {
-    "tileWidth": 30,
-    "tileHeight": 30,
-    "zOrder": 10,
+    "tileWidth": 50,
+    "tileHeight": 50,
+    "zOrder": 100,
     "ingredientButtons":[
 
         {"name": "carrots","imagePath": "images/IngredientButtons/carrots.png"},
