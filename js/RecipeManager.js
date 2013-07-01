@@ -4,8 +4,10 @@ function RecipeManager(jRecipes, actRecipe, counter, points){
         // Referenz auf das ul Element holen
 
         var currentRecipe = document.querySelector('#currentRecipe');
+        var recipeMenu = document.querySelector('#recipeMenu');
        // var rezeptDetailsElement = document.querySelector('#rezeptdetails');
 
+        recipeMenu.innerHTML = ' ';
         currentRecipe.innerHTML = ' ';
 
         var scoreElement = document.createElement('h1');

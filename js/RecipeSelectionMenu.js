@@ -1,13 +1,7 @@
 function RecipeSelectionMenu(kit){
 
-    this.recipeNumber = 0;
-
-
 
     this.render = function(){
-
-        var that = this;
-        var rn = this.recipeNumber;
 
         var recipeMenu = document.querySelector('#recipeMenu');
         var currentRecipe = document.querySelector('#currentRecipe');
@@ -24,9 +18,6 @@ function RecipeSelectionMenu(kit){
         var recipeListElement = document.createElement('ul');
 
         kit.jRecipes.recipes.forEach(function(recipeItem){
-
-
-
 
             var recipeItemElement = document.createElement('li');
 

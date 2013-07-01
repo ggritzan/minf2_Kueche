@@ -115,10 +115,6 @@ function Kitchen(canvasId) {
 Kitchen.prototype.run = function (kit) {
 
     // update the objects (StoveTop, Knob, ...)
-    if(kit.jRecipes != undefined && kit.actRecipe != undefined && kit.counter < kit.actRecipe.tasks.length){
-        var recipeManager = new RecipeManager(kit.jRecipes, kit.actRecipe, kit.counter, kit.points);
-        recipeManager.render();
-    }
 
     kit.pots.forEach(function(pot){
         pot.update()
@@ -249,6 +245,10 @@ Kitchen.prototype.fillFridge = function(recipe, index){
     ingredients.forEach(function(ingredient){
         that.fridge.push(ingredient);
     });
+
+
+    var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+    recipeManager.render();
 
 }
 
@@ -436,21 +436,30 @@ Kitchen.prototype.onClick = function (event) {
     }
 
     if(event.target instanceof MenuButton){
-        if (event.target.name == "cookbook" && event.target.status != event.target.status.ON) {
+        var recipeSelection = new RecipeSelectionMenu(this);
+        var menu = document.getElementById('recipeMenu');
+
+        if (event.target.name == "cookbook" && event.target.status != event.target.ON && menu.style.display == 'none') {
             event.target.setStatus(event.target.ON);
-            var recipeSelection = new RecipeSelectionMenu(this);
             recipeSelection.render();
-        } else {
-            this.hideMainMenu(this);
-            this.mainMenuButton.setStatus(this.mainMenuButton.OFF);
-            this.setDefault(this);
-            this.fillFridge(this.jRecipes, event.target.recipeIndex);
+            menu.style.display = 'block';
+        } else if(event.target.name == "cookbook" && event.target.status != event.target.OFF){
+            event.target.setStatus(event.target.OFF);
+            menu.style.display = 'none';
         }
     }
 
     if(event.target  instanceof MainMenuButton && event.target.status != event.target.ON && this.actRecipe != undefined) {
+        var menu = document.getElementById('recipeMenu');
+        menu.style.display = 'none';
         this.giveMainMenu(this);
+        this.menu.forEach(function(menuComponent){
+            if(menuComponent.name == "cookbook"){
+                menuComponent.setStatus(menuComponent.OFF);
+            }
+        });
         event.target.setStatus(event.target.ON);
+
         return;
     } else if(event.target  instanceof MainMenuButton && event.target.status == event.target.ON){
         if(this.actRecipe == undefined) {
@@ -458,6 +467,8 @@ Kitchen.prototype.onClick = function (event) {
         } else {
          this.hideMainMenu(this);
             event.target.setStatus(event.target.OFF);
+            var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+            recipeManager.render();
             return;
         }
     }
@@ -599,6 +610,8 @@ Kitchen.prototype.onDragend = function (event) {
                         this.stage.removeFromStage(event.target);
                         this.points = this.points + 10;
                         this.counter++;
+                        var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+                        recipeManager.render();
                         console.log("You've got " + this.points + " points now.");
                         break;
 
@@ -607,6 +620,8 @@ Kitchen.prototype.onDragend = function (event) {
                         this.pots[i].content.push(event.target);
                         this.stage.removeFromStage(event.target);
                         this.points = this.points - 10;
+                        var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+                        recipeManager.render();
                         console.log("You've got " + this.points + " points now.");
                         break;
                     }
@@ -630,6 +645,8 @@ Kitchen.prototype.onDragend = function (event) {
                     this.stage.removeFromStage(event.target);
                     this.points = this.points + 10;
                     this.counter++;
+                    var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+                    recipeManager.render();
                     console.log("You've got " + this.points + " points now.");
                     var that = this;
 
@@ -646,6 +663,8 @@ Kitchen.prototype.onDragend = function (event) {
                     this.kitchenSlicer.setStatus(this.kitchenSlicer.ON);
                     this.stage.removeFromStage(event.target);
                     this.points = this.points - 10;
+                    var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+                    recipeManager.render();
                     console.log("You've got " + this.points + " points now.");
 
                     var that = this;
@@ -689,6 +708,8 @@ Kitchen.prototype.onDragend = function (event) {
                     this.stage.removeFromStage(event.target);
                     this.points = this.points + 10;
                     this.counter++;
+                    var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+                    recipeManager.render();
                     console.log("You've got " + this.points + " points now.");
                     var that = this;
 
@@ -704,6 +725,8 @@ Kitchen.prototype.onDragend = function (event) {
                     this.oven.content.push(event.target);
                     this.stage.removeFromStage(event.target);
                     this.points = this.points - 10;
+                    var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+                    recipeManager.render();
                     console.log("You've got " + this.points + " points now.");
 
                     var that = this;

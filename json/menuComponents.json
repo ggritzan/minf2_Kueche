@@ -62,7 +62,10 @@
                 "zOrder": 299
             },
             "animations":{
-                "default": {"seq": [0], "loop": false}
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [0], "loop": false},
+                "on": {"seq": [0], "loop": false}
             }
         },
         {
@@ -79,7 +82,10 @@
                 "zOrder": 299
             },
             "animations":{
-                "default": {"seq": [0], "loop": false}
+                "default": {"seq": [0], "loop": false},
+                "off": {"seq": [0], "loop": false},
+                "onHover": {"seq": [0], "loop": false},
+                "on": {"seq": [0], "loop": false}
             }
         }
     ]
