@@ -167,7 +167,7 @@ Kitchen.prototype.setDefault = function(that) {
     }
     for (var i = 0; i< that.knobs.length; i++) {
         that.knobs[i].setStatus(that.knobs[i].OFF);
-        //that.knobs[i].stoveTops.setCurrentPot(null);
+        that.knobs[i].stoveTop.setCurrentPot(null);
     }
     for (var i = 0; i<that.ingredientButtons.length; i++) {
         that.stage.removeFromStage(that.ingredientButtons[i]);
