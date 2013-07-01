@@ -24,7 +24,7 @@
             "tileHeight": 630,
             "sx": 0,
             "sy": 0,
-            "zOrder": 100
+            "zOrder": 251
         }
     },
     "menuButtons":[
@@ -39,7 +39,7 @@
                 "imgHeight": 265,
                 "sx": 405,
                 "sy": 250,
-                "zOrder": 201
+                "zOrder": 300
             },
             "animations":{
                 "default": {"seq": [0], "loop": false},
@@ -59,7 +59,7 @@
                 "imgHeight": 50,
                 "sx": 500,
                 "sy": 400,
-                "zOrder": 101
+                "zOrder": 299
             },
             "animations":{
                 "default": {"seq": [0], "loop": false}
@@ -76,7 +76,7 @@
                 "imgHeight": 50,
                 "sx": 500,
                 "sy": 500,
-                "zOrder": 101
+                "zOrder": 299
             },
             "animations":{
                 "default": {"seq": [0], "loop": false}

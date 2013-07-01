@@ -10,7 +10,7 @@
                 "imageHeight": 630,
                 "sx": 0,
                 "sy": 0,
-                "zOrder": 100
+                "zOrder": 501
             },
             "animations": {
                 "default": {"seq": [0], "loop": false}

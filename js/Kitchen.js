@@ -343,7 +343,7 @@ Kitchen.prototype.addIngredientButtons = function(ingredientButtons, fridge){
          for(var j = 0; j < ingredientButtons.ingredientButtons.length; j++){
              if(ingredientButtons.ingredientButtons[j].name == fridge[i]){
                  console.log(ingredientButtons.ingredientButtons[j].name);
-                 var ingredientButton = new IngredientButton(that.stage.getContext(), x, y, ingredientButtons.ingredientButtons[j].image.tileWidth, ingredientButtons.ingredientButtons[j].image.tileHeight,ingredientButtons.ingredientButtons[j].image.imagePath, 500, fridge[i], ingredientButtons.ingredientButtons[j]);
+                 var ingredientButton = new IngredientButton(that.stage.getContext(), x, y, ingredientButtons.ingredientButtons[j].image.tileWidth, ingredientButtons.ingredientButtons[j].image.tileHeight,ingredientButtons.ingredientButtons[j].image.imagePath, 250, fridge[i], ingredientButtons.ingredientButtons[j]);
                  that.stage.addToStage(ingredientButton);
                  that.ingredientButtons.push(ingredientButton);
                  x = x + (ingredientButtons.ingredientButtons[i].image.tileWidth + space);
@@ -392,7 +392,7 @@ Kitchen.prototype.addUtilityButtons = function(utilityButtons)  {
     var d = 0;
     var space = 20;
     for (var i = 0; i<utilityButtons.utilityButtons.length; i++) {
-        var utilityButton = new UtilityButton(that.stage.getContext(), x, y, utilityButtons.utilityButtons[i].image.tileWidth, utilityButtons.utilityButtons[i].image.tileHeight, utilityButtons.utilityButtons[i].image.imagePath, 500, utilityButtons.utilityButtons[i].name, utilityButtons.utilityButtons[i]);
+        var utilityButton = new UtilityButton(that.stage.getContext(), x, y, utilityButtons.utilityButtons[i].image.tileWidth, utilityButtons.utilityButtons[i].image.tileHeight, utilityButtons.utilityButtons[i].image.imagePath, 250, utilityButtons.utilityButtons[i].name, utilityButtons.utilityButtons[i]);
         that.stage.addToStage(utilityButton);
         that.utilityButtons.push(utilityButton);
         x = x + (utilityButtons.utilityButtons[i].image.tileWidth + space);
