@@ -80,10 +80,6 @@ function Kitchen(canvasId) {
 
     this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
     this.stage.addToStage(this.backgroundSky);
-
-    this.cookbookButton = new CookbookButton(this.stage.getContext(), 100, 100, 100, 100, "images/Menu/cookbookButton.png", 101);
-    this.menu.push(this.cookbookButton);
-
     this.fridgeButton;
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     this.cupboard;
@@ -224,7 +220,7 @@ Kitchen.prototype.addMenuComponents = function(menuElement){
     this.menu.push(mainMenuStage);
 
     menuButtons.forEach(function(menuButton){
-        var menuButton = new MenuButton(that.stage.getContext(), menuButton.image.sx, menuButton.image.sy, menuButton.image.tileWidth, menuButton.image.tileHeight, menuButton.image.imagePath, menuButton.image.zOrder, menuButton.recipeIndex, menuButton);
+        var menuButton = new MenuButton(that.stage.getContext(), menuButton.image.sx, menuButton.image.sy, menuButton.image.tileWidth, menuButton.image.tileHeight, menuButton.image.imagePath, menuButton.image.zOrder, menuButton, menuButton.name);
         that.menu.push(menuButton);
     });
 }
@@ -414,13 +410,13 @@ Kitchen.prototype.addUtilityButtons = function(utilityButtons)  {
 
 Kitchen.prototype.onMouseover = function(event){
 
-    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON || event.target instanceof FridgeButton && event.target.status != event.target.ON || event.target instanceof OvenButton && event.target.status != event.target.ON){
+    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON || event.target instanceof FridgeButton && event.target.status != event.target.ON || event.target instanceof OvenButton && event.target.status != event.target.ON || event.target instanceof MenuButton && event.target.status != event.target.ON){
         event.target.setStatus(event.target.ONHOVER);
     }
 }
 
 Kitchen.prototype.onMouseout = function(event){
-    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON|| event.target instanceof FridgeButton && event.target.status != event.target.ON|| event.target instanceof OvenButton && event.target.status != event.target.ON){
+    if(event.target instanceof MainMenuButton && event.target.status != event.target.ON || event.target instanceof CupboardButton && event.target.status != event.target.ON|| event.target instanceof FridgeButton && event.target.status != event.target.ON|| event.target instanceof OvenButton && event.target.status != event.target.ON || event.target instanceof MenuButton && event.target.status != event.target.ON){
         event.target.setStatus(event.target.OFF);
     }
 }
@@ -438,16 +434,17 @@ Kitchen.prototype.onClick = function (event) {
         this.giveMainMenu(this);
     }
 
-    if(event.target instanceof CookbookButton){
-        var recipeSelection = new RecipeSelectionMenu(this);
-        recipeSelection.render();
-    }
-
     if(event.target instanceof MenuButton){
-        this.hideMainMenu(this);
-        this.mainMenuButton.setStatus(this.mainMenuButton.OFF);
-        this.setDefault(this);
-        this.fillFridge(this.jRecipes, event.target.recipeIndex);
+        if (event.target.name == "cookbook" && event.target.status != event.target.status.ON) {
+            event.target.setStatus(event.target.ON);
+            var recipeSelection = new RecipeSelectionMenu(this);
+            recipeSelection.render();
+        } else {
+            this.hideMainMenu(this);
+            this.mainMenuButton.setStatus(this.mainMenuButton.OFF);
+            this.setDefault(this);
+            this.fillFridge(this.jRecipes, event.target.recipeIndex);
+        }
     }
 
     if(event.target  instanceof MainMenuButton && event.target.status != event.target.ON && this.actRecipe != undefined) {
