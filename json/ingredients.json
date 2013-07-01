@@ -354,8 +354,8 @@
                 "imagePath": "images/Ingredients/basmatiRice.png",
                 "tileWidth": 200,
                 "tileHeight": 200,
-                "imgWidth": 200,
-                "imgHeight": 200,
+                "imgWidth": 150,
+                "imgHeight": 150,
                 "sx": 235,
                 "sy": 320
             },
@@ -369,8 +369,8 @@
                 "imagePath": "images/Ingredients/masalaMix.png",
                 "tileWidth": 100,
                 "tileHeight": 100,
-                "imgWidth": 100,
-                "imgHeight": 100,
+                "imgWidth": 150,
+                "imgHeight": 150,
                 "sx": 235,
                 "sy": 320
             },
@@ -384,8 +384,8 @@
                 "imagePath": "images/Ingredients/cardamom.png",
                 "tileWidth": 100,
                 "tileHeight": 100,
-                "imgWidth": 100,
-                "imgHeight": 100,
+                "imgWidth": 150,
+                "imgHeight": 150,
                 "sx": 235,
                 "sy": 320
             },
