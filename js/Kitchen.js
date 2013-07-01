@@ -81,6 +81,9 @@ function Kitchen(canvasId) {
     this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
     this.stage.addToStage(this.backgroundSky);
 
+    this.cookbookButton = new CookbookButton(this.stage.getContext(), 100, 100, 100, 100, "images/Menu/cookbookButton.png", 101);
+    this.menu.push(this.cookbookButton);
+
     this.fridgeButton;
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     this.cupboard;
@@ -102,13 +105,9 @@ function Kitchen(canvasId) {
     this.stage.registerEvent('mouseout', this);
     this.stage.registerEvent('dragging', this);
 
-
-
-
     // start the animation loop
     // parameter this (kitchen itself) needed, because of the closure within the run function
     this.run(this);
-
 
 }
 
@@ -172,7 +171,7 @@ Kitchen.prototype.setDefault = function(that) {
     }
     for (var i = 0; i< that.knobs.length; i++) {
         that.knobs[i].setStatus(that.knobs[i].OFF);
-        that.knobs[i].stoveTop.setCurrentPot(null);
+        that.knobs[i].setRotation(0);
     }
     for (var i = 0; i<that.ingredientButtons.length; i++) {
         that.stage.removeFromStage(that.ingredientButtons[i]);
@@ -186,15 +185,16 @@ Kitchen.prototype.setDefault = function(that) {
     that.cupboard.setStatus(that.cupboard.OFF);
     that.oven.content = [];
     that.oven.setStatus(that.oven.OFF);
+    that.ovenButton.setRotation(0);
     that.kitchenSlicer.content = [];
     that.ingredients = [];
     that.pots = [];
     that.ingredientButtons = [];
     that.utilityButtons = [];
     that.fridge = [];
+    that.actRecipe = undefined;
     that.points = 0;
     that.judgement = false;
-    that.actRecipe = undefined;
 }
 
 Kitchen.prototype.setBackgroundSky = function(){
@@ -427,6 +427,7 @@ Kitchen.prototype.onMouseout = function(event){
 
 
 Kitchen.prototype.onClick = function (event) {
+
     var that = this;
 
     if(this.judgement) {
@@ -435,6 +436,11 @@ Kitchen.prototype.onClick = function (event) {
         this.stage.removeFromStage(this.dish);
         this.setDefault(this);
         this.giveMainMenu(this);
+    }
+
+    if(event.target instanceof CookbookButton){
+        var recipeSelection = new RecipeSelectionMenu(this);
+        recipeSelection.render();
     }
 
     if(event.target instanceof MenuButton){

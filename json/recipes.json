@@ -1,5 +1,6 @@
 {
     "recipeHeadlines":{
+        "recipeMenu": "Select a recipe",
         "scoreHeadline": "Score:",
         "ingredientsHeadline": "Ingredients:",
         "currentTaskHeadline": "Current Task:",
@@ -9,7 +10,7 @@
     "recipes": [
         {
             "name": "Vegetarian Spaghetti Bolognese",
-
+             "id":0,
             "image": "images/recipes/vegetarienBolonese.png",
 
             "description": "A dish that is tasty - even without meat!",
@@ -513,7 +514,7 @@
         },
         {
             "name": "Mousse au Chocolate",
-
+             "id":1,
             "image": "images/recipes/vegetarienBolonese.png",
 
             "description": "A yummy desert!",
@@ -630,7 +631,7 @@
         },
         {
             "name": "Pilaf",
-
+            "id":2,
             "image": "images/recipes/vegetarienBolonese.png",
 
             "description": "A Middle Eastern rice dish!",

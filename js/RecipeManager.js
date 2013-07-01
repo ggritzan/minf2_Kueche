@@ -1,8 +1,10 @@
 function RecipeManager(jRecipes, actRecipe, counter, points){
+
     this.render = function(){
         // Referenz auf das ul Element holen
+
         var currentRecipe = document.querySelector('#currentRecipe');
-        var rezeptDetailsElement = document.querySelector('#rezeptdetails');
+       // var rezeptDetailsElement = document.querySelector('#rezeptdetails');
 
         currentRecipe.innerHTML = ' ';
 
