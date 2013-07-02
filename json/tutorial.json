@@ -59,12 +59,6 @@
         "message": "You can drag and drop ingredients on it. They will start cooking if you put the pot on a heated stove top."
 
     },
-    "ingredient": {
-
-        "name": "Ingredient",
-        "message": "You can drag the ingredient around."
-
-    },
     "stoveTop": {
 
         "name": "Stove Top",
@@ -90,6 +84,12 @@
 
         "name": "Cookbook",
         "message": "Click on it to chose a recipe and to start the application."
+
+    },
+    "ingredient": {
+
+        "name": "Ingredient",
+        "message": "You can drag the ingredient around."
 
     }
 }

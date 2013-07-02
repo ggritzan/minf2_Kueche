@@ -11,8 +11,6 @@ function Tutorial(tutName){
 
     this.render = function(){
 
-        console.log(that.jTutorial[tutName]);
-
         var tutorial = document.querySelector('#tutorial');
         var currentRecipe = document.querySelector('#currentRecipe');
         var recipeMenu = document.querySelector('#recipeMenu');
@@ -22,8 +20,6 @@ function Tutorial(tutName){
 
         var nameElement = document.createElement('h1');
         var name = document.createTextNode(that.jTutorial[tutName].name);
-
-        console.log(that.jTutorial[tutName].name);
 
         nameElement.appendChild(name);
         tutorial.appendChild(nameElement);

@@ -418,7 +418,7 @@ Kitchen.prototype.onMouseover = function(event){
 
         }
 
-    } else if(event.target instanceof Knob || event.target instanceof Pot || event.target instanceof Ingredient){
+    } else if(event.target instanceof Knob || event.target instanceof Pot){
 
         document.body.style.cursor = 'pointer';
 
@@ -493,6 +493,8 @@ Kitchen.prototype.onMouseover = function(event){
 
     } else if(event.target instanceof Ingredient){
 
+        document.body.style.cursor = 'pointer';
+
         if(this.actRecipe != undefined && this.actRecipe.id == 0){
 
             var tutorial = new Tutorial("ingredient");
@@ -526,13 +528,6 @@ Kitchen.prototype.onMouseout = function(event){
 
         }
 
-        if(this.actRecipe != undefined && this.actRecipe.id == 0){
-
-            var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
-            recipeManager.render();
-
-        }
-
     } else {
 
         document.body.style.cursor = 'default';
@@ -540,13 +535,6 @@ Kitchen.prototype.onMouseout = function(event){
         if(this.tut.style.display == 'block'){
 
             this.tut.style.display = 'none';
-
-        }
-
-        if(this.actRecipe != undefined && this.actRecipe.id == 0){
-
-            var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
-            recipeManager.render();
 
         }
 
