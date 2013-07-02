@@ -51,12 +51,15 @@ function Kitchen(canvasId) {
 
 
 
-    this.optionsButton = new OptionsButton(this.stage.getContext(), 200, 200, 200, 200, "images/Menu/optionsbutton.png", 300);
+    this.optionsButton = new OptionsButton(this.stage.getContext(), 100, 100, 200, 200, "images/Menu/optionsbutton.png", 300);
     this.optionsMenu = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/optionsMenu.png", 400);
     this.optionsXButton = new XButtonOptions(this.stage.getContext(), 700, 300, 100, 100, "images/Menu/xbuttonOptionsmenu.png", 401);
     this.minusButton = new MinusButton(this.stage.getContext(), 200, 200, 100, 100, "images/Menu/minusbutton.png", 401);
     this.plusButton = new PlusButton(this.stage.getContext(), 400, 200, 100, 100, "images/Menu/plusbutton.png", 401);
+    this.tutorialButton = new TutorialButton(this.stage.getContext(), 200, 400, 200, 200, "images/Menu/tutorialButton.png", 300);
+    this.menu.push(this.tutorialButton);
     this.menu.push(this.optionsButton);
+    this.menu.push(this.tutorialButton);
     this.options.push(this.optionsMenu);
     this.options.push(this.optionsXButton);
     this.options.push(this.minusButton);
@@ -447,6 +450,17 @@ Kitchen.prototype.onClick = function (event) {
         this.giveMainMenu(this);
     }
 
+    if(event.target instanceof TutorialButton){
+
+        this.hideMainMenu(this);
+        this.mainMenuButton.setStatus(this.mainMenuButton.OFF);
+        this.setDefault(this);
+        this.fillFridge(this.jRecipes, 0);
+        var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+        recipeManager.render();
+
+    }
+
     if(event.target instanceof OptionsButton){
 
         this.options.forEach(function(optionComponent){
@@ -579,14 +593,14 @@ Kitchen.prototype.onClick = function (event) {
             }
         }
     }
-    if (this.actRecipe != undefined && this.actRecipe.tasks.length > this.counter) {
+   /* if (this.actRecipe != undefined && this.actRecipe.tasks.length > this.counter) {
         console.log(this.actRecipe.tasks[this.counter].message);
     } else if (this.actRecipe != undefined && !(event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter)){
         console.log("Sie haben das Rezept " + this.actRecipe.name + " mit " + this.points + " von " + this.actRecipe.tasks.length*10 + " möglichen Punkten abgeschlossen.");
         this.showResults(this);
     } else if(this.actRecipe == undefined) {
         console.log("Bitte waehlen Sie ein Rezept im Hauptmenue aus.");
-    }
+    }   */
 }
 
 Kitchen.prototype.onDragging = function(event){
@@ -615,7 +629,7 @@ Kitchen.prototype.onDragend = function (event) {
 
     if (event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter) {
 
-        if(this.counter < tasks.length) {
+        if(tasks[this.counter].task != null && this.counter < tasks.length) {
 
             var actTask = tasks[this.counter].task;
 
@@ -806,8 +820,64 @@ Kitchen.prototype.onDragend = function (event) {
                 }
             }
 
-        } else {
-            console.log("Ihr Rezept ist beendet.");
+        } else if(tasks[this.counter].task == null && this.counter < tasks.length) {
+
+                var ingX = event.target.x + event.target.width / 2;
+                var ingY = event.target.y + event.target.height / 2;
+
+                for (var i = 0; i < this.pots.length; i++) {
+
+                    var zone = this.pots[i].getHitZone();
+
+                    //is the ingredient over a pot?
+                    if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
+
+                        this.pots[i].content.push(event.target);
+                        this.stage.removeFromStage(event.target);
+                        break;
+
+                    }
+                }
+
+                //is the ingredient over a kitchen slicer?
+                var kitZone = this.kitchenSlicer.getHitZone();
+
+                if (ingX >= kitZone.hx && ingX <= kitZone.hx + kitZone.hw && ingY >= kitZone.hy && ingY <= kitZone.hy + kitZone.hh && this.kitchenSlicer.status == this.kitchenSlicer.OFF) {
+
+                    this.kitchenSlicer.content.push(event.target);
+                    this.kitchenSlicer.setStatus(this.kitchenSlicer.ON);
+                    this.stage.removeFromStage(event.target);
+                    this.soundmanager.playSound('beam', null);
+                    var that = this;
+
+                    this.soundmanager.playSound('slicer', function() {
+                        that.kitchenSlicer.setStatus(that.kitchenSlicer.OFF);
+                        that.stage.addToStage(that.kitchenSlicer.content[0]);
+                        that.soundmanager.playSound('beam', null);
+                        that.kitchenSlicer.clearContent();
+
+                    });
+                }
+
+                //is the ingredient over a kitchen slicer?
+                var ovenZone = this.oven.getHitZone();
+
+                if (ingX >= ovenZone.hx && ingX <= ovenZone.hx + ovenZone.hw && ingY >= ovenZone.hy && ingY <= ovenZone.hy + ovenZone.hh) {
+
+                    this.oven.content.push(event.target);
+                    this.stage.removeFromStage(event.target);
+                    this.soundmanager.playSound('beam', null);
+                    var that = this;
+
+                    this.soundmanager.playSound('oven', function() {
+                        that.oven.baking();
+                        that.stage.addToStage(that.oven.content[0]);
+                        that.soundmanager.playSound('beam', null);
+                        that.oven.clearContent();
+
+                    });
+                }
+
         }
 
     } else if (event.target instanceof Pot) {

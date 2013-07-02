@@ -80,25 +80,6 @@
             }
         },
         {
-            "name": "egg",
-            "image":{
-                "imagePath": "images/Ingredients/egg.png",
-                "tileWidth": 150,
-                "tileHeight": 150,
-                "imgWidth": 600,
-                "imgHeight": 150,
-                "sx": 235,
-                "sy": 320
-            },
-            "animations": {
-                "default": {"seq": [0], "loop": false},
-                "raw": {"seq": [0], "loop": false},
-                "rawCut": {"seq": [1], "loop": false},
-                "cookedBaked": {"seq": [2], "loop": false},
-                "cookedBakedCut": {"seq": [3], "loop": false}
-            }
-        },
-        {
             "name": "yolk",
             "image":{
                 "imagePath": "images/Ingredients/eggyellow.png",

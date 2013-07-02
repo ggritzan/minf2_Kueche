@@ -21,34 +21,37 @@ function RecipeSelectionMenu(kit){
 
             var recipeItemElement = document.createElement('li');
 
-           // recipeItemElement.appendChild(listText);
-            recipeListElement.appendChild(recipeItemElement);
+            if(recipeItem.id > 0){
+
+               // recipeItemElement.appendChild(listText);
+                recipeListElement.appendChild(recipeItemElement);
+                var headingElement = document.createElement('h2');
+
+                headingElement.setAttribute("id",recipeItem.id );
+
+                var listText = document.createTextNode(recipeItem.name);
+                headingElement.appendChild(listText);
+                recipeItemElement.appendChild(headingElement);
+
+                var descriptionElement = document.createElement('p');
+                var description = document.createTextNode(recipeItem.description);
+
+                descriptionElement.appendChild(description);
+                recipeItemElement.appendChild(descriptionElement);
+
+                headingElement.addEventListener('click', function(ev) {
+
+                    currentRecipe.innerHTML = ' ';
+                    recipeMenu.innerHTML = ' ';
+                    var rId = ev.target.getAttribute("id");
+                    kit.hideMainMenu(kit);
+                    kit.mainMenuButton.setStatus(kit.mainMenuButton.OFF);
+                    kit.setDefault(kit);
+                    kit.fillFridge(kit.jRecipes, rId);
 
 
-            var headingElement = document.createElement('h2');
-            headingElement.setAttribute("id",recipeItem.id );
-            var listText = document.createTextNode(recipeItem.name);
-            headingElement.appendChild(listText);
-            recipeItemElement.appendChild(headingElement);
-
-            var descriptionElement = document.createElement('p');
-            var description = document.createTextNode(recipeItem.description);
-
-            descriptionElement.appendChild(description);
-            recipeItemElement.appendChild(descriptionElement);
-
-            headingElement.addEventListener('click', function(ev) {
-
-                currentRecipe.innerHTML = ' ';
-                recipeMenu.innerHTML = ' ';
-                 var rId = ev.target.getAttribute("id");
-                kit.hideMainMenu(kit);
-                kit.mainMenuButton.setStatus(kit.mainMenuButton.OFF);
-                kit.setDefault(kit);
-                kit.fillFridge(kit.jRecipes, rId);
-
-
-            });
+                });
+            }
         });
 
         recipeMenu.appendChild(recipeListElement);

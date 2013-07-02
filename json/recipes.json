@@ -7,10 +7,37 @@
         "recipeDetailsHeadline": "Detailed Explanation:"
     },
 
+    "tutorial":{
+        "score": "The points you have earned for each task are added here.\nYou get points for each task that has been completed correctly and minus points for each task that has not been performed correctly.\nIf you have put something wrong in a pot, you can take a new pot and redo each step until the current task.\nThis will give you extra minus points, however, or you can restart the game.",
+        "ingredients": "A list of ingredients that are needed for the dish that you have chosen."
+    },
+
     "recipes": [
+
+        {
+            "name": "Tutorial",
+            "id": 0,
+
+            "ingredients": [
+                "carrots",
+                "celery",
+                "peeledtomatoes",
+                "salt",
+                "pepper",
+                "water",
+                "butter"
+            ],
+
+            "tasks": [
+                {
+                    "message": "The current task of each step will be written here.",
+                    "task": null
+                }
+            ]
+        },
         {
             "name": "Vegetarian Spaghetti Bolognese",
-             "id":0,
+            "id": 1,
             "image": "images/recipes/vegetarienBolonese.png",
 
             "description": "A dish that is tasty - even without meat!",
@@ -514,7 +541,7 @@
         },
         {
             "name": "Mousse au Chocolate",
-             "id":1,
+            "id": 2,
             "image": "images/recipes/vegetarienBolonese.png",
 
             "description": "A yummy desert!",
@@ -631,7 +658,7 @@
         },
         {
             "name": "Pilaf",
-            "id":2,
+            "id": 3,
             "image": "images/recipes/vegetarienBolonese.png",
 
             "description": "A Middle Eastern rice dish!",
@@ -874,6 +901,5 @@
 
             ]
         }
-
     ]
 }

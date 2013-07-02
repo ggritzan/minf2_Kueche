@@ -10,11 +10,32 @@ function RecipeManager(jRecipes, actRecipe, counter, points){
         recipeMenu.innerHTML = ' ';
         currentRecipe.innerHTML = ' ';
 
+        if(actRecipe.id == 0){
+
+            var headlineElement = document.createElement('h1');
+            var headline = document.createTextNode(actRecipe.name);
+
+            // text an das h1 anhängen
+            headlineElement.appendChild(headline);
+
+            // h1 ins DOM einfügen
+            currentRecipe.appendChild(headlineElement);
+
+        }
+
         var scoreElement = document.createElement('h1');
         var score = document.createTextNode(jRecipes.recipeHeadlines.scoreHeadline);
 
         scoreElement.appendChild(score);
         currentRecipe.appendChild(scoreElement);
+
+        if(actRecipe.id == 0){
+            var scoreExplanationElement = document.createElement('p');
+            var scoreExplanation = document.createTextNode(jRecipes.tutorial.score);
+
+            scoreExplanationElement.appendChild(scoreExplanation);
+            currentRecipe.appendChild(scoreExplanationElement);
+        }
 
         var pointsElement = document.createElement('p');
         var pointsItem = document.createTextNode(points);
@@ -22,20 +43,32 @@ function RecipeManager(jRecipes, actRecipe, counter, points){
         pointsElement.appendChild(pointsItem);
         currentRecipe.appendChild(pointsElement);
 
-        var headlineElement = document.createElement('h1');
-        var headline = document.createTextNode(actRecipe.name);
+        if(actRecipe.id != 0){
 
-        // text an das h1 anhängen
-        headlineElement.appendChild(headline);
+            var headlineElement = document.createElement('h1');
+            var headline = document.createTextNode(actRecipe.name);
 
-        // h1 ins DOM einfügen
-        currentRecipe.appendChild(headlineElement);
+            // text an das h1 anhängen
+            headlineElement.appendChild(headline);
+
+            // h1 ins DOM einfügen
+            currentRecipe.appendChild(headlineElement);
+
+        }
 
         var ingredientsHeadlineElement = document.createElement('h2');
         var ingredientsHeadline = document.createTextNode(jRecipes.recipeHeadlines.ingredientsHeadline);
 
         ingredientsHeadlineElement.appendChild(ingredientsHeadline);
         currentRecipe.appendChild(ingredientsHeadlineElement);
+
+        if(actRecipe.id == 0){
+            var ingredientsExplanationElement = document.createElement('p');
+            var ingredientsExplanation = document.createTextNode(jRecipes.tutorial.score);
+
+            ingredientsExplanationElement.appendChild(ingredientsExplanation);
+            currentRecipe.appendChild(ingredientsExplanationElement);
+        }
 
         var ingredientListElement = document.createElement('ul');
 
