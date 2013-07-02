@@ -463,10 +463,12 @@ Kitchen.prototype.onClick = function (event) {
 
     if(event.target instanceof MinusButton){
         this.soundmanager.turnVolumeDown();
+        this.soundmanager.playSound('button', null);
     }
 
     if(event.target instanceof PlusButton){
         this.soundmanager.turnVolumeUp();
+        this.soundmanager.playSound('button', null);
     }
 
     if(event.target instanceof MenuButton){
