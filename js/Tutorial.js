@@ -18,7 +18,6 @@ function Tutorial(tutName){
         var recipeMenu = document.querySelector('#recipeMenu');
 
         recipeMenu.innerHTML = ' ';
-        currentRecipe.innerHTML = ' ';
         tutorial.innerHTML = ' ';
 
         var nameElement = document.createElement('h1');
