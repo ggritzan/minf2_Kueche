@@ -54,9 +54,13 @@ function Kitchen(canvasId) {
     this.optionsButton = new OptionsButton(this.stage.getContext(), 200, 200, 200, 200, "images/Menu/optionsbutton.png", 300);
     this.optionsMenu = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/optionsMenu.png", 400);
     this.optionsXButton = new XButtonOptions(this.stage.getContext(), 700, 300, 100, 100, "images/Menu/xbuttonOptionsmenu.png", 401);
+    this.minusButton = new MinusButton(this.stage.getContext(), 200, 200, 100, 100, "images/Menu/minusbutton.png", 401);
+    this.plusButton = new PlusButton(this.stage.getContext(), 400, 200, 100, 100, "images/Menu/plusbutton.png", 401);
     this.menu.push(this.optionsButton);
     this.options.push(this.optionsMenu);
     this.options.push(this.optionsXButton);
+    this.options.push(this.minusButton);
+    this.options.push(this.plusButton);
 
     this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
     this.stage.addToStage(this.backgroundSky);
@@ -455,6 +459,14 @@ Kitchen.prototype.onClick = function (event) {
         this.options.forEach(function(optionComponent){
             that.stage.removeFromStage(optionComponent);
         });
+    }
+
+    if(event.target instanceof MinusButton){
+        this.soundmanager.turnVolumeDown();
+    }
+
+    if(event.target instanceof PlusButton){
+        this.soundmanager.turnVolumeUp();
     }
 
     if(event.target instanceof MenuButton){

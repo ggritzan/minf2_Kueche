@@ -1,5 +1,12 @@
 function SoundManager () {
 
+    this.MAX_VOLUME = 1.0;
+    this.MIN_VOLUME = 0.0;
+
+    this.soundMute = false;
+
+    this.soundVolume = this.MAX_VOLUME;
+
     this.sounds = {
         "boilingWater": [],
         "slicer": [],
@@ -18,10 +25,34 @@ function SoundManager () {
 
     Ajax.getJSON("json/sounds.json?d=" + d.getTime(), function(data){
         data.sounds.forEach(function(sound){
-            that.sounds[sound.name].push({"audio": new Audio(sound.sound), "eventListener": null, "loop": sound.loop});
+            that.sounds[sound.name].push({
+                "audio": new Audio(sound.sound),
+                "eventListener": null,
+                "loop": sound.loop
+            });
         });
     });
 
+}
+
+SoundManager.prototype.turnVolumeUp = function(){
+
+    if(this.soundVolume < this.MAX_VOLUME){
+        this.tmpVolume = this.soundVolume + 0.1;
+        this.soundVolume = Math.round(this.tmpVolume * 10 ) / 10;
+    }
+
+    console.log("sound volume: " + this.soundVolume);
+}
+
+SoundManager.prototype.turnVolumeDown = function(){
+
+    if(this.MIN_VOLUME < this.soundVolume){
+        this.tmpVolume = this.soundVolume - 0.1;
+        this.soundVolume = Math.round(this.tmpVolume * 10 ) / 10;
+    }
+
+    console.log("sound volume: " + this.soundVolume);
 }
 
 SoundManager.prototype.playSound = function (soundName, listener){
@@ -33,6 +64,8 @@ SoundManager.prototype.playSound = function (soundName, listener){
 
     // for callback
     var audioObj;
+
+    var that = this;
 
     this.sounds[soundName].forEach(function(obj, index, soundArray){
        // obj.audio -> AudioObject
@@ -56,6 +89,13 @@ SoundManager.prototype.playSound = function (soundName, listener){
             if(obj.loop){
                 obj.audio.loop = true;
             }
+
+            if(!that.soundMute){
+                obj.audio.volume = that.soundVolume;
+            } else {
+                obj.audio.volume = 0.0;
+            }
+
             // play sound
             obj.audio.play();
             // reference to the audio object
