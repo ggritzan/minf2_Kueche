@@ -4,8 +4,10 @@ function RecipeManager(jRecipes, actRecipe, counter, points){
 
         var currentRecipe = document.querySelector('#currentRecipe');
         var recipeMenu = document.querySelector('#recipeMenu');
+        var tutorial = document.querySelector('#tutorial');
        // var rezeptDetailsElement = document.querySelector('#rezeptdetails');
 
+        tutorial.innerHTML = ' ';
         recipeMenu.innerHTML = ' ';
         currentRecipe.innerHTML = ' ';
 
