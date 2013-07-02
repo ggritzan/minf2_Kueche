@@ -36,6 +36,7 @@ function Kitchen(canvasId) {
     this.fridge = [];
     this.knobs = [];
     this.menu = [];
+    this.options = [];
     this.ingredientButtons = [];
     this.utilityButtons = [];
     this.kitchenSlicer;
@@ -48,8 +49,17 @@ function Kitchen(canvasId) {
 
     var ajax = new AjaxManager(this);
 
-   // this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
-    this.stage.addToStage(this.backgroundSky);
+
+
+    this.optionsButton = new OptionsButton(this.stage.getContext(), 200, 200, 200, 200, "images/Menu/optionsbutton.png", 300);
+    this.optionsMenu = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/optionsMenu.png", 400);
+    this.optionsXButton = new XButtonOptions(this.stage.getContext(), 700, 300, 100, 100, "images/Menu/xbuttonOptionsmenu.png", 401);
+    this.menu.push(this.optionsButton);
+    this.options.push(this.optionsMenu);
+    this.options.push(this.optionsXButton);
+
+    // this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
+    //this.stage.addToStage(this.backgroundSky);
     this.fridgeButton;
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     this.cupboard;
@@ -61,8 +71,6 @@ function Kitchen(canvasId) {
     this.menu.forEach(function(menuElement){
         that.stage.addToStage(menuElement);
     });
-
-
 
     // registers the needed events
     this.stage.registerEvent('click', this);
@@ -263,8 +271,6 @@ Kitchen.prototype.addKitchenComponents = function(component){
     this.stage.addToStage(this.fridgeButton);
 }
 
-
-
 Kitchen.prototype.giveMainMenu = function (that) {
     that.menu.forEach(function(menuElement){
         that.stage.addToStage(menuElement);
@@ -273,6 +279,10 @@ Kitchen.prototype.giveMainMenu = function (that) {
 
 Kitchen.prototype.hideMainMenu = function(that) {
     that.menu.forEach(function(menuElement){
+        that.stage.removeFromStage(menuElement);
+    });
+
+    that.options.forEach(function(menuElement){
         that.stage.removeFromStage(menuElement);
     });
 }
@@ -431,6 +441,20 @@ Kitchen.prototype.onClick = function (event) {
         this.stage.removeFromStage(this.dish);
         this.setDefault(this);
         this.giveMainMenu(this);
+    }
+
+    if(event.target instanceof OptionsButton){
+
+        this.options.forEach(function(optionComponent){
+            that.stage.addToStage(optionComponent);
+        });
+    }
+
+    if(event.target instanceof XButtonOptions){
+
+        this.options.forEach(function(optionComponent){
+            that.stage.removeFromStage(optionComponent);
+        });
     }
 
     if(event.target instanceof MenuButton){
