@@ -58,8 +58,8 @@ function Kitchen(canvasId) {
     this.options.push(this.optionsMenu);
     this.options.push(this.optionsXButton);
 
-    // this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
-    //this.stage.addToStage(this.backgroundSky);
+    this.backgroundSky = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "", 0);
+    this.stage.addToStage(this.backgroundSky);
     this.fridgeButton;
     var kitchenBackground = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/kitchenComponents/kitchenBackgroundTest.png", 1);
     this.cupboard;
@@ -97,7 +97,7 @@ Kitchen.prototype.run = function (kit) {
     kit.pots.forEach(function(pot){
         pot.update()
     });
-   // kit.setBackgroundSky();
+    kit.setBackgroundSky();
 
     // Always render after the updates
     kit.stage.render();

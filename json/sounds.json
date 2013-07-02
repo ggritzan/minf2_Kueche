@@ -2,27 +2,33 @@
     "sounds": [
         {
             "name": "boilingWater",
-            "sound": "sounds/boiling-water-1.ogg"
+            "sound": "sounds/boiling-water-1.ogg",
+            "loop": true
         },
         {
             "name": "slicer",
-            "sound": "sounds/kitchenslicer.ogg"
+            "sound": "sounds/kitchenslicer.ogg",
+            "loop": false
         },
         {
             "name": "button",
-            "sound": "sounds/button_sound.ogg"
+            "sound": "sounds/button_sound.ogg",
+            "loop": false
         },
         {
             "name": "error",
-            "sound": "sounds/error_sound.ogg"
+            "sound": "sounds/error_sound.ogg",
+            "loop": false
         },
         {
             "name": "beam",
-            "sound": "sounds/beamsound.ogg"
+            "sound": "sounds/beamsound.ogg",
+            "loop": false
         },
         {
             "name": "oven",
-            "sound": "sounds/ovensound.ogg"
+            "sound": "sounds/ovensound.ogg",
+            "loop": false
         }
     ]
 }

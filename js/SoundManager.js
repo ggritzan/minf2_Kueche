@@ -18,7 +18,7 @@ function SoundManager () {
 
     Ajax.getJSON("json/sounds.json?d=" + d.getTime(), function(data){
         data.sounds.forEach(function(sound){
-            that.sounds[sound.name].push({"audio": new Audio(sound.sound), "eventListener": null});
+            that.sounds[sound.name].push({"audio": new Audio(sound.sound), "eventListener": null, "loop": sound.loop});
         });
     });
 
@@ -51,6 +51,10 @@ SoundManager.prototype.playSound = function (soundName, listener){
                 soundArray[index].eventListener = listener;
                 // register an audio object for the ended event
                 obj.audio.addEventListener('ended', listener);
+            }
+
+            if(obj.loop){
+                obj.audio.loop = true;
             }
             // play sound
             obj.audio.play();
