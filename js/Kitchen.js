@@ -400,7 +400,7 @@ Kitchen.prototype.addUtilityButtons = function(utilityButtons)  {
 
 Kitchen.prototype.onMouseover = function(event){
 
-    if(event.target instanceof MainMenuButton || event.target instanceof CupboardButton || event.target instanceof FridgeButton || event.target instanceof OvenButton){
+    if(event.target instanceof MainMenuButton || event.target instanceof CupboardButton || event.target instanceof FridgeButton || event.target instanceof OvenButton || event.target instanceof MenuButton){
 
         document.body.style.cursor = 'pointer';
 
@@ -465,21 +465,6 @@ Kitchen.prototype.onMouseover = function(event){
             this.tut.style.display = 'block';
 
         }
-
-    } else if(event.target instanceof MenuButton){
-
-        document.body.style.cursor = 'pointer';
-
-        if(event.target.status != event.target.ON){
-
-            event.target.setStatus(event.target.ONHOVER);
-
-        }
-
-        var tutorial = new Tutorial(event.target.name);
-        tutorial.render();
-        this.tut.style.display = 'block';
-
 
     } else if(event.target instanceof Oven || event.target instanceof KitchenSlicer || event.target instanceof CounterTop || event.target instanceof Knob || event.target instanceof Bin || event.target instanceof Pot || event.target instanceof StoveTop) {
 
