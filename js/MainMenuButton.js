@@ -1,4 +1,4 @@
-function MainMenuButton(context, sx, sy, w, h, imgPath, zOrder, animObj) {
+function MainMenuButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
     VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
 
@@ -7,6 +7,7 @@ function MainMenuButton(context, sx, sy, w, h, imgPath, zOrder, animObj) {
     this.ONHOVER = "onHover";
     this.ON = "on";
     this.status = this.OFF;
+    this.name = name;
 
 }
 

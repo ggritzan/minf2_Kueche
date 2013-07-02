@@ -17,7 +17,7 @@
                 "boiling": {"seq": [4, 5, 6, 7], "loop": true}
             },
             "pots": [
-                {"name": "pot1", "sx": 220, "sy": 250, "zOrder": 23}
+                {"name": "pot", "sx": 220, "sy": 250, "zOrder": 23}
             ]
         }
     }

@@ -3,15 +3,12 @@
 	float:left;
 }
 
-#recipeMenu{
-    display: none;
-}
-
 #currentRecipe {
 	width:300px;
     height:630px;
 	float:left;
 }
+
 #rezeptdetails {
     width: 300px;
     float:left;

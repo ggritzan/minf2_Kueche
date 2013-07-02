@@ -79,6 +79,8 @@ function Kitchen(canvasId) {
         that.stage.addToStage(menuElement);
     });
 
+    this.tut = document.getElementById('tutorial');
+
     // registers the needed events
     this.stage.registerEvent('click', this);
     this.stage.registerEvent('dragend', this);
@@ -194,7 +196,7 @@ Kitchen.prototype.addMenuComponents = function(menuElement){
     var menuStage = menuElement.menuStage;
     var menuButtons = menuElement.menuButtons;
 
-    this.mainMenuButton = new MainMenuButton(this.stage.getContext(), mainMenuButton.image.sx, mainMenuButton.image.sy, mainMenuButton.image.tileWidth, mainMenuButton.image.tileHeight, mainMenuButton.image.imagePath, mainMenuButton.image.zOrder, mainMenuButton);
+    this.mainMenuButton = new MainMenuButton(this.stage.getContext(), mainMenuButton.image.sx, mainMenuButton.image.sy, mainMenuButton.image.tileWidth, mainMenuButton.image.tileHeight, mainMenuButton.image.imagePath, mainMenuButton.image.zOrder, mainMenuButton.name, mainMenuButton);
     this.stage.addToStage(this.mainMenuButton);
     var mainMenuStage = new VisualRenderObject(this.stage.getContext(), menuStage.image.sx, menuStage.image.sy, menuStage.image.tileWidth, menuStage.image.tileHeight, menuStage.image.imagePath, menuStage.image.zOrder);
     this.menu.push(mainMenuStage);
@@ -398,7 +400,7 @@ Kitchen.prototype.addUtilityButtons = function(utilityButtons)  {
 
 Kitchen.prototype.onMouseover = function(event){
 
-    if(event.target instanceof MainMenuButton || event.target instanceof CupboardButton || event.target instanceof FridgeButton || event.target instanceof OvenButton || event.target instanceof MenuButton || event.target instanceof IngredientButton || event.target instanceof UtilityButton){
+    if(event.target instanceof MainMenuButton || event.target instanceof CupboardButton || event.target instanceof FridgeButton || event.target instanceof OvenButton){
 
         document.body.style.cursor = 'pointer';
 
@@ -407,9 +409,97 @@ Kitchen.prototype.onMouseover = function(event){
             event.target.setStatus(event.target.ONHOVER);
 
         }
+
+        if(this.actRecipe != undefined && this.actRecipe.id == 0){
+
+            var tutorial = new Tutorial(event.target.name);
+            tutorial.render();
+            this.tut.style.display = 'block';
+
+        }
+
     } else if(event.target instanceof Knob || event.target instanceof Pot || event.target instanceof Ingredient){
 
         document.body.style.cursor = 'pointer';
+
+        if(this.actRecipe != undefined && this.actRecipe.id == 0){
+
+            var tutorial = new Tutorial(event.target.name);
+            tutorial.render();
+            this.tut.style.display = 'block';
+
+        }
+
+    } else if(event.target instanceof IngredientButton){
+
+        document.body.style.cursor = 'pointer';
+
+        if(event.target.status != event.target.ON){
+
+            event.target.setStatus(event.target.ONHOVER);
+
+        }
+
+        if(this.actRecipe != undefined && this.actRecipe.id == 0){
+
+            var tutorial = new Tutorial("ingredientbutton");
+            tutorial.render();
+            this.tut.style.display = 'block';
+
+        }
+
+    } else if(event.target instanceof UtilityButton){
+
+        document.body.style.cursor = 'pointer';
+
+        if(event.target.status != event.target.ON){
+
+            event.target.setStatus(event.target.ONHOVER);
+
+        }
+
+        if(this.actRecipe != undefined && this.actRecipe.id == 0){
+
+            var tutorial = new Tutorial("utilitybutton");
+            tutorial.render();
+            this.tut.style.display = 'block';
+
+        }
+
+    } else if(event.target instanceof MenuButton){
+
+        document.body.style.cursor = 'pointer';
+
+        if(event.target.status != event.target.ON){
+
+            event.target.setStatus(event.target.ONHOVER);
+
+        }
+
+        var tutorial = new Tutorial(event.target.name);
+        tutorial.render();
+        this.tut.style.display = 'block';
+
+
+    } else if(event.target instanceof Oven || event.target instanceof KitchenSlicer || event.target instanceof CounterTop || event.target instanceof Knob || event.target instanceof Bin || event.target instanceof Pot || event.target instanceof StoveTop) {
+
+        if(this.actRecipe != undefined && this.actRecipe.id == 0){
+
+            var tutorial = new Tutorial(event.target.name);
+            tutorial.render();
+            this.tut.style.display = 'block';
+
+        }
+
+    } else if(event.target instanceof Ingredient){
+
+        if(this.actRecipe != undefined && this.actRecipe.id == 0){
+
+            var tutorial = new Tutorial("ingredient");
+            tutorial.render();
+            this.tut.style.display = 'block';
+
+        }
 
     } else {
 
@@ -429,9 +519,22 @@ Kitchen.prototype.onMouseout = function(event){
             event.target.setStatus(event.target.OFF);
 
         }
+
+        if(this.tut.style.display == 'block'){
+
+            this.tut.style.display = 'none';
+
+        }
+
     } else {
 
         document.body.style.cursor = 'default';
+
+        if(this.tut.style.display == 'block'){
+
+            this.tut.style.display = 'none';
+
+        }
 
     }
 

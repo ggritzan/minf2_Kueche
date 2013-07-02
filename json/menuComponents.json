@@ -1,5 +1,6 @@
 {
     "mainMenuButton":{
+        "name": "mainMenuButton",
         "image":{
             "imagePath": "images/Menu/mainmenubutton.png",
             "tileWidth": 186,

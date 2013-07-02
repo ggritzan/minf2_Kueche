@@ -1,0 +1,95 @@
+{
+    "fridgebutton": {
+
+        "name": "Fridge",
+        "message": "This is your fridge. It contains all the ingredients that are needed for the dish that you have chosen.\nClick on it to see which ingredients you can chose from."
+
+    },
+    "cupboard": {
+
+        "name": "Cupboard",
+        "message": "If you click on this button, you will see which utensils you have to cook with."
+
+    },
+    "oven": {
+
+        "name": "Oven",
+        "message": "This is your oven. If it is turned on and you drag and drop ingredients on it, it will start to bake."
+
+    },
+    "kitchenSlicer": {
+
+        "name": "Kitchen Slicer",
+        "message": "This is a kitchen slicer. Drag and drop ingredients on it to cut them."
+
+    },
+    "countertop": {
+
+        "name": "Counter Top",
+        "message": "This is your counter top. You can put ingredients on it."
+
+    },
+    "knob": {
+
+        "name": "Stove Top Knob",
+        "message": "These buttons will turn on the stove tops. Each button has its stove top.\nIf you put a pot on a stove top, it will start to cook."
+
+    },
+    "bin": {
+
+        "name": "Trash Bin",
+        "message": "This is your bin. You can drag and drop unneeded ingredients or utilities to remove them from your workplace."
+
+    },
+    "ingredientbutton": {
+
+        "name": "Ingredient Button",
+        "message": "Click on a ingredient to let it spawn."
+
+    },
+    "utilitybutton": {
+
+        "name": "Utility Button",
+        "message": "Click on it to spawn the utility you have chosen."
+
+    },
+    "pot": {
+
+        "name": "Pot",
+        "message": "You can drag and drop ingredients on it. They will start cooking if you put the pot on a heated stove top."
+
+    },
+    "ingredient": {
+
+        "name": "Ingredient",
+        "message": "You can drag the ingredient around."
+
+    },
+    "stoveTop": {
+
+        "name": "Stove Top",
+        "message": "Put a pot on a turned on stove top and it will start to heat. You can turn a stove top on by pressing a stove top knob."
+
+    },
+
+    "mainMenuButton":{
+
+        "name": "Main Menu",
+        "message": "Get back to the main menu."
+
+    },
+
+    "ovenButton":{
+
+        "name": "Oven Button",
+        "message": "Click on it to turn the oven on or off."
+
+    },
+
+    "cookbook":{
+
+        "name": "Cookbook",
+        "message": "Click on it to chose a recipe and to start the application."
+
+    }
+}
