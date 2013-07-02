@@ -7,14 +7,7 @@ function SoundManager () {
 
     this.soundVolume = this.MAX_VOLUME;
 
-    this.sounds = {
-        "boilingWater": [],
-        "slicer": [],
-        "button": [],
-        "error": [],
-        "beam": [],
-        "oven": []
-    };
+    this.sounds = {};
 
     // to load the newest version of all JSONs
     var d = new Date();
@@ -25,6 +18,7 @@ function SoundManager () {
 
     Ajax.getJSON("json/sounds.json?d=" + d.getTime(), function(data){
         data.sounds.forEach(function(sound){
+            that.sounds[sound.name] = [];
             that.sounds[sound.name].push({
                 "audio": new Audio(sound.sound),
                 "eventListener": null,
