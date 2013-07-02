@@ -543,6 +543,13 @@ Kitchen.prototype.onMouseout = function(event){
 
         }
 
+        if(this.actRecipe != undefined && this.actRecipe.id == 0){
+
+            var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+            recipeManager.render();
+
+        }
+
     }
 
 }
