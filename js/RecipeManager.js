@@ -15,11 +15,14 @@ function RecipeManager(jRecipes, actRecipe, counter, points){
             var headlineElement = document.createElement('h1');
             var headline = document.createTextNode(actRecipe.name);
 
-            // text an das h1 anhängen
             headlineElement.appendChild(headline);
-
-            // h1 ins DOM einfügen
             currentRecipe.appendChild(headlineElement);
+
+            var tutorialExplanationElement = document.createElement('p');
+            var tutorialExplanation = document.createTextNode(jRecipes.tutorial.score);
+
+            tutorialExplanationElement.appendChild(tutorialExplanation);
+            currentRecipe.appendChild(tutorialExplanationElement);
 
         }
 
@@ -48,10 +51,7 @@ function RecipeManager(jRecipes, actRecipe, counter, points){
             var headlineElement = document.createElement('h1');
             var headline = document.createTextNode(actRecipe.name);
 
-            // text an das h1 anhängen
             headlineElement.appendChild(headline);
-
-            // h1 ins DOM einfügen
             currentRecipe.appendChild(headlineElement);
 
         }

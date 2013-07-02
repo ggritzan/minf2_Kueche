@@ -8,6 +8,7 @@
     },
 
     "tutorial":{
+        "explanation": "This is a tutorial to help you to get used to this application.\nYou can hover over different things in the kitchen, to see what they are used for.",
         "score": "The points you have earned for each task are added here.\nYou get points for each task that has been completed correctly and minus points for each task that has not been performed correctly.\nIf you have put something wrong in a pot, you can take a new pot and redo each step until the current task.\nThis will give you extra minus points, however, or you can restart the game.",
         "ingredients": "A list of ingredients that are needed for the dish that you have chosen."
     },
