@@ -22,3 +22,21 @@ h1 {
     cursor:pointer;
     color:dodgerblue;
 }
+
+#tutorial {
+    position:absolute;
+    top:60px;
+    left:30px;
+    width:400px;
+    height:200px;
+    background:darkblue;
+    opacity:0.6;
+}
+
+#tutorial h1 {
+    color:deepskyblue;
+}
+
+#tutorial p {
+    color:deepskyblue;
+}
