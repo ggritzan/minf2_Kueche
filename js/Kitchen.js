@@ -182,7 +182,7 @@ Kitchen.prototype.setBackgroundSky = function(){
         this.backgroundSky.changeImage("images/kitchenComponents/Morning.png");
     } else if(currentTime.getHours()>9 && currentTime.getHours()<=17) {
         this.backgroundSky.changeImage("images/kitchenComponents/Midday.png");
-    } else if(currentTime.getHours()>17 && currentTime.getHours()<=22) {
+    } else if(currentTime.getHours()>17 && currentTime.getHours()<22) {
         this.backgroundSky.changeImage("images/kitchenComponents/Evening.png");
     } else {
         this.backgroundSky.changeImage("images/kitchenComponents/Night.png");
