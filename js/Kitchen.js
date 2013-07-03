@@ -135,6 +135,7 @@ Kitchen.prototype.showResults = function(that) {
     }
     that.dish = new MenuBackground(that.stage.getContext(), 100, 300, 200, 500, that.actRecipe.image,1002);
     that.stage.addToStage(that.dish);
+    alert(that.points);
 }
 
 Kitchen.prototype.setDefault = function(that) {
