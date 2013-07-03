@@ -84,6 +84,7 @@ function Kitchen(canvasId) {
     });
 
     this.tut = document.getElementById('tutorial');
+    this.lang = document.getElementById('language');
 
     // registers the needed events
     this.stage.registerEvent('click', this);
@@ -143,7 +144,6 @@ Kitchen.prototype.showResults = function(that) {
     }
     that.dish = new MenuBackground(that.stage.getContext(), 307, 85, 350, 350, that.actRecipe.image,1002);
     that.stage.addToStage(that.dish);
-    alert(that.points);
 }
 
 Kitchen.prototype.setDefault = function(that) {
@@ -508,6 +508,10 @@ Kitchen.prototype.onMouseover = function(event){
 
         }
 
+    } else if(event.target instanceof MinusButton || event.target instanceof PlusButton || event.target instanceof XButtonOptions || event.target instanceof GermanButton || event.target instanceof EnglishButton){
+
+        document.body.style.cursor = 'pointer';
+
     } else {
 
         document.body.style.cursor = 'default';
@@ -563,6 +567,9 @@ Kitchen.prototype.onClick = function (event) {
     if(event.target instanceof EnglishButton || event.target instanceof GermanButton){
 
         event.target.setLanguage(this);
+        var langSet = new Language(this.language);
+        this.lang.style.display = 'block';
+        langSet.render();
 
     }
 
@@ -571,19 +578,40 @@ Kitchen.prototype.onClick = function (event) {
         this.options.forEach(function(optionComponent){
             that.stage.removeFromStage(optionComponent);
         });
+
+        if(this.lang.style.display != 'none'){
+
+            this.lang.style.display = 'none';
+
+        }
     }
 
     if(event.target instanceof MinusButton){
         this.soundmanager.turnVolumeDown();
         this.soundmanager.playSound('button', null);
+        if(this.lang.style.display != 'none'){
+
+            this.lang.style.display = 'none';
+
+        }
     }
 
     if(event.target instanceof PlusButton){
         this.soundmanager.turnVolumeUp();
         this.soundmanager.playSound('button', null);
+        if(this.lang.style.display != 'none'){
+
+            this.lang.style.display = 'none';
+
+        }
     }
 
     if(event.target instanceof MenuButton){
+        if(this.lang.style.display != 'none'){
+
+            this.lang.style.display = 'none';
+
+        }
 
         this.soundmanager.playSound('button', null);
 
@@ -619,6 +647,12 @@ Kitchen.prototype.onClick = function (event) {
     }
 
     if(event.target  instanceof MainMenuButton && event.target.status != event.target.ON && this.actRecipe != undefined) {
+
+        if(this.lang.style.display != 'none'){
+
+            this.lang.style.display = 'none';
+
+        }
         this.soundmanager.playSound('button', null);
         var menu = document.getElementById('recipeMenu');
         menu.style.display = 'none';

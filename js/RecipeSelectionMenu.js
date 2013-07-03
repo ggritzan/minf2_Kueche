@@ -5,9 +5,11 @@ function RecipeSelectionMenu(kit){
 
         var recipeMenu = document.querySelector('#recipeMenu');
         var currentRecipe = document.querySelector('#currentRecipe');
+        var tutorial = document.querySelector('#tutorial');
 
         currentRecipe.innerHTML = ' ';
         recipeMenu.innerHTML = ' ';
+        tutorial.innerHTML = ' ';
 
         var selectionElement = document.createElement('h1');
         var selection = document.createTextNode(kit.jRecipes.recipeHeadlines.recipeMenu);
