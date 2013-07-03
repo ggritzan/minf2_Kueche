@@ -79,57 +79,77 @@
             {
                 "name": "knob",
                 "image": {
-                    "imagePath": "images/kitchenComponents/knob.png",
-                    "tileWidth": 58,
-                    "tileHeight": 58,
-                    "sx": 375,
-                    "sy": 530,
+                    "imagePath": "images/kitchenComponents/knob1.png",
+                    "tileWidth": 60,
+                    "tileHeight": 30,
+                    "imgWidth": 180,
+                    "imgHeight": 30,
+                    "sx": 384,
+                    "sy": 454,
                     "zOrder": 22
                 },
                 "animations":{
-                    "default": {"seq": [0], "loop": false}
+                    "default": {"seq": [0], "loop": false},
+                    "off": {"seq": [0], "loop": false},
+                    "onHover": {"seq": [1], "loop": false},
+                    "on": {"seq":[2], "loop": false}
                 }
             },
             {
                 "name": "knob",
                 "image": {
-                    "imagePath": "images/kitchenComponents/knob.png",
-                    "tileWidth": 58,
-                    "tileHeight": 58,
-                    "sx": 475,
-                    "sy": 530,
+                    "imagePath": "images/kitchenComponents/knob2.png",
+                    "tileWidth": 70,
+                    "tileHeight": 30,
+                    "imgWidth": 210,
+                    "imgHeight": 30,
+                    "sx": 433,
+                    "sy": 454,
                     "zOrder": 22
                 },
                 "animations":{
-                    "default": {"seq": [0], "loop": false}
+                    "default": {"seq": [0], "loop": false},
+                    "off": {"seq": [0], "loop": false},
+                    "onHover": {"seq": [1], "loop": false},
+                    "on": {"seq":[2], "loop": false}
                 }
             },
             {
                 "name": "knob",
                 "image": {
-                    "imagePath": "images/kitchenComponents/knob.png",
-                    "tileWidth": 58,
-                    "tileHeight": 58,
-                    "sx": 575,
-                    "sy": 530,
+                    "imagePath": "images/kitchenComponents/knob3.png",
+                    "tileWidth": 70,
+                    "tileHeight": 40,
+                    "imgWidth": 210,
+                    "imgHeight": 40,
+                    "sx": 490,
+                    "sy": 457,
                     "zOrder": 22
                 },
                 "animations":{
-                    "default": {"seq": [0], "loop": false}
+                    "default": {"seq": [0], "loop": false},
+                    "off": {"seq": [0], "loop": false},
+                    "onHover": {"seq": [1], "loop": false},
+                    "on": {"seq":[2], "loop": false}
                 }
             },
             {
                 "name": "knob",
                 "image": {
-                    "imagePath": "images/kitchenComponents/knob.png",
-                    "tileWidth": 58,
-                    "tileHeight": 58,
-                    "sx": 675,
-                    "sy": 530,
+                    "imagePath": "images/kitchenComponents/knob4.png",
+                    "tileWidth": 75,
+                    "tileHeight": 45,
+                    "imgWidth": 225,
+                    "imgHeight": 45,
+                    "sx": 544,
+                    "sy": 470,
                     "zOrder": 22
                 },
                 "animations":{
-                    "default": {"seq": [0], "loop": false}
+                    "default": {"seq": [0], "loop": false},
+                    "off": {"seq": [0], "loop": false},
+                    "onHover": {"seq": [1], "loop": false},
+                    "on": {"seq":[2], "loop": false}
                 }
             }
         ],

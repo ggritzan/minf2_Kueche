@@ -39,4 +39,10 @@ function AjaxManager(kit){
         kit.jUtilityButtons = data;
     });
 
+  /*  Ajax.getJSON("json/optionComponents.json?d" + d.getTime(), function(data){
+        var xButton = data.XButtonOptions;
+        var image = xButton.image;
+        kit.optionsXButton = new XButtonOptions(kit.stage.getContext(), image.sx, image.sy, image.tileWidth, image.tileHeight,image.imagePath, image.zOrder, xButton);
+    });  */
+
 }

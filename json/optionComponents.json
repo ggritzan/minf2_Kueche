@@ -1,0 +1,19 @@
+{
+    "XButtonOptions": {
+        "image":{
+            "imagePath": "images/Menu/xbuttonOptionsmenu.png",
+            "tileWidth": 80,
+            "tileHeight": 80,
+            "imgWidth": 160,
+            "imgHeight": 80,
+            "sx": 820,
+            "sy": 80,
+            "zOrder": 401
+        },
+        "animations":{
+            "default": {"seq": [0], "loop": false},
+            "off": {"seq": [0], "loop": false},
+            "onHover": {"seq": [1], "loop": false}
+        }
+    }
+}

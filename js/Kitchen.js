@@ -52,9 +52,9 @@ function Kitchen(canvasId) {
 
 
     this.optionsMenu = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/optionsMenu.png", 400);
-    this.optionsXButton = new XButtonOptions(this.stage.getContext(), 700, 300, 100, 100, "images/Menu/xbuttonOptionsmenu.png", 401);
-    this.minusButton = new MinusButton(this.stage.getContext(), 200, 200, 100, 100, "images/Menu/minusbutton.png", 401);
-    this.plusButton = new PlusButton(this.stage.getContext(), 400, 200, 100, 100, "images/Menu/plusbutton.png", 401);
+    this.optionsXButton;
+    this.minusButton = new MinusButton(this.stage.getContext(), 200, 150, 100, 100, "images/Menu/minusbutton.png", 401);
+    this.plusButton = new PlusButton(this.stage.getContext(), 450, 150, 100, 100, "images/Menu/plusbutton.png", 401);
     this.options.push(this.optionsMenu);
     this.options.push(this.optionsXButton);
     this.options.push(this.minusButton);
@@ -412,7 +412,7 @@ Kitchen.prototype.addUtilityButtons = function(utilityButtons)  {
 
 Kitchen.prototype.onMouseover = function(event){
 
-    if(event.target instanceof MainMenuButton || event.target instanceof CupboardButton || event.target instanceof FridgeButton || event.target instanceof OvenButton || event.target instanceof MenuButton){
+    if(event.target instanceof MainMenuButton || event.target instanceof CupboardButton || event.target instanceof FridgeButton || event.target instanceof OvenButton || event.target instanceof MenuButton || event.target instanceof Knob){
 
         document.body.style.cursor = 'pointer';
 
@@ -430,7 +430,7 @@ Kitchen.prototype.onMouseover = function(event){
 
         }
 
-    } else if(event.target instanceof Knob || event.target instanceof Pot){
+    } else if(event.target instanceof Pot){
 
         document.body.style.cursor = 'pointer';
 
@@ -509,7 +509,7 @@ Kitchen.prototype.onMouseover = function(event){
 
 Kitchen.prototype.onMouseout = function(event){
 
-    if(event.target instanceof MainMenuButton || event.target instanceof CupboardButton || event.target instanceof FridgeButton || event.target instanceof OvenButton || event.target instanceof MenuButton || event.target instanceof IngredientButton || event.target instanceof UtilityButton){
+    if(event.target instanceof MainMenuButton || event.target instanceof CupboardButton || event.target instanceof FridgeButton || event.target instanceof OvenButton || event.target instanceof MenuButton || event.target instanceof IngredientButton || event.target instanceof UtilityButton || event.target instanceof Knob){
 
         document.body.style.cursor = 'default';
 
@@ -578,11 +578,12 @@ Kitchen.prototype.onClick = function (event) {
 
         if (event.target.name == "cookbook" && event.target.status != event.target.ON && menu.style.display == 'none') {
             event.target.setStatus(event.target.ON);
-            recipeSelection.render();
             menu.style.display = 'block';
+            recipeSelection.render();
         } else if(event.target.name == "cookbook" && event.target.status != event.target.OFF){
             event.target.setStatus(event.target.OFF);
             menu.style.display = 'none';
+            recipeSelection.render();
         } else if(event.target.name == "options" && event.target.status != event.target.ON){
             this.options.forEach(function(optionComponent){
                 that.stage.addToStage(optionComponent);
@@ -598,6 +599,8 @@ Kitchen.prototype.onClick = function (event) {
         } else if(event.target.name == "tutorial" && event.target.status != event.target.OFF){
             event.target.setStatus(event.target.OFF);
             menu.style.display = 'none';
+            recipeSelection.render();
+            this.setDefault(this);
         }
     }
 
@@ -607,7 +610,7 @@ Kitchen.prototype.onClick = function (event) {
         menu.style.display = 'none';
         this.giveMainMenu(this);
         this.menu.forEach(function(menuComponent){
-            if(menuComponent instanceof MenuButton){
+            if(menuComponent instanceof MenuButton && menuComponent.name != "tutorial"){
                 menuComponent.setStatus(menuComponent.OFF);
             }
         });
@@ -628,14 +631,13 @@ Kitchen.prototype.onClick = function (event) {
     }
 
     if (event.target instanceof Knob) {
-        if(event.target.status == event.target.OFF) {
+
+        this.soundmanager.playSound('button', null);
+
+        if(event.target.status != event.target.ON) {
             event.target.setStatus(event.target.ON);
-            event.target.setRotation(180);
-        }else if (event.target.status == event.target.ON) {
+        } else if (event.target.status != event.target.OFF) {
             event.target.setStatus(event.target.OFF);
-            event.target.setRotation(0);
-        }else {
-            console.log("An unknown action was performed with the following knob " + event.target.name);
         }
     }
 

@@ -1,6 +1,6 @@
 function XButtonOptions(context, sx, sy, w, h, imgPath, zOrder) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+    VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder);
 
     // shows if the knob is turned off or on
     this.OFF = "off";
@@ -8,7 +8,7 @@ function XButtonOptions(context, sx, sy, w, h, imgPath, zOrder) {
     this.status = this.OFF;
 }
 
-XButtonOptions.prototype = Object.create(VisualRenderObject.prototype);
+XButtonOptions.prototype = Object.create(VisualRenderAnimation.prototype);
 XButtonOptions.prototype.constructor = XButtonOptions;
 
 
