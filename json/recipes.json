@@ -30,6 +30,16 @@
                 "butter"
             ],
 
+            "ingredientList": [
+                "Carrots",
+                "Celery",
+                "Peeled tomatoes",
+                "Salt",
+                "Pepper",
+                "Water",
+                "Butter"
+            ],
+
             "tasks": [
                 {
                     "message": "The current task of each step will be written here.",
@@ -64,6 +74,24 @@
                 "noodles",
                 "wine",
                 "water"
+            ],
+
+            "ingredientList": [
+                "Mushrooms",
+                "Carrots",
+                "Celery",
+                "Onions",
+                "Oil",
+                "Garlic",
+                "Tomato paste",
+                "Peeled tomatoes",
+                "Salt",
+                "Pepper",
+                "Sugar",
+                "Paprika powder",
+                "Noodles",
+                "Wine",
+                "Water"
             ],
 
 
@@ -562,6 +590,15 @@
 
             ],
 
+            "ingredientList": [
+                "Water",
+                "Chocolate",
+                "Cream",
+                "Yolk",
+                "Egg white"
+
+            ],
+
             "tasks": [
                 {
                     "message": "Put a pot on a heated stove top and add some water to it.",
@@ -681,6 +718,18 @@
                 "garlic",
                 "lemonJuice",
                 "cardamom"
+            ],
+
+            "ingredientList": [
+                "Basmati rice",
+                "Water",
+                "Peas",
+                "Onions",
+                "Butter",
+                "Masala mix",
+                "Garlic",
+                "Lemon juice",
+                "Cardamom"
             ],
 
             "tasks": [

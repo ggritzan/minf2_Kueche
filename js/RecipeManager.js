@@ -85,7 +85,7 @@ function RecipeManager(jRecipes, actRecipe, counter, points){
 
             var ingredientListElement = document.createElement('ul');
 
-            actRecipe.ingredients.forEach(function(ingr) {
+            actRecipe.ingredientList.forEach(function(ingr) {
                 var listItem = document.createElement('li');
                 var ingredientText = document.createTextNode(ingr);
                 listItem.appendChild(ingredientText);
