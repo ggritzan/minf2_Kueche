@@ -18,6 +18,7 @@
         {
             "name": "Tutorial",
             "id": 0,
+            "video": null,
 
             "ingredients": [
                 "carrots",
@@ -40,6 +41,10 @@
             "name": "Vegetarian Spaghetti Bolognese",
             "id": 1,
             "image": "images/recipes/vegetarienBolonese.png",
+            "video": {
+                "src": "videos/Vegetarische_Bolognese.webm",
+                "type": "video/webm", "controls": true
+            },
 
             "description": "A dish that is tasty - even without meat!",
 
@@ -544,6 +549,7 @@
             "name": "Mousse au Chocolate",
             "id": 2,
             "image": "images/recipes/vegetarienBolonese.png",
+            "video": null,
 
             "description": "A yummy desert!",
 
@@ -661,6 +667,7 @@
             "name": "Pilaf",
             "id": 3,
             "image": "images/recipes/vegetarienBolonese.png",
+            "video": null,
 
             "description": "A Middle Eastern rice dish!",
 

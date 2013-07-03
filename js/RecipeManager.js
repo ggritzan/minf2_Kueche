@@ -56,6 +56,17 @@ function RecipeManager(jRecipes, actRecipe, counter, points){
                 headlineElement.appendChild(headline);
                 currentRecipe.appendChild(headlineElement);
 
+                if(actRecipe.video != null){
+
+                    var videoElement = document.createElement('video');
+                    videoElement.setAttribute('src', actRecipe.video.src);
+                    videoElement.setAttribute('type', actRecipe.video.type);
+                    videoElement.width = 300;
+                    videoElement.controls = actRecipe.video.controls;
+                    currentRecipe.appendChild(videoElement);
+
+                }
+
             }
 
             var ingredientsHeadlineElement = document.createElement('h2');
