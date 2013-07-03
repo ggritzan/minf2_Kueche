@@ -6,7 +6,9 @@ function RecipeSelectionMenu(kit){
         var recipeMenu = document.querySelector('#recipeMenu');
         var currentRecipe = document.querySelector('#currentRecipe');
         var tutorial = document.querySelector('#tutorial');
+        var lang = document.querySelector('#language');
 
+        lang.innerHTML = ' ';
         currentRecipe.innerHTML = ' ';
         recipeMenu.innerHTML = ' ';
         tutorial.innerHTML = ' ';

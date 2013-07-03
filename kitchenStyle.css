@@ -12,13 +12,6 @@
     font-family:sans-serif;
 }
 
-/*width, position and font-family for rezeptdetails*/
-#rezeptdetails {
-    width: 300px;
-    float:left;
-    font-family:sans-serif;
-}
-
 /*All h1 elements have 0px place above them and are written in sans-serif with a size of 25px*/
 h1 {
     margin-top: 0px;
