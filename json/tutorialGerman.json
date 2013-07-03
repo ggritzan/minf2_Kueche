@@ -1,0 +1,107 @@
+{
+    "fridgebutton": {
+
+        "name": "Kuehlschrank",
+        "message": "Dies ist Ihr Kuehlschrank, er enthaelt alle Zutaten fuer das Gericht, das Sie ausgewaehlt haben.\n Klicken Sie ihn an um zu erfahren aus welchen Zutaten Sie waehlen koennen."
+
+    },
+    "cupboard": {
+
+        "name": "Kuechenschrank",
+        "message": "Wenn Sie hier klicken, sehen Sie welche Utensilien Ihnen zum Kochen zur Verfuegung stehen."
+
+    },
+    "oven": {
+
+        "name": "Ofen",
+        "message": "Dies ist Ihr Ofen. Wenn er angeschaltet ist, koennen Sie Zutaten auf den Ofen bewegen um sie zu backen."
+
+    },
+    "kitchenSlicer": {
+
+        "name": "Kuechenmaschiner",
+        "message": "Dies ist Ihre Kuechenmaschine, wenn Sie Zutaten ueber ihr loslassen, wird die betreffende Zutat kleingeschnitten."
+
+    },
+    "countertop": {
+
+        "name": "Arbeitsplatte",
+        "message": "Dies ist ihre Arbeitsplatte auf der Sie Zutaten ablegen koennen."
+
+    },
+    "knob": {
+
+        "name": "Herdplattenknopf",
+        "message": "Die Knoepfe koennen Herdplatten anschalten. Zu jeden Knopf gehoert eine Herdplatte.\nWenn ein Topf auf einer angeschalteten Herdplatte steht beginnt er zu kochen."
+
+    },
+    "bin": {
+
+        "name": "Muelleimer",
+        "message": "Dies ist Ihr Muelleimer mit dem Sie ueberfluessige Zutaten oder Utensilien von Ihrer Arbeitsflaeche entfernen koennen."
+
+    },
+    "ingredientbutton": {
+
+        "name": "Zutatenknopf",
+        "message": "Klicken Sie hier um die Zutat aus dem Kuehlschrank zu holen."
+
+    },
+    "utilitybutton": {
+
+        "name": "Utensilienknopf",
+        "message": "Klicken Sie hier um das Utensil aus dem Schrank zu holen."
+
+    },
+    "pot": {
+
+        "name": "Topf",
+        "message": "Sie koennen Zutaten hiningeben. Wenn ein Topf auf einer angeschalteten Herdplatte steht, beginnt er zu kochen."
+
+    },
+    "stoveTop": {
+
+        "name": "Herdplatte",
+        "message": "Put a pot on a turned on stove top and it will start to heat. You can turn a stove top on by pressing a stove top knob."
+
+    },
+
+    "mainMenuButton":{
+
+        "name": "Hauptmenue",
+        "message": "Dieser Button bringt Sie zurueck ins Hauptmenue."
+
+    },
+
+    "ovenButton":{
+
+        "name": "Ofenknopf",
+        "message": "Mit diesem Knopf koennen Sie Ihren Ofen an- und ausschalten."
+
+    },
+
+    "cookbook":{
+
+        "name": "Kochbuch",
+        "message": "Klicken Sie es an um Ihre Rezeptauswahl zu oeffnen."
+
+    },
+    "ingredient": {
+
+        "name": "Zutat",
+        "message": "Sie koennensie bewegen und zum Kochen verwenden."
+
+    },
+    "options":{
+
+        "name": "Optionen",
+        "message": "Klicken Sie hier um Ton- und Spracheinstellungen zu aendern."
+
+    },
+    "tutorial":{
+
+        "name": "Hilfe",
+        "message": "Ein kleine Hilfe zu dieser Anwendung."
+
+    }
+}
