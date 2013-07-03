@@ -1,0 +1,22 @@
+{
+    "draggable": true,
+    "zOrder": 50,
+    "container":[
+        {
+            "name": "pepper",
+            "image":{
+                "imagePath": "images/Ingredients/pepper2.png",
+                "tileWidth": 150,
+                "tileHeight": 300,
+                "imgWidth": 450,
+                "imgHeight": 300,
+                "sx": 215,
+                "sy": 150
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false},
+                "overPot": {"seq": [0,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,0], "loop": false}
+            }
+        }
+    ]
+}

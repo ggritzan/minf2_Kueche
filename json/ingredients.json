@@ -232,25 +232,6 @@
             }
         },
         {
-            "name": "pepper",
-            "image":{
-                "imagePath": "images/Ingredients/pepper.png",
-                "tileWidth": 150,
-                "tileHeight": 150,
-                "imgWidth": 600,
-                "imgHeight": 150,
-                "sx": 215,
-                "sy": 300
-            },
-            "animations": {
-                "default": {"seq": [0], "loop": false},
-                "raw": {"seq": [0], "loop": false},
-                "rawCut": {"seq": [1], "loop": false},
-                "cookedBaked": {"seq": [2], "loop": false},
-                "cookedBakedCut": {"seq": [3], "loop": false}
-            }
-        },
-        {
             "name": "salt",
             "image":{
                 "imagePath": "images/Ingredients/salt.png",

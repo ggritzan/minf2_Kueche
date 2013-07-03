@@ -18,6 +18,7 @@ function Kitchen(canvasId) {
     this.jKitchenComponents;
     this.jUtilities;
     this.jIngredients;
+    this.jContainer;
     this.jRecipes;
     this.actRecipe;
     this.jIngredientButtons;
@@ -305,7 +306,7 @@ Kitchen.prototype.hideMainMenu = function(that) {
  * @param ingredientName - fridge array of the kitchen with the ingredient names as Strings
  */
 
-Kitchen.prototype.addIngredient = function(ingredients, ingredientName){
+Kitchen.prototype.addIngredient = function(containers, ingredients, ingredientName){
 
     // for callback
     var that = this;
@@ -317,6 +318,16 @@ Kitchen.prototype.addIngredient = function(ingredients, ingredientName){
             var ingredient = new Ingredient(that.stage.getContext(), ingredient.image.sx, ingredient.image.sy, ingredient.image.tileWidth, ingredient.image.tileHeight, ingredient.image.imagePath, ingredients.zOrder, ingredients.draggable, ingredient.name, ingredient);
             that.ingredients.push(ingredient);
             that.stage.addToStage(ingredient);
+        }
+    });
+
+    var container = containers.container;
+
+    container.forEach(function(cont){
+        if(cont.name == ingredientName){
+            var container = new Container(that.stage.getContext(), cont.image.sx, cont.image.sy, cont.image.tileWidth, cont.image.tileHeight, cont.image.imagePath, containers.zOrder, containers.draggable, cont.name, cont);
+            that.ingredients.push(container);
+            that.stage.addToStage(container);
         }
     });
 }
@@ -662,7 +673,7 @@ Kitchen.prototype.onClick = function (event) {
 
     if(event.target instanceof IngredientButton){
         this.soundmanager.playSound('beam', null);
-        this.addIngredient(this.jIngredients, event.target.name);
+        this.addIngredient(this.jContainer, this.jIngredients, event.target.name);
     }
 
     if(event.target instanceof UtilityButton){
@@ -712,7 +723,8 @@ Kitchen.prototype.onDragend = function (event) {
     var ingY = event.target.y + event.target.height / 2;
     var zone = this.bin.getHitZone();
 
-    if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {this.stage.removeFromStage(event.target);
+    if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
+        this.stage.removeFromStage(event.target);
         event.target = null;
         this.bin.setStatus(this.bin.OFF);
     }
@@ -906,6 +918,8 @@ Kitchen.prototype.onDragend = function (event) {
                 if(actTask.utensil == "countertop" && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
                     this.points = this.points + 10;
                     this.counter++;
+                    var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+                    recipeManager.render();
                     console.log("You've got " + this.points + " points now.");
                 }
             }
@@ -967,6 +981,69 @@ Kitchen.prototype.onDragend = function (event) {
 
                     });
                 }
+
+        }
+
+    } else if(event.target instanceof Container && this.actRecipe.tasks.length > this.counter){
+
+        if(tasks[this.counter].task != null && this.counter < tasks.length) {
+
+            var actTask = tasks[this.counter].task;
+
+            var ingX = event.target.x + event.target.width / 2;
+            var ingY = event.target.y + event.target.height / 2;
+
+            for (var i = 0; i < this.pots.length; i++) {
+
+                var zone = this.pots[i].getHitZone();
+
+                //is the ingredient over a pot?
+                if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
+
+                    // if the pot content does not meet the requirements of the current task
+                    var potContentTrue = true;
+                    if(this.pots[i].content.length <= actTask.utensilProperties.content.length){
+                        for(var l = 0; l < this.pots[i].content.length; l++){
+                            if(!(this.pots[i].content[l].name == actTask.utensilProperties.content[l])){
+                                potContentTrue = false;
+                            }
+                        }
+                    } else if(this.pots[i].content.length > actTask.utensilProperties.content.length){
+                        for(var l = 0; l < actTask.utensilProperties.content.length; l++){
+                            if(!(this.pots[i].content[l].name == actTask.utensilProperties.content[l])){
+                                potContentTrue = false;
+                            }
+                        }
+                    }
+
+                    // does the pot meet all the property requirements for the task?
+
+                    // does the clicked ingredient meet the ingredient properties of the current task?
+                    if(actTask.utensil == "pot" && potContentTrue && this.pots[i].status == actTask.utensilProperties.actState && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
+                        this.pots[i].content.push(event.target);
+                        event.target.changeAnim();
+                        this.pots[i].content.forEach(function(cont){console.log(cont.name)});
+                        this.points = this.points + 10;
+                        this.counter++;
+                        var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+                        recipeManager.render();
+                        console.log("You've got " + this.points + " points now.");
+                        break;
+
+                        // if either the pot or the ingredient do not meet the requirements
+                    } else if (!(actTask.utensil == "pot" && potContentTrue && this.pots[i].status == actTask.utensilProperties.actState && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
+                        this.pots[i].content.push(event.target);
+                        event.target.changeAnim();
+                        this.pots[i].content.forEach(function(cont){console.log(cont.name)});
+                        this.points = this.points - 10;
+                        this.soundmanager.playSound('error', null);
+                        var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+                        recipeManager.render();
+                        console.log("You've got " + this.points + " points now.");
+                        break;
+                    }
+                }
+            }
 
         }
 

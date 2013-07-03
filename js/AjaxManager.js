@@ -27,6 +27,10 @@ function AjaxManager(kit){
         kit.jIngredients = data;
     });
 
+    Ajax.getJSON("json/container.json?d=" + d.getTime(), function(data){
+        kit.jContainer = data;
+    });
+
     Ajax.getJSON("json/recipes.json?d=" + d.getTime(), function(data){
         kit.jRecipes = data;
     });
