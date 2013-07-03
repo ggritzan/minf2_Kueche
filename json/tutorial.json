@@ -91,5 +91,11 @@
         "name": "Ingredient",
         "message": "You can drag the ingredient around."
 
+    },
+    "options":{
+
+        "name": "Options",
+        "message": "Click to change the sound and language settings."
+
     }
 }

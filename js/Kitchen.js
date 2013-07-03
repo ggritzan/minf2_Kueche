@@ -51,15 +51,12 @@ function Kitchen(canvasId) {
     var ajax = new AjaxManager(this);
 
 
-
-    this.optionsButton = new OptionsButton(this.stage.getContext(), 100, 100, 200, 200, "images/Menu/optionsbutton.png", 300);
     this.optionsMenu = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/optionsMenu.png", 400);
     this.optionsXButton = new XButtonOptions(this.stage.getContext(), 700, 300, 100, 100, "images/Menu/xbuttonOptionsmenu.png", 401);
     this.minusButton = new MinusButton(this.stage.getContext(), 200, 200, 100, 100, "images/Menu/minusbutton.png", 401);
     this.plusButton = new PlusButton(this.stage.getContext(), 400, 200, 100, 100, "images/Menu/plusbutton.png", 401);
-    this.tutorialButton = new TutorialButton(this.stage.getContext(), 200, 400, 200, 200, "images/Menu/tutorialButton.png", 300);
+    this.tutorialButton = new TutorialButton(this.stage.getContext(), 260, 450, 200, 200, "images/Menu/tutorialButton.png", 300);
     this.menu.push(this.tutorialButton);
-    this.menu.push(this.optionsButton);
     this.menu.push(this.tutorialButton);
     this.options.push(this.optionsMenu);
     this.options.push(this.optionsXButton);
@@ -563,13 +560,6 @@ Kitchen.prototype.onClick = function (event) {
 
     }
 
-    if(event.target instanceof OptionsButton){
-
-        this.options.forEach(function(optionComponent){
-            that.stage.addToStage(optionComponent);
-        });
-    }
-
     if(event.target instanceof XButtonOptions){
 
         this.options.forEach(function(optionComponent){
@@ -601,6 +591,10 @@ Kitchen.prototype.onClick = function (event) {
         } else if(event.target.name == "cookbook" && event.target.status != event.target.OFF){
             event.target.setStatus(event.target.OFF);
             menu.style.display = 'none';
+        } else if(event.target.name == "options" && event.target.status != event.target.ON){
+            this.options.forEach(function(optionComponent){
+                that.stage.addToStage(optionComponent);
+            });
         }
     }
 

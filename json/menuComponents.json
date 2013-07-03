@@ -30,7 +30,6 @@
     },
     "menuButtons":[
         {
-            "recipeIndex": 0,
             "name": "cookbook",
             "image":{
                 "imagePath": "images/Menu/cookbookButton.png",
@@ -50,43 +49,22 @@
             }
         },
         {
-            "recipeIndex": 1,
             "name": "options",
             "image":{
-                "imagePath": "images/Menu/menubutton.png",
-                "tileWidth": 200,
-                "tileHeight": 50,
-                "imgWidth": 200,
-                "imgHeight": 50,
-                "sx": 500,
-                "sy": 400,
-                "zOrder": 299
+                "imagePath": "images/Menu/optionsbutton.png",
+                "tileWidth": 160,
+                "tileHeight": 160,
+                "imgWidth": 480,
+                "imgHeight": 160,
+                "sx": 550,
+                "sy": 100,
+                "zOrder": 300
             },
-            "animations":{
+                "animations":{
                 "default": {"seq": [0], "loop": false},
                 "off": {"seq": [0], "loop": false},
-                "onHover": {"seq": [0], "loop": false},
-                "on": {"seq": [0], "loop": false}
-            }
-        },
-        {
-            "recipeIndex": 2,
-            "name" : "tutorial",
-            "image":{
-                "imagePath": "images/Menu/menubutton.png",
-                "tileWidth": 200,
-                "tileHeight": 50,
-                "imgWidth": 200,
-                "imgHeight": 50,
-                "sx": 500,
-                "sy": 500,
-                "zOrder": 299
-            },
-            "animations":{
-                "default": {"seq": [0], "loop": false},
-                "off": {"seq": [0], "loop": false},
-                "onHover": {"seq": [0], "loop": false},
-                "on": {"seq": [0], "loop": false}
+                "onHover": {"seq": [1], "loop": false},
+                "on": {"seq": [2], "loop": false}
             }
         }
     ]
