@@ -49,20 +49,35 @@ the tutorial block features a blue background, everything is written in sans-ser
 #tutorial {
     position:absolute;
     top:60px;
-    left:300px;
-    width:300px;
+    left:250px;
+    width:200px;
     height:200px;
-    background:darkblue;
-    opacity:0.6;
+    background: #2bd3e2; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #2bd3e2 0%, #1e5799 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#2bd3e2), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #2bd3e2 0%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #2bd3e2 0%,#1e5799 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #2bd3e2 0%,#1e5799 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #2bd3e2 0%,#1e5799 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2bd3e2', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    border:5px solid white;
+    border-radius: 15px;
     font-family:sans-serif;
 }
 
 /*colour for the h1 elements in the tutorial block*/
 #tutorial h1 {
-    color:deepskyblue;
+    text-align:center;
+    color:white;
+    margin-top:5px;
+    margin-left:5px;
+    margin-right:5px;
 }
 
 /*colour for the p elements in the tutorial block*/
 #tutorial p {
-    color:deepskyblue;
+    color:white;
+    margin-left:5px;
+    margin-right:5px;
+    margin-bottom:5px;
 }
