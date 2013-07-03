@@ -694,14 +694,14 @@ Kitchen.prototype.onClick = function (event) {
             }
         }
     }
-   /* if (this.actRecipe != undefined && this.actRecipe.tasks.length > this.counter) {
+    if (this.actRecipe != undefined && this.actRecipe.tasks.length > this.counter) {
         console.log(this.actRecipe.tasks[this.counter].message);
     } else if (this.actRecipe != undefined && !(event.target instanceof Ingredient && this.actRecipe.tasks.length > this.counter)){
         console.log("Sie haben das Rezept " + this.actRecipe.name + " mit " + this.points + " von " + this.actRecipe.tasks.length*10 + " möglichen Punkten abgeschlossen.");
         this.showResults(this);
     } else if(this.actRecipe == undefined) {
         console.log("Bitte waehlen Sie ein Rezept im Hauptmenue aus.");
-    }   */
+    }
 }
 
 Kitchen.prototype.onDragging = function(event){
