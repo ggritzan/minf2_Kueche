@@ -988,13 +988,16 @@ Kitchen.prototype.onDragend = function (event) {
                     this.soundmanager.playSound('beam', null);
                     var that = this;
 
-                    this.soundmanager.playSound('oven', function() {
-                        that.oven.baking();
-                        that.stage.addToStage(that.oven.content[0]);
-                        that.soundmanager.playSound('beam', null);
-                        that.oven.clearContent();
+                    if(that.oven.baking()) {
+                        this.soundmanager.playSound('oven', function() {
+                            for(var i = 0; i<that.oven.content.length; i++) {
+                                that.stage.addToStage(that.oven.content[i]);
+                            }
+                            that.soundmanager.playSound('beam', null);
+                            that.oven.clearContent();
+                        });
 
-                    });
+                    }
                 }
 
         }
