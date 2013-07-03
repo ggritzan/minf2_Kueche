@@ -22,6 +22,7 @@ Oven.prototype.setStatus = function (status){
         case this.OFF: this.changeAnimSequence("off");
             break;
         case this.ON: this.changeAnimSequence("on");
+            this.baking();
             break;
         default: this.changeAnimSequence("default");
             break;
@@ -34,9 +35,15 @@ Oven.prototype.clearContent = function (){
 
 Oven.prototype.baking = function () {
     if(this.status == this.ON && this.content[0] != undefined){
-        this.content[0].isBaked = true;
-        this.content[0].changeAnim();
-        console.log("The ingredient is baked: " + this.content[0].name + " " +this.content[0].isBaked);
+        console.log("Ya");
+        for(var i = 0; i<this.content.length;i++) {
+            this.content[i].isBaked = true;
+            this.content[i].changeAnim();
+            console.log("The ingredient is baked: " + this.content[i].name + " " +this.content[i].isBaked);
+        }
+        return true;
+    } else {
+        return false;
     }
 }
 

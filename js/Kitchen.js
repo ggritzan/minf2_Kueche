@@ -164,6 +164,7 @@ Kitchen.prototype.setDefault = function(that) {
     that.fridgeButton.setStatus(that.fridgeButton.OFF);
     that.cupboard.setStatus(that.cupboard.OFF);
     that.oven.content = [];
+    that.ovenButton.setStatus(that.ovenButton.OFF);
     that.oven.setStatus(that.oven.OFF);
     that.kitchenSlicer.content = [];
     that.ingredients = [];
@@ -644,6 +645,16 @@ Kitchen.prototype.onClick = function (event) {
     if(event.target instanceof OvenButton){
         if(event.target.status != event.target.ON){
             event.target.setStatus(event.target.ON);
+            if(that.oven.baking()) {
+                this.soundmanager.playSound('oven', function() {
+                    for(var i = 0; i<that.oven.content.length; i++) {
+                        that.stage.addToStage(that.oven.content[i]);
+                    }
+                    that.soundmanager.playSound('beam', null);
+                    that.oven.clearContent();
+                });
+
+            }
         } else {
             event.target.setStatus(event.target.OFF);
         }
@@ -879,14 +890,16 @@ Kitchen.prototype.onDragend = function (event) {
                     recipeManager.render();
                     console.log("You've got " + this.points + " points now.");
                     var that = this;
+                    if(that.oven.baking()) {
+                        this.soundmanager.playSound('oven', function() {
+                            for(var i = 0; i<that.oven.content.length; i++) {
+                                that.stage.addToStage(that.oven.content[i]);
+                            }
+                            that.soundmanager.playSound('beam', null);
+                            that.oven.clearContent();
+                        });
 
-                    this.soundmanager.playSound('oven', function() {
-                        that.oven.baking();
-                        that.stage.addToStage(that.oven.content[0]);
-                        that.soundmanager.playSound('beam', null);
-                        that.oven.clearContent();
-
-                    });
+                    }
 
                 }  else if (!(actTask.utensil == "oven" && ovenContentTrue && this.oven.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
 
@@ -901,14 +914,16 @@ Kitchen.prototype.onDragend = function (event) {
 
                     var that = this;
 
-                    this.soundmanager.playSound('oven', function() {
-                        that.oven.changeAnimSequence("on");
-                        that.oven.baking();
-                        that.soundmanager.playSound('beam', null);
-                        that.stage.addToStage(that.oven.content[0]);
-                        that.oven.clearContent();
+                    if(that.oven.baking()) {
+                        this.soundmanager.playSound('oven', function() {
+                            for(var i = 0; i<that.oven.content.length; i++) {
+                                that.stage.addToStage(that.oven.content[i]);
+                            }
+                            that.soundmanager.playSound('beam', null);
+                            that.oven.clearContent();
+                        });
 
-                    });
+                    }
                 }
             }
 
