@@ -66,6 +66,25 @@
                 "onHover": {"seq": [1], "loop": false},
                 "on": {"seq": [2], "loop": false}
             }
+        },
+        {
+        "name": "tutorial",
+            "image":{
+            "imagePath": "images/Menu/tutorialButton.png",
+            "tileWidth": 200,
+            "tileHeight": 200,
+            "imgWidth": 480,
+            "imgHeight": 160,
+            "sx": 260,
+            "sy": 450,
+            "zOrder": 300
+            },
+            "animations":{
+            "default": {"seq": [0], "loop": false},
+            "off": {"seq": [0], "loop": false},
+            "onHover": {"seq": [1], "loop": false},
+            "on": {"seq": [2], "loop": false}
+            }
         }
     ]
 }

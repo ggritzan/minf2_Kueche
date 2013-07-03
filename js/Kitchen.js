@@ -55,9 +55,6 @@ function Kitchen(canvasId) {
     this.optionsXButton = new XButtonOptions(this.stage.getContext(), 700, 300, 100, 100, "images/Menu/xbuttonOptionsmenu.png", 401);
     this.minusButton = new MinusButton(this.stage.getContext(), 200, 200, 100, 100, "images/Menu/minusbutton.png", 401);
     this.plusButton = new PlusButton(this.stage.getContext(), 400, 200, 100, 100, "images/Menu/plusbutton.png", 401);
-    this.tutorialButton = new TutorialButton(this.stage.getContext(), 260, 450, 200, 200, "images/Menu/tutorialButton.png", 300);
-    this.menu.push(this.tutorialButton);
-    this.menu.push(this.tutorialButton);
     this.options.push(this.optionsMenu);
     this.options.push(this.optionsXButton);
     this.options.push(this.minusButton);
@@ -551,17 +548,6 @@ Kitchen.prototype.onClick = function (event) {
         this.giveMainMenu(this);
     }
 
-    if(event.target instanceof TutorialButton){
-
-        this.hideMainMenu(this);
-        this.mainMenuButton.setStatus(this.mainMenuButton.OFF);
-        this.setDefault(this);
-        this.fillFridge(this.jRecipes, 0);
-        var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
-        recipeManager.render();
-
-    }
-
     if(event.target instanceof XButtonOptions){
 
         this.options.forEach(function(optionComponent){
@@ -597,6 +583,17 @@ Kitchen.prototype.onClick = function (event) {
             this.options.forEach(function(optionComponent){
                 that.stage.addToStage(optionComponent);
             });
+        } else if (event.target.name == "tutorial" && event.target.status != event.target.ON && menu.style.display == 'none') {
+            event.target.setStatus(event.target.ON);
+            this.hideMainMenu(this);
+            this.mainMenuButton.setStatus(this.mainMenuButton.OFF);
+            this.setDefault(this);
+            this.fillFridge(this.jRecipes, 0);
+            var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+            recipeManager.render();
+        } else if(event.target.name == "tutorial" && event.target.status != event.target.OFF){
+            event.target.setStatus(event.target.OFF);
+            menu.style.display = 'none';
         }
     }
 
@@ -606,7 +603,7 @@ Kitchen.prototype.onClick = function (event) {
         menu.style.display = 'none';
         this.giveMainMenu(this);
         this.menu.forEach(function(menuComponent){
-            if(menuComponent.name == "cookbook"){
+            if(menuComponent instanceof MenuButton){
                 menuComponent.setStatus(menuComponent.OFF);
             }
         });
