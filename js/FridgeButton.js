@@ -4,8 +4,9 @@ function FridgeButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
     this.name = name;
 
     // shows if the button is turned off or on
-    this.OFF = 0;
-    this.ON = 1;
+    this.OFF = "off";
+    this.ONHOVER = "onHover";
+    this.ON = "on";
     this.status = this.OFF;
 }
 

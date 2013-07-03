@@ -23,6 +23,10 @@ function AjaxManager(kit){
         kit.jIngredientButtons = data;
     });
 
+    Ajax.getJSON("json/utilityButtons.json?d=" + d.getTime(), function(data){
+        kit.jUtilityButtons = data;
+    });
+
     Ajax.getJSON("json/ingredients.json?d=" + d.getTime(), function(data){
         kit.jIngredients = data;
     });
@@ -34,15 +38,5 @@ function AjaxManager(kit){
     Ajax.getJSON("json/recipes.json?d=" + d.getTime(), function(data){
         kit.jRecipes = data;
     });
-
-    Ajax.getJSON("json/utilityButtons.json?d=" + d.getTime(), function(data){
-        kit.jUtilityButtons = data;
-    });
-
-  /*  Ajax.getJSON("json/optionComponents.json?d" + d.getTime(), function(data){
-        var xButton = data.XButtonOptions;
-        var image = xButton.image;
-        kit.optionsXButton = new XButtonOptions(kit.stage.getContext(), image.sx, image.sy, image.tileWidth, image.tileHeight,image.imagePath, image.zOrder, xButton);
-    });  */
 
 }

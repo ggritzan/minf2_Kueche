@@ -5,6 +5,11 @@ function Kitchen(canvasId) {
     // apply the right animation frame to the window object
     window.requestAnimationFrame = requestAnimationFrame;
 
+    this.ENGLISH = "eng";
+    this.GERMAN = "ger";
+
+    this.language = this.ENGLISH;
+
     // create a new stage object
     this.stage = new Stage(canvasId);
     this.soundmanager = new SoundManager();
@@ -50,13 +55,16 @@ function Kitchen(canvasId) {
 
     var ajax = new AjaxManager(this);
 
-
     this.optionsMenu = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/optionsMenu.png", 400);
-    this.optionsXButton;
+    this.xbuttonOptions = new XButtonOptions(this.stage.getContext(), 820, 80, 80, 80, "images/Menu/xbuttonOptionsmenu.png", 401);
     this.minusButton = new MinusButton(this.stage.getContext(), 200, 150, 100, 100, "images/Menu/minusbutton.png", 401);
     this.plusButton = new PlusButton(this.stage.getContext(), 450, 150, 100, 100, "images/Menu/plusbutton.png", 401);
+    this.germanButton = new GermanButton(this.stage.getContext(), 200, 400, 100, 100, "images/Menu/germanOff.png", 401);
+    this.englishButton = new EnglishButton(this.stage.getContext(), 450, 400, 100, 100, "images/Menu/EnglischOff.png", 401);
+    this.options.push(this.germanButton);
+    this.options.push(this.englishButton);
+    this.options.push(this.xbuttonOptions);
     this.options.push(this.optionsMenu);
-    this.options.push(this.optionsXButton);
     this.options.push(this.minusButton);
     this.options.push(this.plusButton);
 
@@ -424,7 +432,7 @@ Kitchen.prototype.onMouseover = function(event){
 
         if(this.actRecipe != undefined && this.actRecipe.id == 0){
 
-            var tutorial = new Tutorial(event.target.name);
+            var tutorial = new Tutorial(event.target.name, this.language);
             tutorial.render();
             this.tut.style.display = 'block';
 
@@ -436,7 +444,7 @@ Kitchen.prototype.onMouseover = function(event){
 
         if(this.actRecipe != undefined && this.actRecipe.id == 0){
 
-            var tutorial = new Tutorial(event.target.name);
+            var tutorial = new Tutorial(event.target.name, this.language);
             tutorial.render();
             this.tut.style.display = 'block';
 
@@ -454,7 +462,7 @@ Kitchen.prototype.onMouseover = function(event){
 
         if(this.actRecipe != undefined && this.actRecipe.id == 0){
 
-            var tutorial = new Tutorial("ingredientbutton");
+            var tutorial = new Tutorial("ingredientbutton", this.language);
             tutorial.render();
             this.tut.style.display = 'block';
 
@@ -472,7 +480,7 @@ Kitchen.prototype.onMouseover = function(event){
 
         if(this.actRecipe != undefined && this.actRecipe.id == 0){
 
-            var tutorial = new Tutorial("utilitybutton");
+            var tutorial = new Tutorial("utilitybutton", this.language);
             tutorial.render();
             this.tut.style.display = 'block';
 
@@ -482,7 +490,7 @@ Kitchen.prototype.onMouseover = function(event){
 
         if(this.actRecipe != undefined && this.actRecipe.id == 0){
 
-            var tutorial = new Tutorial(event.target.name);
+            var tutorial = new Tutorial(event.target.name, this.language);
             tutorial.render();
             this.tut.style.display = 'block';
 
@@ -494,7 +502,7 @@ Kitchen.prototype.onMouseover = function(event){
 
         if(this.actRecipe != undefined && this.actRecipe.id == 0){
 
-            var tutorial = new Tutorial("ingredient");
+            var tutorial = new Tutorial("ingredient", this.language);
             tutorial.render();
             this.tut.style.display = 'block';
 
@@ -550,6 +558,12 @@ Kitchen.prototype.onClick = function (event) {
         this.stage.removeFromStage(this.dish);
         this.setDefault(this);
         this.giveMainMenu(this);
+    }
+
+    if(event.target instanceof EnglishButton || event.target instanceof GermanButton){
+
+        event.target.setLanguage(this);
+
     }
 
     if(event.target instanceof XButtonOptions){

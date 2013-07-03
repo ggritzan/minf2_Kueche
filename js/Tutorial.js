@@ -1,13 +1,26 @@
-function Tutorial(tutName){
+function Tutorial(tutName, language){
+
+    this.ENGLISH = "eng";
+    this.GERMAN = "ger";
 
     var d = new Date();
     var that = this;
 
     this.jTutorial;
 
-    Ajax.getJSON("json/tutorial.json?d=" + d.getTime(), function(data){
-        that.jTutorial = data;
-    });
+    if(language == this.GERMAN){
+        Ajax.getJSON("json/tutorialGerman.json?d=" + d.getTime(), function(data){
+            that.jTutorial = data;
+        });
+    } else {
+
+        Ajax.getJSON("json/tutorial.json?d=" + d.getTime(), function(data){
+            that.jTutorial = data;
+        });
+
+    }
+
+
 
     this.render = function(){
 
