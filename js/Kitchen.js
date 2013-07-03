@@ -113,6 +113,9 @@ Kitchen.prototype.run = function (kit) {
 }
 
 Kitchen.prototype.showResults = function(that) {
+    for (var i = 0; i < that.pots.length; i++) {
+        if(that.pots[i].boilingWaterSound != undefined){this.soundmanager.stopSound(that.pots[i].boilingWaterSound)}
+    }
     that.judgementscreen = new MenuBackground(that.stage.getContext(), 0, 0, 1000, 630, "images/Menu/judgementscreen.png",1000);
     that.stage.addToStage(that.judgementscreen);
     that.judgement = true;
@@ -138,6 +141,7 @@ Kitchen.prototype.showResults = function(that) {
 Kitchen.prototype.setDefault = function(that) {
     that.counter = 0;
     for (var i = 0; i < that.pots.length; i++) {
+        if(that.pots[i].boilingWaterSound != undefined){this.soundmanager.stopSound(that.pots[i].boilingWaterSound)}
         that.stage.removeFromStage(that.pots[i]);
         that.pots[i] = null;
     }
