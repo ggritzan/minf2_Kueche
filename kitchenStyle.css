@@ -1,28 +1,51 @@
-﻿#kitchenCanvas {
+﻿/*OPosition of the KitchenCanvas*/
+#kitchenCanvas {
     margin-right:20px;
 	float:left;
 }
 
+/*Size, position anf font-family for the cuurrentRecipe block*/
 #currentRecipe {
 	width:300px;
-    height:630px;
+    height:600px;
 	float:left;
+    font-family:sans-serif;
 }
 
+/*width, position and font-family for rezeptdetails*/
 #rezeptdetails {
     width: 300px;
     float:left;
+    font-family:sans-serif;
 }
 
+/*All h1 elements have 0px place above them and are written in sans-serif with a size of 25px*/
 h1 {
     margin-top: 0px;
+    font-family:sans-serif;
+    font-size:25px;
 }
 
+/*All h2 elements shall have font-size 20px*/
+h2 {
+    font-size:20px;
+}
+
+
+/*The recipeMenu shall use the font sans-serif*/
+#recipeMenu {
+    font-family:sans-serif;
+}
+
+/*if the mouse is moved over a h2 element in the recipeMenu block, the mouse turns into a pointer and the h2 element is highlighted blue*/
 #recipeMenu h2:hover {
     cursor:pointer;
     color:dodgerblue;
 }
 
+/*The tutorial block is uninfluenced by the position of the other elements
+it always sits at 300 x and 60 y and is 300px wide and and 200px high
+the tutorial block features a blue background, everything is written in sans-serif and the whole block(including the font) is slightly transparent*/
 #tutorial {
     position:absolute;
     top:60px;
@@ -31,12 +54,15 @@ h1 {
     height:200px;
     background:darkblue;
     opacity:0.6;
+    font-family:sans-serif;
 }
 
+/*colour for the h1 elements in the tutorial block*/
 #tutorial h1 {
     color:deepskyblue;
 }
 
+/*colour for the p elements in the tutorial block*/
 #tutorial p {
     color:deepskyblue;
 }

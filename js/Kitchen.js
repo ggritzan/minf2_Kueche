@@ -72,6 +72,7 @@ function Kitchen(canvasId) {
     this.ovenButton;
     this.stage.addToStage(kitchenBackground);
     this.stage.addToStage(this.counterTop);
+    this.setBackgroundSky();
 
     this.menu.forEach(function(menuElement){
         that.stage.addToStage(menuElement);
@@ -104,7 +105,6 @@ Kitchen.prototype.run = function (kit) {
     kit.pots.forEach(function(pot){
         pot.update()
     });
-    kit.setBackgroundSky();
 
     // Always render after the updates
     kit.stage.render();
@@ -172,6 +172,7 @@ Kitchen.prototype.setDefault = function(that) {
     that.actRecipe = undefined;
     that.points = 0;
     that.judgement = false;
+    that.setBackgroundSky();
 }
 
 Kitchen.prototype.setBackgroundSky = function(){
