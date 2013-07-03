@@ -97,5 +97,11 @@
         "name": "Options",
         "message": "Click to change the sound and language settings."
 
+    },
+    "tutorial":{
+
+        "name": "Help",
+        "message": "A little guide to the program."
+
     }
 }
