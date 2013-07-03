@@ -51,10 +51,7 @@
             "name": "Vegetarian Spaghetti Bolognese",
             "id": 1,
             "image": "images/recipes/vegetarienBolonese.png",
-            "video": {
-                "src": "videos/Vegetarische_Bolognese.webm",
-                "type": "video/webm", "controls": true
-            },
+            "video": null,
 
             "description": "A dish that is tasty - even without meat!",
 

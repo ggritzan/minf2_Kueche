@@ -1,0 +1,962 @@
+{
+"recipeHeadlines":{
+    "recipeMenu": "Waehle ein Rezept aus",
+        "scoreHeadline": "Punktzahl:",
+        "ingredientsHeadline": "Zutaten:",
+        "currentTaskHeadline": "Aktuelles Rezept:",
+        "recipeDetailsHeadline": "Detaillierte Erklaerung:"
+},
+
+"tutorial":{
+    "explanation": "Dies ist ein Tutorial, welches Ihnen dabei hilft sich in der Anwendung zurecht zu finden.\nBewegen Sie die Maus ueber verschiedene Objekte um mehr ueber Sie zu erfahren.",
+        "score": "Die Punkte die Sie fuer ausgefuehrte Aufgaben erhalten stehen hier.\nSie erhalten Punkte fuer jede Aufgabe, die Sie korrekt ausgefuehrt haben und Minuspunkte wenn Sie etwas falsch gemacht habent.\nWenn Sie etwas Falsches in den Pot getan haben, muessen Sie die Anfangsschritte korrekt wiederholen um wieder zur aktuellen Aufgabe zu gelangen.\nFuer jede wiederholte Aufgabe erhalten Sie Minuspunkte, oder Sie koennen die Anwendung neu starten.",
+        "ingredients": "Eine Liste der Zutaten die zur Zubereitung des Gerichts gebraucht werden."
+},
+
+"recipes": [
+
+    {
+        "name": "Tutorial",
+        "id": 0,
+        "video": null,
+
+        "ingredients": [
+            "carrots",
+            "celery",
+            "peeledtomatoes",
+            "salt",
+            "pepper",
+            "water",
+            "butter"
+        ],
+
+        "ingredientList": [
+                        "Karotten",
+                        "Sellerie",
+                        "geschaelte Tomaten",
+                        "Salz",
+                        "Pfeffer",
+                        "Wasser",
+                        "Butter"
+        ],
+
+        "tasks": [
+            {
+                "message": "Hier steht die aktuelle Aufgabe.",
+                "task": null
+            }
+        ]
+    },
+    {
+        "name": "Vegetarische Spaghetti Bolognese",
+        "id": 1,
+        "image": "images/recipes/vegetarienBolonese.png",
+        "video": {
+            "src": "videos/Vegetarische_Bolognese.webm",
+            "type": "video/webm", "controls": true
+        },
+
+        "description": "Schmeckt hervorragend - auch ohne Fleisch!",
+
+        "ingredients": [
+            "mushrooms",
+            "carrots",
+            "celery",
+            "onion",
+            "oil",
+            "garlic",
+            "tomatopaste",
+            "peeledtomatoes",
+            "salt",
+            "pepper",
+            "sugar",
+            "paprikapowder",
+            "noodles",
+            "wine",
+            "water"
+        ],
+
+        "ingredientList": [
+                        "Pilze",
+                        "Karotten",
+                        "Sellerie",
+                        "Zwiebeln",
+                        "Oel",
+                        "Knoblauch",
+                        "Tomatenpaste",
+                        "geschaelte Tomaten",
+                        "Salz",
+                        "Pfeffer",
+                        "Zucker",
+                        "Paprikapuder",
+                        "Nudeln",
+                        "Wein",
+                        "Wasser"
+         ],
+
+
+        "tasks": [
+            {
+                "message": "Legen Sie die Pilze in die Küchenmaschine um sie klein zu schneiden.",
+                "task": {
+                    "utensil": "kitchenslicer",
+                    "contentName": "mushrooms",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+            },
+
+
+            {
+                "message": "Schalten Sie den Ofen an und lassen die geschnittenen Pilze fuer eine kurze Zeit backen.",
+                "task": {
+                    "utensil": "oven",
+                    "contentName": "mushrooms",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "on"
+
+                    }
+                }
+            },
+            {
+                "message": "Legen Sie die Pilze auf die Arbeitsplatte",
+                "task": {
+                    "utensil": "countertop",
+                    "contentName": "mushrooms",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": true
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+
+                    }
+                }
+            },
+            {
+                "message": "Schneiden Sie die Karotten in der Kuechenmaschine.",
+                "task": {
+                    "utensil": "kitchenslicer",
+                    "contentName": "carrots",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+            },
+
+            {
+                "message": "Legen Sie die geschnittenen Karotten auf die Arbeitsplatte.",
+                "task": {
+                    "utensil": "countertop",
+                    "contentName": "carrots",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+            },
+
+            {
+                "message": "Schneiden Sie den Sellerie in der Kuechenmaschine.",
+                "task": {
+                    "utensil": "kitchenslicer",
+                    "contentName": "celery",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+            },
+
+            {
+                "message": "Legen Sie den geschnittenen Sellerie auf die Arbeitsplatte.",
+                "task": {
+                    "utensil": "countertop",
+                    "contentName": "celery",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+            },
+
+            {
+                "message": "Schneiden Sie Zwiebeln mit der Kuechenmaschine.",
+                "task": {
+                    "utensil": "kitchenslicer",
+                    "contentName": "onion",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+            },
+
+            {
+                "message": "Legen Sie die geschnittenen Zwiebeln auf die Arbeitsplatte.",
+                "task": {
+                    "utensil": "countertop",
+                    "contentName": "onion",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+            },
+            {
+                "message": "Schneiden Sie Knoblauch in der Kuechenmaschine.",
+                "task": {
+                    "utensil": "kitchenslicer",
+                    "contentName": "garlic",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+
+                }
+            },
+            {
+                "message": "Legen Sie den geschnittenen Knoblauch auf die Arbeitsplatte.",
+                "task": {
+                    "utensil": "countertop",
+                    "contentName": "garlic",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+
+                }
+            },
+            {
+                "message": "Stellen Sie einen Topf auf eine angeschaltete Herdplatte und geben Sie etwas Speise-Oel hinein.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "oil",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie die Pilze in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "mushrooms",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": true
+                    },
+                    "utensilProperties": {
+                        "content": ["oil"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie die Zwiebeln in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "onion",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie die Karotten in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "carrots",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms", "onion"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie den Sellerie in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "celery",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms", "onion", "carrots"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie den Knoblauch in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "garlic",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms", "onion", "carrots", "celery"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie Tomatenpaste in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "tomatopaste",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie geschaelte Tomaten in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "peeledtomatoes",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic", "tomatopaste"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie 200ml Wein in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "wine",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste", "peeledtomatoes"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie eine Prise Salz in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "salt",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste", "peeledtomatoes","wine"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie eine Prise Pfeffer in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "pepper",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","peeledtomatoes","wine","salt"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie etwas Zucker in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "sugar",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","peeledtomatoes","wine","salt","pepper"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie Paprikapuder in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "paprikapowder",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["oil", "mushrooms", "onion", "carrots", "celery", "garlic","tomatopaste","peeledtomatoes","wine","salt","pepper","sugar"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Stellen Sie einen weiteren Topf auf eine erhitzte Herdplatte und geben Sie Wasser hinein.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "water",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie etwas Salz in den zweiten Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "salt",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["water"],
+                        "actState": "on"
+                    }
+
+                }
+            },
+
+            {
+                "message": "Geben Sie Nudeln in den zweiten Topf.\n Sobald alles gekocht ist, ist das Gericht fertig.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "noodles",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["water","salt"],
+                        "actState": "on"
+                    }
+
+                }
+            }
+
+        ]
+    },
+    {
+        "name": "Mousse au Chocolate",
+        "id": 2,
+        "image": "images/recipes/MousseAuChocolat.png",
+        "video": null,
+
+        "description": "Ein leckeres Dessert!",
+
+        "ingredients": [
+            "water",
+            "chocolate",
+            "cream",
+            "yolk",
+            "eggwhite"
+
+        ],
+
+        "ingredientList": [
+                        "Wasser",
+                        "Schokolade",
+                        "Sahne",
+                        "Eigelb",
+                        "Eiweiß"
+
+        ],
+
+        "tasks": [
+            {
+                "message": "Stellen Sie einen Topf auf eine erhitzte Herdplatte und geben Sie etwas Wasser hinein.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "water",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "on"
+                    }
+                }
+
+            }, {
+                "message": "Schneiden Sie eine Tafel Schokolade in der Kuechenmaschine klein.",
+                "task": {
+                    "utensil": "kitchenslicer",
+                    "contentName": "chocolate",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+
+            },{
+                "message": "Geben Sie die geschnittene Schokolade in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "chocolate",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["water"],
+                        "actState": "on"
+                    }
+                }
+
+            },{
+                "message": "Geben Sie eine Portion Sahne in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "cream",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["water","chocolate"],
+                        "actState": "on"
+                    }
+                }
+
+            },{
+                "message": "Geben Sie ein Eiweiß in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "eggwhite",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["water","chocolate","cream"],
+                        "actState": "on"
+                    }
+                }
+
+            },{
+                "message": "Geben Sie ein Eiweiß in den Topf.\nWenn alles geschmolzen und gut vermischt ist, lassen Sie das Gericht kurz abkuehlen, bevor es verzehrt werden kann..",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "yolk",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["water","chocolate","cream","eggwhite"],
+                        "actState": "on"
+                    }
+                }
+
+            }
+
+        ]
+    },
+    {
+        "name": "Pilaf",
+        "id": 3,
+        "image": "images/recipes/Pilaf.png",
+        "video": null,
+
+        "description": "Ein indisches Reisgericht!",
+
+        "ingredients": [
+            "basmatiRice",
+            "water",
+            "peas",
+            "onion",
+            "butter",
+            "masalaMix",
+            "garlic",
+            "lemonJuice",
+            "cardamom"
+        ],
+
+        "ingredientList": [
+                        "Bsmatie Reis",
+                        "Wasser",
+                        "Erbsen",
+                        "Zwiebeln",
+                        "Butter",
+                        "Masala-Mix",
+                        "Knoblauch",
+                        "Zitronensaft",
+                        "Kardamom"
+                    ],
+
+        "tasks": [
+            {
+                "message": "Geben Sie Butter in einen Topf und erhitzen Sie diesen.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "butter",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+
+            },
+            {
+                "message": "Schneiden Sie zwei Zwiebeln in der Kuechenmaschine klein. Noch zwei Zwiebeln benoetigt",
+                "task": {
+                    "utensil": "kitchenslicer",
+                    "contentName": "onion",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+
+            },
+            {
+                "message": "Schneiden Sie zwei Zwiebeln in der Kuechenmaschine klein. Noch eine Zwiebel benoetigt.",
+                "task": {
+                    "utensil": "kitchenslicer",
+                    "contentName": "onion",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+
+            },
+            {
+                "message": "Geben Sie die zwei Zwiebeln in den Topf. Noch zwei Zwiebeln benoetigt.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "onion",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["butter"],
+                        "actState": "on"
+                    }
+                }
+
+            },
+            {
+                "message": "Geben Sie die Zwiebeln in den Topf. Noch eine Zwiebel benoetigt.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "onion",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["butter","onion"],
+                        "actState": "on"
+                    }
+                }
+
+            },
+            {
+                "message": "Schneiden Sie Knoblauch in der Kuechenmaschine klein.",
+                "task": {
+                    "utensil": "kitchenslicer",
+                    "contentName": "garlic",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": [],
+                        "actState": "off"
+                    }
+                }
+
+            },
+            {
+                "message": "Geben Sie den geschnittenen Knoblauch in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "garlic",
+                    "ingredientProperties": {
+                        "isCut": true,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["butter","onion","onion"],
+                        "actState": "on"
+                    }
+                }
+
+            },
+            {
+                "message": "Geben Sie etwas Zitronensaft in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "lemonJuice",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["butter","onion","onion","garlic"],
+                        "actState": "on"
+                    }
+                }
+
+            },
+            {
+                "message": "Geben Sie den Masala-Mix in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "masalaMix",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["butter","onion","onion","garlic","lemonJuice"],
+                        "actState": "on"
+                    }
+                }
+
+            },
+            {
+                "message": "Geben Sie die Erbsen in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "peas",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix"],
+                        "actState": "on"
+                    }
+                }
+
+            },
+            {
+                "message": "Fuegen Sie nach einiger Zeit einen Liter Wasser hinzu.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "water",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas"],
+                        "actState": "on"
+                    }
+                }
+
+            },
+            {
+                "message": "Wenn das wasser kocht, geben Sie Reis in den Topf.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "basmatiRice",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas","water"],
+                        "actState": "on"
+                    }
+                }
+
+            },
+            {
+                "message": "Geben Sie den Kardamom in den Topf. \n Lassen Sie es noch eine Weile kochen, wenn das wasser verdampft ist, kann das gericht verzehrt werden.",
+                "task": {
+                    "utensil": "pot",
+                    "contentName": "cardamom",
+                    "ingredientProperties": {
+                        "isCut": false,
+                        "isCooked": false,
+                        "isBaked": false
+                    },
+                    "utensilProperties": {
+                        "content": ["butter","onion","onion","garlic","lemonJuice","masalaMix","peas","water","basmatiRice"],
+                        "actState": "on"
+                    }
+                }
+
+            }
+
+
+        ]
+    }
+]
+}

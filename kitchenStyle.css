@@ -45,7 +45,7 @@ h2 {
 
 /*The tutorial block is uninfluenced by the position of the other elements
 it always sits at 300 x and 60 y and is 300px wide and and 200px high
-the tutorial block features a blue background, everything is written in sans-serif and the whole block(including the font) is slightly transparent*/
+the tutorial block features a dark to brightblue background, everything is written in sans-serif*/
 #tutorial {
     position:absolute;
     top:60px;
