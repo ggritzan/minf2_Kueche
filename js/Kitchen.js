@@ -118,19 +118,19 @@ Kitchen.prototype.showResults = function(that) {
     that.judgement = true;
     console.log(100*that.points/(that.actRecipe.tasks.length*10));
     if (that.points == that.actRecipe.tasks.length*10) {
-        that.stars = new MenuBackground(that.stage.getContext(), 300, 300, 350, 250, "images/Menu/3stars.png",1001);
+        that.stars = new MenuBackground(that.stage.getContext(), 300, 350, 350, 250, "images/Menu/3stars.png",1001);
         that.stage.addToStage(that.stars);
     } else if(100*that.points/(that.actRecipe.tasks.length*10)>=60) {
-        that.stars = new MenuBackground(that.stage.getContext(), 300, 300, 350, 250, "images/Menu/2stars.png",1001);
+        that.stars = new MenuBackground(that.stage.getContext(), 300, 350, 350, 250, "images/Menu/2stars.png",1001);
         that.stage.addToStage(that.stars);
     } else if (100*that.points/(that.actRecipe.tasks.length*10)*10>=30) {
-        that.stars = new MenuBackground(that.stage.getContext(), 300, 300, 350, 250, "images/Menu/1stars.png",1001);
+        that.stars = new MenuBackground(that.stage.getContext(), 300, 350, 350, 250, "images/Menu/1stars.png",1001);
         that.stage.addToStage(that.stars);
     } else {
-        that.stars = new MenuBackground(that.stage.getContext(), 300, 300, 350, 250, "images/Menu/0stars.png",1001);
+        that.stars = new MenuBackground(that.stage.getContext(), 300, 350, 350, 250, "images/Menu/0stars.png",1001);
         that.stage.addToStage(that.stars);
     }
-    that.dish = new MenuBackground(that.stage.getContext(), 100, 300, 200, 500, that.actRecipe.image,1002);
+    that.dish = new MenuBackground(that.stage.getContext(), 300, 70, 400, 400, that.actRecipe.image,1002);
     that.stage.addToStage(that.dish);
     alert(that.points);
 }
