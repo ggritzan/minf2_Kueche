@@ -43,7 +43,7 @@ the tutorial block features a dark to brightblue background, everything is writt
     position:absolute;
     top:60px;
     left:300px;
-    width:200px;
+    width:250px;
     height:200px;
     background: #2bd3e2; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover,  #2bd3e2 0%, #1e5799 100%); /* FF3.6+ */
