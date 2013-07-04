@@ -8,6 +8,7 @@ function StoveTop(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
     this.OFF = "off";
     this.ON = "on";
     this.status = this.OFF;
+    this.pot = null;
 
 
 }

@@ -101,7 +101,7 @@
         {
             "name": "tomatopaste",
             "image":{
-                "imagePath": "images/Ingredients/tomatopaste.png",
+                "imagePath": "images/Ingredients/tomatopaste2.png",
                 "tileWidth": 150,
                 "tileHeight": 300,
                 "imgWidth": 450,

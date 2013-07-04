@@ -10,21 +10,6 @@ function Kitchen(canvasId) {
 
     this.language = this.ENGLISH;
 
-    this.beamAnim = {
-        "image":{
-            "imagePath": "images/kitchenComponents/beam.png",
-            "tileWidth": 200,
-            "tileHeight": 200,
-            "imgWidth": 800,
-            "imgHeight": 200
-        },
-        "animations": {
-            "default": {"seq": [0], "loop": false},
-            "beamOut": {"seq": [0,1,2,3], "loop": false},
-            "beamIn": {"seq": [3,2,1,0], "loop": false}
-        }
-    }
-
     // create a new stage object
     this.stage = new Stage(canvasId);
     this.soundmanager = new SoundManager();
@@ -141,7 +126,7 @@ Kitchen.prototype.showResults = function(that) {
         if(that.pots[i].boilingWaterSound != undefined){this.soundmanager.stopSound(that.pots[i].boilingWaterSound)}
     }
     that.judgementscreen = new MenuBackground(that.stage.getContext(), 0, 0, 1000, 630, "images/Menu/judgementscreen.png",1000);
-    that.stage.addToStage(that.judgementscreen);
+    that.dish = new MenuBackground(that.stage.getContext(), 307, 85, 350, 350, that.actRecipe.image,1002);
     that.judgement = true;
     console.log(100*that.points/(that.actRecipe.tasks.length*10));
     if (that.points == that.actRecipe.tasks.length*10) {
@@ -157,7 +142,7 @@ Kitchen.prototype.showResults = function(that) {
         that.stars = new MenuBackground(that.stage.getContext(), 300, 350, 350, 250, "images/Menu/0stars.png",1001);
         that.stage.addToStage(that.stars);
     }
-    that.dish = new MenuBackground(that.stage.getContext(), 307, 85, 350, 350, that.actRecipe.image,1002);
+    that.stage.addToStage(that.judgementscreen);
     that.stage.addToStage(that.dish);
 }
 
@@ -250,7 +235,6 @@ Kitchen.prototype.addMenuComponents = function(menuElement){
 Kitchen.prototype.fillFridge = function(recipe, index){
 
     this.actRecipe = recipe.recipes[index];
-
 
     // for callback
     var that = this;
