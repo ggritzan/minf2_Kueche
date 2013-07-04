@@ -73,15 +73,17 @@ function Kitchen(canvasId) {
      */
 
     this.optionsMenu = new VisualRenderObject(this.stage.getContext(), 0, 0, 1000, 630, "images/Menu/optionsMenu.png", 400);
-    this.xbuttonOptions = new XButtonOptions(this.stage.getContext(), 820, 80, 80, 80, "images/Menu/xbuttonOptionsmenu.png", 401);
-    this.minusButton = new MinusButton(this.stage.getContext(), 200, 150, 100, 100, "images/Menu/minusbutton.png", 401);
-    this.plusButton = new PlusButton(this.stage.getContext(), 450, 150, 100, 100, "images/Menu/plusbutton.png", 401);
-    this.germanButton = new GermanButton(this.stage.getContext(), 200, 400, 100, 100, "images/Menu/germanOff.png", 401);
-    this.englishButton = new EnglishButton(this.stage.getContext(), 450, 400, 100, 100, "images/Menu/EnglischOff.png", 401);
+    this.xbuttonOptions = new XButtonOptions(this.stage.getContext(), 820, 80, 80, 80, "images/Menu/xbuttonOptionsmenu.png", 401, "xButton");
+    this.soundbutton = new VisualRenderObject(this.stage.getContext(), 600, 150, 100, 100, "images/Menu/soundbuttonOn.png", 401);
+    this.minusButton = new MinusButton(this.stage.getContext(), 200, 150, 100, 100, "images/Menu/minusbutton.png", 401, "minusButton");
+    this.plusButton = new PlusButton(this.stage.getContext(), 450, 150, 100, 100, "images/Menu/plusbutton.png", 401, "plusButton");
+    this.germanButton = new GermanButton(this.stage.getContext(), 200, 400, 100, 100, "images/Menu/germanOff.png", 401, "germanButton");
+    this.englishButton = new EnglishButton(this.stage.getContext(), 450, 400, 100, 100, "images/Menu/EnglischOff.png", 401, "englishButton");
     this.options.push(this.germanButton);
     this.options.push(this.englishButton);
     this.options.push(this.xbuttonOptions);
     this.options.push(this.optionsMenu);
+    this.options.push(this.soundbutton);
     this.options.push(this.minusButton);
     this.options.push(this.plusButton);
 

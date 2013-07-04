@@ -12,9 +12,11 @@
  * @param zOrder - z-coordinate of the image
  */
 
-function XButtonOptions(context, sx, sy, w, h, imgPath, zOrder) {
+function XButtonOptions(context, sx, sy, w, h, imgPath, zOrder, name) {
 
     VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+
+    this.name = name;
 }
 
 XButtonOptions.prototype = Object.create(VisualRenderObject.prototype);

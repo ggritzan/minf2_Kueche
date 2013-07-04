@@ -11,9 +11,11 @@
  * @param zOrder - z-coordinate of the image
  */
 
-function PlusButton(context, sx, sy, w, h, imgPath, zOrder) {
+function PlusButton(context, sx, sy, w, h, imgPath, zOrder, name) {
 
     VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
+
+    this.name = name;
 }
 
 PlusButton.prototype = Object.create(VisualRenderObject.prototype);
