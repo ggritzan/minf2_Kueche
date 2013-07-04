@@ -783,11 +783,17 @@ Kitchen.prototype.onClick = function (event) {
 }
 
 Kitchen.prototype.onDragging = function(event){
+    console.log(event.target);
     var ingX = event.target.x + event.target.width / 2;
-    var ingY = event.target.y + event.target.height / 2;
+    if(event.target instanceof Container) {
+        var ingY = event.target.y + event.target.height/1.2 ;
+    } else {
+        var ingY = event.target.y + event.target.height/2;
+    }
     var zone = this.bin.getHitZone();
 
     if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
+        console.log("yay");
         this.bin.setStatus(this.bin.ON);
     } else {
         this.bin.setStatus(this.bin.OFF);
@@ -798,9 +804,15 @@ Kitchen.prototype.onDragend = function (event) {
 
     var tasks = this.actRecipe.tasks;
     var ingX = event.target.x + event.target.width / 2;
-    var ingY = event.target.y + event.target.height / 2;
-    var zone = this.bin.getHitZone();
+    if(event.target instanceof Container) {
+        var ingY = event.target.y + event.target.height/1.2;
+    } else {
+        var ingY = event.target.y + event.target.height/2;
+    }
 
+    var zone = this.bin.getHitZone();
+    console.log("x: " + ingX + "y: " + ingY);
+    console.log(zone);
     if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
         this.stage.removeFromStage(event.target);
         event.target = null;
