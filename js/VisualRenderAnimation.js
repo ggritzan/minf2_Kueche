@@ -91,7 +91,7 @@ VisualRenderAnimation.prototype.nextAnimTile = function () {
 }
 
 /**
- * changes the animation
+ * The function 'changeAnimSequence' changes the animation
  * @param seqName - name of the animation sequence
  */
 VisualRenderAnimation.prototype.changeAnimSequence = function (seqName) {

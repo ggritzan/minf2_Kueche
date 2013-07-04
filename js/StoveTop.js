@@ -22,7 +22,9 @@ function StoveTop(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
     // shows if the stove top is turned off or on
     this.OFF = "off";
     this.ON = "on";
+    // the current status of the stove top
     this.status = this.OFF;
+    // the pot that is on the stove top
     this.pot = null;
 
 
@@ -31,7 +33,12 @@ function StoveTop(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 StoveTop.prototype = Object.create(VisualRenderAnimation.prototype);
 StoveTop.prototype.constructor = StoveTop;
 
-// function to set the power on or off
+/**
+ * The function 'setStatus' sets the status of the stove top to 'on' or 'off' and changes the animation sequence, when
+ * it is off or on. It also sets its pot's status to its own status when the status is being changed, if it has a pot.
+ *
+ * @param status - the status of the stove top (on or off)
+ */
 StoveTop.prototype.setStatus = function (status) {
     this.status = status;
     if (this.pot != null) {
@@ -47,12 +54,16 @@ StoveTop.prototype.setStatus = function (status) {
     }
 }
 
-// function to give the stove top a pot and to set its status to the same status as the stove top
+/**
+ * The function 'setCurrentPot' gives the stove top a pot when the pot is put on the stove top. It also gives the pot
+ * its current status.
+ *
+ * @param pot - the pot that is put on the stove top
+ */
 StoveTop.prototype.setCurrentPot = function (pot) {
     this.pot = pot;
     if (this.pot != null ) {
         this.pot.setStatus(this.status);
-        console.log("StoveTop State "+ this.status + " Pot State " + this.pot.status);
     }
 
 }

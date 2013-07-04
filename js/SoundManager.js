@@ -4,13 +4,18 @@
 
 function SoundManager () {
 
+    // the max volume possible
     this.MAX_VOLUME = 1.0;
+    // the min volume possible
     this.MIN_VOLUME = 0.0;
 
+    // if the sound is on mute
     this.soundMute = false;
 
+    // the current sound volume
     this.soundVolume = this.MAX_VOLUME;
 
+    // sounds array which contains all sounds used in the application
     this.sounds = {};
 
     // to load the newest version of all JSONs
@@ -19,6 +24,13 @@ function SoundManager () {
     // for callback
     var that = this;
 
+    /*
+     loads the sounds from the 'sounds.json' and saves them in the sounds array, it also saves an event listener to each
+     sound and if the sound shall be looped or not
+     the sound name is used as an index value
+
+     @param data - data from the 'sounds.json'
+     */
 
     Ajax.getJSON("json/sounds.json?d=" + d.getTime(), function(data){
         data.sounds.forEach(function(sound){
@@ -33,25 +45,40 @@ function SoundManager () {
 
 }
 
+/**
+ * The function 'turnVolumeUp' is used to turn the sound volume up when the PlusButton is clicked. The maximal volume
+ * cannot be higher than the MAX_VOLUME.
+ */
+
 SoundManager.prototype.turnVolumeUp = function(){
 
     if(this.soundVolume < this.MAX_VOLUME){
         this.tmpVolume = this.soundVolume + 0.1;
-        this.soundVolume = Math.round(this.tmpVolume * 10 ) / 10;
+        this.soundVolume = Math.round(this.tmpVolume * 10 ) / 10; // to get a number with one decimal place
     }
-
-    console.log("sound volume: " + this.soundVolume);
 }
+
+/**
+ * The function 'turnVolumeDown' is used to turn the sound volume down when the PlusButton is clicked. The minimal
+ * volume cannot be lower than the MIN_VOLUME.
+ */
 
 SoundManager.prototype.turnVolumeDown = function(){
 
     if(this.MIN_VOLUME < this.soundVolume){
         this.tmpVolume = this.soundVolume - 0.1;
-        this.soundVolume = Math.round(this.tmpVolume * 10 ) / 10;
+        this.soundVolume = Math.round(this.tmpVolume * 10 ) / 10;  // to get a number with one decimal place
     }
-
-    console.log("sound volume: " + this.soundVolume);
 }
+
+/**
+ * The function 'playSound' plays the wanted sound. It also adds an event listener to it for the event 'ended', when
+ * something shall be changed when the sound has ended (optional).
+ *
+ * @param soundName - the name of the sound
+ * @param listener - the 'ended' event listener (optional) else: null
+ * @returns audioObj - an audio object
+ */
 
 SoundManager.prototype.playSound = function (soundName, listener){
     // inter through Array "soundName"
@@ -84,10 +111,12 @@ SoundManager.prototype.playSound = function (soundName, listener){
                 obj.audio.addEventListener('ended', listener);
             }
 
+            // shall the sound be looped?
             if(obj.loop){
                 obj.audio.loop = true;
             }
 
+            // is the sound on mute already?
             if(!that.soundMute){
                 obj.audio.volume = that.soundVolume;
             } else {
@@ -105,8 +134,16 @@ SoundManager.prototype.playSound = function (soundName, listener){
     return audioObj;
 }
 
+/**
+ * The function 'stopSound' stops the sound of the returned audio object from the function 'playSound'
+ *
+ * @param soundObj - the returned value from the function 'playSound' - an audio object
+ */
+
 SoundManager.prototype.stopSound = function(soundObj){
+
+    // pause the sound
     soundObj.pause();
+    // set the current time back to 0 milliseconds (reset)
     soundObj.currentTime = 0;
-    console.log("The sound " + soundObj.src + " has stopped.");
 }

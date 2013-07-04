@@ -48,28 +48,42 @@ function Tutorial(tutName, language){
     }
 
     /**
-     * The function 'render' renders the tutorial
+     * The function 'render' renders the tutorial in the given language in the HTML.
      */
 
     this.render = function(){
 
+        // reference to container from DOM
         var tutorial = document.querySelector('#tutorial');
-        var currentRecipe = document.querySelector('#currentRecipe');
         var recipeMenu = document.querySelector('#recipeMenu');
 
+        // deletes the containers #recipeMenu and #tutorial when they were blocked
         recipeMenu.innerHTML = ' ';
         tutorial.innerHTML = ' ';
 
+        // creates a headline 1 element
         var nameElement = document.createElement('h1');
+        // text of headline 1 element 'nameElement': the name of the application component the cursor hovers over
+        //@param tutName - the name of the application, it used as an index
         var name = document.createTextNode(that.jTutorial[tutName].name);
 
+        // 'name' is a child element of 'nameElement'
         nameElement.appendChild(name);
+        // 'nameElement' is a child element of 'tutorial'
         tutorial.appendChild(nameElement);
 
+        // creates a paragraph element
         var explanationElement = document.createElement('p');
+        /*
+        text of the paragraph element 'explanationElement': the explanation to the application component the cursor
+        hovers over
+        @param tutName - the name of the application, it used as an index
+        */
         var explanation = document.createTextNode(that.jTutorial[tutName].message);
 
+        // 'explanation' is a child element of 'explanationElement'
         explanationElement.appendChild(explanation);
+        // 'explanationElement' is a element of 'tutorial'
         tutorial.appendChild(explanationElement);
 
     }

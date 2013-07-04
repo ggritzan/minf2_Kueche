@@ -27,7 +27,7 @@ UtilityButton.prototype = Object.create(VisualRenderAnimation.prototype);
 UtilityButton.prototype.constructor = UtilityButton;
 
 /**
- * Sets the status of a utility button and changes the animation to it.
+ * The function 'setStatus' sets the status of a utility button and changes the animation to it.
  * @param status - the status can on hover (when the mouse hovers over the button) or off and on (when the button is
  *                  clicked)
  */
