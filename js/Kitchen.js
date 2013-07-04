@@ -182,7 +182,7 @@ Kitchen.prototype.setDefault = function(that) {
         that.stage.removeFromStage(that.utilityButtons[i]);
     }
     for(var i = 0; i<that.menu.length; i++){
-        if(that.menu[i] instanceof MenuButton){
+        if(that.menu[i].name == "cookbook"){
             that.menu[i].setStatus(that.menu[i].OFF);
         }
     }
