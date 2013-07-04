@@ -1,3 +1,18 @@
+/**
+ * The KitchenSlicer is a blue print for the kitchen slicer. The kitchen slicer is used to chop ingredients.
+ * It inherits from VisualRenderAnimation which inherits from VisualRenderObject.
+ *
+ * @param context - '2D' oder '3D' context (in this case it is always '2D')
+ * @param sx - x-coordinate of the left upper corner of the image for the object
+ * @param sy - y-coordinate of the left upper corner of the image for the object
+ * @param w - width of the image
+ * @param h - height of the image
+ * @param imgPath - image path of the image
+ * @param zOrder - z-coordinate of the image
+ * @param name - name of the object
+ * @param animObj - animation sequence for object that is read from the image sprite
+ */
+
 function KitchenSlicer(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
     VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
@@ -7,7 +22,7 @@ function KitchenSlicer(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
     this.content = [];
 
     this.OFF = "off";
-    this.ON = "on"
+    this.ON = "on";
     this.status = this.OFF;
 
     this.soundmanager = new SoundManager();
@@ -29,7 +44,6 @@ KitchenSlicer.prototype.setStatus = function (status){
     if(this.status == this.ON && this.content[0] != undefined){
         this.content[0].isCut = true;
         this.content[0].changeAnim();
-        console.log("The ingredient is cut: " + this.content[0].name + " " + this.content[0].isCut);
     }
 }
 
@@ -60,7 +74,6 @@ KitchenSlicer.prototype.behindIngredient = function(event, kitchen){
             kitchen.stage.removeFromStage(event.target);
             kitchen.points = kitchen.points + 10;
             kitchen.counter++;
-            console.log("You've got " + kitchen.points + " points now.");
             var that = this;
 
             this.soundmanager.playSound('slicer', function() {
@@ -77,7 +90,6 @@ KitchenSlicer.prototype.behindIngredient = function(event, kitchen){
 
             kitchen.stage.removeFromStage(event.target);
             kitchen.points = kitchen.points - 10;
-            console.log("You've got " + kitchen.points + " points now.");
             var that = this;
 
             this.soundmanager.playSound('slicer', function() {

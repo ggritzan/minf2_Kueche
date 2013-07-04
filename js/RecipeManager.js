@@ -1,3 +1,14 @@
+/**
+ * The RecipeManager is used to show the current recipe in the HTML, hence the user can see which is the current task,
+ * which are the ingredients needed for the recipe and his/her score.
+ *
+ * @param jRecipes - a kitchen attribute that has all recipes from a JSON file, it is used here to set the headlines
+ * @param actRecipe - a kitchen attribute that has the selected recipe, it is used to set the current task and the
+ *                      ingredients used for the current recipe
+ * @param counter - a kitchen attribute that shows the current step number
+ * @param points - a kitchen attribute with the current score of the user
+ */
+
 function RecipeManager(jRecipes, actRecipe, counter, points){
 
     this.render = function(){

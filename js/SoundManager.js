@@ -1,3 +1,7 @@
+/**
+ * The SoundManager manages all sounds used in the application. The sounds are saved in a sounds array attribute.
+ */
+
 function SoundManager () {
 
     this.MAX_VOLUME = 1.0;

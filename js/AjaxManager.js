@@ -11,7 +11,6 @@
  * - jRecipes
  *
  * @param kit - Kitchen
- * @constructor - AjaxManager (this)
  */
 
 function AjaxManager(kit){
@@ -22,6 +21,8 @@ function AjaxManager(kit){
     /*
      Data loaded from the 'menuComponents.json' which contains all the data needed to render the menu of the application
      to the stage. The data is saved in the 'jMenuComponents' attribute of the kitchen.
+
+     @param data - data from the 'menuComponents.json'
      */
 
     Ajax.getJSON("json/menuComponents.json?d=" + d.getTime(), function(data){
@@ -34,6 +35,8 @@ function AjaxManager(kit){
      components to the stage that appear at the first glance, such as the stove tops, the knobs to the stove tops, the
      oven, the kitchen slicer and the oven button. The data is saved in the 'jKitchenComponents' attribute of the
      kitchen.
+
+     @param data - data from the 'kitchenComponents.json'
      */
 
     Ajax.getJSON("json/kitchenComponents.json?d=" + d.getTime(), function (data){
@@ -44,6 +47,8 @@ function AjaxManager(kit){
     /*
      Data loaded from the 'utilities.json' which contains all the data needed to render the utilities that are used to
      cook, such as the pots. The data is saved in the 'jUtilities' attribute of the kitchen.
+
+     @param data - data from the 'utilities.json'
      */
 
     Ajax.getJSON("json/utilities.json?d=" + d.getTime(), function(data){
@@ -53,6 +58,8 @@ function AjaxManager(kit){
     /*
      Data loaded from the 'ingredients.json' which contains all the data needed to render the ingredient buttons to the
      stage when the fridge button is clicked. The data is saved in the 'jIngredientButtons' attribute of the kitchen.
+
+     @param data - data from the 'ingredientButtons.json'
      */
 
     Ajax.getJSON("json/ingredientButtons.json?d=" + d.getTime(), function(data){
@@ -62,6 +69,8 @@ function AjaxManager(kit){
     /*
     Data loaded from the 'utilityButtons.json' which contains all the data needed to render the utility buttons to the
     stage, when the cupboard button is clicked. The data is saved in the 'jUtilityButtons' attribute of the kitchen.
+
+    @param data - data from the 'utilityButtons.json'
      */
 
     Ajax.getJSON("json/utilityButtons.json?d=" + d.getTime(), function(data){
@@ -72,6 +81,8 @@ function AjaxManager(kit){
     Data loaded from the 'ingredients.json' which contains all the data needed to render the ingredients to the stage,
     when the specific ingredient button to it is clicked. The data is saved in the 'jIngredients' attribute of the
     kitchen.
+
+    @param data - data from the 'ingredients.json'
      */
 
     Ajax.getJSON("json/ingredients.json?d=" + d.getTime(), function(data){
@@ -81,6 +92,8 @@ function AjaxManager(kit){
     /*
     Data loaded from the 'container.json' which contains all the data needed to render specific ingredients which are in
     a container to the stage, when the specific ingredient button to it is clicked.
+
+    @param data - data from the 'container.json'
      */
 
     Ajax.getJSON("json/container.json?d=" + d.getTime(), function(data){
@@ -91,6 +104,8 @@ function AjaxManager(kit){
     Data loaded from the 'recipes.json' which contains all the data needed to see which current recipe shall be cooked
     and which specific ingredient buttons and ingredients are needed for the recipe. Furthermore the data is used to
     check if the current task is being full filled correctly.
+
+    @param data - data from the 'recipes.json'
      */
 
     Ajax.getJSON("json/recipes.json?d=" + d.getTime(), function(data){

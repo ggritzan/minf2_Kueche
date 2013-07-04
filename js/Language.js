@@ -1,3 +1,10 @@
+/**
+ * Language is used to change the current text shown in the HTML to tell the user to which language the application has
+ * been set to.
+ *
+ * @param lang - current language setting (either German or English)
+ */
+
 function Language(lang){
 
     this.GERMAN = "ger";

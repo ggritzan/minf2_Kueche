@@ -1,3 +1,9 @@
+/**
+ * The Kitchen is the core of the program. It executes the program and manages all user interactions.
+ *
+ * @param canvasId - reference to the canvas element in the DOM
+ */
+
 function Kitchen(canvasId) {
 
     // get the right requestAnimationFrame for this browser

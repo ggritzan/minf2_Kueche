@@ -1,3 +1,10 @@
+/**
+ * The RecipeSelectionMenu is used to show the user from which recipe he/she can select from. The recipe titles are
+ * rendered in the HTML. The user can click on one of them and the information is given to the Kitchen.
+ *
+ * @param kit - the Kitchen to get all recipes and to tell it later which of them has been selected by the user
+ */
+
 function RecipeSelectionMenu(kit){
 
 

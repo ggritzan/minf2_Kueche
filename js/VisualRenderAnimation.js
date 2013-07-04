@@ -1,31 +1,50 @@
+/**
+ * VisualRenderAnimation is a blue print of sprite animated objects. It uses the given animation sequence to changes the
+ * tile image every 80 milliseconds.
+ * It inherits from VisualRenderObject.
+ *
+ * @param context - '2D' oder '3D' context (in this case it is always '2D')
+ * @param sx - x-coordinate of the left upper corner of the image for the object
+ * @param sy - y-coordinate of the left upper corner of the image for the object
+ * @param w - width of the image
+ * @param h - height of the image
+ * @param imgPath - image path of the image
+ * @param zOrder - z-coordinate of the image
+ * @param animObject - animation sequence for object that is read from the image sprite
+ */
+
 function VisualRenderAnimation(context, sx, sy, w, h, imgPath, zOrder, animObject) {
 
+    // call for the super class
     VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
 
     // animation configuration object
     this.animations = animObject;
 
-    // gibt die Breite & Höhe einer einzelnen Grafik aus der Gesamtgrafik an
+    // the width of the tile image in the image file
     this.tileWidth = this.animations.image.tileWidth || w;
+    // the height of the tile image in the image file
     this.tileHeight = this.animations.image.tileHeight || h;
 
-    // Ermittell die Anzahl der vorhandenen Zeilen
+    // gives the maximal number of the rows of the tile images in the image file
     this.maxRows = this.animations.image.imgHeight / this.tileHeight || 1;
 
-    // Ermittell die Anzahl der vorhandenen Spalten
+    // gives the maximal number of cols of the tile images in the image file
     this.maxCols = this.animations.image.imgWidth / this.tileWidth || 1;
 
-    // Definiert die aktuelle Animation die ausgeführt werden soll
+    // defines the current animation that shall be executed
     this.currentAnimation = this.animations.animations["default"].seq || [0];
 
+    // loops the animation
     this.loop = this.animations.animations["default"].loop || false;
 
-    // Index des Animations Arrays für das aktuelle Rendern
+    // current tile image of the animation
     this.currentAnimIndex = 0;
 
-    // Zeit wann das letze mal der Ausschnitt geändert wurde
+    // the last time the image tile of the graphic has been changed
     this.lastSpriteUpdateTime = 0;
-    // Animationsinterval in Milisekunden
+
+    // animation interval in milliseconds
     this.animInterval = 80;
 }
 
@@ -34,7 +53,7 @@ VisualRenderAnimation.prototype = Object.create(VisualRenderObject.prototype);
 VisualRenderAnimation.prototype.constructor = VisualRenderAnimation;
 
 /**
- *    Override
+ *    Overrides the draw method from the VisualRenderObject
  */
 VisualRenderAnimation.prototype.draw = function () {
 
@@ -57,8 +76,7 @@ VisualRenderAnimation.prototype.draw = function () {
 }
 
 /**
- *
- * Berechnet den nächsten Auschnitt der aktuellen Animation
+ * computes the next tile of the current animation sequence
  */
 VisualRenderAnimation.prototype.nextAnimTile = function () {
 
@@ -73,9 +91,8 @@ VisualRenderAnimation.prototype.nextAnimTile = function () {
 }
 
 /**
- *
- * Wechselt die Animation
- * @param String seqName - Name der Sequence der Animation
+ * changes the animation
+ * @param seqName - name of the animation sequence
  */
 VisualRenderAnimation.prototype.changeAnimSequence = function (seqName) {
 
