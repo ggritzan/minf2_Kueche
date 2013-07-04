@@ -17,10 +17,12 @@ function Oven(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
     VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
 
+    // the ingredient content of the oven
     this.content = [];
 
+    // status of the oven
     this.OFF = "off";
-    this.ON = "on"
+    this.ON = "on";
     this.status = this.OFF;
 
     this.name = name;
@@ -30,6 +32,13 @@ function Oven(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
 Oven.prototype = Object.create(VisualRenderAnimation.prototype);
 Oven.prototype.constructor = Oven;
+
+/**
+ * The function 'setStatus' changes the status of the oven t on or off and changes the button's animation sequence to
+ * the new status.
+ *
+ * @param status - new status of the oven (on or off)
+ */
 
 Oven.prototype.setStatus = function (status){
     this.status = status;
@@ -44,85 +53,29 @@ Oven.prototype.setStatus = function (status){
     }
 }
 
+/**
+ * The function 'clearContent' clears the ovens ingredients when they are out of the oven (addToStage)
+ */
+
 Oven.prototype.clearContent = function (){
     this.content = [];
 }
 
+/**
+ * The function 'baking' sets the status of the ingredients to 'isBaked = true' when it has one (or more) and changes
+ * the ingredients animation sequence.
+ *
+ * @returns {boolean}
+ */
+
 Oven.prototype.baking = function () {
     if(this.status == this.ON && this.content[0] != undefined){
-        console.log("Ya");
         for(var i = 0; i<this.content.length;i++) {
             this.content[i].isBaked = true;
             this.content[i].changeAnim();
-            console.log("The ingredient is baked: " + this.content[i].name + " " +this.content[i].isBaked);
         }
         return true;
     } else {
         return false;
-    }
-}
-
-Oven.prototype.behindIngredient = function(event, kitchen){
-
-    var actTask = kitchen.actRecipe.tasks[kitchen.counter].task;
-
-    var ingX = event.target.x + event.target.width / 2;
-    var ingY = event.target.y + event.target.height / 2;
-
-    //is the ingredient over an oven?
-    var zone = this.getHitZone();
-
-    if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
-
-        // if the oven content does not meet the requirements of the current task
-        var sameContent = true;
-
-        if(this.content.length <= actTask.utensilProperties.content.length){
-            for(var l = 0; l < this.content.length; l++){
-                if(!(this.content[l].name == actTask.utensilProperties.content[l])){
-                    sameContent = false;
-                }
-            }
-        } else if(this.content.length > actTask.utensilProperties.content.length){
-            for(var l = 0; l < actTask.utensilProperties.content.length; l++){
-                if(!(this.content[l].name == actTask.utensilProperties.content[l])){
-                    sameContent = false;
-                }
-            }
-        }
-
-        // does the oven meet all the property requirements for the task?
-        // does the clicked ingredient meet the ingredient properties of the current task?
-        if(actTask.utensil == "oven" && sameContent && this.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
-
-            this.content.push(event.target);
-            kitchen.stage.removeFromStage(event.target);
-            kitchen.points = kitchen.points + 10;
-            kitchen.counter++;
-            console.log("You've got " + kitchen.points + " points now.");
-            var that = this;
-
-            this.soundmanager.playSound('slicer', function() {
-                that.baking();
-                kitchen.stage.addToStage(that.content[0]);
-                that.clearContent();
-
-            });
-
-        }  else if (!(actTask.utensil == "oven" && sameContent && this.status == actTask.utensilProperties.actState &&event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
-
-            this.content.push(event.target);
-            kitchen.stage.removeFromStage(event.target);
-            kitchen.points = kitchen.points - 10;
-            console.log("You've got " + kitchen.points + " points now.");
-            var that = this;
-
-            this.soundmanager.playSound('slicer', function() {
-                that.baking();
-                kitchen.stage.addToStage(that.content[0]);
-                that.clearContent();
-
-            });
-        }
     }
 }

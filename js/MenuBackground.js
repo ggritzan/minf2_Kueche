@@ -1,5 +1,5 @@
 /**
- * The MainMenuButton is a blue print for a main menu button which is used to used to get back to the main menu.
+ * The MenuBackground is a blue print for the main menu background.
  * It inherits from VisualRenderObject.
  *
  * @param context - '2D' oder '3D' context (in this case it is always '2D')

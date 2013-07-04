@@ -23,6 +23,7 @@ function MenuButton(context, sx, sy, w, h, imgPath, zOrder, animObj, name) {
     VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
     this.name = name;
 
+    // the status of a menu button (off, on or if a cursor hovers over it)
     this.OFF = "off";
     this.ONHOVER = "onHover";
     this.ON = "on";
@@ -31,6 +32,12 @@ function MenuButton(context, sx, sy, w, h, imgPath, zOrder, animObj, name) {
 
 MenuButton.prototype = Object.create(VisualRenderAnimation.prototype);
 MenuButton.prototype.constructor = MenuButton;
+
+/**
+ * The function 'setStatus' sets a new status to the menu button and changes the animation sequence to the new status.
+ *
+ * @param status - new status of the menu button (off, on, onHover)
+ */
 
 MenuButton.prototype.setStatus = function (status) {
     this.status = status;

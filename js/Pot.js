@@ -32,13 +32,16 @@ function Pot(context, sx, sy, w, h, imgPath, zOrder, draggable, name, animObj) {
     this.MAX_TEMP = 100;
     this.actTemp = this.MIN_TEMP;
 
+    // defines in which status the pot is in
     this.COLD = "cold";
     this.COOLING = "cooling";
     this.HEATING = "heating";
     this.BOILING = "boiling";
     this.actState = this.COLD;
 
+    // if the pot is on a plate
     this.onPlate = false;
+    // on which plate it is
     this.myPlateIndex;
 
     this.soundmanager = new SoundManager();
@@ -51,6 +54,10 @@ function Pot(context, sx, sy, w, h, imgPath, zOrder, draggable, name, animObj) {
 Pot.prototype = Object.create(VisualRenderAnimation.prototype);
 Pot.prototype.constructor = Pot;
 
+/**
+ * The function 'setStatus' sets the status of the pot and changes its animation
+ * @param status - the new status of the pot
+ */
 
 Pot.prototype.setStatus = function (status) {
     this.status = status;
@@ -63,6 +70,10 @@ Pot.prototype.setStatus = function (status) {
     }
 }
 
+/**
+ *  The function 'update' keeps the pot temperature updates
+ */
+
 Pot.prototype.update = function(){
     if(this.actState == this.COOLING){
         this.cooling();
@@ -70,6 +81,11 @@ Pot.prototype.update = function(){
         this.heating();
     }
 }
+
+/**
+ * The function 'cooling' cools the pot if the temperature of the pot is higher than the minimum temperature or it is
+ * set to the minimum temperature.
+ */
 
 Pot.prototype.cooling = function(){
     if(this.actState == this.COOLING && this.actTemp > this.MIN_TEMP){
@@ -82,6 +98,12 @@ Pot.prototype.cooling = function(){
     }
 }
 
+
+/**
+ * The function 'heating' heats the pot if the temperature of the pot is lower than the maximum temperature or it is
+ * set to the maximum temperature.
+ */
+
 Pot.prototype.heating = function(){
     if(this.actState == this.HEATING && this.actTemp < this.MAX_TEMP){
         this.actTemp++;
@@ -92,7 +114,7 @@ Pot.prototype.heating = function(){
 }
 
 /**
- * change the state of this pot
+ * change the state of this pot and its animation
  * @param state - the state to be set (cold, heating, cooling, boiling)
  */
 
@@ -109,63 +131,5 @@ Pot.prototype.changeState = function(state){
             break;
         default: this.changeAnimSequence("default");
             break;
-    }
-}
-
-Pot.prototype.behindIngredient = function(event, kitchen){
-    console.log(kitchen.counter);
-    console.log(kitchen.actRecipe.length);
-    var actTask = kitchen.actRecipe.tasks[kitchen.counter].task;
-
-    var ingX = event.target.x + event.target.width / 2;
-    var ingY = event.target.y + event.target.height / 2;
-
-    var zone = this.getHitZone();
-
-    //is the ingredient over a pot?
-    if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
-
-        // if the pot content does not meet the requirements of the current task
-        var sameContent = true;
-
-        if(this.content.length <= actTask.utensilProperties.content.length){
-            for(var l = 0; l < this.content.length; l++){
-                if(!(this.content[l].name == actTask.utensilProperties.content[l])){
-                    sameContent = false;
-                }
-            }
-        } else if(this.content.length > actTask.utensilProperties.content.length){
-            for(var l = 0; l < actTask.utensilProperties.content.length; l++){
-                if(!(this.content[l].name == actTask.utensilProperties.content[l])){
-                    sameContent = false;
-                }
-            }
-        }
-
-        // does the pot meet all the property requirements for the task?
-
-        // does the clicked ingredient meet the ingredient properties of the current task?
-        if(actTask.utensil == "pot" && sameContent && this.status == actTask.utensilProperties.actState && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked){
-            this.content.push(event.target);
-
-            if(this.content[0] != undefined){
-
-                kitchen.stage.removeFromStage(event.target);
-                kitchen.points = kitchen.points + 10;
-                kitchen.counter++;
-                console.log("You've got " + kitchen.points + " points now.");
-            }
-
-            // if either the pot or the ingredient do not meet the requirements
-        } else if (!(actTask.utensil == "pot" && sameContent && this.status == actTask.utensilProperties.actState && event.target.name == actTask.contentName && event.target.isCut == actTask.ingredientProperties.isCut && event.target.isCooked == actTask.ingredientProperties.isCooked && event.target.isBaked == actTask.ingredientProperties.isBaked)){
-            this.content.push(event.target);
-
-            if(this.content[0] != undefined){
-
-                kitchen.stage.removeFromStage(event.target);
-                kitchen.points = kitchen.points - 10;
-                console.log("You've got " + kitchen.points + " points now.");
-            }
-        }
     }
 }

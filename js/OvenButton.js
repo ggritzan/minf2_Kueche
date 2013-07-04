@@ -21,8 +21,9 @@ function OvenButton(context, sx, sy, w, h, imgPath, zOrder, name, oven, animObj)
     this.name = name;
     this.oven = oven;
 
-    // shows if the knob is turned off or on
+    // shows if the knob is turned off or on or if the cursor is hovering over the button
     this.OFF = "off";
+    this.ONHOVER = "onHover";
     this.ON = "on";
     this.status = this.OFF;
 
@@ -35,6 +36,12 @@ function OvenButton(context, sx, sy, w, h, imgPath, zOrder, name, oven, animObj)
 OvenButton.prototype = Object.create(VisualRenderAnimation.prototype);
 OvenButton.prototype.constructor = Knob;
 
+/**
+ * The function 'setStatus' sets the current status of the oven button and changes its animation sequence to the
+ * given status.
+ *
+ * @param status - new status of the oven button (off, on, on mouse over)
+ */
 
 OvenButton.prototype.setStatus = function (status) {
 

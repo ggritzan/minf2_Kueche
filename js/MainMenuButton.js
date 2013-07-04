@@ -17,7 +17,7 @@ function MainMenuButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
     VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
 
-    // shows if the knob is turned off or on
+    // shows if the MainMenuButton is turned off or on or if a cursor hovers over it
     this.OFF = "off";
     this.ONHOVER = "onHover";
     this.ON = "on";
@@ -28,6 +28,13 @@ function MainMenuButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
 MainMenuButton.prototype = Object.create(VisualRenderAnimation.prototype);
 MainMenuButton.prototype.constructor = MainMenuButton;
+
+/**
+ * The function 'setStatus' sets a new status to the main menu button and changes the animation sequence to the new
+ * status.
+ *
+ * @param status - new status of the main menu button (off, on, onHover)
+ */
 
 MainMenuButton.prototype.setStatus = function (status) {
     this.status = status;
