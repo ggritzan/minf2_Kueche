@@ -69,11 +69,15 @@ Oven.prototype.clearContent = function (){
  */
 
 Oven.prototype.baking = function () {
-    if(this.status == this.ON && this.content[0] != undefined){
-        for(var i = 0; i<this.content.length;i++) {
-            this.content[i].isBaked = true;
-            this.content[i].changeAnim();
-        }
+    if(this.status == this.ON){
+
+        this.content.forEach(function(ingredient){
+            if(ingredient != undefined){
+                ingredient.isBaked = true;
+                ingredient.changeAnim();
+            }
+        });
+
         return true;
     } else {
         return false;

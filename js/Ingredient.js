@@ -21,9 +21,9 @@ function Ingredient(context, sx, sy, w, h, imgPath, zOrder, draggable, name, ani
     this.setDraggable(draggable);
     this.name = name;
 
-    this.isBaked = false;
-    this.isCooked = false;
-    this.isCut = false;
+    this.isBaked = false; // if the ingredient is baked
+    this.isCooked = false; // if the ingredient is cooked
+    this.isCut = false; // if the ingredient is cut
 
 }
 
@@ -31,16 +31,9 @@ function Ingredient(context, sx, sy, w, h, imgPath, zOrder, draggable, name, ani
 Ingredient.prototype = Object.create(VisualRenderAnimation.prototype);
 Ingredient.prototype.constructor = Ingredient;
 
-Ingredient.prototype.onDragendAction = function(event, kitchen){
-
-    for (var i = 0; i < kitchen.pots.length; i++) {
-        kitchen.pots[i].behindIngredient(event, kitchen);
-    }
-
-    kitchen.kitchenSlicer.behindIngredient(event, kitchen);
-    kitchen.oven.behindIngredient(event, kitchen);
-    kitchen.counterTop.behindIngredient(event, kitchen);
-}
+/**
+ * The function 'changeAnim' changes the animation sequence of the ingredient by the ingredient's current status.
+ */
 
 Ingredient.prototype.changeAnim = function(){
     if(this.isCut && !(this.isBaked || this.isCooked)){

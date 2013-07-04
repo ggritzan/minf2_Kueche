@@ -31,6 +31,10 @@ function Container(context, sx, sy, w, h, imgPath, zOrder, draggable, name, anim
 Container.prototype = Object.create(VisualRenderAnimation.prototype);
 Container.prototype.constructor = Container;
 
+/**
+ * The function 'changeAnim' changes the animation sequence of a Container object if it is dragged on a pot.
+ */
+
 Container.prototype.changeAnim = function(){
         this.changeAnimSequence("overPot");
 }

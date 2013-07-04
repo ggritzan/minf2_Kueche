@@ -18,6 +18,7 @@ function IngredientButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj)
     VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
     this.name = name;
 
+    // status of a ingredient button: off or if a mouse hovers over it
     this.OFF = "off";
     this.ONHOVER = "onHover";
     this.status = this.OFF;
@@ -25,6 +26,13 @@ function IngredientButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj)
 
 IngredientButton.prototype = Object.create(VisualRenderAnimation.prototype);
 IngredientButton.prototype.constructor = IngredientButton;
+
+/**
+ * The function 'setStatus' changes the status of the ingredient button to off or onHover and changes the animation
+ * sequence to the new status.
+ *
+ * @param status - the new status of the ingredient button
+ */
 
 IngredientButton.prototype.setStatus = function (status) {
     this.status = status;

@@ -18,7 +18,7 @@ function CupboardButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
     VisualRenderAnimation.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
     this.name = name;
 
-    // shows if the button is turned off or on
+    // shows if the button is turned off or on or if a cursor hovers over the button
     this.OFF = "off";
     this.ONHOVER = "onHover";
     this.ON = "on";
@@ -27,6 +27,12 @@ function CupboardButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
 CupboardButton.prototype = Object.create(VisualRenderAnimation.prototype);
 CupboardButton.prototype.constructor = CupboardButton;
+
+/**
+ * The function 'setStatus' sets the current status of the cupboard button and changes the animation sequence to it.
+ *
+ * @param status - the new status
+ */
 
 CupboardButton.prototype.setStatus = function (status) {
     this.status = status;

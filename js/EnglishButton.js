@@ -17,20 +17,17 @@ function EnglishButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
     VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
     this.name = name;
-
-    // shows if the button is turned off or on
-    this.OFF = "off";
-    this.ONHOVER = "onHover";
-    this.ON = "on";
-    this.status = this.ON;
 }
 
 EnglishButton.prototype = Object.create(VisualRenderObject.prototype);
 EnglishButton.prototype.constructor = EnglishButton;
 
-EnglishButton.prototype.setStatus = function (status) {
-    this.status = status;
-}
+/**
+ * The function 'setLanguage' sets the current language setting of the application to English by changing the JSON file
+ * to load the data from.
+ *
+ * @param kit - the Kitchen object
+ */
 
 EnglishButton.prototype.setLanguage = function(kit){
 

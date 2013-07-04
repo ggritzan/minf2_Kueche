@@ -28,6 +28,12 @@ function Bin(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 Bin.prototype = Object.create(VisualRenderAnimation.prototype);
 Bin.prototype.constructor = Bin;
 
+/**
+ * The function 'setStatus' sets the status of the bin and changes the animation sequence to the new status.
+ *
+ * @param status - the new status
+ */
+
 Bin.prototype.setStatus = function (status){
     this.status = status;
     switch(status) {

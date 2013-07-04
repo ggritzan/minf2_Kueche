@@ -21,21 +21,23 @@ function Knob(context, sx, sy, w, h, imgPath, zOrder, name, stoveTop, animObj) {
     this.name = name;
     this.stoveTop = stoveTop;
 
-    // shows if the knob is turned off or on
+    // shows if the knob is turned off or on or if a cursor hovers over it
     this.OFF = "off";
     this.ONHOVER = "onHover";
     this.ON = "on";
     this.status = this.OFF;
-
-
-
-
 
 }
 
 Knob.prototype = Object.create(VisualRenderAnimation.prototype);
 Knob.prototype.constructor = Knob;
 
+/**
+ * The function 'setStatus' sets the status of the pot to the new status and sets also the same status to its stove top,
+ * if it has one. It also changes the animation sequence of the knob.
+ *
+ * @param status
+ */
 
 Knob.prototype.setStatus = function (status) {
 
@@ -43,6 +45,7 @@ Knob.prototype.setStatus = function (status) {
     if(status == this.ON){
         this.stoveTop.setStatus(status);
     } else if(status != this.ON){
+        // if the status of the knob is OFF or ONHOVER
         this.stoveTop.setStatus(this.stoveTop.OFF);
     }
 

@@ -19,6 +19,7 @@ function KitchenSlicer(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
     this.name = name;
 
+    // the ingredients that are in the kitchen slicer
     this.content = [];
 
     this.OFF = "off";
@@ -30,6 +31,13 @@ function KitchenSlicer(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
 
 KitchenSlicer.prototype = Object.create(VisualRenderAnimation.prototype);
 KitchenSlicer.prototype.constructor = KitchenSlicer;
+
+/**
+ * Sets a new status of the kitchen slicer and changes the animation sequence to it. If the kitchen slicer has an
+ * ingredient (this.content) and is on, it changes the ingredients status to 'isCut' = true
+ *
+ * @param status -  the new status of the kitchen slicer
+ */
 
 KitchenSlicer.prototype.setStatus = function (status){
     this.status = status;

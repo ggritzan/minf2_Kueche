@@ -105,6 +105,11 @@ Pot.prototype.cooling = function(){
  */
 
 Pot.prototype.heating = function(){
+    this.content.forEach(function(ingredient){
+        if(ingredient != undefined){
+            ingredient.isCooked = true;
+        }
+    });
     if(this.actState == this.HEATING && this.actTemp < this.MAX_TEMP){
         this.actTemp++;
     } else if(this.actState == this.HEATING && this.actTemp == this.MAX_TEMP){
