@@ -74,3 +74,11 @@ the tutorial block features a dark to brightblue background, everything is writt
     margin-right:5px;
     margin-bottom:5px;
 }
+
+
+#language {
+    position:absolute;
+    top: 20px;
+    left:1020px;
+    font-family:sans-serif;
+}
