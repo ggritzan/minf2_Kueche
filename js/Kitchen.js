@@ -10,6 +10,21 @@ function Kitchen(canvasId) {
 
     this.language = this.ENGLISH;
 
+    this.beamAnim = {
+        "image":{
+            "imagePath": "images/kitchenComponents/beam.png",
+            "tileWidth": 200,
+            "tileHeight": 200,
+            "imgWidth": 800,
+            "imgHeight": 200
+        },
+        "animations": {
+            "default": {"seq": [0], "loop": false},
+            "beamOut": {"seq": [0,1,2,3], "loop": false},
+            "beamIn": {"seq": [3,2,1,0], "loop": false}
+        }
+    }
+
     // create a new stage object
     this.stage = new Stage(canvasId);
     this.soundmanager = new SoundManager();
@@ -165,6 +180,11 @@ Kitchen.prototype.setDefault = function(that) {
     }
     for (var i = 0; i<that.utilityButtons.length; i++) {
         that.stage.removeFromStage(that.utilityButtons[i]);
+    }
+    for(var i = 0; i<that.menu.length; i++){
+        if(that.menu[i] instanceof MenuButton){
+            that.menu[i].setStatus(that.menu[i].OFF);
+        }
     }
     that.stage.removeFromStage(that.fridgehologramm);
     that.stage.removeFromStage(that.cupboardhologramm);
