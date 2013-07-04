@@ -42,7 +42,7 @@ the tutorial block features a dark to brightblue background, everything is writt
 #tutorial {
     position:absolute;
     top:60px;
-    left:250px;
+    left:300px;
     width:200px;
     height:200px;
     background: #2bd3e2; /* Old browsers */
