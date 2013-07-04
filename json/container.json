@@ -17,6 +17,102 @@
                 "default": {"seq": [0], "loop": false},
                 "overPot": {"seq": [0,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,0], "loop": false}
             }
+        },
+        {
+            "name": "oil",
+            "image":{
+                "imagePath": "images/Ingredients/oil2.png",
+                "tileWidth": 150,
+                "tileHeight": 300,
+                "imgWidth": 450,
+                "imgHeight": 300,
+                "sx": 215,
+                "sy": 150
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false},
+                "overPot": {"seq": [0,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,0], "loop": false}
+            }
+        },
+        {
+            "name": "salt",
+            "image":{
+                "imagePath": "images/Ingredients/salt.png",
+                "tileWidth": 150,
+                "tileHeight": 300,
+                "imgWidth": 450,
+                "imgHeight": 300,
+                "sx": 215,
+                "sy": 150
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false},
+                "overPot": {"seq": [0,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,0], "loop": false}
+            }
+        },
+        {
+            "name": "wine",
+            "image":{
+                "imagePath": "images/Ingredients/wine2.png",
+                "tileWidth": 150,
+                "tileHeight": 300,
+                "imgWidth": 450,
+                "imgHeight": 300,
+                "sx": 215,
+                "sy": 150
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false},
+                "overPot": {"seq": [0,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,0], "loop": false}
+            }
+        },
+        {
+            "name": "water",
+            "image":{
+                "imagePath": "images/Ingredients/water2.png",
+                "tileWidth": 150,
+                "tileHeight": 300,
+                "imgWidth": 450,
+                "imgHeight": 300,
+                "sx": 215,
+                "sy": 150
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false},
+                "overPot": {"seq": [0,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,0], "loop": false}
+            }
+        },
+        {
+            "name": "lemonJuice",
+            "image":{
+                "imagePath": "images/Ingredients/lemonjuice2.png",
+                "tileWidth": 150,
+                "tileHeight": 300,
+                "imgWidth": 450,
+                "imgHeight": 300,
+                "sx": 215,
+                "sy": 150
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false},
+                "overPot": {"seq": [0,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,0], "loop": false}
+            }
+        },
+        {
+            "name": "tomatopaste",
+            "image":{
+                "imagePath": "images/Ingredients/tomatopaste.png",
+                "tileWidth": 150,
+                "tileHeight": 300,
+                "imgWidth": 450,
+                "imgHeight": 300,
+                "sx": 215,
+                "sy": 150
+            },
+            "animations": {
+                "default": {"seq": [0], "loop": false},
+                "overPot": {"seq": [0,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,0], "loop": false}
+            }
         }
     ]
 }

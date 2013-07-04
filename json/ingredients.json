@@ -156,25 +156,6 @@
             }
         },
         {
-            "name": "oil",
-            "image":{
-                "imagePath": "images/Ingredients/oil.png",
-                "tileWidth": 150,
-                "tileHeight": 150,
-                "imgWidth": 600,
-                "imgHeight": 150,
-                "sx": 235,
-                "sy": 290
-            },
-            "animations": {
-                "default": {"seq": [0], "loop": false},
-                "raw": {"seq": [0], "loop": false},
-                "rawCut": {"seq": [1], "loop": false},
-                "cookedBaked": {"seq": [2], "loop": false},
-                "cookedBakedCut": {"seq": [3], "loop": false}
-            }
-        },
-        {
             "name": "onion",
             "image":{
                 "imagePath": "images/Ingredients/onion.png",
@@ -232,85 +213,9 @@
             }
         },
         {
-            "name": "salt",
-            "image":{
-                "imagePath": "images/Ingredients/salt.png",
-                "tileWidth": 150,
-                "tileHeight": 150,
-                "imgWidth": 600,
-                "imgHeight": 150,
-                "sx": 215,
-                "sy": 300
-            },
-            "animations": {
-                "default": {"seq": [0], "loop": false},
-                "raw": {"seq": [0], "loop": false},
-                "rawCut": {"seq": [1], "loop": false},
-                "cookedBaked": {"seq": [2], "loop": false},
-                "cookedBakedCut": {"seq": [3], "loop": false}
-            }
-        },
-        {
             "name": "sugar",
             "image":{
                 "imagePath": "images/Ingredients/sugar.png",
-                "tileWidth": 150,
-                "tileHeight": 150,
-                "imgWidth": 600,
-                "imgHeight": 150,
-                "sx": 235,
-                "sy": 320
-            },
-            "animations": {
-                "default": {"seq": [0], "loop": false},
-                "raw": {"seq": [0], "loop": false},
-                "rawCut": {"seq": [1], "loop": false},
-                "cookedBaked": {"seq": [2], "loop": false},
-                "cookedBakedCut": {"seq": [3], "loop": false}
-            }
-        },
-        {
-            "name": "tomatopaste",
-            "image":{
-                "imagePath": "images/Ingredients/tomatopaste.png",
-                "tileWidth": 150,
-                "tileHeight": 150,
-                "imgWidth": 600,
-                "imgHeight": 150,
-                "sx": 235,
-                "sy": 320
-            },
-            "animations": {
-                "default": {"seq": [0], "loop": false},
-                "raw": {"seq": [0], "loop": false},
-                "rawCut": {"seq": [1], "loop": false},
-                "cookedBaked": {"seq": [2], "loop": false},
-                "cookedBakedCut": {"seq": [3], "loop": false}
-            }
-        },
-        {
-            "name": "wine",
-            "image":{
-                "imagePath": "images/Ingredients/wine.png",
-                "tileWidth": 150,
-                "tileHeight": 150,
-                "imgWidth": 600,
-                "imgHeight": 150,
-                "sx": 235,
-                "sy": 320
-            },
-            "animations": {
-                "default": {"seq": [0], "loop": false},
-                "raw": {"seq": [0], "loop": false},
-                "rawCut": {"seq": [1], "loop": false},
-                "cookedBaked": {"seq": [2], "loop": false},
-                "cookedBakedCut": {"seq": [3], "loop": false}
-            }
-        },
-        {
-            "name": "water",
-            "image":{
-                "imagePath": "images/Ingredients/water.png",
                 "tileWidth": 150,
                 "tileHeight": 150,
                 "imgWidth": 600,
@@ -368,25 +273,6 @@
             "name": "peas",
             "image":{
                 "imagePath": "images/Ingredients/peas.png",
-                "tileWidth": 150,
-                "tileHeight": 150,
-                "imgWidth": 600,
-                "imgHeight": 150,
-                "sx": 235,
-                "sy": 320
-            },
-            "animations": {
-                "default": {"seq": [0], "loop": false},
-                "raw": {"seq": [0], "loop": false},
-                "rawCut": {"seq": [1], "loop": false},
-                "cookedBaked": {"seq": [2], "loop": false},
-                "cookedBakedCut": {"seq": [3], "loop": false}
-            }
-        },
-        {
-            "name": "lemonJuice",
-            "image":{
-                "imagePath": "images/Ingredients/lemonjuice.png",
                 "tileWidth": 150,
                 "tileHeight": 150,
                 "imgWidth": 600,
