@@ -75,7 +75,7 @@ the tutorial block features a dark to brightblue background, everything is writt
     margin-bottom:5px;
 }
 
-
+/*css for the languageChange Information window, sets the position and a font-type*/
 #language {
     position:absolute;
     top: 20px;
