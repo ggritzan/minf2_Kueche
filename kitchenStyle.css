@@ -1,41 +1,14 @@
-﻿﻿/*OPosition of the KitchenCanvas*/
+﻿/*OPosition of the KitchenCanvas*/
 #kitchenCanvas {
     margin-right:20px;
-	float:left;
+    float:left;
 }
-
-/*@font-face {
-	font-family:"Arkitech";
-	src:url("Arkitech/Arkitech_Light.eot?") format("eot"),
-	url("Arkitech/Arkitech_Light.woff") format("woff"),
-	url("Arkitech/Arkitech_Light.ttf") format("truetype"),
-	url("Arkitech/Arkitech_Light.svg#Arkitech") format("svg");
-	font-weight:normal;
-	font-style:normal;
-}*/
-
-
-/*@font-face {
-	font-family:"Gotica Moderna Bold KK Bold";
-	src:url("gotica/Gotica_Moderna_Bold_KK.eot?") format("eot"),
-	url("gotica/Gotica_Moderna_Bold_KK.woff") format("woff"),
-	url("gotica/Gotica_Moderna_Bold_KK.ttf") format("truetype"),
-	url("gotica/Gotica_Moderna_Bold_KK.svg#GoticaModernaBoldKK-Bold") format("svg");
-	font-weight:normal;
-	font-style:normal;
-}
-
-body{
-
-	font-family: "Gotica Moderna Bold KK Bold"
-
-}*/
 
 /*Size, position anf font-family for the cuurrentRecipe block*/
 #currentRecipe {
-	width:300px;
+    width:300px;
     height:600px;
-	float:left;
+    float:left;
     font-family:sans-serif;
 }
 
@@ -69,9 +42,9 @@ the tutorial block features a dark to brightblue background, everything is writt
 #tutorial {
     position:absolute;
     top:60px;
-    left:250px;
-    width:250px;
-    height:250px;
+    left:300px;
+    width:200px;
+    height:200px;
     background: #2bd3e2; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover,  #2bd3e2 0%, #1e5799 100%); /* FF3.6+ */
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#2bd3e2), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
@@ -102,7 +75,7 @@ the tutorial block features a dark to brightblue background, everything is writt
     margin-bottom:5px;
 }
 
-
+/*css for the languageChange Information window, sets the position and a font-type*/
 #language {
     position:absolute;
     top: 20px;
