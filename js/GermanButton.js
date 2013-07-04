@@ -9,14 +9,11 @@
  * @param h - height of the image
  * @param imgPath - image path of the image
  * @param zOrder - z-coordinate of the image
- * @param name - name of the object
- * @param animObj - animation sequence for object that is read from the image sprite
  */
 
-function GermanButton(context, sx, sy, w, h, imgPath, zOrder, name, animObj) {
+function GermanButton(context, sx, sy, w, h, imgPath, zOrder) {
 
-    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder, animObj);
-    this.name = name;
+    VisualRenderObject.call(this, context, sx, sy, w, h, imgPath, zOrder);
 }
 
 GermanButton.prototype = Object.create(VisualRenderObject.prototype);
