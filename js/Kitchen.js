@@ -1303,6 +1303,8 @@ Kitchen.prototype.onDragend = function (event) {
                 }
             }
 
+        // if the tutorial mode is on
+
         } else if(tasks[this.counter].task == null && this.counter < tasks.length){
 
             var ingX = event.target.x + event.target.width / 2;
@@ -1314,6 +1316,9 @@ Kitchen.prototype.onDragend = function (event) {
 
                 //is the container over a pot?
                 if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
+
+                    // change the animation sequence and put the ingredient in the pot without removing it from the
+                    // stage
 
                     this.pots[i].content.push(event.target);
                     event.target.changeAnim();
