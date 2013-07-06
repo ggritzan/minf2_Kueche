@@ -1303,6 +1303,28 @@ Kitchen.prototype.onDragend = function (event) {
                 }
             }
 
+        } else if(tasks[this.counter].task == null && this.counter < tasks.length){
+
+            var ingX = event.target.x + event.target.width / 2;
+            var ingY = event.target.y + event.target.height / 2;
+
+            for (var i = 0; i < this.pots.length; i++) {
+
+                var zone = this.pots[i].getHitZone();
+
+                //is the container over a pot?
+                if (ingX >= zone.hx && ingX <= zone.hx + zone.hw && ingY >= zone.hy && ingY <= zone.hy + zone.hh) {
+
+                    this.pots[i].content.push(event.target);
+                    event.target.changeAnim();
+                    this.pots[i].content.forEach(function(cont){console.log(cont.name)});
+                    // render new points
+                    var recipeManager = new RecipeManager(this.jRecipes, this.actRecipe, this.counter, this.points);
+                    recipeManager.render();
+                    break;
+                }
+            }
+
         }
 
     } else if (event.target instanceof Pot) {
